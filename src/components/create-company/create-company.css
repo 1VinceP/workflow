@@ -1,3 +1,9 @@
-.css{
-    
+.create-company-step1{
+ border: 1px solid red;
+}
+.create-company-company-name-input{
+    border: none;
+    outline: none;
+    font-family: helvetica;
+
 }

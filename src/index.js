@@ -5,12 +5,15 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import store from './store'
 ReactDOM.render(
     <HashRouter>
         <Provider store={store}>
-            <App />
+            <MuiThemeProvider>
+                <App />
+            </MuiThemeProvider>
         </Provider>
     </HashRouter>
-, document.getElementById('root'));
+    , document.getElementById('root'));
 registerServiceWorker();

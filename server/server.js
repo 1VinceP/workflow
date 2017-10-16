@@ -8,6 +8,7 @@ const createInitialSession = require(`${__dirname}/middleware/session-check`)
 const massive = require('massive')
 const cors = require('cors')
 const session = require('express-session')
+const companyController = require('./controllers/company_controller')
 
 const port = 3005;
 
@@ -111,6 +112,8 @@ app.get('/api/test', (req, res, next) => {
     req.app.get('db').company.all_company().then(response => res.status(200).send(response))
 })
 
+
+app.post('/api/addcompany', companyController.createCompany)
 
 
 ////////////////////////////        TEAM         /////////////////////////////////
