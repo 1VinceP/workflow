@@ -11,8 +11,10 @@ header {
     background: lightskyblue;
     box-shadow: 0px 0px 9px 3px rgba(41,41,41,.25);
     display: flex;
-    /* justify-content: space-around;
-    align-items: center; */
+}
+
+.header-link {
+    text-decoration: none;
 }
 
 .header-left {
@@ -27,7 +29,6 @@ header {
 
 .header-site-name {
     height: 50%;
-    /* width: 200px; */
     margin-left: 20px;
     display: flex;
     align-items: center;
@@ -41,7 +42,6 @@ header {
     flex: 1;
     height: 100%;
     display: flex;
-    /* justify-content: space-around; */
     align-items: center;
     color: white;
     font-weight: 600;

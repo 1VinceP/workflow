@@ -7,7 +7,7 @@ class Header extends Component {
         super();
 
         this.state = {
-            session: 'client'
+            session: null
         }
     }
 
@@ -20,24 +20,31 @@ class Header extends Component {
                 </div>
 
                 <div className='header-right'>
+                    {/* NO USER */}
+                    { !this.state.session 
+                        ? <div className='header-buttons'>
+                            <a href={process.env.REACT_APP_LOGIN}><button>Login/Sign Up</button></a>
+                          </div>
+                        : null}
+
                     {/* CLIENT VIEW */}
                     { this.state.session === 'client'
                         ? <div className='header-buttons'>
                             <div>Project Status</div>
                             <div>Chat with your Project Manager</div>
                             <div>Logout</div>
-                         </div>
+                          </div>
                     : null }
 
                     {/* EMPLOYEE VIEW */}
                     { this.state.session === 'employee'
                         ? <div className='header-buttons'>
-                            <button>Analytics</button>
+                            <Link to='/analytics' className='header-link'><button>Analytics</button></Link>
                             <button>Company</button>
                             <button>Projects</button>
                             <button>Tasks</button>
                             <button>Logout</button>
-                         </div>
+                          </div>
                     : null }
                 </div>
 
