@@ -8,7 +8,6 @@ export default class SignInPage extends Component {
         return(
             <div>
                 <a href={process.env.REACT_APP_LOGIN}><button>Log In</button></a>
-
             </div>
         )
     }
