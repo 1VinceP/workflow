@@ -1,3 +1,55 @@
-.css{
-    
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+header {
+    width: 100%;
+    height: 60px;
+    background: lightskyblue;
+    box-shadow: 0px 0px 9px 3px rgba(41,41,41,.25);
+    display: flex;
+    /* justify-content: space-around;
+    align-items: center; */
+}
+
+.header-left {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+}
+
+.header-site-name {
+    height: 50%;
+    /* width: 200px; */
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.header-site-name:hover {
+    background: orange;
+}
+
+.header-right {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    color: white;
+    font-weight: 600;
+}
+
+.header-buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
