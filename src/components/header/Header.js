@@ -8,7 +8,7 @@ class Header extends Component {
         super();
 
         this.state = {
-            session: null
+            session: 'employee'
         }
     }
 
@@ -35,7 +35,7 @@ class Header extends Component {
                         ? <div className='header-buttons'>
                             <RaisedButton>Project Status</RaisedButton>
                             <RaisedButton>Chat with your Project Manager</RaisedButton>
-                            <RaisedButton>Logout</RaisedButton>
+                            <a><RaisedButton>Logout</RaisedButton></a>
                           </div>
                     : null }
 
