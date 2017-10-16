@@ -66,9 +66,3 @@ html {
     align-items: center;
     justify-content: space-around;
 }
-
-.header-button {
-    color: white;
-    font-size: 14px;
-    background: green;
-}
