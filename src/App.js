@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom';
 import SignInPage from './components/sign-in-page/sign-in-page';
 import Header from './components/header/Header'
 // import HomePage from './';
-// import Dashboard from './';
+import Dashboard from './components/dashboard/dashboard';
 import CreateCompany from './components/create-company/create-company'
 
 class App extends Component {
@@ -20,6 +20,8 @@ class App extends Component {
         <SignInPage />
         </header>
         <CreateCompany />
+
+        <Route component={Dashboard} path="/dashboard" />
       </div>
     );
   }

@@ -18,13 +18,7 @@ const app = express();
 app.use(bodyParser.json() );
 app.use(cors() );
 
-massive({
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    database: process.env.DB_DATABASE,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD
-}).then(db => {
+massive(process.env.CONNECTIONSTRING).then(db => {
     app.set('db', db);
 })
 
@@ -49,26 +43,28 @@ passport.use(new Auth0Strategy({
     // console.log(profile)
     const db = app.get('db');
     console.log('profile: ', profile.id)
-    db.find_user(profile.id).then(user => {
+    db.users.find_user(profile.id).then(user => {
         if (user[0]) {
             console.log(user[0])
             return done(null, user[0]);
         } else {
-            db.create_user([profile.displayName, profile.emails[0].value, profile.picture, profile.id])
+            db.users.create_user([profile.displayName, profile.emails[0].value, profile.picture, profile.id])
                 .then(user => {
                     return done(null, user[0]);
                 })
         }
     })
 }))
+
 passport.serializeUser(function (user, done) {
     console.log('serial: ', user);
     done(null, user);
 })
+
 //USER COMES FROM SESSION - INVOKED ON EVERY ENDPOINT.
 passport.deserializeUser(function (user, done) {
     console.log('userid', user.userid)
-    app.get('db').users.find_user(user.authid).then(user => {
+    app.get('db').users.find_user(user.auth_id).then(user => {
         return done(null, user);
     })
     // console.log('deserial: ', user);
