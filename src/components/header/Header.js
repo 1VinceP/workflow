@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
-import './header.css'
+import axios from 'axios';
+import './header.css';
 
 class Header extends Component {
     constructor() {
         super();
 
         this.state = {
-            session: 'employee'
+            session: null
         }
+    }
+
+    componentDidMount() {
+        axios.get( 'http://localhost:3005/api/user' )
+            .then( response => {
+                console.log( response )
+            } )
     }
 
     render() {
@@ -35,7 +43,9 @@ class Header extends Component {
                         ? <div className='header-buttons'>
                             <RaisedButton>Project Status</RaisedButton>
                             <RaisedButton>Chat with your Project Manager</RaisedButton>
-                            <a><RaisedButton>Logout</RaisedButton></a>
+                            <a href={process.env.REACT_APP_LOGOUT}>
+                                <RaisedButton>Logout</RaisedButton>
+                            </a>
                           </div>
                     : null }
 

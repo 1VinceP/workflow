@@ -9,6 +9,7 @@ const massive = require('massive')
 const cors = require('cors')
 const session = require('express-session')
 const companyController = require('./controllers/company_controller')
+const session_controller = require( './controllers/session_controller' )
 
 const port = 3005;
 
@@ -70,6 +71,7 @@ passport.deserializeUser(function (user, done) {
     // console.log('deserial: ', user);
     // done(null, user)
 })
+app.get( '/auth', passport.authenticate( 'auth0' ) );
 app.get('/login', passport.authenticate('auth0', {
     successRedirect: 'http://localhost:3000/#/dashboard/',
     failureRedirect: 'http://localhost:3000/#/'
@@ -80,6 +82,7 @@ app.get('/login/user', (req, res) => {
     if (!req.user) {
         return res.status(404).send('User not found')
     } else {
+        console.log( 'THIS IS THE REQ.USER', req.user )
         return res.status(200).send(req.user);
     }
 })
@@ -87,6 +90,9 @@ app.get('/logout', (req, res) => {
     req.logOut();
     return res.redirect(302, 'http://localhost:3000/#/');
 })
+
+// Grabs current user session info
+app.get( '/api/user', session_controller.getSessionUser );
 
 //
 ////
