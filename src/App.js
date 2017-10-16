@@ -5,7 +5,7 @@ import SignInPage from './components/sign-in-page/sign-in-page';
 import Header from './components/header/Header'
 // import HomePage from './';
 import Dashboard from './components/dashboard/dashboard';
-import CreateCompany from './components/create-company/create-company'
+// import CreateCompany from './components/create-company/create-company'
 
 class App extends Component {
   render() {

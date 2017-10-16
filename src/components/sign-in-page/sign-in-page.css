@@ -1,0 +1,50 @@
+.sign-in-wrapper {
+    background: rgb(246, 246, 246);
+    width: 100vw;
+    padding-bottom: 5vh;
+}
+
+.top-navigation {
+    height: 50px;
+    width: 100vw;
+    background: lightgray;
+}
+
+.hero-image {
+    height: 70vh;
+    width: 100vw;
+    background: lightgrey;
+    margin-top: 10vh;
+}
+
+.title {
+    position: absolute;
+    font-size: 70px;
+    margin-top: 40px;
+    margin-left: 50px;
+}
+
+.subtitle {
+    font-size: 30px;
+}
+
+.information-bar {
+    margin-top: 40px;
+    height: 150px;
+    width: 90vw;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5vw;
+}
+
+.bot-links {
+    border-right: 25px solid rgb(246, 246, 246);
+    border-left: 25px solid rgb(246, 246, 246);
+    box-shadow: inset 0px 0px 5px #aaaaaa;
+    line-height: 25px;
+    width: 33%;
+}
+.bot-links:hover {
+    transition-duration: .25s;
+    transform: translateY(-5px);
+}
