@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Route } from 'react-router-dom';
 import SignInPage from './components/sign-in-page/sign-in-page';
@@ -14,13 +13,9 @@ class App extends Component {
       <div className="App">
         <Header />
 
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        <SignInPage />
-        </header>
-        <CreateCompany />
-
+        
+        {/* <CreateCompany /> */}
+        <Route component={SignInPage} exact path="/" />
         <Route component={Dashboard} path="/dashboard" />
       </div>
     );
