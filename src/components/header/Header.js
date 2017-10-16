@@ -8,7 +8,7 @@ class Header extends Component {
         super();
 
         this.state = {
-            session: 'employee'
+            session: null
         }
     }
 
