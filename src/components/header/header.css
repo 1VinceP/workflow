@@ -5,7 +5,7 @@ html {
     box-sizing: inherit;
 }
 
-header {
+.header-header {
     width: 100%;
     height: 60px;
     background: lightskyblue;
@@ -15,6 +15,7 @@ header {
 
 .header-link {
     text-decoration: none;
+    color: white;
 }
 
 .header-left {
@@ -47,9 +48,27 @@ header {
     font-weight: 600;
 }
 
+.header-login {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+.header-login-button {
+    width: 200px;
+}
+
 .header-buttons {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+.header-button {
+    color: white;
+    font-size: 14px;
+    background: green;
 }

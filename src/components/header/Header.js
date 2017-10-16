@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import RaisedButton from 'material-ui/RaisedButton';
 import './header.css'
 
 class Header extends Component {
@@ -7,23 +8,25 @@ class Header extends Component {
         super();
 
         this.state = {
-            session: null
+            session: 'employee'
         }
     }
 
     render() {
         return(
-            <header>
+            <header className='header-header'>
 
                 <div className='header-left'>
-                    <div className='header-site-name'>Project Management</div>
+                    <Link to='/' className='header-link'><div className='header-site-name'>Project Management</div></Link>
                 </div>
 
                 <div className='header-right'>
                     {/* NO USER */}
                     { !this.state.session 
-                        ? <div className='header-buttons'>
-                            <a href={process.env.REACT_APP_LOGIN}><button>Login/Sign Up</button></a>
+                        ? <div className='header-login'>
+                            <a href={process.env.REACT_APP_LOGIN}>
+                                <RaisedButton primary='true' className='header-login-button'>Log in / Sign Up</RaisedButton>
+                            </a>
                           </div>
                         : null}
 
@@ -39,11 +42,11 @@ class Header extends Component {
                     {/* EMPLOYEE VIEW */}
                     { this.state.session === 'employee'
                         ? <div className='header-buttons'>
-                            <Link to='/analytics' className='header-link'><button>Analytics</button></Link>
-                            <button>Company</button>
-                            <button>Projects</button>
-                            <button>Tasks</button>
-                            <button>Logout</button>
+                            <Link to='/analytics' className='header-link'><RaisedButton primary='true' className='header-button'>Analytics</RaisedButton></Link>
+                            <RaisedButton primary='true' className='header-button'>Company</RaisedButton>
+                            <RaisedButton primary='true' className='header-button'>Projects</RaisedButton>
+                            <RaisedButton primary='true' className='header-button'>Tasks</RaisedButton>
+                            <RaisedButton primary='true' className='header-button'>Logout</RaisedButton>
                           </div>
                     : null }
                 </div>
