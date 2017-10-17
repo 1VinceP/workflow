@@ -65,12 +65,7 @@ passport.serializeUser(function (user, done) {
 
 //USER COMES FROM SESSION - INVOKED ON EVERY ENDPOINT.
 passport.deserializeUser(function (obj, done) {
-    console.log( chalk.magenta('obj', obj.userid) )
-    // app.get('db').users.find_user(user.auth_id).then(user => {
         return done(null, obj[0]);
-    // })
-    // console.log('deserial: ', user);
-    // done(null, user)
 })
 app.get('/login', passport.authenticate('auth0', {
     successRedirect: 'http://localhost:3000/#/dashboard/',
@@ -78,12 +73,9 @@ app.get('/login', passport.authenticate('auth0', {
 }));
 
 app.get('/login/user', (req, res) => {
-    console.log('req.user: ', req.user)
     if (!req.user) {
-        console.log( chalk.red('NO REQ.USER FROM LOGIN') )
         return res.status(404).send('User not found')
     } else {
-        console.log( 'THIS IS THE REQ.USER', req.user )
         return res.status(200).send(req.user);
     }
 })
@@ -91,9 +83,6 @@ app.get('/logout', (req, res) => {
     req.logOut();
     return res.redirect(302, 'http://localhost:3000/#/');
 })
-
-// Grabs current user session info
-app.get( '/api/user', session_controller.getSessionUser );
 
 //
 ////
