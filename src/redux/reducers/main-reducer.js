@@ -1,11 +1,22 @@
 import axios from 'axios';
+// const company_controller = require('./controllers/company_controller')
 
 const GET_USER_INFO = "GET_USER_INFO";
 const ADDCOMPANYINDUSTRY = "ADDCOMPANYINDUSTRY";
 const ADD_COMPANY_NAME = "ADD_COMPANY_NAME";
 const ADD_COMPANY_EMAIL = "ADD_COMPANY_EMAIL";
 const ADD_COMPANY_PHONE = "ADD_COMPANY_PHONE";
+const ADD_COMPANY_URL = "ADD_COMPANY_LOGO_URL";
+const ADD_COMPANY = "ADD_COMPANY";
+
 const ADD_COMPANY_LOGO_URL = "ADD_COMPANY_LOGO_URL";
+const EDIT_USER_FIRST_NAME = "EDIT_USER_FIRST_NAME";
+const EDIT_USER_LAST_NAME = "EDIT_USER_LAST_NAME";
+const EDIT_USER_EMAIL = "EDIT_USER_EMAIL";
+const EDIT_USER_PICTURE_URL = "EDIT_USER_PICTURE_URL";
+const EDIT_USER_DISPLAY_NAME = "EDIT_USER_DISPLAY_NAME";
+const EDIT_USER_TEAM = "EDIT_USER_TEAM";
+const EDIT_USER_ROLE = "EDIT_USER_ROLE";
     
    
 
@@ -14,8 +25,8 @@ var initialState = {
         company_name:'',
         company_email:'',
         company_phone:'',
-        company_logo_url:'',
-        create_company_industry:'',
+        company_url:'',
+        company_industry:'',
         company_badge:'',
 
     }
@@ -29,15 +40,33 @@ var initialState = {
             case GET_USER_INFO + '_FULFILLED':
                 return Object.assign({}, state, {user: action.payload})
             case ADDCOMPANYINDUSTRY:
-                return Object.assign({}, state, {create_company_industry: action.payload})
+                return Object.assign({}, state, {company_industry: action.payload})
             case ADD_COMPANY_NAME:
                 return Object.assign({}, state, {company_name: action.payload, company_badge:action.company_badge})
             case ADD_COMPANY_EMAIL:
                 return Object.assign({}, state, {company_email: action.payload})
             case ADD_COMPANY_PHONE:
                 return Object.assign({}, state, {company_phone: action.payload})
+            case ADD_COMPANY_URL:
+                return Object.assign({}, state, {company_url: action.payload})
+            case ADD_COMPANY:
+                return action.payload
             case ADD_COMPANY_LOGO_URL:
                 return Object.assign({}, state, {company_logo_url: action.payload})
+            case EDIT_USER_FIRST_NAME:
+                return Object.assign({}, state, {user_firstname: action.payload})
+            case EDIT_USER_LAST_NAME:
+                return Object.assign({}, state, {user_lastname: action.payload})
+            case EDIT_USER_EMAIL:
+                return Object.assign({}, state, {user_email: action.payload})
+            case EDIT_USER_PICTURE_URL:
+                return Object.assign({}, state, {user_picture: action.payload})
+            case EDIT_USER_DISPLAY_NAME:
+                return Object.assign({}, state, {user_display_name: action.payload})
+            case EDIT_USER_TEAM:
+                return Object.assign({}, state, {user_team: action.payload})
+            case EDIT_USER_ROLE:
+                return Object.assign({}, state, {user_role: action.payload})
             default:
                 return state;
         }
@@ -75,7 +104,7 @@ var initialState = {
         console.log(companyLogo)
         return { 
             payload: companyLogo, 
-            type:ADD_COMPANY_LOGO_URL}
+            type:ADD_COMPANY_URL}
     }
 
 
@@ -97,9 +126,69 @@ var initialState = {
             payload: userInfo
         }
     }
-    
-    export function addCompany(){
-        return {
-            
+    export function addCompany(data) {
+        console.log(data)
+        return{
+
+        type:ADD_COMPANY,    
+        payload: data
+
+     
         }
+    }
+    
+    export function editUserFirstname(firstname){
+        console.log('firstname is ', firstname)
+        return{
+            
+            type: EDIT_USER_FIRST_NAME,
+            payload: firstname}
+    }
+    
+    export function editUserLastname(lastname){
+        console.log('lastname is ', lastname)
+        return{
+            
+            type: EDIT_USER_LAST_NAME,
+            payload: lastname}
+    }
+    
+    export function editUserEmail(email){
+        console.log('email is ', email)
+        return{
+            
+            type: EDIT_USER_EMAIL,
+            payload: email}
+    }
+    
+    export function editUserPictureUrl(url){
+        console.log('url is ', url)
+        return{
+            
+            type: EDIT_USER_PICTURE_URL,
+            payload: url}
+    }
+    
+    export function editUserDisplayName(display){
+        console.log('display is ', display)
+        return{
+            
+            type: EDIT_USER_DISPLAY_NAME,
+            payload: display}
+    }
+    
+    export function editUserTeam(team){
+        console.log('team is ', team)
+        return{
+            
+            type: EDIT_USER_TEAM,
+            payload: team}
+    }
+    
+    export function editUserRole(role){
+        console.log('role is ', role)
+        return{
+            
+            type: EDIT_USER_ROLE,
+            payload: role}
     }

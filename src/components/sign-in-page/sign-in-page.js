@@ -11,14 +11,14 @@ export default class SignInPage extends Component {
                     <a href={process.env.REACT_APP_LOGIN}><button>Log In</button></a>
                 </div> */}
                 <div className="hero-image">
-                    <div className="title">PsuedoTrics
-                    <div className="subtitle">Building better businesses through increased productivity.</div>
+                    <div className="title">
+                    <div className="subtitle"></div>
                     </div>
                 </div>
                 <div className="information-bar">
-                    <div className="bot-links">What we do</div>
-                    <div className="bot-links">Meet the team</div>
-                    <div className="bot-links">Contact us</div>
+                    <div>What we do</div>
+                    <div>Meet the team</div>
+                    <div>Contact us</div>
                 </div>
             </div>
         )
