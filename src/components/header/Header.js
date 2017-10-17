@@ -19,34 +19,14 @@ let buttonStyle = {
 }
 
 class Header extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            session: null
-        }
-    }
 
     componentDidMount() {
 
-        this.props.getUserInfo().then( () => {
-            this.setState({
-                session: this.props.user
-            })
-        } )
-        
-        // console.log( this.props )
+        this.props.getUserInfo()
 
-        // axios.get( '/login/user' )
-        //     .then( response => {
-        //         console.log( response )
-        //     } )
-    }
+    };
 
     render() {
-
-        console.log( this.state.session )
-
         return(
             <header className='header-header'>
 
@@ -56,7 +36,7 @@ class Header extends Component {
 
                 <div className='header-right'>
                     {/* NO USER */}
-                    { !this.state.session
+                    { !this.props.user
                         ? <div className='header-login'>
                             <a href={process.env.REACT_APP_LOGIN}>
                                 <RaisedButton style={buttonStyle.headerButton}>Log in / Sign Up</RaisedButton>
@@ -65,7 +45,7 @@ class Header extends Component {
                         : null}
 
                     {/* CLIENT VIEW */}
-                    { this.state.session
+                    { this.props.user === 'client'
                         ? <div className='header-buttons'>
                             <RaisedButton>Project Status</RaisedButton>
                             <RaisedButton>Chat with your Project Manager</RaisedButton>
@@ -76,7 +56,7 @@ class Header extends Component {
                     : null }
 
                     {/* EMPLOYEE VIEW */}
-                    { this.state.session === 'employee'
+                    { this.props.user
                         ? <div className='header-buttons'>
                             <Link to='/analytics' className='header-link'><RaisedButton>Analytics</RaisedButton></Link>
                             <RaisedButton>Company</RaisedButton>
@@ -96,8 +76,6 @@ class Header extends Component {
 
 function mapStateToProps( state ) {
     const { user } = state;
-
-    console.log( state )
 
     return {
         user
