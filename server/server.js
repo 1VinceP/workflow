@@ -9,7 +9,7 @@ const massive = require('massive')
 const cors = require('cors')
 const session = require('express-session')
 const companyController = require('./controllers/company_controller')
-const session_controller = require( './controllers/session_controller' )
+const auth_controller = require( './controllers/auth_controller' )
 const chalk = require('chalk')
 
 const port = 3005;
@@ -58,13 +58,13 @@ passport.use(new Auth0Strategy({
     })
 }))
 
-passport.serializeUser(function (user, done) {
+passport.serializeUser( (user, done) => {
     console.log( chalk.greenBright('serial: '), user );
     done( null, user );
 })
 
 //USER COMES FROM SESSION - INVOKED ON EVERY ENDPOINT.
-passport.deserializeUser(function (obj, done) {
+passport.deserializeUser( (obj, done) => {
         return done(null, obj[0]);
 })
 app.get('/login', passport.authenticate('auth0', {
@@ -72,17 +72,8 @@ app.get('/login', passport.authenticate('auth0', {
     failureRedirect: 'http://localhost:3000/#/'
 }));
 
-app.get('/login/user', (req, res) => {
-    if (!req.user) {
-        return res.status(404).send('User not found')
-    } else {
-        return res.status(200).send(req.user);
-    }
-})
-app.get('/logout', (req, res) => {
-    req.logOut();
-    return res.redirect(302, 'http://localhost:3000/#/');
-})
+app.get( '/login/user', auth_controller.login );
+app.get( '/logout', auth_controller.logout );
 
 //
 ////
