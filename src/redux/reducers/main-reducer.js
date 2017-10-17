@@ -17,7 +17,7 @@ const EDIT_USER_PICTURE_URL = "EDIT_USER_PICTURE_URL";
 const EDIT_USER_DISPLAY_NAME = "EDIT_USER_DISPLAY_NAME";
 const EDIT_USER_TEAM = "EDIT_USER_TEAM";
 const EDIT_USER_ROLE = "EDIT_USER_ROLE";
-    
+
    
 
 var initialState = {
@@ -28,7 +28,12 @@ var initialState = {
         company_url:'',
         company_industry:'',
         company_badge:'',
-
+        user_firstname:'',
+        user_lastname:'',
+        user_picture:'',
+        user_display_name:'',
+        user_team:'',
+        user_role:'',
     }
 
     
