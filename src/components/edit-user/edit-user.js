@@ -24,7 +24,7 @@ export default class EditUser extends Component {
         return (
             <div className="profile-modal">
                 <div className="firstname">
-                    <TextField hintText="First Name" />
+                    <TextField onChange={this.props.editUserFirstname} hintText="First Name" />
                 </div>
                 <div className="lastname">
                     <TextField hintText="Last Name" />
