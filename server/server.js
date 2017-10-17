@@ -7,6 +7,9 @@ const createInitialSession = require(`${__dirname}/middleware/session-check`)
 const massive = require('massive')
 const cors = require('cors')
 const session = require('express-session')
+const auth_controller = require( './controllers/auth_controller' )
+const chalk = require('chalk')
+
 const company_controller = require('./controllers/company_controller')
 const project_controller = require('./controllers/project_controller')
 const team_controller = require('./controllers/team_controller')
@@ -39,50 +42,37 @@ passport.use(new Auth0Strategy({
 }, function (accessToken, refreshToken, extraParams, profile, done) {
     // console.log(profile)
     const db = app.get('db');
-    console.log('profile: ', profile.id)
+    console.log( chalk.greenBright('profile: ', profile.id) )
     db.users.find_user(profile.id).then(user => {
         if (user[0]) {
-            console.log(user[0])
-            return done(null, user[0]);
+            console.log( chalk.greenBright('strategy:'), user )
+            return done(null, user);
         } else {
             db.users.create_user([profile.displayName, profile.emails[0].value, profile.picture, profile.id])
                 .then(user => {
-                    return done(null, user[0]);
+                    return done(null, user);
                 })
         }
     })
 }))
 
-passport.serializeUser(function (user, done) {
-    console.log('serial: ', user);
-    done(null, user);
+passport.serializeUser( (user, done) => {
+    console.log( chalk.greenBright('serial: '), user );
+    done( null, user );
 })
 
 //USER COMES FROM SESSION - INVOKED ON EVERY ENDPOINT.
-passport.deserializeUser(function (user, done) {
-    console.log('userid', user.userid)
-    app.get('db').users.find_user(user.auth_id).then(user => {
-        return done(null, user);
-    })
-    // console.log('deserial: ', user);
-    // done(null, user)
+passport.deserializeUser( (obj, done) => {
+        return done(null, obj[0]);
 })
 app.get('/login', passport.authenticate('auth0', {
     successRedirect: 'http://localhost:3000/#/dashboard',
     failureRedirect: 'http://localhost:3000/#/'
 }));
-app.get('/login/user', (req, res) => {
-    console.log('req.user: ', req.user)
-    if (!req.user) {
-        return res.status(404).send('User not found')
-    } else {
-        return res.status(200).send(req.user);
-    }
-})
-app.get('/logout', (req, res) => {
-    req.logOut();
-    return res.redirect(302, 'http://localhost:3000/#/');
-})
+
+app.get( '/login/user', auth_controller.login );
+app.get( '/logout', auth_controller.logout );
+
 //
 ////
 //////

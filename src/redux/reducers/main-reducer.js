@@ -6,10 +6,11 @@ const ADD_COMPANY_NAME = "ADD_COMPANY_NAME";
 const ADD_COMPANY_EMAIL = "ADD_COMPANY_EMAIL";
 const ADD_COMPANY_PHONE = "ADD_COMPANY_PHONE";
 const ADD_COMPANY_LOGO_URL = "ADD_COMPANY_LOGO_URL";
-
+    
+   
 
 var initialState = {
-        user: {},
+        user: null,
         company_name:'',
         company_email:'',
         company_phone:'',
@@ -87,7 +88,8 @@ var initialState = {
     }
     
     export function getUserInfo() {
-        const userInfo = axios.get('login/user').then(res => {
+        const userInfo = axios.get('/login/user').then(res => {
+            console.log( res.data )
             return res.data
         })
         return {
