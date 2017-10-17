@@ -10,6 +10,7 @@ const cors = require('cors')
 const session = require('express-session')
 const companyController = require('./controllers/company_controller')
 const session_controller = require( './controllers/session_controller' )
+const chalk = require('chalk')
 
 const port = 3005;
 
@@ -43,35 +44,34 @@ passport.use(new Auth0Strategy({
 }, function (accessToken, refreshToken, extraParams, profile, done) {
     // console.log(profile)
     const db = app.get('db');
-    console.log('profile: ', profile.id)
+    console.log( chalk.greenBright('profile: ', profile.id) )
     db.users.find_user(profile.id).then(user => {
         if (user[0]) {
-            console.log(user[0])
-            return done(null, user[0]);
+            console.log( chalk.greenBright('strategy:'), user )
+            return done(null, user);
         } else {
             db.users.create_user([profile.displayName, profile.emails[0].value, profile.picture, profile.id])
                 .then(user => {
-                    return done(null, user[0]);
+                    return done(null, user);
                 })
         }
     })
 }))
 
 passport.serializeUser(function (user, done) {
-    console.log('serial: ', user);
-    done(null, user);
+    console.log( chalk.greenBright('serial: '), user );
+    done( null, user );
 })
 
 //USER COMES FROM SESSION - INVOKED ON EVERY ENDPOINT.
-passport.deserializeUser(function (user, done) {
-    console.log('userid', user.userid)
-    app.get('db').users.find_user(user.auth_id).then(user => {
-        return done(null, user);
-    })
+passport.deserializeUser(function (obj, done) {
+    console.log( chalk.magenta('obj', obj.userid) )
+    // app.get('db').users.find_user(user.auth_id).then(user => {
+        return done(null, obj[0]);
+    // })
     // console.log('deserial: ', user);
     // done(null, user)
 })
-app.get( '/auth', passport.authenticate( 'auth0' ) );
 app.get('/login', passport.authenticate('auth0', {
     successRedirect: 'http://localhost:3000/#/dashboard/',
     failureRedirect: 'http://localhost:3000/#/'
@@ -80,6 +80,7 @@ app.get('/login', passport.authenticate('auth0', {
 app.get('/login/user', (req, res) => {
     console.log('req.user: ', req.user)
     if (!req.user) {
+        console.log( chalk.red('NO REQ.USER FROM LOGIN') )
         return res.status(404).send('User not found')
     } else {
         console.log( 'THIS IS THE REQ.USER', req.user )
@@ -165,7 +166,7 @@ app.get('/api/test/users', (req, res, next) => {
 
 
 app.listen(port, ()=>{
-    console.log(`Listening on port ${port}`)
+    console.log( chalk.cyan.underline(`Listening_on_port_${port}`) )
 })
 
 
