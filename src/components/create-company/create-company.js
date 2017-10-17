@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import CreateCompanyIndustry from './create-company-industries'
 import { connect } from 'react-redux'
-import { addCompanyIndustry, addCompanyName, addCompanyEmail, addCompanyLogo, addCompanyPhone } from '../../redux/reducers/main-reducer'
+import { addCompanyIndustry, addCompanyName, addCompanyEmail, addCompanyLogo, addCompanyPhone, addCompany } from '../../redux/reducers/main-reducer'
 import {
   Step,
   Stepper,
@@ -11,6 +11,7 @@ import {
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import './create-company.css'
+import axios from 'axios';
 
 
 class CreateCompany extends Component {
@@ -21,6 +22,21 @@ class CreateCompany extends Component {
       stepIndex: 0,
     };
   }
+
+  submitCompany(){
+    let data = {
+      company_name: this.props.company_name, 
+      company_email: this.props.company_email, 
+      company_date: this.props.company_date,
+      company_industry: this.props.company_industry,
+      company_url: this.props.company_url,
+      company_phone: this.props.company_phone
+  }
+     axios.post('/api/addcompany', data).then(response =>{
+      console.log(response)
+     })
+    console.log(data)
+}
 
   handleNext = () => {
     const { stepIndex } = this.state;
@@ -53,7 +69,7 @@ class CreateCompany extends Component {
               </div>
               <div>
                 <input placeholder='Phone Number (optional)' className='create-company-company-name-input' onChange={(e) => this.props.addCompanyPhone(e.target.value)}  value={this.props.company_phone}/>
-                <input placeholder='Company Logo URL' className='create-company-company-name-input' onChange={(e) => this.props.addCompanyLogo(e.target.value)}  value={this.props.company_logo}/>
+                <input placeholder='Company Website' className='create-company-company-name-input' onChange={(e) => this.props.addCompanyLogo(e.target.value)}  value={this.props.company_logo}/>
               </div>
             </form>
             <div>
@@ -77,12 +93,12 @@ class CreateCompany extends Component {
             <div className='create-company-badge'>{this.props.company_badge}</div>
             <div className='create-company-review-text'>{this.props.company_name}</div>
             <div className='create-company-review-text'>{`${this.props.company_email}  ${this.props.company_phone}`}</div>
-            <div className='create-company-review-text'>{this.props.create_company_industry}</div>
+            <div className='create-company-review-text'>{this.props.company_industry}</div>
           </div>
 
         );
       default:
-        return 'You\'re a long way from home sonny jim!';
+        return 'I don\' think we\'re not in Kansas anymore!';
     }
   }
 
@@ -137,7 +153,7 @@ class CreateCompany extends Component {
                     <RaisedButton
                       label='Finish'
                       primary={true}
-                      onClick={() => console.log(this.props)}
+                      onClick={() => this.submitCompany()}
                     />
                     :
                     <RaisedButton
@@ -158,4 +174,4 @@ function mapStateToProps(state) {
   return state
 }
 
-export default connect(mapStateToProps, { addCompanyIndustry, addCompanyName, addCompanyEmail, addCompanyLogo, addCompanyPhone })(CreateCompany);
+export default connect(mapStateToProps, { addCompanyIndustry, addCompanyName, addCompanyEmail, addCompanyLogo, addCompanyPhone, addCompany })(CreateCompany);
