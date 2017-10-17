@@ -21,7 +21,7 @@ class App extends Component {
         <EditUser />
         <Route component={SignInPage} exact path="/" />
         <Route component={Dashboard} path="/dashboard" />
-        <CompanyRoles />
+
       </div>
     );
   }
