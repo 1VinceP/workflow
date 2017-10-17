@@ -5,8 +5,9 @@ import SignInPage from './components/sign-in-page/sign-in-page';
 import Header from './components/header/Header'
 // import HomePage from './';
 import Dashboard from './components/dashboard/dashboard';
-import CreateCompany from './components/create-company/create-company'
-import CompanyRoles from './components/create-company/create-company-roles'
+import CreateCompany from './components/create-company/create-company';
+import CompanyRoles from './components/create-company/create-company-roles';
+import EditUser from './components/edit-user/edit-user';
 
 
 class App extends Component {
@@ -17,7 +18,7 @@ class App extends Component {
         <Header />
         <SignInPage />
         <CreateCompany />
-        {/* <CreateCompany /> */}
+        <EditUser />
         <Route component={SignInPage} exact path="/" />
         <Route component={Dashboard} path="/dashboard" />
         <CompanyRoles />
