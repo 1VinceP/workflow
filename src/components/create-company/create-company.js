@@ -109,6 +109,7 @@ class CreateCompany extends Component {
   render() {
     const { finished, stepIndex } = this.state;
     const contentStyle = { margin: '0 16px' };
+    // eslint-disable-next-line
     const {company_name} = this.props
 
     return (
