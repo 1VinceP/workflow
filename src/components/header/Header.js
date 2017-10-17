@@ -3,6 +3,18 @@ import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
 import './header.css'
 
+let buttonStyle = {
+    headerButton: {
+        paddingLeft:'5px',
+        paddingRight:'5px'
+    },
+    hiddenButton: {
+        paddingLeft:'5px',
+        paddingRight:'5px',
+        display: 'none' 
+    }
+}
+
 class Header extends Component {
     constructor() {
         super();
@@ -25,7 +37,7 @@ class Header extends Component {
                     { !this.state.session 
                         ? <div className='header-login'>
                             <a href={process.env.REACT_APP_LOGIN}>
-                                <RaisedButton>Log in / Sign Up</RaisedButton>
+                                <RaisedButton style={buttonStyle.headerButton}>Log in / Sign Up</RaisedButton>
                             </a>
                           </div>
                         : null}
@@ -35,7 +47,9 @@ class Header extends Component {
                         ? <div className='header-buttons'>
                             <RaisedButton>Project Status</RaisedButton>
                             <RaisedButton>Chat with your Project Manager</RaisedButton>
+                            <a href={process.env.REACT_APP_LOGOUT}>
                             <RaisedButton>Logout</RaisedButton>
+                            </a>
                           </div>
                     : null }
 
@@ -46,7 +60,9 @@ class Header extends Component {
                             <RaisedButton>Company</RaisedButton>
                             <RaisedButton>Projects</RaisedButton>
                             <RaisedButton>Tasks</RaisedButton>
+                            <a href={process.env.REACT_APP_LOGOUT}>
                             <RaisedButton>Logout</RaisedButton>
+                            </a>
                           </div>
                     : null }
                 </div>
