@@ -6,7 +6,7 @@ import SignInPage from './components/sign-in-page/sign-in-page';
 // import HomePage from './';
 import Dashboard from './components/dashboard/dashboard';
 import CreateCompany from './components/create-company/create-company'
-
+import CompanyRoles from './components/create-company/create-company-roles'
 class App extends Component {
   render() {
     return (
@@ -20,6 +20,7 @@ class App extends Component {
         <CreateCompany />
 
         <Route component={Dashboard} path="/dashboard" />
+        <CompanyRoles />
       </div>
     );
   }

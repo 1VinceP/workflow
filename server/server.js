@@ -7,7 +7,11 @@ const createInitialSession = require(`${__dirname}/middleware/session-check`)
 const massive = require('massive')
 const cors = require('cors')
 const session = require('express-session')
-const companyController = require('./controllers/company_controller')
+const company_controller = require('./controllers/company_controller')
+const project_controller = require('./controllers/project_controller')
+const team_controller = require('./controllers/team_controller')
+const task_controller = require('./controllers/task_controller')
+const role_controller = require('./controllers/role_controller')
 const port = 3005;
 const app = express();
 app.use(bodyParser.json() );
@@ -93,10 +97,10 @@ app.get('/logout', (req, res) => {
 
 
 
-app.get('/api/test', (req, res, next) => {
-    req.app.get('db').company.all_company().then(response => res.status(200).send(response))
+app.get('/api/test/getusers', (req, res, next) => {
+    req.app.get('db').company.company_users().then(response => res.status(200).send(response))
 })
-app.post('/api/addcompany', companyController.createCompany)
+app.post('/api/addcompany', company_controller.create_company)
 
 
 
@@ -109,7 +113,7 @@ app.get('/api/test/team', (req, res, next) => {
     req.app.get('db').team.all_team().then(response => res.status(200).send(response))
 })
 
-
+app.post('/api/addteam', team_controller.create_team)
 
 ////////////////////////////        PROJECT         /////////////////////////////////
 
@@ -119,7 +123,7 @@ app.get('/api/test/project', (req, res, next) => {
     req.app.get('db').project.all_project().then(response => res.status(200).send(response))
 })
 
-
+app.post('/api/addproject', project_controller.create_project)
 
 ////////////////////////////        TASK         /////////////////////////////////
 
@@ -129,7 +133,7 @@ app.get('/api/test/task', (req, res, next) => {
     req.app.get('db').task.all_task().then(response => res.status(200).send(response))
 })
 
-
+app.post('/api/addtask', task_controller.create_task)
 
 ////////////////////////////        USERS         /////////////////////////////////
 
@@ -141,6 +145,20 @@ app.get('/api/test/users', (req, res, next) => {
 })
 
 
+
+
+////////////////////////////        ROLES         /////////////////////////////////
+
+app.get('/api/roles', (req,res,next) => {
+    req.app.get('db').roles.all_roles().then(response => res.status(200).send(response))
+})
+
+app.get('/api/roles/users', (req,res,next) => {
+    let {query} = req
+    req.app.get('db').roles.users_for_roles(parseInt(query.users)).then(response => res.status(200).send(response))
+})
+
+app.post('/api/addrole', role_controller.create_role)
 
 
 
