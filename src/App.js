@@ -12,10 +12,11 @@ import CompanyRoles from './components/create-company/create-company-roles'
 class App extends Component {
   render() {
     return (
+
       <div className="App">
         <Header />
-
-        
+        <SignInPage />
+        <CreateCompany />
         {/* <CreateCompany /> */}
         <Route component={SignInPage} exact path="/" />
         <Route component={Dashboard} path="/dashboard" />

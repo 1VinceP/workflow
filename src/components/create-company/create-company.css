@@ -1,9 +1,125 @@
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 .create-company-step1{
- border: 1px solid red;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
 }
 .create-company-company-name-input{
     border: none;
     outline: none;
     font-family: helvetica;
+    border-bottom: 1px solid rgb(178, 178, 178);
+    width: 200px;
+    margin: 10px;
+    height: 20px;
+    color: #f42e78;
+    font-size: 16px;
+    
+}
+.create-company-company-name-input [type=text]{
+    font-family: helvetica;
+    border-bottom: 1px solid rgb(178, 178, 178);
+    font-size: 16px;
+
 
 }
+.create-company-company-name-input::placeholder{
+    font-family: helvetica;
+    color: rgb(178, 178, 178);
+    font-size: 16px;
+}
+
+.create-company-next-finish-button{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.create-company-back-button{
+    align-self: flex-end;
+    margin: 10px;
+
+}
+.create-company-titles{
+    font-family: helvetica;
+    margin: 15px;
+    color: rgb(178, 178, 178);
+    font-size: 22px;
+}
+.create-company-next-finish-button button{
+    background: red;
+}
+.create-company-industry-boxsizing{
+    box-sizing: border-box;
+}
+
+dl {
+    margin: 0;
+    padding: 24px 0 0 0;
+    font-family: helvetica;
+    font-size: 16px;
+  }
+  dt {
+    background: #f42e78;
+    font-family: helvetica;
+    font-size: 16px;
+
+
+    color: #FFF;
+    margin: 0;
+    padding: 2px 0 0 12px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: -1px;
+  }
+
+  dd {
+    font: 16px/45px Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0 0 0 12px;
+    white-space: nowrap;
+    font-family: helvetica;
+    font-size: 16px;
+  }
+
+  dd + dd {
+    border-top: 1px solid #CCC;
+    font-family: helvetica;
+    font-size: 16px;
+  }
+  .create-company-industry-selection-container{
+      height: 300px;
+      width: 500px;
+      overflow: scroll;
+  }
+  .create-company-industry-option{
+      cursor: pointer;
+  }
+  .create-company-badge{
+      width: 80px;
+      height: 80px;
+      color: white;
+      font-size: 24px;
+      border-radius: 50px;
+      background: linear-gradient(to right, #6acbe0 , #6859ea);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px;
+    }
+    .create-company-review-text{
+        font-family: helvetica;
+        font-size: 16px;
+        margin: 10px;
+        color: grey
+    }
+    
