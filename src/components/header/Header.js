@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
-import axios from 'axios';
+// import axios from 'axios';
 import { getUserInfo } from '../../redux/reducers/main-reducer';
 import { connect } from 'react-redux';
 import './header.css';
@@ -70,11 +70,7 @@ class Header extends Component {
                             <RaisedButton>Project Status</RaisedButton>
                             <RaisedButton>Chat with your Project Manager</RaisedButton>
                             <a href={process.env.REACT_APP_LOGOUT}>
-<<<<<<< HEAD
-                            <RaisedButton>Logout</RaisedButton>
-=======
                                 <RaisedButton>Logout</RaisedButton>
->>>>>>> master
                             </a>
                           </div>
                     : null }

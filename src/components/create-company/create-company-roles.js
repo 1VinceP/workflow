@@ -28,7 +28,7 @@ class companyRoles extends Component {
     }
 
     userClicked(e) {
-        this.se
+       
         console.log('TRUUUU', e)
     }
 
@@ -79,6 +79,7 @@ class companyRoles extends Component {
         console.log("USERRRR", user)
         axios.get(`http://localhost:3005/api/roles/users?users=${user}`)
             .then(res => {
+                // eslint-disable-next-line
                 return res.data.map((e, i) => {
                     console.log("EEEE", e.user_firstname)
                      xx = (<div>{e.user_firstname}</div>)
