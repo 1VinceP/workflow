@@ -1,1 +1,1 @@
-SELECT * FROM users WHERE user_company = 4
+SELECT * FROM users WHERE user_company = $1
