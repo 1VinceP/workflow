@@ -34,14 +34,8 @@ class Header extends Component {
                 session: this.props.user
             })
         } )
-        
-        // console.log( this.props )
 
-        // axios.get( '/login/user' )
-        //     .then( response => {
-        //         console.log( response )
-        //     } )
-    }
+    };
 
     render() {
 
@@ -65,22 +59,18 @@ class Header extends Component {
                         : null}
 
                     {/* CLIENT VIEW */}
-                    { this.state.session
+                    { this.state.session === 'client'
                         ? <div className='header-buttons'>
                             <RaisedButton>Project Status</RaisedButton>
                             <RaisedButton>Chat with your Project Manager</RaisedButton>
                             <a href={process.env.REACT_APP_LOGOUT}>
-<<<<<<< HEAD
-                            <RaisedButton>Logout</RaisedButton>
-=======
                                 <RaisedButton>Logout</RaisedButton>
->>>>>>> master
                             </a>
                           </div>
                     : null }
 
                     {/* EMPLOYEE VIEW */}
-                    { this.state.session === 'employee'
+                    { this.state.session
                         ? <div className='header-buttons'>
                             <Link to='/analytics' className='header-link'><RaisedButton>Analytics</RaisedButton></Link>
                             <RaisedButton>Company</RaisedButton>
