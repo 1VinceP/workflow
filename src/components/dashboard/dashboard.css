@@ -1,0 +1,82 @@
+.dashboard-view {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background: lightgrey;
+}
+
+.dash-wrapper {
+}
+
+.nav-placeholder {
+    width: 98vw;
+    height: 50px;
+    background: #7ee3fc;
+    margin: 1vw;
+}
+
+.button-span {
+    justify-content: flex-end;
+    height: 50px;
+    width: 98vw;
+    margin-top: 10px;
+    margin-left: 1vw;
+}
+
+.project-button {
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+    margin-top: 15px;
+}
+
+.content-wrapper {
+    height: 60vh;
+    width: 98vw;
+    margin-top: 10px;
+    margin-left: 1vw;
+}
+
+.left-side {
+    position: absolute;
+    height: 57vh;
+    width: 30vw;
+    margin-top: 10px;
+    margin-left: 10px;
+
+}
+
+.notifications {
+    height: 35%;
+    width: 30vw;
+    background: white;
+    box-shadow: 0px 0px 20px #949393;
+}
+
+.calendar {
+    height: 60%;
+    width: 30vw;
+    background: white;
+    margin-top: 5%;
+    box-shadow: 0px 0px 20px #949393;
+}
+
+.task-list {
+    position: absolute;
+    height: 57vh;
+    width: 60vw;
+    background: white;
+    right: 10px;
+    margin-top: 10px;
+    margin-right: 5px;
+    box-shadow: 0px 0px 20px #949393;
+}
+
+.current-stats-wrapper {
+    height: 18.5vh;
+    width: 98vw;
+    background: white;
+    margin-top: 10px;
+    margin-left: 1vw;
+    box-shadow: 0px 0px 20px #949393;
+}
