@@ -70,11 +70,7 @@ class Header extends Component {
                             <RaisedButton>Project Status</RaisedButton>
                             <RaisedButton>Chat with your Project Manager</RaisedButton>
                             <a href={process.env.REACT_APP_LOGOUT}>
-<<<<<<< HEAD
-                            <RaisedButton>Logout</RaisedButton>
-=======
                                 <RaisedButton>Logout</RaisedButton>
->>>>>>> master
                             </a>
                           </div>
                     : null }
