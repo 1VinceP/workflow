@@ -1,10 +1,14 @@
 import axios from 'axios';
+// const company_controller = require('./controllers/company_controller')
 
 const GET_USER_INFO = "GET_USER_INFO";
 const ADDCOMPANYINDUSTRY = "ADDCOMPANYINDUSTRY";
 const ADD_COMPANY_NAME = "ADD_COMPANY_NAME";
 const ADD_COMPANY_EMAIL = "ADD_COMPANY_EMAIL";
 const ADD_COMPANY_PHONE = "ADD_COMPANY_PHONE";
+const ADD_COMPANY_URL = "ADD_COMPANY_LOGO_URL";
+const ADD_COMPANY = "ADD_COMPANY";
+
 const ADD_COMPANY_LOGO_URL = "ADD_COMPANY_LOGO_URL";
 const EDIT_USER_FIRST_NAME = "EDIT_USER_FIRST_NAME";
 const EDIT_USER_LAST_NAME = "EDIT_USER_LAST_NAME";
@@ -21,8 +25,8 @@ var initialState = {
         company_name:'',
         company_email:'',
         company_phone:'',
-        company_logo_url:'',
-        create_company_industry:'',
+        company_url:'',
+        company_industry:'',
         company_badge:'',
 
     }
@@ -36,13 +40,17 @@ var initialState = {
             case GET_USER_INFO + '_FULFILLED':
                 return Object.assign({}, state, {user: action.payload})
             case ADDCOMPANYINDUSTRY:
-                return Object.assign({}, state, {create_company_industry: action.payload})
+                return Object.assign({}, state, {company_industry: action.payload})
             case ADD_COMPANY_NAME:
                 return Object.assign({}, state, {company_name: action.payload, company_badge:action.company_badge})
             case ADD_COMPANY_EMAIL:
                 return Object.assign({}, state, {company_email: action.payload})
             case ADD_COMPANY_PHONE:
                 return Object.assign({}, state, {company_phone: action.payload})
+            case ADD_COMPANY_URL:
+                return Object.assign({}, state, {company_url: action.payload})
+            case ADD_COMPANY:
+                return action.payload
             case ADD_COMPANY_LOGO_URL:
                 return Object.assign({}, state, {company_logo_url: action.payload})
             case EDIT_USER_FIRST_NAME:
@@ -96,7 +104,7 @@ var initialState = {
         console.log(companyLogo)
         return { 
             payload: companyLogo, 
-            type:ADD_COMPANY_LOGO_URL}
+            type:ADD_COMPANY_URL}
     }
 
 
@@ -118,10 +126,14 @@ var initialState = {
             payload: userInfo
         }
     }
-    
-    export function addCompany(){
-        return {
-            
+    export function addCompany(data) {
+        console.log(data)
+        return{
+
+        type:ADD_COMPANY,    
+        payload: data
+
+     
         }
     }
     
