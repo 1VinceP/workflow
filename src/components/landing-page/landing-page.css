@@ -1,0 +1,61 @@
+.landing-page-titles{
+    font-family: helvetica;
+    margin: 15px;
+    color: rgb(178, 178, 178);
+    font-size: 22px;
+}
+
+.landing-page-body{
+    width: 100vw;
+    height: 100%;
+}
+.landing-page-iphone{
+    height: 300px;
+    margin-left: -220px;
+    margin-bottom: -10px;
+    align-self: flex-end;
+
+
+}
+.landing-page-macbookpro{
+    height: 400px;
+}
+.landing-page-images{
+    display: flex;
+
+    justify-content: center;
+}
+.landing-page-hero{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 70px;
+
+}
+.landing-page-main-title{
+    font-size: 30px;
+    color: #6859ea;
+    font-weight: bold;
+    align-self: center;
+
+}
+.landing-page-main-sub-title{
+    font-size: 22px;
+
+}
+.landing-page-main-titles-container{
+
+    text-align: right;
+    margin:50px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+.landing-page-divider-line{
+    height: 5px;
+    width: 100px;
+    background: #6859ea;
+    align-self: flex-end;
+    margin: 20px 0 20px 0;
+
+}

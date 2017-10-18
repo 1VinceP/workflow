@@ -12,8 +12,6 @@ import {  editUserFirstname
 import {connect} from 'react-redux';
 import axios from 'axios'
 
-
-
 class EditUser extends Component {
     constructor() {
         super();
