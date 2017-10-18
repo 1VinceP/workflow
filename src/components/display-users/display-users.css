@@ -1,0 +1,37 @@
+.display-users-container {
+    height: 90vh;
+    width: 100vw;
+    /* background: darkgoldenrod; */
+}
+.user-data-wrapper {
+    display: flex;
+}
+.button-container {
+    position: absolute;
+    right: 0;
+    margin: 40px;
+}
+.title{
+    font-size: 50px;
+    height: 60px;
+    width: 100vw;
+}
+.left-column {
+    position: absolute;
+    margin-top: 14vh;
+    padding-left: 20px;
+    width: 50vw;
+    background: rgb(226, 225, 225);
+    border-right: 1px dotted #aaaaaa;
+}
+.right-column {
+    position: absolute;
+    margin-top: 14vh;
+    padding-left: 20px;
+    width: 50vw;
+    background: rgb(226, 225, 225);
+    transform: translateX(100%);
+}
+.user-data {
+    margin: 10px;
+}
