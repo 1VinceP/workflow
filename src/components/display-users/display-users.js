@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './display-users.css';
 import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 let style = {
     margin: 12,
@@ -16,14 +17,14 @@ export default class DisplayUsers extends Component {
         }
     }
 
-    componentDidMount() {
-        axios.get('/api/getusers').then(res => {
-            this.setState({
-                userdata: res.data
-            })
-            console.log(this.state.userdata)
-        })
-    }
+    // componentDidMount() {
+    //     axios.get('/api/getusers').then(res => {
+    //         this.setState({
+    //             userdata: res.data
+    //         })
+    //         console.log(this.state.userdata)
+    //     })
+    // }
 
     render() {
 
@@ -33,12 +34,14 @@ export default class DisplayUsers extends Component {
                 <div className="user-data">
                     <div className="user-name">
                         {e.user_firstname}{e.user_lastname}
+                        Test User
                     </div>
                     <div className="user-email">
                         {e.user_email}    
+                        Testemail@gmail.com
                     </div>
                 </div>
-                <RaisedButton label="Edit User" primary={true} style={style} />
+                <Link to="/edit-user"><RaisedButton label="Edit User" primary={true} style={style} /></Link>
                 <RaisedButton label="Delete User" secondary={true} style={style} />
                 </div>
             )
@@ -51,10 +54,12 @@ export default class DisplayUsers extends Component {
                         Company User List
                     </div>
                     <div className="button-container">
-                        <RaisedButton primary={true} label="+ Create New User" />
+                        <Link to="/create-user"><RaisedButton primary={true} label="+ Create New User" /></Link>
                     </div>
                     <div className="left-column">
                         {userInfo}
+                        <Link to="/edit-user"><RaisedButton label="Edit User" primary={true} style={style} /></Link>
+                <RaisedButton label="Delete User" secondary={true} style={style} />
                     </div>
                     <div className="right-column">
                         {userInfo}
