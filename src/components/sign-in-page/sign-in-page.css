@@ -1,6 +1,5 @@
 .sign-in-wrapper {
     background: rgb(246, 246, 246);
-    width: 100vw;
     padding-bottom: 5vh;
 }
 
@@ -16,8 +15,6 @@
     background: lightgrey;
     /* margin-top: 10vh; */
 }
-
-
 
 .subtitle {
     font-size: 30px;
