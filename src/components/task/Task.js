@@ -139,6 +139,85 @@ class Task extends Component {
                     </section>
                     
                 </div>
+
+                <div className='task-box'>
+                    <section className='task-create-location'>
+
+                    </section>
+                    <section className='task-create-inputs'>
+                        <input name='name' placeholder='Project Name' />
+                        <DatePicker hintText="Start Date" hintStyle={{color: 'white', textAlign: 'right'}} inputStyle={{color: 'white', fontFamily: 'helvetica', fontSize: '12px'}} underlineShow={false} className='task-date' />
+                        <DatePicker hintText="End Date" />
+                        <input placeholder='Description' />
+                        <input placeholder='Users' />
+                        <input placeholder='Roles' />
+                        <input placeholder='Cloud Link' /> 
+                    </section>
+                    
+                </div>
+
+                <div className='task-box'>
+                    <section className='task-create-location'>
+
+                    </section>
+                    <section className='task-create-inputs'>
+                        <input name='name' placeholder='Project Name' />
+                        <DatePicker hintText="Start Date" hintStyle={{color: 'white', textAlign: 'right'}} inputStyle={{color: 'white', fontFamily: 'helvetica', fontSize: '12px'}} underlineShow={false} className='task-date' />
+                        <DatePicker hintText="End Date" />
+                        <input placeholder='Description' />
+                        <input placeholder='Users' />
+                        <input placeholder='Roles' />
+                        <input placeholder='Cloud Link' /> 
+                    </section>
+                    
+                </div>
+                <div className='task-box'>
+                    <section className='task-create-location'>
+
+                    </section>
+                    <section className='task-create-inputs'>
+                        <input name='name' placeholder='Project Name' />
+                        <DatePicker hintText="Start Date" hintStyle={{color: 'white', textAlign: 'right'}} inputStyle={{color: 'white', fontFamily: 'helvetica', fontSize: '12px'}} underlineShow={false} className='task-date' />
+                        <DatePicker hintText="End Date" />
+                        <input placeholder='Description' />
+                        <input placeholder='Users' />
+                        <input placeholder='Roles' />
+                        <input placeholder='Cloud Link' /> 
+                    </section>
+                    
+                </div>
+
+                <div className='task-box'>
+                    <section className='task-create-location'>
+
+                    </section>
+                    <section className='task-create-inputs'>
+                        <input name='name' placeholder='Project Name' />
+                        <DatePicker hintText="Start Date" hintStyle={{color: 'white', textAlign: 'right'}} inputStyle={{color: 'white', fontFamily: 'helvetica', fontSize: '12px'}} underlineShow={false} className='task-date' />
+                        <DatePicker hintText="End Date" />
+                        <input placeholder='Description' />
+                        <input placeholder='Users' />
+                        <input placeholder='Roles' />
+                        <input placeholder='Cloud Link' /> 
+                    </section>
+                    
+                </div>
+
+                <div className='task-box'>
+                    <section className='task-create-location'>
+
+                    </section>
+                    <section className='task-create-inputs'>
+                        <input name='name' placeholder='Project Name' />
+                        <DatePicker hintText="Start Date" hintStyle={{color: 'white', textAlign: 'right'}} inputStyle={{color: 'white', fontFamily: 'helvetica', fontSize: '12px'}} underlineShow={false} className='task-date' />
+                        <DatePicker hintText="End Date" />
+                        <input placeholder='Description' />
+                        <input placeholder='Users' />
+                        <input placeholder='Roles' />
+                        <input placeholder='Cloud Link' /> 
+                    </section>
+                    
+                </div>
             </div>
         )
     }
