@@ -58,6 +58,7 @@ class Header extends Component {
                     {/* EMPLOYEE VIEW */}
                     { this.props.user
                         ? <div className='header-buttons'>
+                            <Link to='/dashboard' className='header-link'><RaisedButton>Dashboard</RaisedButton></Link>
                             <Link to='/analytics' className='header-link'><RaisedButton>Analytics</RaisedButton></Link>
                             <RaisedButton>Company</RaisedButton>
                             <RaisedButton>Projects</RaisedButton>

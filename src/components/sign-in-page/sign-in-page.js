@@ -16,9 +16,9 @@ export default class SignInPage extends Component {
                     </div>
                 </div>
                 <div className="information-bar">
-                    <div>What we do</div>
-                    <div>Meet the team</div>
-                    <div>Contact us</div>
+                    <div><a href='/our-company'>What we do</a></div>
+                    <div><a href='/our-team'>Meet the team</a></div>
+                    <div><a href='/contact'>Contact us</a></div>
                 </div>
             </div>
         )
