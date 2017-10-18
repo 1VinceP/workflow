@@ -9,7 +9,7 @@ import './header.css';
 let buttonStyle = {
     headerButton: {
         paddingLeft:'5px',
-        paddingRight:'5px'
+        paddingRight:'5px',
     },
     hiddenButton: {
         paddingLeft:'5px',
