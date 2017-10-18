@@ -1,5 +1,3 @@
-insert into users
-(user_firstname, user_lastname, user_company, user_team, user_role)
-values ($2, $3, $4, $5, $6)
-where user_id = $1
-returning *;
+UPDATE users
+SET user_firstname = $1, user_lastname = $2,  user_display_name = $3
+WHERE user_id = $4
