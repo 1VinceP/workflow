@@ -17,6 +17,7 @@ html {
 .header-link {
     text-decoration: none;
     color: white;
+    margin: 5px;
 }
 
 .header-left {
