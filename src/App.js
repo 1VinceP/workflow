@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route } from 'react-router-dom';
-import SignInPage from './components/sign-in-page/sign-in-page';
 import Header from './components/header/Header'
-import Dashboard from './components/dashboard/dashboard';
-import CreateCompany from './components/create-company/create-company';
-import EditUser from './components/edit-user/edit-user';
-import DisplayUsers from './components/display-users/display-users';
+import Router from './router';
 
 class App extends Component {
   render() {
@@ -14,13 +9,7 @@ class App extends Component {
 
       <div className="App">
         <Header />
-        <SignInPage />
-        <CreateCompany />
-        <DisplayUsers />
-        <EditUser />
-        <Route component={SignInPage} exact path="/" />
-        <Route component={Dashboard} path="/dashboard" />
-
+        {Router}
       </div>
     );
   }
