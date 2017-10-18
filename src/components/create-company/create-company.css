@@ -101,7 +101,6 @@ dl {
       width: 500px;
       overflow: scroll;
       overflow-x: hidden;
-      overflow-y: hidden;
   }
   .create-company-industry-option{
       cursor: pointer;
