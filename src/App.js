@@ -17,14 +17,8 @@ class App extends Component {
 
       <div className="App">
         <Header />
-<<<<<<< HEAD
         {/* <SignInPage /> */}
         {/* <CreateCompany />
-=======
-        <CreateProject />
-        <SignInPage />
-        <CreateCompany />
->>>>>>> master
         <DisplayUsers />
         <EditUser /> */}
         <Route component={SignInPage} exact path="/" />
