@@ -1,6 +1,5 @@
 import axios from 'axios';
 // const company_controller = require('./controllers/company_controller')
-
 const GET_USER_INFO = "GET_USER_INFO";
 const ADDCOMPANYINDUSTRY = "ADDCOMPANYINDUSTRY";
 const ADD_COMPANY_NAME = "ADD_COMPANY_NAME";
@@ -8,7 +7,6 @@ const ADD_COMPANY_EMAIL = "ADD_COMPANY_EMAIL";
 const ADD_COMPANY_PHONE = "ADD_COMPANY_PHONE";
 const ADD_COMPANY_URL = "ADD_COMPANY_LOGO_URL";
 const ADD_COMPANY = "ADD_COMPANY";
-
 const ADD_COMPANY_LOGO_URL = "ADD_COMPANY_LOGO_URL";
 const EDIT_USER_FIRST_NAME = "EDIT_USER_FIRST_NAME";
 const EDIT_USER_LAST_NAME = "EDIT_USER_LAST_NAME";
@@ -17,9 +15,7 @@ const EDIT_USER_PICTURE_URL = "EDIT_USER_PICTURE_URL";
 const EDIT_USER_DISPLAY_NAME = "EDIT_USER_DISPLAY_NAME";
 const EDIT_USER_TEAM = "EDIT_USER_TEAM";
 const EDIT_USER_ROLE = "EDIT_USER_ROLE";
-
    
-
 var initialState = {
         user: null,
         company_name:'',
@@ -30,17 +26,17 @@ var initialState = {
         company_badge:'',
         user_firstname:'',
         user_lastname:'',
+        user_email: '', 
         user_picture:'',
         user_display_name:'',
         user_team:'',
         user_role:'',
     }
-
     
     export default function reducer(state = initialState, action) {
-        console.log('action',action.type)
-        console.log('payload',action.payload)
-        console.log('action',action)
+        // console.log('action',action.type)
+        // console.log('payload',action.payload)
+        // console.log('action',action)
         switch(action.type) {
             case GET_USER_INFO + '_FULFILLED':
                 return Object.assign({}, state, {user: action.payload})
@@ -76,9 +72,6 @@ var initialState = {
                 return state;
         }
     }
-
-
-
     export function addCompanyName(companyName) {
         let badge = companyName.split(' ')
         console.log(badge)
@@ -104,15 +97,12 @@ var initialState = {
             payload: companyPhone, 
             type:ADD_COMPANY_PHONE}
     }
-
     export function addCompanyLogo(companyLogo) {
         console.log(companyLogo)
         return { 
             payload: companyLogo, 
             type:ADD_COMPANY_URL}
     }
-
-
     export function addCompanyIndustry(industrySelected){
         console.log('INDUSTRY', industrySelected)
         return{
@@ -134,24 +124,22 @@ var initialState = {
     export function addCompany(data) {
         console.log(data)
         return{
-
         type:ADD_COMPANY,    
         payload: data
-
      
         }
     }
     
     export function editUserFirstname(firstname){
-        console.log('firstname is ', firstname)
+        // console.log('firstname is ', firstname)
         return{
-            
             type: EDIT_USER_FIRST_NAME,
-            payload: firstname}
+            payload: firstname
+        }
     }
     
     export function editUserLastname(lastname){
-        console.log('lastname is ', lastname)
+        // console.log('lastname is ', lastname)
         return{
             
             type: EDIT_USER_LAST_NAME,
