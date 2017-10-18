@@ -61,11 +61,14 @@ class Header extends Component {
                     {/* EMPLOYEE VIEW */}
                     { this.props.user
                         ? <div className='header-buttons'>
+                            <Link to='/dashboard' className='header-link'><RaisedButton>Home</RaisedButton></Link>
                             <Link to='/analytics' className='header-link'><RaisedButton>Analytics</RaisedButton></Link>
-                            <RaisedButton>Company</RaisedButton>
-                            <RaisedButton>Projects</RaisedButton>
-                            <RaisedButton>Tasks</RaisedButton>
-                            <a href={process.env.REACT_APP_LOGOUT}>
+                            <Link to='/display-company' className='header-link'><RaisedButton>Company</RaisedButton></Link>
+                            <Link to='/display-projects' className='header-link'><RaisedButton>Projects</RaisedButton></Link>
+                            <Link to='/display-tasks' className='header-link'><RaisedButton>Tasks</RaisedButton></Link>
+                            <Link to='/display-teams' className='header-link'><RaisedButton>Teams</RaisedButton></Link>
+                            <Link to='/display-users' className='header-link'><RaisedButton>Users</RaisedButton></Link>
+                            <a href={process.env.REACT_APP_LOGOUT} className='header-link'>
                             <RaisedButton>Logout</RaisedButton>
                             </a>
                           </div>

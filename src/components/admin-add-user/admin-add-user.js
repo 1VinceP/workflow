@@ -12,7 +12,8 @@ import {  editUserFirstname
 import {connect} from 'react-redux';
 import axios from 'axios'
 
-class EditUser extends Component {
+
+class AddUser extends Component {
     constructor() {
         super();
 
@@ -83,4 +84,4 @@ export default connect(mapStateToProps, {editUserFirstname, editUserLastname
     , editUserPictureUrl
     , editUserDisplayName
     , editUserTeam
-    , editUserRole})(EditUser)
+    , editUserRole})(AddUser)

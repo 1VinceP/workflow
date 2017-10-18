@@ -17,12 +17,7 @@
     /* margin-top: 10vh; */
 }
 
-.title {
-    position: absolute;
-    font-size: 70px;
-    margin-top: 40px;
-    margin-left: 50px;
-}
+
 
 .subtitle {
     font-size: 30px;
@@ -35,6 +30,15 @@
     display: flex;
     justify-content: space-between;
     margin-left: 5vw;
+}
+
+.information-bar a {
+    text-decoration: none;
+    padding: 10px;
+    border: 1px solid black;
+}
+.information-bar a:hover {
+    background: lightgrey;
 }
 
 .bot-links {

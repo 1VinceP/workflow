@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import './dashboard.css';
-import FlatButton from 'material-ui/FlatButton';
 import Badge from 'material-ui/Badge';
 import IconButton from 'material-ui/IconButton';
 import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
-// import FontIcon from 'material-ui/FontIcon';
+import NewMenu from '../new-menu/new-menu';
 
 let styles = {
-    righty: {
-        position: 'absolute',
-        right: '0',
-        marginRight: '20px',
-        marginTop: '10px'
-    },
+    
     icon: {
         position: 'absolute',
         left: 0,
@@ -28,11 +22,8 @@ class Dashboard extends Component {
             <div className="dashboard-view">
                 <div className="dash-wrapper">
                     <div className="button-span">
-                        <FlatButton style={styles.righty} className="project-button"
-                            backgroundColor="#6acbe0"
-                            hoverColor="#6859ea"
-                            rippleColor="white"
-                            label="+ New Project" />
+                        
+                        <NewMenu />
                     </div>
                     <div className="content-wrapper">
                         <div className="left-side">

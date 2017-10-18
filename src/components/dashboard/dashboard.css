@@ -16,12 +16,14 @@
 }
 
 .button-span {
-    justify-content: flex-end;
+    position: absolute;
+    right: 0;
     height: 50px;
     width: 98vw;
-    margin-top: 10px;
-    margin-left: 1vw;
+    margin-top: 20px;
+    transform: translateX(15px);
 }
+
 
 .project-button {
     position: absolute;
@@ -33,7 +35,7 @@
 .content-wrapper {
     height: 60vh;
     width: 98vw;
-    margin-top: 10px;
+    margin-top: 9vh;
     margin-left: 1vw;
 }
 

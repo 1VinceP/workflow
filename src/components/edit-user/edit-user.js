@@ -56,9 +56,7 @@ class EditUser extends Component {
             xx = 'Last Name'
         }
         return xx;
-        this.submitUser = this.submitUser.bind(this);
     }
-
 
     getDisplayName(){
         if(this.props.user){
