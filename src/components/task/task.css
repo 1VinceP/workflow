@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(to right, #31c2df , #40388a); 
+    background: linear-gradient(to bottom right, #31c2df , #40388a); 
     color: white;
     box-shadow: 0px 0px 10px gray;
     margin: 10px 0;
