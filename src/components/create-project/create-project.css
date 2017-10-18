@@ -1,3 +1,84 @@
-.css{
-    
+.create-project-titles{
+    font-family: helvetica;
+    margin: 15px;
+    color: rgb(178, 178, 178);
+    font-size: 22px;
+}
+
+.project-create-project-input{
+    border: none;
+    outline: none;
+    font-family: helvetica;
+    font-size: 16px;
+    color: grey;
+    border-bottom: 1px solid rgb(227, 227, 227);
+    width: 255px;
+    height: 35px;
+    margin: 10px 20px 10px 0px;
+}
+.project-create-project-input::placeholder{
+    border: none;
+    outline: none;
+    font-family: helvetica;
+    font-size: 16px;
+    color: rgb(217, 217, 217);
+}
+.project-create-project-input-role{
+    margin-left: 20px;
+}
+.project-start-project-date{
+    display: flex;
+}
+.project-start-finish-date-spacer{
+    width: 50px;
+}
+.project-create-project-input-long{
+    width: 563px;
+    height: 35px;
+}
+.project-container{
+
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    flex-wrap:wrap;
+}
+.create-project-body{
+    width: 100vw;
+    height: 100%;
+}
+.create-project-main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.section-divider{
+    width: 85%;
+    height: 2px;
+    background: linear-gradient(to right, #d0ffae , #34ebe9);
+    margin-top: 50px;
+}
+.project-tasks-created-container{
+    height: 220px;
+    width:550px;
+    overflow-x: scroll;
+    padding:0;
+    display: flex;
+    justify-content: space-between
+}
+.project-created-task{
+    height: 120px;
+    width: 120px;
+    background: linear-gradient(to right, #6859ea , #34ebe9);
+    margin: 10px;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 80px;
+}
+.create-project-titles-created-task{
+    margin: 60px;
 }

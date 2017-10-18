@@ -1,0 +1,31 @@
+.task-create-task-input{
+    border: none;
+    outline: none;
+    font-family: helvetica;
+    font-size: 16px;
+    color: grey;
+    border-bottom: 1px solid rgb(227, 227, 227);
+    width: 255px;
+    height: 35px;
+    margin: 10px 20px 10px 0px;
+}
+.task-create-task-input::placeholder{
+    border: none;
+    outline: none;
+    font-family: helvetica;
+    font-size: 16px;
+    color: rgb(217, 217, 217);
+}
+.task-create-task-input-role{
+    margin-left: 20px;
+}
+.task-start-finish-date{
+    display: flex;
+}
+.task-start-finish-date-spacer{
+    width: 50px;
+}
+.task-create-task-input-long{
+    width: 563px;  
+    height: 35px;
+}
