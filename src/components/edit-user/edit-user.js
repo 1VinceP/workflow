@@ -12,8 +12,6 @@ import {  editUserFirstname
 import {connect} from 'react-redux';
 import axios from 'axios'
 
-
-
 class EditUser extends Component {
     constructor() {
         super();
@@ -58,23 +56,6 @@ class EditUser extends Component {
             xx = 'Last Name'
         }
         return xx;
-        this.submitUser = this.submitUser.bind(this);
-    }
-
-
-    submitUser() {
-        console.log(this.props)
-        let data = {
-            user_firstname: this.props.user_firstname,
-            user_lastname: this.props.user_lastname,
-            user_email: this.props.user_email,
-            user_picture: this.props.user_picture,
-            user_display_name: this.props.user_display_name,
-            user_team: this.props.user_team,
-            user_role: this.props.user_role,
-            user_authid: this.props.user_authid
-        }
-        console.log(data)
     }
 
     getDisplayName(){

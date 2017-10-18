@@ -10,7 +10,7 @@
 }
 
 .hero-image {
-    height: 100px;
+    height: 70vh;
     width: 100vw;
     background: lightgrey;
     /* margin-top: 10vh; */
@@ -27,6 +27,15 @@
     display: flex;
     justify-content: space-between;
     margin-left: 5vw;
+}
+
+.information-bar a {
+    text-decoration: none;
+    padding: 10px;
+    border: 1px solid black;
+}
+.information-bar a:hover {
+    background: lightgrey;
 }
 
 .bot-links {

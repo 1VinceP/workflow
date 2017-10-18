@@ -78,7 +78,120 @@
     align-items: center;
     color: white;
     border-radius: 80px;
+    cursor: pointer;
+    text-align: center;
 }
 .create-project-titles-created-task{
     margin: 60px;
+}
+
+[create-project-tasks-show-task-info='true'] {
+    height: 50vh;
+    width: 100vh;
+    position: fixed;
+    box-shadow: 12px 12px 20px gray;
+    background: linear-gradient( to top right, #f42e78, #c17afc );
+    margin-top: -350px;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    animation-name: fadeIn;
+    animation-duration: .35s;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: scale(.75); }
+    100% { opacity: 1; transform: scale(1) }
+}
+
+[create-project-tasks-show-task-info='fade-out'] {
+    height: 50vh;
+    width: 100vh;
+    position: fixed;
+    box-shadow: 12px 12px 20px gray;
+    background: linear-gradient( to top right, #f42e78, #c17afc );
+    margin-top: -350px;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    animation-name: fadeOut;
+    animation-duration: .35s;
+}    
+
+@keyframes fadeOut {
+    0% { opacity: 1; transform: scale(1); }
+    75% { opacity: 0; }
+    100% { opacity: 0; transform: scale(.75) }    
+}
+
+[create-project-tasks-show-deets='false'] {
+    display: none;
+}
+
+.tasky-name {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 8px 8px 14px rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    padding: 5px 0;
+    margin-bottom: 25px;
+}
+
+.tasky-name p {
+    font-size: 24px;
+    margin: 5px 0;
+}
+
+.tasky-name section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 14px;
+}
+
+.task-spacer {
+    width: 16px;
+    text-align: center;
+}
+
+.tasky-desc {
+    width: 100%;
+    min-height: 100px;
+    max-height: 150px;
+    text-align: left;
+    padding: 10px 20px;
+    overflow-y: scroll;
+}
+
+.tasky-desc::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+.tasky-role {
+    width: 100%;
+    text-align: center;
+}
+
+.tasky-link {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.tasky-close {
+    box-shadow: 8px 8px 14px rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    width: 80px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
 }
