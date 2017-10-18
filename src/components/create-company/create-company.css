@@ -13,6 +13,7 @@ html {
 
 
 }
+
 .create-company-company-name-input{
     border: none;
     outline: none;
@@ -25,6 +26,7 @@ html {
     font-size: 16px;
     
 }
+
 .create-company-company-name-input [type=text]{
     font-family: helvetica;
     border-bottom: 1px solid rgb(178, 178, 178);
@@ -32,6 +34,7 @@ html {
 
 
 }
+
 .create-company-company-name-input::placeholder{
     font-family: helvetica;
     color: rgb(178, 178, 178);
@@ -44,20 +47,24 @@ html {
     flex-direction: column;
     justify-content: space-between;
 }
+
 .create-company-back-button{
     align-self: flex-end;
     margin: 10px;
 
 }
+
 .create-company-titles{
     font-family: helvetica;
     margin: 15px;
     color: rgb(178, 178, 178);
     font-size: 22px;
 }
+
 .create-company-next-finish-button button{
     background: red;
 }
+
 .create-company-industry-boxsizing{
     box-sizing: border-box;
 }
@@ -67,8 +74,9 @@ dl {
     padding: 24px 0 0 0;
     font-family: helvetica;
     font-size: 16px;
-  }
-  dt {
+}
+
+dt {
     background: #f42e78;
     font-family: helvetica;
     font-size: 16px;
@@ -80,47 +88,68 @@ dl {
     position: -webkit-sticky;
     position: sticky;
     top: -1px;
-  }
+}
 
-  dd {
+dd {
     font: 16px/45px Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0 0 0 12px;
     white-space: nowrap;
     font-family: helvetica;
     font-size: 16px;
-  }
+}
 
-  dd + dd {
+dd + dd {
     border-top: 1px solid #CCC;
     font-family: helvetica;
     font-size: 16px;
-  }
-  .create-company-industry-selection-container{
-      height: 300px;
-      width: 500px;
-      overflow: scroll;
-      overflow-x: hidden;
-  }
-  .create-company-industry-option{
-      cursor: pointer;
-  }
-  .create-company-badge{
-      width: 80px;
-      height: 80px;
-      color: white;
-      font-size: 24px;
-      border-radius: 50px;
-      background: linear-gradient(to right, #6acbe0 , #6859ea);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 20px;
-    }
-    .create-company-review-text{
-        font-family: helvetica;
-        font-size: 16px;
-        margin: 10px;
-        color: grey
-    }
+}
+
+.create-company-industry-selection-container {
+    height: 300px;
+    width: 500px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.create-company-industry-selection-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.create-company-industry-selection-container::-webkit-scrollbar-track {
+    /* -webkit-box-shadow: 0 0 0 rgb(0, 0, 0, 0);
+    -webkit-border-radius: 10px;
+    border-radius: 10px; */
+}
+
+.create-company-industry-selection-container::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba( 0, 0, 0, 0.4 );
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+
+.create-company-industry-option{
+    cursor: pointer;
+}
+
+.create-company-badge{
+    width: 80px;
+    height: 80px;
+    color: white;
+    font-size: 24px;
+    border-radius: 50px;
+    background: linear-gradient(to right, #6acbe0 , #6859ea);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.create-company-review-text{
+    font-family: helvetica;
+    font-size: 16px;
+    margin: 10px;
+    color: grey
+}
     
