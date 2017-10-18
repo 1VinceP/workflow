@@ -8,52 +8,99 @@ import {  editUserFirstname
         , editUserDisplayName
         , editUserTeam
         , editUserRole
-        } from '../../redux/reducers/main-reducer'
+        } from '../../redux/reducers/main-reducer';
+import {connect} from 'react-redux';
+import axios from 'axios'
 
-
-export default class EditUser extends Component {
+class EditUser extends Component {
     constructor() {
         super();
-
         this.state = {
+        }
+        this.submitUser = this.submitUser.bind(this);
+    }
 
+    // componentDidMount(){
+    //     const x = this.props.user
+    // }
+
+    submitUser() {
+        var x;
+        let data = {
+            user_firstname: this.props.user_firstname ? this.props.user_firstname : this.props.user['user_firstname'],
+            user_lastname: this.props.user_lastname ? this.props.user_lastname : this.props.user['user_lastname'],
+            user_display_name: this.props.user_display_name ? this.props.user_display_name : this.props.user['user_display_name'],
+            user_id: this.props.user['user_id'],
+        }
+        axios.post('/api/edituser', data)
+        .then(axios.get(`http://localhost:3005/api/users/user/${data.user_id}`).then(res => {
+             x = res.data[0].user_firstname
+            console.log("DOT THEN RES", x)
+        })) 
+        console.log("FINAL X", x)
+    }
+
+    getFirstName(){
+        if(this.props.user){
+            return this.props.user['user_firstname']
+        } else {
+            return 'First Name'
         }
     }
 
+    getLastName(){
+        var xx
+        if(this.props.user){
+            xx = this.props.user['user_lastname']
+        } else {
+            xx = 'Last Name'
+        }
+        return xx;
+    }
+
+    getDisplayName(){
+        if(this.props.user){
+            return this.props.user['user_display_name']
+        } else {
+            return 'Display Name'
+        }
+    }
     render() {
+        
+        
+        // this.props.user ? console.log('USER AUTH', this.props.user['user_firstname']) : console.log("HAHA DIDNT WORK")
         return (
             <div className="profile-modal">
                 <div className="firstname">
-                    <TextField hintText="First Name" />
+                    <TextField onChange={(e) => this.props.editUserFirstname(e.target.value)} 
+                    placeholder={this.getFirstName()}
+                    
+                    //hintText="First Name"
+                     />
+
                 </div>
                 <div className="lastname">
-                    <TextField hintText="Last Name" />
-                </div>
-                <div className="email">
-                    <TextField  
-                    /* hintText={users.user_email} */
-                    defaultValue="your.email@email.com"
+                    <TextField onChange={(e) => this.props.editUserLastname(e.target.value)} 
+                    placeholder={this.getLastName()}
                      />
                 </div>
-                <div className="picture">
-                    <TextField hintText="Picture URL" />
-                </div>
                 <div className="display-name">
-                    <TextField 
-                    /* defaultValue={users.user_display_name} */
-                    defaultValue="Display Name Here" />
+                    <TextField onChange={(e) => this.props.editUserDisplayName(e.target.value)}
+                    placeholder={this.getDisplayName()}
+                    
+                    />
                 </div>
-                <div className="company">
-                    <TextField disabled={true} hintText="Your Company" />
-                </div>
-                <div className="team">
-                    <TextField hintText="Team" />
-                </div>
-                <div className="role">
-                    <TextField hintText="Role" />
-                </div>
-
+                <button onClick={() => this.submitUser()}>Save Changes</button>
             </div>
         )
     }
 }
+function mapStateToProps(state) {
+    return state;
+}
+export default connect(mapStateToProps, {editUserFirstname, editUserLastname
+    , editUserEmail
+    , editUserPictureUrl
+    , editUserDisplayName
+    , editUserTeam
+    , editUserRole})(EditUser)
