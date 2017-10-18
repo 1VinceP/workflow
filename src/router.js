@@ -35,7 +35,9 @@ export default (
         <Route path='/display-teams' component={DisplayTeams}/>
         <Route path='/create-company' component={CreateCompany} />
         <Route path='/create-project' component={CreateProject} />
-        <Route path='/create-task' />
+        <Route path='/create-task' 
+        /* component={Create_task} */
+        />
         <Route path='/create-team' />
         <Route path='/create-user' component={AddUser} />
 

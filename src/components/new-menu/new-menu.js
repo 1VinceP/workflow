@@ -52,7 +52,7 @@ export default class NewMenu extends React.Component {
             <Link to="/create-company" className="link" ><MenuItem  primaryText="Company" /></Link>
             <Link to="/create-project" className="link"><MenuItem primaryText="Project" /></Link>
             <Link to="/create-team" className="link"><MenuItem primaryText="Team" /></Link>
-            <Link to="/create-task" className="link"><MenuItem primaryText="Task" /></Link>
+            <Link to="/create-user" className="link"><MenuItem primaryText="User" /></Link>
           </Menu>
         </Popover>
       </div>
