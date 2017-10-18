@@ -10,13 +10,8 @@ import {  editUserFirstname
         , editUserRole
         } from '../../redux/reducers/main-reducer';
 import {connect} from 'react-redux';
-<<<<<<< HEAD
 import axios from 'axios'
 
-=======
-
-
->>>>>>> master
 class EditUser extends Component {
     constructor() {
         super();
