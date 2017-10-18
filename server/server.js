@@ -88,9 +88,15 @@ app.get( '/logout', auth_controller.logout );
 
 
 
-app.get('/api/getusers', (req, res, next) => {
+app.get('/api/company/getusers', (req, res, next) => {
     req.app.get('db').company.company_users().then(response => res.status(200).send(response))
 })
+
+app.get('/api/company/:id', (req, res, next) => {
+    req.app.get('db').company.get_company(req.params.id).then(response => res.status(200).send(response))
+})
+
+
 app.post('/api/addcompany', company_controller.create_company)
 
 

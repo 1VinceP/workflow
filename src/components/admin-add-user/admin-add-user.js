@@ -10,7 +10,7 @@ import {  editUserFirstname
         , editUserRole
         } from '../../redux/reducers/main-reducer';
 import {connect} from 'react-redux';
-
+import axios from 'axios'
 
 class EditUser extends Component {
     constructor() {
@@ -28,14 +28,14 @@ class EditUser extends Component {
         let data = {
             user_firstname: this.props.user_firstname,
             user_lastname: this.props.user_lastname,
-            user_email: this.props.user_email,
-            user_picture: this.props.user_picture,
-            user_display_name: this.props.user_display_name,
+            user_email: this.props.user_email,            
             user_team: this.props.user_team,
-            user_role: this.props.user_role,
             // user_authid: this.props.user_authid
         }
-        console.log(data)
+        axios.post('/api/adduser', data)
+        .then(res => {
+            console.log(res)
+        })
     }
 
     render() {
@@ -58,19 +58,7 @@ class EditUser extends Component {
                     defaultValue=""   
                      />
                 </div>
-                <div className="picture">
-                    <TextField onChange={(e) => this.props.editUserPictureUrl(e.target.value)} 
-                    defaultValue=""
-                    hintText="Picture URL" />
-                </div>
-                <div className="display-name">
-                    <TextField onChange={(e) => this.props.editUserDisplayName(e.target.value)}
-                    hintText="Display Name"
-                    defaultValue="" />
-                </div>
-                <div className="company">
-                    <TextField  disabled={true} hintText="Your Company" />
-                </div>
+      
                 <div className="team">
                     <TextField onChange={(e) => this.props.editUserTeam(e.target.value)} 
                     defaultValue=""

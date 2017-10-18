@@ -10,13 +10,8 @@ import {  editUserFirstname
         , editUserRole
         } from '../../redux/reducers/main-reducer';
 import {connect} from 'react-redux';
-<<<<<<< HEAD
 import axios from 'axios'
 
-=======
-
-
->>>>>>> master
 class EditUser extends Component {
     constructor() {
         super();
@@ -65,21 +60,6 @@ class EditUser extends Component {
     }
 
 
-    submitUser() {
-        console.log(this.props)
-        let data = {
-            user_firstname: this.props.user_firstname,
-            user_lastname: this.props.user_lastname,
-            user_email: this.props.user_email,
-            user_picture: this.props.user_picture,
-            user_display_name: this.props.user_display_name,
-            user_team: this.props.user_team,
-            user_role: this.props.user_role,
-            user_authid: this.props.user_authid
-        }
-        console.log(data)
-    }
-
     getDisplayName(){
         if(this.props.user){
             return this.props.user['user_display_name']
@@ -87,13 +67,20 @@ class EditUser extends Component {
             return 'Display Name'
         }
     }
+
+    componentWillReceiveProps(){
+        if(this.props.user){
+        this.props.user.user_firstname
+        }
+    }
+
     render() {
        
         return (
             <div className="profile-modal">
                 <div className="firstname">
                     <TextField onChange={(e) => this.props.editUserFirstname(e.target.value)} 
-                    placeholder={this.getFirstName()}
+                    placeholder={this.props.user? this.props.user['user_firstname'] : "First Name"}
                     
                     //hintText="First Name"
                      />

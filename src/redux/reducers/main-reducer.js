@@ -1,6 +1,7 @@
 import axios from 'axios';
 // const company_controller = require('./controllers/company_controller')
 const GET_USER_INFO = "GET_USER_INFO";
+const GET_COMPANY_INFO = "GET_COMPANY_INFO";
 const ADDCOMPANYINDUSTRY = "ADDCOMPANYINDUSTRY";
 const ADD_COMPANY_NAME = "ADD_COMPANY_NAME";
 const ADD_COMPANY_EMAIL = "ADD_COMPANY_EMAIL";
@@ -18,6 +19,7 @@ const EDIT_USER_ROLE = "EDIT_USER_ROLE";
    
 var initialState = {
         user: null,
+        company: null,
         company_name:'',
         company_email:'',
         company_phone:'',
@@ -36,10 +38,12 @@ var initialState = {
     export default function reducer(state = initialState, action) {
         // console.log('action',action.type)
         // console.log('payload',action.payload)
-        // console.log('action',action)
+        console.log('action',action)
         switch(action.type) {
             case GET_USER_INFO + '_FULFILLED':
                 return Object.assign({}, state, {user: action.payload})
+                case GET_COMPANY_INFO + '_FULFILLED':
+                return Object.assign({}, state, {company: action.payload})
             case ADDCOMPANYINDUSTRY:
                 return Object.assign({}, state, {company_industry: action.payload})
             case ADD_COMPANY_NAME:
@@ -113,7 +117,8 @@ var initialState = {
     
     export function getUserInfo() {
         const userInfo = axios.get('/login/user').then(res => {
-            console.log( res.data )
+            console.log( "USER INFOOOO DATE IN STORE", res.data.user_company )
+            // getCompanyInfo(res.data.user_company)
             return res.data
         })
         return {
@@ -121,6 +126,19 @@ var initialState = {
             payload: userInfo
         }
     }
+
+    export function getCompanyInfo(id) {
+        const companyInfo = axios.get(`/api/company/${id}`).then(res => {
+            console.log( "COMPANY DATA",res.data )
+            return res.data
+        })
+        return {
+            type: GET_COMPANY_INFO,
+            payload: companyInfo
+        }
+    }
+
+
     export function addCompany(data) {
         console.log(data)
         return{
