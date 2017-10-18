@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './display-users.css';
-import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 
 let style = {
@@ -25,7 +24,6 @@ export default class DisplayUsers extends Component {
                     </div>
                     <div className="button-container">
                         <RaisedButton primary={true} label="+ Create New User" />
-                        {<FlatButton label="+ Create New User" primary={true} />}
                     </div>
                     <div className="left-column">
                         <div className="user-data">

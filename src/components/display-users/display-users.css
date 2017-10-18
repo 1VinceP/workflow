@@ -18,17 +18,18 @@
 }
 .left-column {
     position: absolute;
-    margin-top: 13vh;
-    /* height: 75vh; */
+    margin-top: 14vh;
+    padding-left: 20px;
     width: 50vw;
-    background: lightseagreen;
+    background: rgb(226, 225, 225);
+    border-right: 1px dotted #aaaaaa;
 }
 .right-column {
-    margin-top: 13vh;
     position: absolute;
-    /* height: 75vh; */
+    margin-top: 14vh;
+    padding-left: 20px;
     width: 50vw;
-    background: lightskyblue;
+    background: rgb(226, 225, 225);
     transform: translateX(100%);
 }
 .user-data {
