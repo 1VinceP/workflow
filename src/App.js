@@ -6,6 +6,9 @@ import Header from './components/header/Header'
 import Dashboard from './components/dashboard/dashboard';
 import CreateCompany from './components/create-company/create-company';
 import EditUser from './components/edit-user/edit-user';
+import CreateProject from './components/create-project/create-project'
+
+
 import DisplayUsers from './components/display-users/display-users';
 
 class App extends Component {
@@ -14,6 +17,7 @@ class App extends Component {
 
       <div className="App">
         <Header />
+        <CreateProject />
         <SignInPage />
         <CreateCompany />
         <DisplayUsers />
