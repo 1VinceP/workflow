@@ -1,1 +1,1 @@
-SELECT * FROM roles WHERE role_company = 4
+SELECT * FROM roles WHERE role_company = $1

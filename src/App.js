@@ -3,14 +3,13 @@ import './App.css';
 import { Route } from 'react-router-dom';
 import SignInPage from './components/sign-in-page/sign-in-page';
 import Header from './components/header/Header'
-// import HomePage from './';
 import Dashboard from './components/dashboard/dashboard';
 import CreateCompany from './components/create-company/create-company';
-import CompanyRoles from './components/create-company/create-company-roles';
 import EditUser from './components/edit-user/edit-user';
 import CreateProject from './components/create-project/create-project'
 
 
+import DisplayUsers from './components/display-users/display-users';
 
 class App extends Component {
   render() {
@@ -21,9 +20,11 @@ class App extends Component {
         <CreateProject />
         <SignInPage />
         <CreateCompany />
+        <DisplayUsers />
         <EditUser />
         <Route component={SignInPage} exact path="/" />
         <Route component={Dashboard} path="/dashboard" />
+
       </div>
     );
   }
