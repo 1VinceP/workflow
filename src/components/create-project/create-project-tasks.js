@@ -49,13 +49,14 @@ class Create_Project_Tasks extends Component {
                         <div className='tasky-role'>User or Role</div>
                         <div className='tasky-desc'>This is the description of the task. It needs to be a fairly large box so that it can hold all of the relevant text for the task. If the box is too small, the users will not be able to see all of the details that they need, and will therefore be left in the dark with nothing but their own intuition to complete the task. Sometimes this may be what you want, but generally it is not, so it is better to have a large box than a small one.</div>
                         <div className='tasky-link'>Task Link</div>
+                        <div className='tasky-close' onClick={ () => this.showTaskDetails() } >Close</div>
                     </div>
                     
                 </div>
 
                 <div className='project-tasks-created-container'>
                     <div className='project-created-task' onClick={ () => this.showTaskDetails() }>
-                        TASK 1
+                        Create Project Manager
                     </div>
                     <div className='project-created-task'>
                         TASK 2
