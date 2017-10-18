@@ -7,6 +7,7 @@ import Dashboard from './components/dashboard/dashboard';
 import CreateCompany from './components/create-company/create-company';
 import EditUser from './components/edit-user/edit-user';
 import CreateProject from './components/create-project/create-project'
+import LandingPage from './components/landing-page/Landing_Page'
 
 
 import DisplayUsers from './components/display-users/display-users';
@@ -17,6 +18,7 @@ class App extends Component {
 
       <div className="App">
         <Header />
+        <LandingPage />
         <CreateProject />
         <SignInPage />
         <CreateCompany />
