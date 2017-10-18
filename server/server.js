@@ -15,6 +15,7 @@ const project_controller = require('./controllers/project_controller')
 const team_controller = require('./controllers/team_controller')
 const task_controller = require('./controllers/task_controller')
 const role_controller = require('./controllers/role_controller')
+const users_controller = require('./controllers/users_controller')
 const port = 3005;
 const app = express();
 app.use(bodyParser.json() );
@@ -87,7 +88,7 @@ app.get( '/logout', auth_controller.logout );
 
 
 
-app.get('/api/test/getusers', (req, res, next) => {
+app.get('/api/getusers', (req, res, next) => {
     req.app.get('db').company.company_users().then(response => res.status(200).send(response))
 })
 app.post('/api/addcompany', company_controller.create_company)
@@ -99,7 +100,7 @@ app.post('/api/addcompany', company_controller.create_company)
 
 
 
-app.get('/api/test/team', (req, res, next) => {
+app.get('/api/team', (req, res, next) => {
     req.app.get('db').team.all_team().then(response => res.status(200).send(response))
 })
 
@@ -109,7 +110,7 @@ app.post('/api/addteam', team_controller.create_team)
 
 
 
-app.get('/api/test/project', (req, res, next) => {
+app.get('/api/project', (req, res, next) => {
     req.app.get('db').project.all_project().then(response => res.status(200).send(response))
 })
 
@@ -119,7 +120,7 @@ app.post('/api/addproject', project_controller.create_project)
 
 
 
-app.get('/api/test/task', (req, res, next) => {
+app.get('/api/task', (req, res, next) => {
     req.app.get('db').task.all_task().then(response => res.status(200).send(response))
 })
 
@@ -130,12 +131,16 @@ app.post('/api/addtask', task_controller.create_task)
 
 
 
-app.get('/api/test/users', (req, res, next) => {
+app.get('/api/users', (req, res, next) => {
     req.app.get('db').users.all_users().then(response => res.status(200).send(response))
 })
 
+app.get('/api/users/user/:id', (req, res, nest) => {
+    req.app.get('db').users.user_by_id(req.params.id).then(response => res.status(200).send(response))
+})
 
-
+app.post('/api/edituser', users_controller.edit_user)
+app.post('/api/adduser', users_controller.create_user)
 
 ////////////////////////////        ROLES         /////////////////////////////////
 
