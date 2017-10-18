@@ -1,55 +1,42 @@
 import React, { Component } from 'react';
 import './display-company.css';
-import RaisedButton from 'material-ui/RaisedButton';
-import axios from 'axios';
-import {Link} from 'react-router-dom';
+import { connect } from 'react-redux'
+
+
+import CreateCompany from '../create-company/create-company'
 
 let style = {
     margin: 12,
 };
 
-export default class DisplayCompany extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            teamdata: []
-        }
-    }
-
-    // componentDidMount() {
-    //     axios.get('/api/getusers').then(res => {
-    //         this.setState({
-    //             teamdata: res.data
-    //         })
-    //         console.log(this.state.teamdata)
-    //     })
-    // }
+class DisplayCompany extends Component {
 
     render() {
 
-        let teamInfo = this.state.teamdata.map((e, i) => {
-            return (
-                <div>
-                <div className="team-data">
-                    This will be team data
-                </div>
-                <Link to="/edit-team"><RaisedButton label="Edit Team" primary={true} style={style} /></Link>
-                {/* <RaisedButton label="Delete Team" secondary={true} style={style} /> */}
-                </div>
-            )
-        })
-
         return (
-            <div className="display-team-container">
-                <div className="user-team-wrapper">
+            <div className="display-company-container">
+                {this.props.state.company ? 
+                <div className="user-company-wrapper">
                     <div className="title">
+                        <h2>{this.props.state.company[0].company_name}</h2>
                         Company Information
                     </div>
                     <div>This will be Company Info</div>
-                    </div>
+                </div>
+                :
+                <div className="company-wrapper">
+                    <CreateCompany />
+                </div>
+                }
             </div>
         )
     }
 }
+function mapStateToProps(state) {
+    console.log(state)
+    return {
+        state
+    };
+}
 
+export default connect(mapStateToProps)(DisplayCompany);
