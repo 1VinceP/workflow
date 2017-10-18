@@ -1,0 +1,36 @@
+.display-users-container {
+    height: 90vh;
+    width: 100vw;
+    /* background: darkgoldenrod; */
+}
+.user-data-wrapper {
+    display: flex;
+}
+.button-container {
+    position: absolute;
+    right: 0;
+    margin: 40px;
+}
+.title{
+    font-size: 50px;
+    height: 60px;
+    width: 100vw;
+}
+.left-column {
+    position: absolute;
+    margin-top: 13vh;
+    /* height: 75vh; */
+    width: 50vw;
+    background: lightseagreen;
+}
+.right-column {
+    margin-top: 13vh;
+    position: absolute;
+    /* height: 75vh; */
+    width: 50vw;
+    background: lightskyblue;
+    transform: translateX(100%);
+}
+.user-data {
+    margin: 10px;
+}
