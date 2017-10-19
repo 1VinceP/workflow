@@ -24,18 +24,21 @@ class CreateCompany extends Component {
   }
 
   submitCompany(){
+
     let data = {
       company_name: this.props.company_name, 
       company_email: this.props.company_email, 
       company_date: this.props.company_date,
       company_industry: this.props.company_industry,
       company_url: this.props.company_url,
-      company_phone: this.props.company_phone
+      company_phone: this.props.company_phone,
+      company_code: this.props.company_code,
   }
      axios.post('/api/addcompany', data).then(response =>{
-      console.log(response)
+      console.log('CODE IN PROPS', this.props )
      })
     console.log(data)
+    
 }
 
   handleNext = () => {
