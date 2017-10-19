@@ -2,7 +2,7 @@
     height: 35px;
     width: 150px;
     color: white;
-    background: #34ebe9;
+    background: #509DEA;
     border: none;
     outline: none;
     border-radius: 4px;
@@ -12,8 +12,14 @@
 
 .task-open-modal:hover {
     background: white;
-    color: #34ebe9;
-    border: 2px solid #34ebe9;
+    color: #509DEA;
+    border: 2px solid #509DEA;
+}
+
+.task-open-modal:active {
+    background: #509DEA;
+    color: white;
+    border: none;
 }
 
 .task-create-task-input{

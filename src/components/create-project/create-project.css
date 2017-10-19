@@ -103,7 +103,7 @@
     position: fixed;
     left: calc( 100vw / 4 );
     box-shadow: 12px 12px 20px gray;
-    background: linear-gradient( to top right, #f42e78, #c17afc );
+    background: linear-gradient( to top right, #7e43aa, #6681ea );
     margin-top: -380px;
     border-radius: 10px;
     padding: 20px;
@@ -123,7 +123,7 @@
     position: fixed;
     left: calc( 100vw / 4 );
     box-shadow: 12px 12px 20px gray;
-    background: linear-gradient( to top right, #f42e78, #c17afc );
+    background: linear-gradient( to top right, #7e43aa, #6681ea );
     margin-top: -380px;
     border-radius: 10px;
     padding: 20px;

@@ -49,7 +49,8 @@ console.log('DISPLAY PROPS', this.props)
                     </div>
                     <div className="left-column">
                         This will be project info
-                <RaisedButton label="Delete project" secondary={true} style={style} />
+                {/* <RaisedButton label="Delete project" secondary={true} style={style} /> */}
+                <button className='display-projects-delete-button' >Delete Project</button>
                     </div>
                     <div className="right-column">
                     This will be project info
