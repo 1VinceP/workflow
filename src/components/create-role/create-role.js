@@ -17,7 +17,6 @@ class CreateRole extends Component {
             <div>
                 <h1>TEST</h1>
                 <h2>{this.props.state.company? this.props.state.company[0].company_name : 'Null'}</h2>
-                <h2>{this.props.state.company? this.props.state.company[0].company_name : 'Null'}</h2>
             </div>
         )
     }

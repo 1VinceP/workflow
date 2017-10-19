@@ -96,6 +96,11 @@ app.get('/api/company/:id', (req, res, next) => {
     req.app.get('db').company.get_company(req.params.id).then(response => res.status(200).send(response))
 })
 
+app.get('/api/company/users/:id', (req, res, next) => {
+    req.app.get('db').company.company_users(req.params.id).then(response => res.status(200).send(response))
+})
+
+
 
 app.post('/api/addcompany', company_controller.create_company)
 
@@ -147,6 +152,13 @@ app.get('/api/users/user/:id', (req, res, nest) => {
 
 app.post('/api/edituser', users_controller.edit_user)
 app.post('/api/adduser', users_controller.create_user)
+app.post('/api/admin/adduser', users_controller.admin_create_user)
+
+
+app.delete('/api/delete/user/:id', (req, res, nest) => {
+    req.app.get('db').users.delete_user(req.params.id).then(response => res.status(200).send(response))
+})
+
 
 ////////////////////////////        ROLES         /////////////////////////////////
 
