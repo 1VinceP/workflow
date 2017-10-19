@@ -6,10 +6,33 @@ import { getUserInfo, getCompanyInfo, getCompanyUsersInfo } from '../../redux/re
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css'
 let style = {
     margin: 12,
 };
+
 class DisplayUsers extends Component {
+
+
+    deleteUser(id) {
+        confirmAlert({
+            title: 'Confirm to submit',                     
+            message: 'Are you sure you want to do this.',   
+            confirmLabel: 'Confirm',                        
+            cancelLabel: 'Cancel',                          
+            onConfirm: () => { axios.delete(`/api/delete/user/${id}`)
+            .then(() => {
+                this.props.getUserInfo().then(res => {
+                    this.props.getCompanyInfo(this.props.user.user_company).then(res => {
+                        this.props.getCompanyUsersInfo(this.props.user.user_company)
+                    })
+                })
+            })},    // Action after Confirm
+            onCancel: () => null,
+        })
+    }
+
     render() {
         let userInfo = this.props.company_users.map((e, i) => {
             return (
@@ -23,10 +46,12 @@ class DisplayUsers extends Component {
                         </div>
                     </div>
                     <Link to="/edit-user"><RaisedButton label="Edit User" primary={true} style={style} /></Link>
-                    <RaisedButton label="Delete User" secondary={true} style={style} />
+                    <RaisedButton onClick={() => this.deleteUser(e.user_id)} label="Delete User" secondary={true} style={style} />
                 </div>
             )
         })
+
+
         return (
             <div className="display-users-container">
                 <div className="user-data-wrapper">
@@ -48,7 +73,9 @@ class DisplayUsers extends Component {
         )
     }
 }
+
 function mapStateToProps(state) {
     return state;
 }
+
 export default connect(mapStateToProps, { getUserInfo, getCompanyInfo, getCompanyUsersInfo })(DisplayUsers)

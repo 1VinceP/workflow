@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
 // import axios from 'axios';
-import { getUserInfo } from '../../redux/reducers/main-reducer';
+import { getUserInfo, getCompanyInfo, getCompanyUsersInfo } from '../../redux/reducers/main-reducer';
 import { connect } from 'react-redux';
 import './header.css';
 
@@ -23,7 +23,11 @@ class Header extends Component {
 
     componentDidMount() {
 
-        this.props.getUserInfo()
+        this.props.getUserInfo().then(res => {
+            this.props.getCompanyInfo(this.props.user.user_company).then(res => {
+                this.props.getCompanyUsersInfo(this.props.user.user_company)
+            })
+        })
 
     };
 
@@ -85,4 +89,4 @@ function mapStateToProps( state ) {
     };
 }
 
-export default connect( mapStateToProps, {getUserInfo} )(Header);
+export default connect( mapStateToProps, {getUserInfo, getCompanyInfo, getCompanyUsersInfo} )(Header);
