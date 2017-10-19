@@ -20,15 +20,6 @@ class DisplayProjects extends Component {
         }
     }
 
-    // componentDidMount() {
-    //     axios.get('/api/getusers').then(res => {
-    //         this.setState({
-    //             teamdata: res.data
-    //         })
-    //         console.log(this.state.teamdata)
-    //     })
-    // }
-
     render() {
 console.log('DISPLAY PROPS', this.props)
         let teamInfo = this.state.teamdata.map((e, i) => {
