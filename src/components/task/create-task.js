@@ -117,7 +117,8 @@ class Create_task extends Component {
         return (
           <div>
             
-            <RaisedButton label="Add Task" onClick={this.handleOpen} />
+            {/* <RaisedButton label="Add Task" onClick={this.handleOpen} /> */}
+            <button className='task-open-modal' onClick={this.handleOpen} >ADD TASK</button>
             <Dialog
               title="Add Task"
               actions={actions}

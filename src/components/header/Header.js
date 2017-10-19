@@ -27,20 +27,19 @@ class Header extends Component {
 
     componentDidMount() {
 
-        this.props.getUserInfo().then(res => {
-            this.props.getCompanyInfo(this.props.user.user_company).then(res => {
-                this.props.getCompanyUsersInfo(this.props.user.user_company)
-            })
-        })
-        // this.props.getTeamInfo().then(res => {
-        //     this.props.getCompanyInfo(this.props.team.team_company).then(res=> {
-        //         this.props.getCompanyTeamsInfo(this.props.team.team_company)
-        //     })
-        // })
+        window.location.href !== 'http://localhost:3000/#/'
+            ?   this.props.getUserInfo().then(res => {
+                    this.props.getCompanyInfo(this.props.user.user_company).then(res => {
+                        this.props.getCompanyUsersInfo(this.props.user.user_company)
+                    })
+                })
+            : null;
 
     };
 
     render() {
+
+        console.log( this.props )
         return(
             <header className='header-header'>
 

@@ -22,6 +22,7 @@ const EDIT_USER_ROLE = "EDIT_USER_ROLE";
 const EDIT_TEAM_NAME = "EDIT_TEAM_NAME";
 const EDIT_TEAM_DESCRIPTION = "EDIT_TEAM_DESCRIPTION";
 const ADD_UNIQUE_KEY_PROJECT_TASK = "ADD_UNIQUE_KEY_PROJECT_TASK";
+const ADD_COMPANY_CODE = "ADD_COMPANY_CODE"
    
 var initialState = {
     user: null,
@@ -35,6 +36,7 @@ var initialState = {
     company_url: '',
     company_industry: '',
     company_badge: '',
+    company_code:'',
     user_firstname: '',
     user_lastname: '',
     user_email: '',
@@ -65,7 +67,7 @@ var initialState = {
             case ADDCOMPANYINDUSTRY:
                 return Object.assign({}, state, {company_industry: action.payload})
             case ADD_COMPANY_NAME:
-                return Object.assign({}, state, {company_name: action.payload, company_badge:action.company_badge})
+                return Object.assign({}, state, {company_name: action.payload, company_badge:action.company_badge, company_code: action.company_code})
             case ADD_COMPANY_EMAIL:
                 return Object.assign({}, state, {company_email: action.payload})
             case ADD_COMPANY_PHONE:
@@ -96,6 +98,8 @@ var initialState = {
                 return Object.assign({}, state, {team_description: action.payload})
             case ADD_UNIQUE_KEY_PROJECT_TASK:
                 return Object.assign({}, state, {project_unique_key: action.payload})
+            case ADD_UNIQUE_KEY_PROJECT_TASK:
+                return Object.assign({}, state, {project_unique_key: action.payload})
             default:
                 return state;
         }
@@ -108,8 +112,16 @@ var initialState = {
           badgeFinal.push(badge[i].charAt(0))
         }
         let company_badge = badgeFinal.join('').toUpperCase();
+        
+        let company_code = '';
+        let count = companyName.split('')
+        let projectKey = companyName.charAt(0) + companyName.charAt(1) + companyName.charAt(2) + count.length + count[count.length - 2];
+        company_code = projectKey.toUpperCase()
+
+
+
         return { 
-            payload: companyName, company_badge,  
+            payload: companyName, company_badge, company_code,  
             type:ADD_COMPANY_NAME
         }
     }
@@ -293,3 +305,7 @@ export function editUserRole(role) {
         payload: role
     }
 }
+
+// let count = companyName.split('')
+// let projectKey = companyName.charAt(0) + companyName.charAt(1) + companyName.charAt(2) + count.length + count[count.length - 2];
+// return projectKey.toUpperCase()
