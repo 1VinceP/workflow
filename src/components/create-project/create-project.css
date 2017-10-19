@@ -60,13 +60,25 @@
     margin-top: 50px;
 }
 .project-tasks-created-container{
-    height: 220px;
+    height: 150px;
     width:550px;
     overflow-x: scroll;
     padding:0;
     display: flex;
     justify-content: space-between
 }
+
+.project-tasks-created-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.project-tasks-created-container::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba( 0, 0, 0, 0.4 );
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+
 .project-created-task{
     height: 120px;
     width: 120px;
@@ -92,7 +104,7 @@
     left: calc( 100vw / 4 );
     box-shadow: 12px 12px 20px gray;
     background: linear-gradient( to top right, #f42e78, #c17afc );
-    margin-top: -350px;
+    margin-top: -380px;
     border-radius: 10px;
     padding: 20px;
     color: white;
@@ -112,7 +124,7 @@
     left: calc( 100vw / 4 );
     box-shadow: 12px 12px 20px gray;
     background: linear-gradient( to top right, #f42e78, #c17afc );
-    margin-top: -350px;
+    margin-top: -380px;
     border-radius: 10px;
     padding: 20px;
     color: white;
