@@ -130,7 +130,7 @@ class CreateCompany extends Component {
           {finished ? (
             <p>
               <a
-                href="/dashboard"
+                href="/#/dashboard"
                 onClick={(event) => {
                   event.preventDefault();
                   this.setState({ stepIndex: 0, finished: false });
@@ -151,11 +151,13 @@ class CreateCompany extends Component {
                   />
                   {stepIndex === 2
                     ?
+                    <a href='/#/dashboard'>
                     <RaisedButton
                       label='Finish'
                       primary={true}
                       onClick={() => this.submitCompany()}
                     />
+                    </a>
                     :
                     <RaisedButton
                       label='Next'

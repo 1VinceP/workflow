@@ -58,9 +58,54 @@ html {
     width: 200px;
 }
 
-.header-buttons {
+.header-mid-buttons {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+.header-signup-button{
+    width: 120px;
+    align-self: flex-end;
+    background: #6859ea;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    height: 35px;
+    font-size: 16px;
+
+    color: white;
+}
+.header-login-button{
+color: lightgray;
+font-size: 16px;
+font-family: helvetica;
+text-align: right;
+margin-right: 20px;
+font-weight: lighter;
+text-decoration: none;
+}
+a{
+    text-decoration: none;
+}
+
+.header-tiny {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .header-mid-buttons {
+        display: none;
+    }
+
+    .header-tiny {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .header-right {
+        width: 40%;
+    }
 }

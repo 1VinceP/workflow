@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import './display-projects.css';
+import { addProjectUniqueKey } from '../../redux/reducers/main-reducer'
 import RaisedButton from 'material-ui/RaisedButton';
 // eslint-disable-next-line
 import axios from 'axios';
@@ -9,7 +11,7 @@ let style = {
     margin: 12,
 };
 
-export default class DisplayProjects extends Component {
+class DisplayProjects extends Component {
     constructor() {
         super();
 
@@ -28,7 +30,7 @@ export default class DisplayProjects extends Component {
     // }
 
     render() {
-
+console.log('DISPLAY PROPS', this.props)
         let teamInfo = this.state.teamdata.map((e, i) => {
             return (
                 <div>
@@ -46,8 +48,13 @@ export default class DisplayProjects extends Component {
                     <div className="title">
                         Company Project List
                     </div>
+                    
+                    
                     <div className="button-container">
-                        <Link to="/create-project"><RaisedButton primary={true} label="+ Create New Project" /></Link>
+                    <a href='/#/create-project'>
+                    <button className="display-projects-button-container" onClick={()=>{this.props.addProjectUniqueKey(this.props.company_name)}}> + New Project</button>
+                    </a>
+
                     </div>
                     <div className="left-column">
                         This will be project info
@@ -61,4 +68,8 @@ export default class DisplayProjects extends Component {
         )
     }
 }
+function mapStateToProps(state) {
+    return state
+  }
 
+export default connect(mapStateToProps, {addProjectUniqueKey})(DisplayProjects)

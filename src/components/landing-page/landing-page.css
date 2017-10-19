@@ -29,7 +29,7 @@
     display: flex;
     width: 100%;
     justify-content: space-around;
-    margin-top: 70px;
+    margin-top: 100px;
 
 }
 .landing-page-main-title{
@@ -46,8 +46,8 @@
 .landing-page-main-titles-container{
 
     text-align: right;
-    margin:50px;
-    width: 600px;
+    margin:50px 20px 50px 20px ;
+    width: 465px;
     display: flex;
     flex-direction: column;
 }
@@ -57,5 +57,114 @@
     background: #6859ea;
     align-self: flex-end;
     margin: 20px 0 20px 0;
+}
+.landing-page-bet-started-button{
+    width: 120px;
+    align-self: flex-end;
+    background: #6859ea;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    height: 35px;
+    font-size: 16px;
+    margin-top: 20px;
+    color: white;
+    cursor: pointer;
+}
 
+.landing-page-bet-started-button:hover{
+    background: white;
+    color:#6859ea;
+    border: 2px solid #6859ea;
+}
+.landing-page-divider-hero-container{
+    margin: 75px 0 40px 0;
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+.landing-page-divider-hero{
+    height: 2px;
+    background: rgb(234, 234, 234);
+    width:30%;
+}
+.landing-page-divider-hero-text{
+height: 50px;
+background: #679fe4;
+color: white;
+border-radius: 50px;
+width: 40%;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 10px;
+}
+.landing-page-card-layout{
+    display: flex;
+    justify-content: space-around;
+    
+
+}
+.landing-page-card-container{
+    margin-top: 100px;
+    margin-bottom: 40px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ border: 1px solid rgb(244, 244, 244);
+ width: 20%;
+ box-shadow: 2px 2px 5px #d4d4d4;
+}
+.landing-page-card-title{
+    font-size: 16px;
+    margin: 10px;
+    border-bottom: 1px solid  rgb(244, 244, 244);
+
+    width: 100%;
+    text-align: center;
+    font-family: helvetica;
+    padding: 10px 0 15px 0;
+
+}
+.landing-page-card-description{
+    margin: 15px;
+
+}
+.landing-page-see-more{
+    font-size: 14px;
+    align-self: flex-start;
+    margin: 0 0 15px 15px;
+    text-decoration: none;
+    
+}
+
+.landing-page-see-more a{
+    text-decoration: none;
+    color: black;
+    font-family: helvetica;
+}
+.employee-success-title{
+    color: rgb(0, 185, 0);
+}
+.employee-success-title a{
+    color: rgb(0, 185, 0);
+}
+.project-performance-title{
+    color: #f42e78;
+}
+.project-performance-title a{
+    color: #f42e78;
+}
+.team-tracking-title{
+    color: #a254f2
+}
+.team-tracking-title a{
+    color: #a254f2
+}
+.company-analytics-title{
+    color: #ff8993;
+}
+.company-analytics-title a{
+    color: #ff8993;
 }

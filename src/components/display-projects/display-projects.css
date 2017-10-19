@@ -1,0 +1,17 @@
+.display-projects-button-container{
+    width: 150px;
+    background: #6859ea;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    height: 35px;
+    font-size: 16px;
+    margin-top: 20px;
+    color: white;
+    cursor: pointer;
+}
+.display-projects-button-container:hover{
+    background: white;
+    color:#6859ea;
+    border: 2px solid #6859ea;
+}
