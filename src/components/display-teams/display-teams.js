@@ -1,49 +1,65 @@
 import React, { Component } from 'react';
 import './display-teams.css';
 import RaisedButton from 'material-ui/RaisedButton';
-// eslint-disable-next-line
+import { getTeamInfo, getCompanyInfo, getCompanyTeamsInfo } from '../../redux/reducers/main-reducer';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import { connect } from 'react-redux'
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 let style = {
     margin: 12,
 };
 
-export default class DisplayTeams extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            teamdata: []
-        }
+class DisplayTeams extends Component {
+    deleteTeam(id) {
+        confirmAlert({
+            title: 'Confirm to submit',                     
+            message: 'Are you sure you want to do this?',   
+            confirmLabel: 'Confirm',                        
+            cancelLabel: 'Cancel',                          
+            onConfirm: () => { axios.delete(`/api/delete/team/${id}`)
+            .then(() => {
+                this.props.getTeamInfo().then(res => {
+                    this.props.getCompanyInfo(this.props.team.team_company).then(res => {
+                        this.props.getCompanyTeamsInfo(this.props.team.team_company)
+                    })
+                })
+            })},    // Action after Confirm
+            onCancel: () => null,
+        })
     }
 
-    // componentDidMount() {
-    //     axios.get('/api/getusers').then(res => {
-    //         this.setState({
-    //             teamdata: res.data
-    //         })
-    //         console.log(this.state.teamdata)
-    //     })
-    // }
-
     render() {
-
-        let teamInfo = this.state.teamdata.map((e, i) => {
+        console.log(this.props)
+        let teamInfo = this.props.company_teams.map((e, i) => {
             return (
-                <div>
-                <div className="team-data">
-                    This will be team data
-                </div>
-                <Link to="/edit-team"><RaisedButton label="Edit Team" primary={true} style={style} /></Link>
-                {/* <RaisedButton label="Delete Team" secondary={true} style={style} /> */}
+                <div key={i}>
+                    <div className="team-data">
+                        <div className="team-name">
+                          {e.team_name}
+                        </div>
+                        <div className="team-date">
+                          {e.team_date}
+                        </div>
+                        <div className="team-description">
+                          {e.team_description}
+                        </div>
+                        <div className="team-completion">
+                          {e.team_projects_completed}
+                        </div>
+                    </div>
+                    <Link to="/edit-team"><RaisedButton label="Edit Team" primary={true} style={style} /></Link>
+                    <RaisedButton onClick={() => this.deleteTeam(e.user_id)} label="Delete Team" secondary={true} style={style} />
                 </div>
             )
         })
 
+
         return (
-            <div className="display-team-container">
-                <div className="user-team-wrapper">
+            <div className="display-users-container">
+                <div className="user-data-wrapper">
                     <div className="title">
                         Company Team List
                     </div>
@@ -51,15 +67,21 @@ export default class DisplayTeams extends Component {
                         <Link to="/create-team"><RaisedButton primary={true} label="+ Create New Team" /></Link>
                     </div>
                     <div className="left-column">
-                        This will be team info
-                <RaisedButton label="Delete Team" secondary={true} style={style} />
+                        <Link to="/edit-team"><RaisedButton label="Edit Team" primary={true} style={style} /></Link>
+                        <RaisedButton label="Delete Team" secondary={true} style={style} />
                     </div>
                     <div className="right-column">
-                    This will be team info
+                        {teamInfo}
                     </div>
                 </div>
             </div>
         )
     }
 }
+
+function mapStateToProps(state) {
+    return state;
+}
+
+export default connect(mapStateToProps, { getTeamInfo, getCompanyInfo, getCompanyTeamsInfo })(DisplayTeams)
 

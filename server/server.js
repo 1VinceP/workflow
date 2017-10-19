@@ -91,6 +91,27 @@ app.get('/auth/authorized', (req, res) => {
 
 ////////////////////////////        COMPANY         /////////////////////////////////
 
+
+
+// app.get('/api/company/getusers', (req, res, next) => {
+//     req.app.get('db').company.company_users().then(response => res.status(200).send(response))
+// })
+
+// app.get('/api/company/:id', (req, res, next) => {
+//     req.app.get('db').company.get_company(req.params.id).then(response => res.status(200).send(response))
+// })
+
+// app.get('/api/company/users/:id', (req, res, next) => {
+//     req.app.get('db').company.company_users(req.params.id).then(response => res.status(200).send(response))
+// })
+
+app.get('/api/company/teams/:id', (req, res, next) => {
+    req.app.get('db').company.company_teams(req.params.id).then(response => res.status(200).send(response))
+})
+
+app.get('/api/company/getteams', (req, res, next) => {
+    req.app.get('db').company.company_teams(req.params.id).then(response => res.status(200).send(response))
+})
 app.get('/api/company/getusers', company_controller.getCompanyUsers)
 app.get('/api/company/:id', company_controller.getCompany)
 app.get('/api/company/users/:id', company_controller.getCompanyUsersById)
@@ -101,7 +122,7 @@ app.post('/api/addcompany', company_controller.create_company)
 
 app.get('/api/team', team_controller.get_team)
 
-app.post('/api/addteam', team_controller.create_team)
+app.post('/api/addteam', team_controller.add_team)
 
 ////////////////////////////        PROJECT         /////////////////////////////////
 
