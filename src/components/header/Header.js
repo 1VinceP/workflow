@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 // import axios from 'axios';
-import { getUserInfo } from '../../redux/reducers/main-reducer';
+import { getUserInfo, getCompanyInfo, getCompanyUsersInfo } from '../../redux/reducers/main-reducer';
 import { connect } from 'react-redux';
 import CompanyDrop from './dropdowns/CompanyDrop';
 import TeamDrop from './dropdowns/TeamDrop';
 import AllDrop from './dropdowns/AllDrop';
 import './header.css';
+
 
 let buttonStyle = {
     headerButton: {
@@ -26,7 +27,11 @@ class Header extends Component {
 
     componentDidMount() {
 
-        this.props.getUserInfo()
+        this.props.getUserInfo().then(res => {
+            this.props.getCompanyInfo(this.props.user.user_company).then(res => {
+                this.props.getCompanyUsersInfo(this.props.user.user_company)
+            })
+        })
 
     };
 
@@ -94,4 +99,4 @@ function mapStateToProps( state ) {
     };
 }
 
-export default connect( mapStateToProps, {getUserInfo} )(Header);
+export default connect( mapStateToProps, {getUserInfo, getCompanyInfo, getCompanyUsersInfo} )(Header);

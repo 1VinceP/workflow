@@ -65,13 +65,20 @@ class EditUser extends Component {
             return 'Display Name'
         }
     }
+
+    componentWillReceiveProps(){
+        if(this.props.user){
+        this.props.user.user_firstname
+        }
+    }
+
     render() {
        
         return (
             <div className="profile-modal">
                 <div className="firstname">
                     <TextField onChange={(e) => this.props.editUserFirstname(e.target.value)} 
-                    placeholder={this.getFirstName()}
+                    placeholder={this.props.user? this.props.user['user_firstname'] : "First Name"}
                     
                     //hintText="First Name"
                      />
