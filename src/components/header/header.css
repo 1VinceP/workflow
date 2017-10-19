@@ -58,9 +58,30 @@ html {
     width: 200px;
 }
 
-.header-buttons {
+.header-mid-buttons {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+.header-tiny {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .header-mid-buttons {
+        display: none;
+    }
+
+    .header-tiny {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .header-right {
+        width: 40%;
+    }
 }
