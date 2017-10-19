@@ -10,6 +10,7 @@ import CreateCompany from './components/create-company/create-company';
 import CreateProject from './components/create-project/create-project';
 import WhatWeDo from './components/what-we-do/what-we-do';
 import MeetTheTeam from './components/meet-the-team/meet-the-team';
+import LandingPage from './components/landing-page/Landing_Page';
 import ContactUs from './components/contact-us/contact-us';
 import DisplayTeams from './components/display-teams/display-teams';
 import DisplayTasks from './components/display-tasks/display-tasks';
@@ -30,8 +31,8 @@ import axios from 'axios';
 export default (
     <Switch>
         {/* EMPLOYEE ROUTES */}
-        <Route exact path='/' component={SignInPage} />
-        <Route path='/dashboard' component={Dashboard}/>
+        <Route exact path='/' component={LandingPage} />
+        <Route path='/dashboard' component={Dashboard} />
         <Route path='/analytics' />
         
         /* CLIENT ROUTES */

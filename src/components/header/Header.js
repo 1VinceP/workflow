@@ -48,7 +48,10 @@ class Header extends Component {
                     { !this.props.user
                         ? <div className='header-login'>
                             <a href={process.env.REACT_APP_LOGIN}>
-                                <RaisedButton style={buttonStyle.headerButton}>Log in / Sign Up</RaisedButton>
+                            <div className='header-login-button'>Login</div>
+                            </a>
+                            <a href={process.env.REACT_APP_LOGIN}>
+                                <button className='header-signup-button'>Sign Up</button>
                             </a>
                           </div>
                         : null}
