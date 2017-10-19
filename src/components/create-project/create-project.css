@@ -87,8 +87,9 @@
 
 [create-project-tasks-show-task-info='true'] {
     height: 50vh;
-    width: 100vh;
+    width: 50vw;
     position: fixed;
+    left: calc( 100vw / 4 );
     box-shadow: 12px 12px 20px gray;
     background: linear-gradient( to top right, #f42e78, #c17afc );
     margin-top: -350px;
@@ -106,8 +107,9 @@
 
 [create-project-tasks-show-task-info='fade-out'] {
     height: 50vh;
-    width: 100vh;
+    width: 50vw;
     position: fixed;
+    left: calc( 100vw / 4 );
     box-shadow: 12px 12px 20px gray;
     background: linear-gradient( to top right, #f42e78, #c17afc );
     margin-top: -350px;
