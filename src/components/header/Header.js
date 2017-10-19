@@ -6,6 +6,7 @@ import { getUserInfo } from '../../redux/reducers/main-reducer';
 import { connect } from 'react-redux';
 import './header.css';
 
+
 let buttonStyle = {
     headerButton: {
         paddingLeft:'5px',
