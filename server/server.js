@@ -45,6 +45,17 @@ passport.use(new Auth0Strategy({
     const db = app.get('db');
     console.log( chalk.greenBright('profile: ', profile.id) )
     db.users.find_user(profile.id).then(user => {
+        // if (!user[0]) {
+        //     db.create_user([profile.displayName, profile.emails[0].value, profile.picture, profile.id]).then((user) => {
+        //         return done(null, user[0])
+        //     })
+        // } else if (user) {
+        //     console.log('Found User', user)
+        //     return done(null, user[0]);
+        // } else {
+        //     console.log('You are not a user.')
+        //     return done(null, user[0]);
+        // }
         if (user[0]) {
             console.log( chalk.greenBright('strategy:'), user )
             return done(null, user);
@@ -73,6 +84,14 @@ app.get('/login', passport.authenticate('auth0', {
 
 app.get( '/login/user', auth_controller.login );
 app.get( '/logout', auth_controller.logout );
+
+app.get('/auth/authorized', (req, res) => {
+    if (!req.user) {
+        return res.status(403).send(false)
+    } else {
+        return res.status(200).send(req.user);
+    }
+})
 
 //
 ////

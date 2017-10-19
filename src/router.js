@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect, render } from 'react-router-dom';
 import SignInPage from './components/sign-in-page/sign-in-page';
 import Dashboard from './components/dashboard/dashboard';
 // import Analytics from './components/analytics/analytics';
@@ -15,16 +15,26 @@ import DisplayTeams from './components/display-teams/display-teams';
 import DisplayTasks from './components/display-tasks/display-tasks';
 import DisplayProjects from './components/display-projects/display-projects';
 import DisplayCompany from './components/display-company/display-company';
+import axios from 'axios';
 
+// function checkForLog() {
+//     axios.get('/auth/authorized').then(user => {
+//         if(!user) {
+//           const check = false;
+//         } else {
+//           const check = true;
+//         }
+//     })
+// }
 
 export default (
     <Switch>
         {/* EMPLOYEE ROUTES */}
         <Route exact path='/' component={SignInPage} />
-        <Route path='/dashboard' component={Dashboard} />
+        <Route path='/dashboard' component={Dashboard}/>
         <Route path='/analytics' />
-
-        {/* CLIENT ROUTES */}
+        
+        /* CLIENT ROUTES */
         <Route path='/status'  />
         <Route path='/chat' />
         <Route path='/edit-user' component={EditUser} />
