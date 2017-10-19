@@ -48,11 +48,12 @@ export default class DisplayTasks extends Component {
                         Company Task List
                     </div>
                     <div className="button-container">
-                        <Link to="/create-task"><RaisedButton primary={true} label="+ Create New Task" /></Link>
+                        <Link to="/create-task"><button className='display-tasks-create-new'>+ New Task</button></Link>
                     </div>
                     <div className="left-column">
                         This will be task info
-                <RaisedButton label="Delete Task" secondary={true} style={style} />
+                {/* <RaisedButton label="Delete Task" secondary={true} style={style} /> */}
+                <button className='display-tasks-delete-button' >Delete Task</button>
                     </div>
                     <div className="right-column">
                     This will be task info
