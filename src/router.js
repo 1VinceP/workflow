@@ -15,7 +15,7 @@ import DisplayTeams from './components/display-teams/display-teams';
 import DisplayTasks from './components/display-tasks/display-tasks';
 import DisplayProjects from './components/display-projects/display-projects';
 import DisplayCompany from './components/display-company/display-company';
-import axios from 'axios';
+// import axios from 'axios';
 
 // function checkForLog() {
 //     axios.get('/auth/authorized').then(user => {
