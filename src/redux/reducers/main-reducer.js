@@ -15,6 +15,7 @@ const EDIT_USER_PICTURE_URL = "EDIT_USER_PICTURE_URL";
 const EDIT_USER_DISPLAY_NAME = "EDIT_USER_DISPLAY_NAME";
 const EDIT_USER_TEAM = "EDIT_USER_TEAM";
 const EDIT_USER_ROLE = "EDIT_USER_ROLE";
+const ADD_UNIQUE_KEY_PROJECT_TASK = "ADD_UNIQUE_KEY_PROJECT_TASK";
    
 var initialState = {
         user: null,
@@ -31,6 +32,7 @@ var initialState = {
         user_display_name:'',
         user_team:'',
         user_role:'',
+        project_unique_key:'',
     }
     
     export default function reducer(state = initialState, action) {
@@ -68,6 +70,8 @@ var initialState = {
                 return Object.assign({}, state, {user_team: action.payload})
             case EDIT_USER_ROLE:
                 return Object.assign({}, state, {user_role: action.payload})
+            case ADD_UNIQUE_KEY_PROJECT_TASK:
+                return Object.assign({}, state, {project_unique_key: action.payload})
             default:
                 return state;
         }
@@ -103,6 +107,17 @@ var initialState = {
             payload: companyLogo, 
             type:ADD_COMPANY_URL}
     }
+
+    export function addProjectUniqueKey(companyName) {
+        let projectKey = companyName + new Date();
+        let finalKey = projectKey.replace(/[^A-Z0-9]/ig, "0").toLowerCase();
+
+        console.log(finalKey)
+        return { 
+            payload: finalKey, 
+            type:ADD_UNIQUE_KEY_PROJECT_TASK}
+    }
+
     export function addCompanyIndustry(industrySelected){
         console.log('INDUSTRY', industrySelected)
         return{
