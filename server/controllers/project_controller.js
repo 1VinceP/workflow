@@ -1,4 +1,8 @@
 module.exports = {
+
+        get_projects: (req, res, next) => {
+            req.app.get('db').project.all_project().then(response => res.status(200).send(response))
+        },
     
         create_project: (req,res,next) => {
             let {project_name, project_start_date, project_finished_date, project_description, project_company} = req.body;

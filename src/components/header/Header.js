@@ -27,11 +27,13 @@ class Header extends Component {
 
     componentDidMount() {
 
-        this.props.getUserInfo().then(res => {
-            this.props.getCompanyInfo(this.props.user.user_company).then(res => {
-                this.props.getCompanyUsersInfo(this.props.user.user_company)
-            })
-        })
+        window.location.href !== 'http://localhost:3000/#/'
+            ?   this.props.getUserInfo().then(res => {
+                this.props.getCompanyInfo(this.props.user.user_company).then(res => {
+                    this.props.getCompanyUsersInfo(this.props.user.user_company)
+                    })
+                })
+            : null;
 
     };
 
