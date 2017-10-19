@@ -29,8 +29,8 @@ class Header extends Component {
 
         window.location.href !== 'http://localhost:3000/#/'
             ?   this.props.getUserInfo().then(res => {
-                this.props.getCompanyInfo(this.props.user.user_company).then(res => {
-                    this.props.getCompanyUsersInfo(this.props.user.user_company)
+                    this.props.getCompanyInfo(this.props.user.user_company).then(res => {
+                        this.props.getCompanyUsersInfo(this.props.user.user_company)
                     })
                 })
             : null;
@@ -38,6 +38,8 @@ class Header extends Component {
     };
 
     render() {
+
+        console.log( this.props )
         return(
             <header className='header-header'>
 
