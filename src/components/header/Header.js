@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 // import axios from 'axios';
-import { getUserInfo } from '../../redux/reducers/main-reducer';
+import { getUserInfo, getCompanyInfo, getCompanyUsersInfo } from '../../redux/reducers/main-reducer';
 import { connect } from 'react-redux';
+import CompanyDrop from './dropdowns/CompanyDrop';
+import TeamDrop from './dropdowns/TeamDrop';
+import AllDrop from './dropdowns/AllDrop';
 import './header.css';
+
 
 let buttonStyle = {
     headerButton: {
@@ -22,7 +27,11 @@ class Header extends Component {
 
     componentDidMount() {
 
-        this.props.getUserInfo()
+        this.props.getUserInfo().then(res => {
+            this.props.getCompanyInfo(this.props.user.user_company).then(res => {
+                this.props.getCompanyUsersInfo(this.props.user.user_company)
+            })
+        })
 
     };
 
@@ -60,17 +69,23 @@ class Header extends Component {
 
                     {/* EMPLOYEE VIEW */}
                     { this.props.user
-                        ? <div className='header-buttons'>
-                            <Link to='/dashboard' className='header-link'><RaisedButton>Home</RaisedButton></Link>
-                            <Link to='/analytics' className='header-link'><RaisedButton>Analytics</RaisedButton></Link>
-                            <Link to='/display-company' className='header-link'><RaisedButton>Company</RaisedButton></Link>
-                            <Link to='/display-projects' className='header-link'><RaisedButton>Projects</RaisedButton></Link>
-                            <Link to='/display-tasks' className='header-link'><RaisedButton>Tasks</RaisedButton></Link>
-                            <Link to='/display-teams' className='header-link'><RaisedButton>Teams</RaisedButton></Link>
-                            <Link to='/display-users' className='header-link'><RaisedButton>Users</RaisedButton></Link>
-                            <a href={process.env.REACT_APP_LOGOUT} className='header-link'>
-                            <RaisedButton>Logout</RaisedButton>
-                            </a>
+                        ? <div style={{width: '100%'}}>
+                            <div className='header-mid-buttons'>
+                                <Link to='/dashboard' className='header-link'><FlatButton>Home</FlatButton></Link>
+                                <Link to='/analytics' className='header-link'><FlatButton>Analytics</FlatButton></Link>
+                                <CompanyDrop />
+                                <TeamDrop />
+                                <a href={process.env.REACT_APP_LOGOUT} className='header-link'>
+                                    <FlatButton>Logout</FlatButton>
+                                </a>
+                            </div>
+                            <div className='header-tiny'>
+                                <Link to='/dashboard' className='header-link'><FlatButton>Home</FlatButton></Link>
+                                <AllDrop />
+                                <a href={process.env.REACT_APP_LOGOUT} className='header-link'>
+                                    <FlatButton>Logout</FlatButton>
+                                </a>
+                            </div>
                           </div>
                     : null }
                 </div>
@@ -87,4 +102,4 @@ function mapStateToProps( state ) {
     };
 }
 
-export default connect( mapStateToProps, {getUserInfo} )(Header);
+export default connect( mapStateToProps, {getUserInfo, getCompanyInfo, getCompanyUsersInfo} )(Header);

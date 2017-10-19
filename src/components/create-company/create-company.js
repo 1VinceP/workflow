@@ -69,7 +69,7 @@ class CreateCompany extends Component {
               </div>
               <div>
                 <input placeholder='Phone Number (optional)' className='create-company-company-name-input' onChange={(e) => this.props.addCompanyPhone(e.target.value)}  value={this.props.company_phone}/>
-                <input placeholder='Company Website' className='create-company-company-name-input' onChange={(e) => this.props.addCompanyLogo(e.target.value)}  value={this.props.company_logo}/>
+                <input placeholder='Company Website' className='create-company-company-name-input' onChange={(e) => this.props.addCompanyLogo(e.target.value)}  value={this.props.company_url}/>
               </div>
             </form>
             <div>

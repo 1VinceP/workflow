@@ -1,6 +1,8 @@
 import axios from 'axios';
 // const company_controller = require('./controllers/company_controller')
 const GET_USER_INFO = "GET_USER_INFO";
+const GET_COMPANY_INFO = "GET_COMPANY_INFO";
+const GET_COMPANY_USERS_INFO = "GET_COMPANY_USERS_INFO";
 const ADDCOMPANYINDUSTRY = "ADDCOMPANYINDUSTRY";
 const ADD_COMPANY_NAME = "ADD_COMPANY_NAME";
 const ADD_COMPANY_EMAIL = "ADD_COMPANY_EMAIL";
@@ -18,19 +20,21 @@ const EDIT_USER_ROLE = "EDIT_USER_ROLE";
 const ADD_UNIQUE_KEY_PROJECT_TASK = "ADD_UNIQUE_KEY_PROJECT_TASK";
    
 var initialState = {
-        user: null,
-        company_name:'',
-        company_email:'',
-        company_phone:'',
-        company_url:'',
-        company_industry:'',
-        company_badge:'',
-        user_firstname:'',
-        user_lastname:'',
-        user_email: '', 
-        user_picture:'',
-        user_display_name:'',
-        user_team:'',
+    user: null,
+    company: null,
+    company_users: [],
+    company_name: '',
+    company_email: '',
+    company_phone: '',
+    company_url: '',
+    company_industry: '',
+    company_badge: '',
+    user_firstname: '',
+    user_lastname: '',
+    user_email: '',
+    user_picture: '',
+    user_display_name: '',
+    user_team: '',
         user_role:'',
         project_unique_key:'',
     }
@@ -42,6 +46,8 @@ var initialState = {
         switch(action.type) {
             case GET_USER_INFO + '_FULFILLED':
                 return Object.assign({}, state, {user: action.payload})
+            case GET_COMPANY_INFO + '_FULFILLED':
+                return Object.assign({}, state, { company: action.payload })
             case ADDCOMPANYINDUSTRY:
                 return Object.assign({}, state, {company_industry: action.payload})
             case ADD_COMPANY_NAME:
@@ -52,8 +58,8 @@ var initialState = {
                 return Object.assign({}, state, {company_phone: action.payload})
             case ADD_COMPANY_URL:
                 return Object.assign({}, state, {company_url: action.payload})
-            case ADD_COMPANY:
-                return action.payload
+            case GET_COMPANY_USERS_INFO + '_FULFILLED':
+                return Object.assign({}, state, { company_users: action.payload })
             case ADD_COMPANY_LOGO_URL:
                 return Object.assign({}, state, {company_logo_url: action.payload})
             case EDIT_USER_FIRST_NAME:
@@ -117,6 +123,18 @@ var initialState = {
             payload: finalKey, 
             type:ADD_UNIQUE_KEY_PROJECT_TASK}
     }
+    
+    export function getCompanyUsersInfo(id) {
+        console.log("REDUCER ID: ", id)
+        const companyInfo = axios.get(`/api/company/users/${id}`).then(res => {
+            console.log("COMPANY DATA", res.data)
+            return res.data
+        })
+        return {
+            type: GET_COMPANY_USERS_INFO,
+            payload: companyInfo
+        }
+    }
 
     export function addCompanyIndustry(industrySelected){
         console.log('INDUSTRY', industrySelected)
@@ -136,67 +154,85 @@ var initialState = {
             payload: userInfo
         }
     }
+
+    export function getCompanyInfo(id) {
+        const companyInfo = axios.get(`/api/company/${id}`).then(res => {
+            console.log("COMPANY DATA", res.data)
+            return res.data
+        })
+        return {
+            type: GET_COMPANY_INFO,
+            payload: companyInfo
+        }
+    }
+
     export function addCompany(data) {
         console.log(data)
         return{
         type:ADD_COMPANY,    
         payload: data
-     
-        }
+
     }
-    
-    export function editUserFirstname(firstname){
-        // console.log('firstname is ', firstname)
-        return{
-            type: EDIT_USER_FIRST_NAME,
-            payload: firstname
-        }
+}
+
+export function editUserFirstname(firstname) {
+    // console.log('firstname is ', firstname)
+    return {
+        type: EDIT_USER_FIRST_NAME,
+        payload: firstname
     }
-    
-    export function editUserLastname(lastname){
-        // console.log('lastname is ', lastname)
-        return{
-            
-            type: EDIT_USER_LAST_NAME,
-            payload: lastname}
+}
+
+export function editUserLastname(lastname) {
+    // console.log('lastname is ', lastname)
+    return {
+
+        type: EDIT_USER_LAST_NAME,
+        payload: lastname
     }
-    
-    export function editUserEmail(email){
-        console.log('email is ', email)
-        return{
-            
-            type: EDIT_USER_EMAIL,
-            payload: email}
+}
+
+export function editUserEmail(email) {
+    // console.log('email is ', email)
+    return {
+
+        type: EDIT_USER_EMAIL,
+        payload: email
     }
-    
-    export function editUserPictureUrl(url){
-        console.log('url is ', url)
-        return{
-            
-            type: EDIT_USER_PICTURE_URL,
-            payload: url}
+}
+
+export function editUserPictureUrl(url) {
+    // console.log('url is ', url)
+    return {
+
+        type: EDIT_USER_PICTURE_URL,
+        payload: url
     }
-    
-    export function editUserDisplayName(display){
-        console.log('display is ', display)
-        return{
-            
-            type: EDIT_USER_DISPLAY_NAME,
-            payload: display}
+}
+
+export function editUserDisplayName(display) {
+    // console.log('display is ', display)
+    return {
+
+        type: EDIT_USER_DISPLAY_NAME,
+        payload: display
     }
-    
-    export function editUserTeam(team){
-        console.log('team is ', team)
-        return{
-            
-            type: EDIT_USER_TEAM,
-            payload: team}
+}
+
+export function editUserTeam(team) {
+    // console.log('team is ', team)
+    return {
+
+        type: EDIT_USER_TEAM,
+        payload: team
     }
-    
-    export function editUserRole(role){
-        console.log('role is ', role)
-        return{
-            
-            type: EDIT_USER_ROLE,
-            payload: role}
+}
+
+export function editUserRole(role) {
+    // console.log('role is ', role)
+    return {
+
+        type: EDIT_USER_ROLE,
+        payload: role
     }
+}
