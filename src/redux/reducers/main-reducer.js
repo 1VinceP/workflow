@@ -1,8 +1,10 @@
 import axios from 'axios';
 // const company_controller = require('./controllers/company_controller')
 const GET_USER_INFO = "GET_USER_INFO";
+const GET_TEAM_INFO = "GET_TEAM_INFO";
 const GET_COMPANY_INFO = "GET_COMPANY_INFO";
 const GET_COMPANY_USERS_INFO = "GET_COMPANY_USERS_INFO";
+const GET_COMPANY_TEAMS_INFO = "GET_COMPANY_TEAMS_INFO";
 const ADDCOMPANYINDUSTRY = "ADDCOMPANYINDUSTRY";
 const ADD_COMPANY_NAME = "ADD_COMPANY_NAME";
 const ADD_COMPANY_EMAIL = "ADD_COMPANY_EMAIL";
@@ -17,12 +19,16 @@ const EDIT_USER_PICTURE_URL = "EDIT_USER_PICTURE_URL";
 const EDIT_USER_DISPLAY_NAME = "EDIT_USER_DISPLAY_NAME";
 const EDIT_USER_TEAM = "EDIT_USER_TEAM";
 const EDIT_USER_ROLE = "EDIT_USER_ROLE";
+const EDIT_TEAM_NAME = "EDIT_TEAM_NAME";
+const EDIT_TEAM_DESCRIPTION = "EDIT_TEAM_DESCRIPTION";
 const ADD_UNIQUE_KEY_PROJECT_TASK = "ADD_UNIQUE_KEY_PROJECT_TASK";
    
 var initialState = {
     user: null,
-    company: null,
+    team: null,
+    company: [],
     company_users: [],
+    company_teams: [],
     company_name: '',
     company_email: '',
     company_phone: '',
@@ -35,9 +41,13 @@ var initialState = {
     user_picture: '',
     user_display_name: '',
     user_team: '',
-        user_role:'',
-        project_unique_key:'',
-    }
+    user_role:'',
+    project_unique_key:'',
+    team_name:'',
+    team_date: '',
+    team_description:'',
+    team_projects_completed: 0,
+}
     
     export default function reducer(state = initialState, action) {
         // console.log('action',action.type)
@@ -46,8 +56,12 @@ var initialState = {
         switch(action.type) {
             case GET_USER_INFO + '_FULFILLED':
                 return Object.assign({}, state, {user: action.payload})
+            case GET_TEAM_INFO + '_FULFILLED':
+                return Object.assign({}, state, {team: action.payload})
             case GET_COMPANY_INFO + '_FULFILLED':
                 return Object.assign({}, state, { company: action.payload })
+            case GET_COMPANY_TEAMS_INFO + '_FULFILLED':
+                return Object.assing({}, state, { company_teams: action.payload })
             case ADDCOMPANYINDUSTRY:
                 return Object.assign({}, state, {company_industry: action.payload})
             case ADD_COMPANY_NAME:
@@ -76,6 +90,10 @@ var initialState = {
                 return Object.assign({}, state, {user_team: action.payload})
             case EDIT_USER_ROLE:
                 return Object.assign({}, state, {user_role: action.payload})
+            case EDIT_TEAM_NAME:
+                return Object.assign({}, state, {team_name: action.payload})
+            case EDIT_TEAM_DESCRIPTION:
+                return Object.assign({}, state, {team_description: action.payload})
             case ADD_UNIQUE_KEY_PROJECT_TASK:
                 return Object.assign({}, state, {project_unique_key: action.payload})
             default:
@@ -136,6 +154,18 @@ var initialState = {
         }
     }
 
+    export function getCompanyTeamsInfo(id) {
+        console.log("REDUCER TEAM ID: ", id)
+        let cTeamInfo = axios.get(`/api/company/teams/${id}`).then(res => {
+            console.log("COMPANY Team DATA", res.data)
+            return res.data
+        })
+        return {
+            type: GET_COMPANY_TEAMS_INFO,
+            payload: cTeamInfo
+        }
+    }
+
     export function addCompanyIndustry(industrySelected){
         console.log('INDUSTRY', industrySelected)
         return{
@@ -152,6 +182,17 @@ var initialState = {
         return {
             type: GET_USER_INFO,
             payload: userInfo
+        }
+    }
+
+    export function getTeamInfo() {
+        const teamsInfo = axios.get('/api/team').then(res => {
+            console.log( res.data )
+            return res.data
+        })
+        return {
+            type: GET_TEAM_INFO,
+            payload: teamsInfo
         }
     }
 
@@ -172,6 +213,22 @@ var initialState = {
         type:ADD_COMPANY,    
         payload: data
 
+    }
+}
+
+export function editTeamName(teamname) {
+    console.log('teamname is ', teamname)
+    return {
+        type: EDIT_TEAM_NAME,
+        payload: teamname
+    }
+}
+
+export function editTeamDescription(description) {
+    console.log('Description is ', description)
+    return {
+        type: EDIT_TEAM_DESCRIPTION,
+        payload: description
     }
 }
 

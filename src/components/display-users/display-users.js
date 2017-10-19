@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './display-users.css';
 import RaisedButton from 'material-ui/RaisedButton';
 import { getUserInfo, getCompanyInfo, getCompanyUsersInfo } from '../../redux/reducers/main-reducer';
-// eslint-disable-next-line
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
@@ -18,7 +17,7 @@ class DisplayUsers extends Component {
     deleteUser(id) {
         confirmAlert({
             title: 'Confirm to submit',                     
-            message: 'Are you sure you want to do this.',   
+            message: 'Are you sure you want to do this?',   
             confirmLabel: 'Confirm',                        
             cancelLabel: 'Cancel',                          
             onConfirm: () => { axios.delete(`/api/delete/user/${id}`)
