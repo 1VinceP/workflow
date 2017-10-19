@@ -1,4 +1,8 @@
 module.exports = {
+
+        get_team: (req, res, next) => {
+            req.app.get('db').team.all_team().then(response => res.status(200).send(response))
+        },
     
         create_team: (req,res,next) => {
             let {team_name, team_date, team_description, team_projects_completed} = req.body;

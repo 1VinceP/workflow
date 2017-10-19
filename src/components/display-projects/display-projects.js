@@ -20,15 +20,6 @@ class DisplayProjects extends Component {
         }
     }
 
-    // componentDidMount() {
-    //     axios.get('/api/getusers').then(res => {
-    //         this.setState({
-    //             teamdata: res.data
-    //         })
-    //         console.log(this.state.teamdata)
-    //     })
-    // }
-
     render() {
 console.log('DISPLAY PROPS', this.props)
         let teamInfo = this.state.teamdata.map((e, i) => {
@@ -52,7 +43,7 @@ console.log('DISPLAY PROPS', this.props)
                     
                     <div className="button-container">
                     <a href='/#/create-project'>
-                    <button className="display-projects-button-container" onClick={()=>{this.props.addProjectUniqueKey(this.props.company_name)}}> + New Project</button>
+                    <button className="display-projects-button-container" onClick={()=>{this.props.addProjectUniqueKey(this.props.company.company_name)}}> + New Project</button>
                     </a>
 
                     </div>

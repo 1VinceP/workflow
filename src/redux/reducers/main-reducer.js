@@ -21,7 +21,7 @@ const ADD_UNIQUE_KEY_PROJECT_TASK = "ADD_UNIQUE_KEY_PROJECT_TASK";
    
 var initialState = {
     user: null,
-    company: null,
+    company: [],
     company_users: [],
     company_name: '',
     company_email: '',
