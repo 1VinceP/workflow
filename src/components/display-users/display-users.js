@@ -40,7 +40,6 @@ class DisplayUsers extends Component {
                     <div className="user-data">
                         <div className="user-name">
                             {e.user_firstname} {e.user_lastname}
-
                         </div>
                         <div className="user-email">
                             {e.user_email}
@@ -63,7 +62,6 @@ class DisplayUsers extends Component {
                         <Link to="/create-user"><RaisedButton primary={true} label="+ Create New User" /></Link>
                     </div>
                     <div className="left-column">
-
                         <Link to="/edit-user"><RaisedButton label="Edit User" primary={true} style={style} /></Link>
                         <RaisedButton label="Delete User" secondary={true} style={style} />
                     </div>

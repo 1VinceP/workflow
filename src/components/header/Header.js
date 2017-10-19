@@ -6,6 +6,7 @@ import { getUserInfo, getCompanyInfo, getCompanyUsersInfo } from '../../redux/re
 import { connect } from 'react-redux';
 import './header.css';
 
+
 let buttonStyle = {
     headerButton: {
         paddingLeft:'5px',

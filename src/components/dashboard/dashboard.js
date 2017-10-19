@@ -4,6 +4,7 @@ import Badge from 'material-ui/Badge';
 import IconButton from 'material-ui/IconButton';
 import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 import NewMenu from '../new-menu/new-menu';
+import axios from 'axios';
 
 let styles = {
     
@@ -15,7 +16,13 @@ let styles = {
     }
 }
 
-class Dashboard extends Component {
+export default class Dashboard extends Component {
+    constructor() {
+        super()
+        this.state = {
+         
+        }
+    }
 
     render() {
         return (
@@ -49,5 +56,3 @@ class Dashboard extends Component {
         )
     }
 }
-
-export default Dashboard;
