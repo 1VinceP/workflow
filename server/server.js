@@ -33,8 +33,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 //////////////////////////////    Authentication \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-
-
 passport.use(new Auth0Strategy({
     domain: process.env.AUTH_DOMAIN,
     clientID: process.env.AUTH_CLIENT_ID,
@@ -45,17 +43,6 @@ passport.use(new Auth0Strategy({
     const db = app.get('db');
     console.log( chalk.greenBright('profile: ', profile.id) )
     db.users.find_user(profile.id).then(user => {
-        // if (!user[0]) {
-        //     db.create_user([profile.displayName, profile.emails[0].value, profile.picture, profile.id]).then((user) => {
-        //         return done(null, user[0])
-        //     })
-        // } else if (user) {
-        //     console.log('Found User', user)
-        //     return done(null, user[0]);
-        // } else {
-        //     console.log('You are not a user.')
-        //     return done(null, user[0]);
-        // }
         if (user[0]) {
             console.log( chalk.greenBright('strategy:'), user )
             return done(null, user);
@@ -102,25 +89,15 @@ app.get('/auth/authorized', (req, res) => {
 //
 
 
-
 ////////////////////////////        COMPANY         /////////////////////////////////
 
-
-
 app.get('/api/company/getusers', company_controller.getCompanyUsers)
-
 app.get('/api/company/:id', company_controller.getCompany)
-
 app.get('/api/company/users/:id', company_controller.getCompanyUsersById)
 
 app.post('/api/addcompany', company_controller.create_company)
 
-
-
-
 ////////////////////////////        TEAM         /////////////////////////////////
-
-
 
 app.get('/api/team', team_controller.get_team)
 
@@ -128,15 +105,11 @@ app.post('/api/addteam', team_controller.create_team)
 
 ////////////////////////////        PROJECT         /////////////////////////////////
 
-
-
 app.get('/api/project', project_controller.get_projects)
 
 app.post('/api/addproject', project_controller.create_project)
 
 ////////////////////////////        TASK         /////////////////////////////////
-
-
 
 app.get('/api/task', task_controller.get_tasks)
 
@@ -144,17 +117,12 @@ app.post('/api/addtask', task_controller.create_task)
 
 ////////////////////////////        USERS         /////////////////////////////////
 
-
-
-
 app.get('/api/users', users_controller.get_users)
-
 app.get('/api/users/user/:id', users_controller.get_user_by_id)
 
 app.post('/api/edituser', users_controller.edit_user)
 app.post('/api/adduser', users_controller.create_user)
 app.post('/api/admin/adduser', users_controller.admin_create_user)
-
 
 app.delete('/api/delete/user/:id', users_controller.delete_user)
 
@@ -162,7 +130,6 @@ app.delete('/api/delete/user/:id', users_controller.delete_user)
 ////////////////////////////        ROLES         /////////////////////////////////
 
 app.get('/api/roles', role_controller.get_roles)
-
 app.get('/api/roles/users', role_controller.get_user_roles)
 
 app.post('/api/addrole', role_controller.create_role)

@@ -43,7 +43,7 @@ console.log('DISPLAY PROPS', this.props)
                     
                     <div className="button-container">
                     <a href='/#/create-project'>
-                    <button className="display-projects-button-container" onClick={()=>{this.props.addProjectUniqueKey(this.props.company[0].company_name)}}> + New Project</button>
+                    <button className="display-projects-button-container" onClick={()=>{this.props.addProjectUniqueKey(this.props.company.company_name)}}> + New Project</button>
                     </a>
 
                     </div>
