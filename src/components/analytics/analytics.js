@@ -16,10 +16,7 @@ var table1 = [
     { name: 'Group G', 'Projects Completed': 6, "On Time": 4, "Time to Completion(days)": 21, "Time Per Task": 8 },
 ];
 
-var table2 = [
-    { name: '', }
 
-]
 
 class Analytics extends Component {
     constructor() {

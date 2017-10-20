@@ -5,6 +5,7 @@ import IconButton from 'material-ui/IconButton';
 import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 import NewMenu from '../new-menu/new-menu';
 import axios from 'axios';
+import Table1 from '../analytics/table1';
 
 let styles = {
     
@@ -48,7 +49,7 @@ export default class Dashboard extends Component {
                             {/* <FontIcon className="material-icons">date_range</FontIcon> */}
                             </div>
                         </div>
-                        <div className="task-list"></div>
+                        <div className="task-list"><br/>Analytics<br/><br/><br/><Table1/></div>
                     </div>
                     <div className="current-stats-wrapper"></div>
                 </div>

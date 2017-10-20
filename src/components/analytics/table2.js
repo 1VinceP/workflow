@@ -20,16 +20,14 @@ class Table2 extends Component {
             teamName = e.team_name,
             teamProjects = e.team_projects_completed
             var table1 = [
-                { name: teamName, 'Projects Completed': teamProjects, "On Time": 1, "Time to Completion(days)": 24, "Time Per Task": 2 },
-                { name: teamName, 'Projects Completed': teamProjects, "On Time": 1, "Time to Completion(days)": 24, "Time Per Task": 2 },
-                { name: teamName, 'Projects Completed': teamProjects, "On Time": 1, "Time to Completion(days)": 24, "Time Per Task": 2 },
+                { name: teamName, 'Projects Completed': teamProjects, "On Time": 1, "Time to Completion(days)": 12, "Time Per Task": 2 }
                 
             ];
             //    onTime,
             //    timeToCompletion
             return (
                 < div >
-                <LineChart width={600} height={300} data={table1} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+                <LineChart width={500} height={250} data={table1} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
                     <Line strokeWidth={2} type="monotone" dataKey="Projects Completed" stroke="#da863d" />
                     <Line strokeWidth={2} type="monotone" dataKey="On Time" stroke="#ce1c2e" />
                     <Line strokeWidth={2} type="monotone" dataKey="Time to Completion(days)" stroke="#547cd5" />
