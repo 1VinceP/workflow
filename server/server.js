@@ -131,7 +131,7 @@ app.delete('/api/delete/team/:id', (req, res, nest) => {
     req.app.get('db').team.delete_team(req.params.id).then(response => res.status(200).send(response))
 })
 
-app.post('/api/addteam', team_controller.create_team)
+app.post('/api/addteam', team_controller.add_team)
 
 ////////////////////////////        PROJECT         /////////////////////////////////
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import './create-team.css';
-import {editTeamName, editTeamDescription, getTeamInfo, getCompanyInfo, getCompanyTeamsInfo} from '../../redux/reducers/main-reducer';
+import {editTeamName, editTeamDescription, getCompanyInfo, getCompanyTeamInfo} from '../../redux/reducers/main-reducer';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
@@ -63,4 +63,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-    editTeamName, editTeamDescription, getTeamInfo, getCompanyInfo, getCompanyTeamsInfo})(CreateTeam)
+    editTeamName, editTeamDescription, getCompanyInfo, getCompanyTeamInfo})(CreateTeam)
