@@ -47,6 +47,7 @@
 .create-project-body{
     width: 100vw;
     height: 100%;
+    background: #F9F9FA;
 }
 .create-project-main-container{
     display: flex;

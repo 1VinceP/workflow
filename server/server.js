@@ -142,6 +142,7 @@ app.post('/api/addproject', project_controller.create_project)
 ////////////////////////////        TASK         /////////////////////////////////
 
 app.get('/api/task', task_controller.get_tasks)
+app.get( '/api/getProjectTasks/:key', task_controller.get_project_tasks )
 
 app.post('/api/addtask', task_controller.create_task)
 

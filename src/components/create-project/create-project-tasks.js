@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
 import './create-project.css'
 
 class Create_Project_Tasks extends Component {
@@ -78,4 +80,11 @@ class Create_Project_Tasks extends Component {
     }
 }
 
-export default Create_Project_Tasks;
+function mapStateToProps( state ) {
+
+    return {
+        state
+    };
+}
+
+export default connect( mapStateToProps, {} )(Create_Project_Tasks);

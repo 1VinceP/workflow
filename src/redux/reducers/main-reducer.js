@@ -22,7 +22,8 @@ const EDIT_USER_ROLE = "EDIT_USER_ROLE";
 const EDIT_TEAM_NAME = "EDIT_TEAM_NAME";
 const EDIT_TEAM_DESCRIPTION = "EDIT_TEAM_DESCRIPTION";
 const ADD_UNIQUE_KEY_PROJECT_TASK = "ADD_UNIQUE_KEY_PROJECT_TASK";
-const ADD_COMPANY_CODE = "ADD_COMPANY_CODE"
+const ADD_COMPANY_CODE = "ADD_COMPANY_CODE";
+const CURRENT_PROJECT_TASKS = "CURRENT_PROJECT_TASKS";
    
 var initialState = {
     user: null,
@@ -45,6 +46,7 @@ var initialState = {
     user_team: '',
     user_role: '',
     project_unique_key: '',
+    current_project_tasks: []
 }
 
 export default function reducer(state = initialState, action) {
@@ -88,6 +90,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { user_role: action.payload })
         case ADD_UNIQUE_KEY_PROJECT_TASK:
             return Object.assign({}, state, { project_unique_key: action.payload })
+        case CURRENT_PROJECT_TASKS + '_FULFILLED':
+            return Object.assign({}, state, { current_project_tasks: action.payload })
         default:
             return state;
     }
@@ -277,6 +281,17 @@ export function editUserRole(role) {
 
         type: EDIT_USER_ROLE,
         payload: role
+    }
+}
+
+export function currentProjectTasks( key ) {
+
+    const task = axios.get( `/api/getProjectTasks/${key}` )
+        .then( response => response.data )
+
+    return {
+        type: CURRENT_PROJECT_TASKS,
+        payload: task
     }
 }
 
