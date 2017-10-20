@@ -27,13 +27,12 @@ class Header extends Component {
 
     componentDidMount() {
 
-        window.location.href !== 'http://localhost:3000/#/'
-            ?   this.props.getUserInfo().then(res => {
-                    this.props.getCompanyInfo(this.props.user.user_company).then(res => {
-                        this.props.getCompanyUsersInfo(this.props.user.user_company)
-                    })
-                })
-            : null;
+        this.props.getUserInfo().then(res => {
+            this.props.getCompanyInfo(this.props.user.user_company).then(res => {
+                this.props.getCompanyUsersInfo(this.props.user.user_company)
+                this.props.getCompanyTeamInfo(this.props.user.user_company)
+            })
+        })
 
     };
 
@@ -106,4 +105,4 @@ function mapStateToProps( state ) {
     };
 }
 
-export default connect( mapStateToProps, {getUserInfo, getCompanyInfo, getCompanyUsersInfo, getTeamInfo, getCompanyTeamsInfo} )(Header);
+export default connect( mapStateToProps, {getUserInfo, getCompanyInfo, getCompanyUsersInfo, getCompanyTeamInfo} )(Header);

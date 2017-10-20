@@ -105,8 +105,8 @@ app.get('/auth/authorized', (req, res) => {
 //     req.app.get('db').company.company_users(req.params.id).then(response => res.status(200).send(response))
 // })
 
-app.get('/api/company/teams/:id', (req, res, next) => {
-    req.app.get('db').company.company_teams(req.params.id).then(response => res.status(200).send(response))
+app.get('/api/company/team/:id', (req, res, next) => {
+    req.app.get('db').company.company_team(req.params.id).then(response => res.status(200).send(response))
 })
 
 app.get('/api/company/getteams', (req, res, next) => {
@@ -122,7 +122,16 @@ app.post('/api/addcompany', company_controller.create_company)
 
 app.get('/api/team', team_controller.get_team)
 
-app.post('/api/addteam', team_controller.add_team)
+
+app.get('/api/team', (req, res, next) => {
+    req.app.get('db').team.all_team().then(response => res.status(200).send(response))
+})
+
+app.delete('/api/delete/team/:id', (req, res, nest) => {
+    req.app.get('db').team.delete_team(req.params.id).then(response => res.status(200).send(response))
+})
+
+app.post('/api/addteam', team_controller.create_team)
 
 ////////////////////////////        PROJECT         /////////////////////////////////
 
