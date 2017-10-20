@@ -1,4 +1,4 @@
-.display-projects-button-container{
+.display-projects-button-container {
     width: 150px;
     background: #6859ea;
     border: none;
@@ -10,12 +10,12 @@
     color: white;
     cursor: pointer;
 }
-.display-projects-button-container:hover{
+.display-projects-button-container:hover {
     background: white;
     color:#6859ea;
     border: 2px solid #6859ea;
 }
-.display-projects-button-container:active{
+.display-projects-button-container:active {
     background: #6859ea;
     color:#fff;
     border: none;
