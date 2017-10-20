@@ -306,3 +306,20 @@
     align-self: flex-end;
     margin-top: 20px; 
 }
+.project-create-project-input-long-count{
+    width: 500px;
+    height: 35px;
+}
+.project-counter-container{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    
+
+}
+.project-character-count{
+    color: rgb(222, 222, 222);
+    margin-bottom:10px;
+    margin-left:-20px;
+    font-size: 10px;
+}

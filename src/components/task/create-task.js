@@ -37,6 +37,7 @@ class Create_task extends Component {
           this.handleTaskDateEnd =  this.handleTaskDateEnd.bind(this);
         
     }
+    
 
     handleOpen = () => {
         this.setState({open: true});

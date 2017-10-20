@@ -85,9 +85,16 @@ class Create_Project_Class extends Component {
 
                 {this.props.project_description === ''
                 ?
+                
                 <input placeholder='Project Description' className='project-create-project-input project-create-project-input-long' onChange={(e)=>this.props.addProjectDesc(e.target.value)}/>
+                
                 :
+                <div className='project-counter-container'>
                 <input defaultValue={this.props.project_description} className='project-create-project-input project-create-project-input-long' onChange={(e)=>this.props.addProjectDesc(e.target.value)}/>
+            
+                    <div className='project-character-count'>{this.props.project_description.length}/{300}</div>
+                    </div>
+            
                 }
 {/* PROJECT PRICE  */}  
                 {this.props.project_price === 0.00
