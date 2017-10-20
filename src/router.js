@@ -17,6 +17,7 @@ import DisplayTasks from './components/display-tasks/display-tasks';
 import DisplayProjects from './components/display-projects/display-projects';
 import DisplayCompany from './components/display-company/display-company';
 import CreateTeam from './components/create-team/create-team';
+import Analytics from './components/analytics/analytics';
 // import axios from 'axios';
 
 // function checkForLog() {
@@ -34,7 +35,7 @@ export default (
         {/* EMPLOYEE ROUTES */}
         <Route exact path='/' component={LandingPage} />
         <Route path='/dashboard' component={Dashboard} />
-        <Route path='/analytics' />
+        <Route path='/analytics' component={Analytics} />
         
         /* CLIENT ROUTES */
         <Route path='/status'  />

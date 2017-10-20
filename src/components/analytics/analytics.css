@@ -1,3 +1,29 @@
-.css{
+.analytics-container {
+
+}
+.title {
+
+}
+.details {
+
+}
+.firstchart {
+    padding: 30px;
+}
+.firsty {
+    /* border: 1px solid black; */
+    margin-left: 10px;
+    padding-top: 30px;
+    padding-right: 40px;
     
+}
+.secondchart {
+
+}
+.thirdchart {
+    background: #10a843;
+    background: #547cd5;
+    background: #ce1c2e;
+    background: #da863d;
+
 }
