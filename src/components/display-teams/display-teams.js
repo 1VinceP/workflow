@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './display-teams.css';
 import RaisedButton from 'material-ui/RaisedButton';
-// eslint-disable-next-line
+import { getTeamInfo, getCompanyInfo, getCompanyTeamsInfo } from '../../redux/reducers/main-reducer';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'

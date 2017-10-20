@@ -16,7 +16,7 @@ const team_controller = require('./controllers/team_controller')
 const task_controller = require('./controllers/task_controller')
 const role_controller = require('./controllers/role_controller')
 const users_controller = require('./controllers/users_controller')
-const port = 3005;
+
 const app = express();
 app.use(bodyParser.json() );
 app.use(cors() );
@@ -33,8 +33,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 //////////////////////////////    Authentication \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-
-
 passport.use(new Auth0Strategy({
     domain: process.env.AUTH_DOMAIN,
     clientID: process.env.AUTH_CLIENT_ID,
@@ -45,17 +43,6 @@ passport.use(new Auth0Strategy({
     const db = app.get('db');
     console.log( chalk.greenBright('profile: ', profile.id) )
     db.users.find_user(profile.id).then(user => {
-        // if (!user[0]) {
-        //     db.create_user([profile.displayName, profile.emails[0].value, profile.picture, profile.id]).then((user) => {
-        //         return done(null, user[0])
-        //     })
-        // } else if (user) {
-        //     console.log('Found User', user)
-        //     return done(null, user[0]);
-        // } else {
-        //     console.log('You are not a user.')
-        //     return done(null, user[0]);
-        // }
         if (user[0]) {
             console.log( chalk.greenBright('strategy:'), user )
             return done(null, user);
@@ -102,35 +89,38 @@ app.get('/auth/authorized', (req, res) => {
 //
 
 
-
 ////////////////////////////        COMPANY         /////////////////////////////////
 
 
 
-app.get('/api/company/getusers', (req, res, next) => {
-    req.app.get('db').company.company_users().then(response => res.status(200).send(response))
-})
+// app.get('/api/company/getusers', (req, res, next) => {
+//     req.app.get('db').company.company_users().then(response => res.status(200).send(response))
+// })
 
-app.get('/api/company/:id', (req, res, next) => {
-    req.app.get('db').company.get_company(req.params.id).then(response => res.status(200).send(response))
-})
+// app.get('/api/company/:id', (req, res, next) => {
+//     req.app.get('db').company.get_company(req.params.id).then(response => res.status(200).send(response))
+// })
 
-app.get('/api/company/users/:id', (req, res, next) => {
-    req.app.get('db').company.company_users(req.params.id).then(response => res.status(200).send(response))
-})
+// app.get('/api/company/users/:id', (req, res, next) => {
+//     req.app.get('db').company.company_users(req.params.id).then(response => res.status(200).send(response))
+// })
 
 app.get('/api/company/team/:id', (req, res, next) => {
     req.app.get('db').company.company_team(req.params.id).then(response => res.status(200).send(response))
 })
 
+app.get('/api/company/getteams', (req, res, next) => {
+    req.app.get('db').company.company_teams(req.params.id).then(response => res.status(200).send(response))
+})
+app.get('/api/company/getusers', company_controller.getCompanyUsers)
+app.get('/api/company/:id', company_controller.getCompany)
+app.get('/api/company/users/:id', company_controller.getCompanyUsersById)
 
 app.post('/api/addcompany', company_controller.create_company)
 
-
-
-
 ////////////////////////////        TEAM         /////////////////////////////////
 
+app.get('/api/team', team_controller.get_team)
 
 
 app.get('/api/team', (req, res, next) => {
@@ -145,62 +135,37 @@ app.post('/api/addteam', team_controller.create_team)
 
 ////////////////////////////        PROJECT         /////////////////////////////////
 
-
-
-app.get('/api/project', (req, res, next) => {
-    req.app.get('db').project.all_project().then(response => res.status(200).send(response))
-})
+app.get('/api/project', project_controller.get_projects)
 
 app.post('/api/addproject', project_controller.create_project)
 
 ////////////////////////////        TASK         /////////////////////////////////
 
-
-
-app.get('/api/task', (req, res, next) => {
-    req.app.get('db').task.all_task().then(response => res.status(200).send(response))
-})
+app.get('/api/task', task_controller.get_tasks)
 
 app.post('/api/addtask', task_controller.create_task)
 
 ////////////////////////////        USERS         /////////////////////////////////
 
-
-
-
-app.get('/api/users', (req, res, next) => {
-    req.app.get('db').users.all_users().then(response => res.status(200).send(response))
-})
-
-app.get('/api/users/user/:id', (req, res, nest) => {
-    req.app.get('db').users.user_by_id(req.params.id).then(response => res.status(200).send(response))
-})
+app.get('/api/users', users_controller.get_users)
+app.get('/api/users/user/:id', users_controller.get_user_by_id)
 
 app.post('/api/edituser', users_controller.edit_user)
 app.post('/api/adduser', users_controller.create_user)
 app.post('/api/admin/adduser', users_controller.admin_create_user)
 
-
-app.delete('/api/delete/user/:id', (req, res, nest) => {
-    req.app.get('db').users.delete_user(req.params.id).then(response => res.status(200).send(response))
-})
+app.delete('/api/delete/user/:id', users_controller.delete_user)
 
 
 ////////////////////////////        ROLES         /////////////////////////////////
 
-app.get('/api/roles', (req,res,next) => {
-    req.app.get('db').roles.all_roles().then(response => res.status(200).send(response))
-})
-
-app.get('/api/roles/users', (req,res,next) => {
-    let {query} = req
-    req.app.get('db').roles.users_for_roles(parseInt(query.users)).then(response => res.status(200).send(response))
-})
+app.get('/api/roles', role_controller.get_roles)
+app.get('/api/roles/users', role_controller.get_user_roles)
 
 app.post('/api/addrole', role_controller.create_role)
 
 
-
+const port = 3005;
 app.listen(port, ()=>{
     console.log( chalk.cyan.underline(`Listening_on_port_${port}`) )
 })

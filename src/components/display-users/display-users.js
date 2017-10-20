@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './display-users.css';
 import RaisedButton from 'material-ui/RaisedButton';
 import { getUserInfo, getCompanyInfo, getCompanyUsersInfo } from '../../redux/reducers/main-reducer';
-// eslint-disable-next-line
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'

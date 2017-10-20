@@ -1,6 +1,7 @@
 import axios from 'axios';
 // const company_controller = require('./controllers/company_controller')
 const GET_USER_INFO = "GET_USER_INFO";
+const GET_TEAM_INFO = "GET_TEAM_INFO";
 const GET_COMPANY_INFO = "GET_COMPANY_INFO";
 const GET_COMPANY_USERS_INFO = "GET_COMPANY_USERS_INFO";
 const GET_COMPANY_TEAM_INFO = "GET_COMPANY_TEAM_INFO";
@@ -18,11 +19,15 @@ const EDIT_USER_PICTURE_URL = "EDIT_USER_PICTURE_URL";
 const EDIT_USER_DISPLAY_NAME = "EDIT_USER_DISPLAY_NAME";
 const EDIT_USER_TEAM = "EDIT_USER_TEAM";
 const EDIT_USER_ROLE = "EDIT_USER_ROLE";
+const EDIT_TEAM_NAME = "EDIT_TEAM_NAME";
+const EDIT_TEAM_DESCRIPTION = "EDIT_TEAM_DESCRIPTION";
 const ADD_UNIQUE_KEY_PROJECT_TASK = "ADD_UNIQUE_KEY_PROJECT_TASK";
-
+const ADD_COMPANY_CODE = "ADD_COMPANY_CODE"
+   
 var initialState = {
     user: null,
-    company: null,
+    team: null,
+    company: [],
     company_users: [],
     company_team: [],
     company_name: '',
@@ -31,6 +36,7 @@ var initialState = {
     company_url: '',
     company_industry: '',
     company_badge: '',
+    company_code:'',
     user_firstname: '',
     user_lastname: '',
     user_email: '',
@@ -196,6 +202,22 @@ export function addCompany(data) {
     }
 }
 
+export function editTeamName(teamname) {
+    console.log('teamname is ', teamname)
+    return {
+        type: EDIT_TEAM_NAME,
+        payload: teamname
+    }
+}
+
+export function editTeamDescription(description) {
+    console.log('Description is ', description)
+    return {
+        type: EDIT_TEAM_DESCRIPTION,
+        payload: description
+    }
+}
+
 export function editUserFirstname(firstname) {
     // console.log('firstname is ', firstname)
     return {
@@ -257,3 +279,7 @@ export function editUserRole(role) {
         payload: role
     }
 }
+
+// let count = companyName.split('')
+// let projectKey = companyName.charAt(0) + companyName.charAt(1) + companyName.charAt(2) + count.length + count[count.length - 2];
+// return projectKey.toUpperCase()

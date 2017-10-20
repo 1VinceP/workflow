@@ -18,7 +18,7 @@ class DisplayCompany extends Component {
                 {this.props.state.company ? 
                 <div className="user-company-wrapper">
                     <div className="title">
-                        <h2>{this.props.state.company[0].company_name}</h2>
+                        <h2>{this.props.state.company.company_name}</h2>
                         Company Information
                     </div>
                     <div>This will be Company Info</div>
