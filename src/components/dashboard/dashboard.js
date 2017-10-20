@@ -20,9 +20,19 @@ let styles = {
 export default class Dashboard extends Component {
     constructor() {
         super()
+        
         this.state = {
          
         }
+    }
+
+    componentDidMount() {
+        axios.get( '/api/getTasksByUser' )
+            .then( response => {
+                this.setState({
+                    userTasks: response.data
+                })
+            } )
     }
 
     render() {

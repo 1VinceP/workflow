@@ -10,7 +10,16 @@ html {
     height: 60px;
     box-shadow: 0px 5px 9px 0px rgba(165, 165, 165, 0.25);
     display: flex;
-    position: sticky;
+    position: fixed;
+    z-index: 100;
+    background: transparent;
+    transition: background .35s, height .35s, color .35s;
+}
+
+[page-has-scrolled='true'] {
+    background: rgba( 0, 0, 0, 0.2 );
+    height: 40px;
+    
 }
 
 .header-link {
@@ -33,7 +42,7 @@ html {
     margin-left: 20px;
     display: flex;
     align-items: center;
-    color: grey
+    color: grey;
 }
 
 .header-right {
@@ -60,18 +69,16 @@ html {
 .header-link-buttons {
     width: 100px;
     background: transparent;
-    color: #6859ea;
+    color: #808080;
     font-size: 18px;
     border: none;
     outline: none;
     cursor: pointer;
     margin-right: 10px;
-    /* border-radius: 5px;
-    border: 2px solid #6859ea; */
 }
-/* .header-link-buttons:hover {
-    text-shadow: 0px 0px 20px #6859ea;
-} */
+.header-link-buttons:hover {
+    border-bottom: 2px solid #6859ea;
+}
 
 .header-mid-buttons {
     width: 100%;
@@ -123,4 +130,10 @@ a{
     .header-right {
         width: 40%;
     }
+}
+
+
+
+[page-is-scrolled='true'] {
+    color: #F9F9FA;
 }

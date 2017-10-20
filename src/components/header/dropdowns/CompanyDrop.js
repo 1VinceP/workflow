@@ -37,7 +37,7 @@ class CompanyDrop extends Component {
     render() {
         return(
             <div>
-                <button onClick={this.handleOpen} className='header-link-buttons' >Company</button>
+                <button onClick={this.handleOpen} className='header-link-buttons' page-is-scrolled={this.props.scroll} >Company</button>
                 <Popover open={this.state.open}
                          onRequestClose={this.handleClose} 
                          anchorEl={this.state.anchorEl}
