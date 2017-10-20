@@ -119,6 +119,9 @@ app.get('/api/company/users/:id', (req, res, next) => {
     req.app.get('db').company.company_users(req.params.id).then(response => res.status(200).send(response))
 })
 
+app.get('/api/company/team/:id', (req, res, next) => {
+    req.app.get('db').company.company_team(req.params.id).then(response => res.status(200).send(response))
+})
 
 
 app.post('/api/addcompany', company_controller.create_company)
@@ -132,6 +135,10 @@ app.post('/api/addcompany', company_controller.create_company)
 
 app.get('/api/team', (req, res, next) => {
     req.app.get('db').team.all_team().then(response => res.status(200).send(response))
+})
+
+app.delete('/api/delete/team/:id', (req, res, nest) => {
+    req.app.get('db').team.delete_team(req.params.id).then(response => res.status(200).send(response))
 })
 
 app.post('/api/addteam', team_controller.create_team)

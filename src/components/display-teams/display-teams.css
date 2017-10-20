@@ -1,0 +1,40 @@
+.edit-team-popup input{
+    /* width: 50px; */
+}
+
+.edit-team-description{
+    margin-top: 10px;
+    height: auto;
+    width: auto;
+    min-width: 200px;
+    border: none;
+    text-align: center;
+}
+
+.edit-team-description:focus{
+    border: 1px solid rgba(0,0,0, .3);
+    border-radius: 5px;
+    outline: none;
+    text-align: left;
+}
+.edit-team-users-section{
+    margin-top: 25px;
+}
+
+.edit-team-users-container {
+    /* margin-top: 15px; */
+    height: 110px;
+    width: 220px;
+    overflow: auto;
+    border-top: 1px solid rgba(0,0,0, .3);
+    /* border-radius: 10px; */
+}
+
+.edit-team-users-user{
+    margin-top: 10px;
+    margin-left: 13px;
+}
+
+.users-header{
+    margin-left: 80px;
+}

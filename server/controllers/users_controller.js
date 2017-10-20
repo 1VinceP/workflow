@@ -15,9 +15,9 @@ module.exports = {
         },
 
         edit_user: (req,res,next) => {
-            let {user_firstname, user_lastname, user_display_name, user_id} = req.body;
+            let {user_firstname, user_lastname, user_email, user_id} = req.body;
             
-            req.app.get('db').users.edit_user(user_firstname, user_lastname, user_display_name, user_id)
+            req.app.get('db').users.edit_user(user_firstname, user_lastname, user_email, user_id)
             .then( () => res.status(200).send() );
         }
     }
