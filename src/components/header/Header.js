@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 // import axios from 'axios';
-import { getUserInfo, getCompanyInfo, getCompanyUsersInfo } from '../../redux/reducers/main-reducer';
+import { getUserInfo, getCompanyInfo, getCompanyUsersInfo, getCompanyTeamInfo } from '../../redux/reducers/main-reducer';
 import { connect } from 'react-redux';
 import CompanyDrop from './dropdowns/CompanyDrop';
 import TeamDrop from './dropdowns/TeamDrop';
@@ -27,13 +27,12 @@ class Header extends Component {
 
     componentDidMount() {
 
-        window.location.href !== 'http://localhost:3000/#/'
-            ?   this.props.getUserInfo().then(res => {
-                    this.props.getCompanyInfo(this.props.user.user_company).then(res => {
-                        this.props.getCompanyUsersInfo(this.props.user.user_company)
-                    })
-                })
-            : null;
+        this.props.getUserInfo().then(res => {
+            this.props.getCompanyInfo(this.props.user.user_company).then(res => {
+                this.props.getCompanyUsersInfo(this.props.user.user_company)
+                this.props.getCompanyTeamInfo(this.props.user.user_company)
+            })
+        })
 
     };
 
@@ -106,4 +105,4 @@ function mapStateToProps( state ) {
     };
 }
 
-export default connect( mapStateToProps, {getUserInfo, getCompanyInfo, getCompanyUsersInfo} )(Header);
+export default connect( mapStateToProps, {getUserInfo, getCompanyInfo, getCompanyUsersInfo, getCompanyTeamInfo} )(Header);

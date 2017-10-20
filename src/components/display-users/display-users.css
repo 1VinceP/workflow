@@ -47,7 +47,7 @@
     /* flex-direction: column;
     align-items: center; */
     /* background: green; */
-    margin-top: 60px;
+    margin: 60px 0;
 }
 
 .display-users-users-display {
@@ -57,7 +57,7 @@
     flex-direction: column;
     justify-content: space-between;
     border-radius: 5px;
-    padding: 10px 10px 20px 10px;
+    padding: 10px 20px 20px 20px;
 }
 .display-users-users-display:nth-child(odd) {
     background: linear-gradient(to left, #34ebe9, #d0ffae);    
