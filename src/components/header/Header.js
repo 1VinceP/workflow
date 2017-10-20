@@ -3,11 +3,7 @@ import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 // import axios from 'axios';
-<<<<<<< HEAD
 import { getUserInfo, getCompanyInfo, getCompanyUsersInfo, getCompanyTeamInfo } from '../../redux/reducers/main-reducer';
-=======
-import { getUserInfo, getCompanyInfo, getCompanyUsersInfo, getTeamInfo, getCompanyTeamInfo } from '../../redux/reducers/main-reducer';
->>>>>>> master
 import { connect } from 'react-redux';
 import CompanyDrop from './dropdowns/CompanyDrop';
 import TeamDrop from './dropdowns/TeamDrop';
