@@ -75,19 +75,19 @@ class Header extends Component {
                     { this.props.user
                         ? <div style={{width: '100%'}}>
                             <div className='header-mid-buttons'>
-                                <Link to='/dashboard' className='header-link'><FlatButton>Home</FlatButton></Link>
-                                <Link to='/analytics' className='header-link'><FlatButton>Analytics</FlatButton></Link>
+                                <Link to='/dashboard' className='header-link'><button className='header-link-buttons'>Home</button></Link>
+                                <Link to='/analytics' className='header-link'><button className='header-link-buttons'>Analytics</button></Link>
                                 <CompanyDrop />
                                 <TeamDrop />
                                 <a href={process.env.REACT_APP_LOGOUT} className='header-link'>
-                                    <FlatButton>Logout</FlatButton>
+                                    <button className='header-link-buttons'>Logout</button>
                                 </a>
                             </div>
                             <div className='header-tiny'>
-                                <Link to='/dashboard' className='header-link'><FlatButton>Home</FlatButton></Link>
+                                <Link to='/dashboard' className='header-link'><button className='header-link-buttons'>Home</button></Link>
                                 <AllDrop />
                                 <a href={process.env.REACT_APP_LOGOUT} className='header-link'>
-                                    <FlatButton>Logout</FlatButton>
+                                    <button className='header-link-buttons'>Logout</button>
                                 </a>
                             </div>
                           </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import './edit-user.css';
+import { Link } from 'react-router-dom';
 import {  editUserFirstname
         , editUserLastname
         , editUserEmail
@@ -73,29 +74,31 @@ class EditUser extends Component {
     }
 
     render() {
+
+        console.log( 'User Props!!', this.props.location.query.fName, this.props.location.query.lName, this.props.location.query.email )
        
         return (
             <div className="profile-modal">
                 <div className="firstname">
-                    <TextField onChange={(e) => this.props.editUserFirstname(e.target.value)} 
-                    placeholder={this.props.user? this.props.user['user_firstname'] : "First Name"}
+                    <input onChange={(e) => this.props.editUserFirstname(e.target.value)} 
+                    placeholder={this.props.location.query.fName ? this.props.location.query.fName : "First Name"}
                     
                     //hintText="First Name"
                      />
 
                 </div>
                 <div className="lastname">
-                    <TextField onChange={(e) => this.props.editUserLastname(e.target.value)} 
-                    placeholder={this.getLastName()}
+                    <input onChange={(e) => this.props.editUserLastname(e.target.value)} 
+                    placeholder={this.props.location.query.lName ? this.props.location.query.lName : 'Last Name'}
                      />
                 </div>
                 <div className="display-name">
-                    <TextField onChange={(e) => this.props.editUserDisplayName(e.target.value)}
-                    placeholder={this.getDisplayName()}
+                    <input onChange={(e) => this.props.editUserDisplayName(e.target.value)}
+                    placeholder={this.props.location.query.email ? this.props.location.query.email : 'Email Address'}
                     
                     />
                 </div>
-                <button onClick={() => this.submitUser()}>Save Changes</button>
+                <Link to='/display-users' ><button className='save-edit-user' onClick={() => this.submitUser()}>Save Changes</button></Link>
             </div>
         )
     }
