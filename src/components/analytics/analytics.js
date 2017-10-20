@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './analytics.css';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import { connect } from 'react-redux';
+import Table1 from './table1';
+import Table2 from './table2';
 
 
-
-
-let table1 = [
+var table1 = [
     { name: 'Group A', 'Projects Completed': 7, "On Time": 1, "Time to Completion(days)": 24, "Time Per Task": 2 },
     { name: 'Group B', 'Projects Completed': 3, "On Time": 1, "Time to Completion(days)": 22, "Time Per Task": 3 },
     { name: 'Group C', 'Projects Completed': 6, "On Time": 2, "Time to Completion(days)": 22, "Time Per Task": 7 },
@@ -15,13 +16,12 @@ let table1 = [
     { name: 'Group G', 'Projects Completed': 6, "On Time": 4, "Time to Completion(days)": 21, "Time Per Task": 8 },
 ];
 
-let table2 = [
+var table2 = [
     { name: '', }
 
 ]
 
-
-export default class Analytics extends Component {
+class Analytics extends Component {
     constructor() {
         super();
 
@@ -31,8 +31,6 @@ export default class Analytics extends Component {
     }
 
     render() {
-
-
 
         return (
             <div className="analytics-container">
@@ -44,20 +42,19 @@ export default class Analytics extends Component {
                 </div>
                 <div className="firstchart">
                     Team Completion Numbers To Date
-                    <LineChart width={600} height={300} data={table1} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-                        <Line lineSize="10px" type="monotone" dataKey="Projects Completed" stroke="#da863d" />
-                        <Line type="monotone" dataKey="On Time" stroke="#ce1c2e" />
-                        <Line type="monotone" dataKey="Time to Completion(days)" stroke="#547cd5" />
-                        <Line type="monotone" dataKey="Time Per Task" stroke="#10a843" />
-                        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                        <XAxis dataKey="name" />
-                        <YAxis />
-                        <Tooltip />
-                    </LineChart>
+                    <Table1/>
                 </div>
-                <div className="secondchart"></div>
+                <div className="secondchart">
+                    <Table2/>
+                </div>
                 <div className="thirdchart"></div>
             </div>
         )
     }
 }
+
+function mapStateToProps(state) {
+    return state;
+}
+
+export default connect(mapStateToProps)(Analytics)
