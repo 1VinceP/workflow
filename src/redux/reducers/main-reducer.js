@@ -18,7 +18,16 @@ const EDIT_USER_DISPLAY_NAME = "EDIT_USER_DISPLAY_NAME";
 const EDIT_USER_TEAM = "EDIT_USER_TEAM";
 const EDIT_USER_ROLE = "EDIT_USER_ROLE";
 const ADD_UNIQUE_KEY_PROJECT_TASK = "ADD_UNIQUE_KEY_PROJECT_TASK";
-const ADD_COMPANY_CODE = "ADD_COMPANY_CODE"
+const ADD_COMPANY_CODE = "ADD_COMPANY_CODE";
+const GET_PROJECT = "GET_PROJECT";
+const ADD_PROJECT_NAME = "ADD_PROJECT_NAME";
+const ADD_PROJECT_START_DATE = "ADD_PROJECT_START_DATE";
+const ADD_PROJECT_FINISH_DATE = "ADD_PROJECT_FINISH_DATE";
+const ADD_PROJECT_DESCRIPTION = "ADD_PROJECT_DESCRIPTION";
+const ADD_PROJECT_PRICE = "ADD_PROJECT_PRICE";
+
+
+
    
 var initialState = {
     user: null,
@@ -37,8 +46,16 @@ var initialState = {
     user_picture: '',
     user_display_name: '',
     user_team: '',
-        user_role:'',
-        project_unique_key:'',
+    user_role:'',
+    project_unique_key:'',
+    project_name:'',
+    project_start_date:'',
+    project_finish_date:'',
+    project_description:'',
+    project_price:0.00,
+    project_paid:false,
+    project_creator:'',
+    projects:[],
     }
     
     export default function reducer(state = initialState, action) {
@@ -79,9 +96,19 @@ var initialState = {
             case EDIT_USER_ROLE:
                 return Object.assign({}, state, {user_role: action.payload})
             case ADD_UNIQUE_KEY_PROJECT_TASK:
-                return Object.assign({}, state, {project_unique_key: action.payload})
-            case ADD_UNIQUE_KEY_PROJECT_TASK:
-                return Object.assign({}, state, {project_unique_key: action.payload})
+                return Object.assign({}, state, {project_unique_key: action.companyName, project_creator: action.projectCreator})
+            case ADD_PROJECT_NAME:
+                return Object.assign({}, state, {project_name: action.payload})
+            case ADD_PROJECT_START_DATE:
+                return Object.assign({}, state, {project_start_date: action.payload})
+            case ADD_PROJECT_FINISH_DATE:
+                return Object.assign({}, state, {project_finish_date: action.payload})
+            case ADD_PROJECT_DESCRIPTION:
+                return Object.assign({}, state, {project_description: action.payload})
+            case ADD_PROJECT_PRICE:
+                return Object.assign({}, state, {project_price: action.payload})
+            case GET_PROJECT:
+                return Object.assign({}, state, {projects: action.payload})
             default:
                 return state;
         }
@@ -125,14 +152,51 @@ var initialState = {
             payload: companyLogo, 
             type:ADD_COMPANY_URL}
     }
+    
+    export function addProjectName(projectName) {
+        console.log(projectName)
+        return { 
+            payload: projectName, 
+            type:ADD_PROJECT_NAME}
+    }
+    
+    export function addProjectStart(event, date ) {
+        let formatDate = date.toString().split(' ')
+        let projectDate = `${formatDate[1]} ${formatDate[2]} ${formatDate[3]}`
+        console.log(projectDate )
+        return { 
+            payload: projectDate, 
+            type:ADD_PROJECT_START_DATE}
+    }
+    export function addProjectEnd(event, date) {
+        let formatDate = date.toString().split(' ')
+        let projectDate = `${formatDate[1]} ${formatDate[2]} ${formatDate[3]}`
+        console.log(projectDate )
+        return { 
+            payload: projectDate, 
+            type:ADD_PROJECT_FINISH_DATE}
+    }
+    export function addProjectDesc(projectDesc) {
+        console.log(projectDesc)
+        return { 
+            payload: projectDesc, 
+            type:ADD_PROJECT_DESCRIPTION}
+    }
+    export function addProjectPrice(projectPrice) {
+        let convertCurrency = Math.round(projectPrice * 100)/100
+        console.log(convertCurrency)
+        return { 
+            payload: convertCurrency, 
+            type:ADD_PROJECT_PRICE}
+    }
 
-    export function addProjectUniqueKey(companyName) {
+    export function addProjectUniqueKey(companyName, projectCreator) {
         let projectKey = companyName + new Date();
         let finalKey = projectKey.replace(/[^A-Z0-9]/ig, "0").toLowerCase();
 
         console.log(finalKey)
         return { 
-            payload: finalKey, 
+            payload: finalKey, projectCreator,
             type:ADD_UNIQUE_KEY_PROJECT_TASK}
     }
     
@@ -247,6 +311,10 @@ export function editUserRole(role) {
         type: EDIT_USER_ROLE,
         payload: role
     }
+}
+export function getProject(projectData) {
+    
+
 }
 
 // let count = companyName.split('')

@@ -14,11 +14,6 @@ export default function () {
                    
                 </div>
                     <Create_Project_Class />
-                <div>
-                    <CreateTaskFunctional />
-                </div>
-                    <Create_Project_Task />
-
             </div>
         </div>
     )
