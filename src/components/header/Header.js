@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 // import axios from 'axios';
-import { getUserInfo, getCompanyInfo, getCompanyUsersInfo, getTeamInfo, getCompanyTeamInfo } from '../../redux/reducers/main-reducer';
+import { getUserInfo, getCompanyInfo, getCompanyUsersInfo, getCompanyTeamInfo } from '../../redux/reducers/main-reducer';
 import { connect } from 'react-redux';
 import CompanyDrop from './dropdowns/CompanyDrop';
 import TeamDrop from './dropdowns/TeamDrop';
@@ -74,19 +74,19 @@ class Header extends Component {
                     { this.props.user
                         ? <div style={{width: '100%'}}>
                             <div className='header-mid-buttons'>
-                                <Link to='/dashboard' className='header-link'><FlatButton>Home</FlatButton></Link>
-                                <Link to='/analytics' className='header-link'><FlatButton>Analytics</FlatButton></Link>
+                                <Link to='/dashboard' className='header-link'><button className='header-link-buttons'>Home</button></Link>
+                                <Link to='/analytics' className='header-link'><button className='header-link-buttons'>Analytics</button></Link>
                                 <CompanyDrop />
                                 <TeamDrop />
                                 <a href={process.env.REACT_APP_LOGOUT} className='header-link'>
-                                    <FlatButton>Logout</FlatButton>
+                                    <button className='header-link-buttons'>Logout</button>
                                 </a>
                             </div>
                             <div className='header-tiny'>
-                                <Link to='/dashboard' className='header-link'><FlatButton>Home</FlatButton></Link>
+                                <Link to='/dashboard' className='header-link'><button className='header-link-buttons'>Home</button></Link>
                                 <AllDrop />
                                 <a href={process.env.REACT_APP_LOGOUT} className='header-link'>
-                                    <FlatButton>Logout</FlatButton>
+                                    <button className='header-link-buttons'>Logout</button>
                                 </a>
                             </div>
                           </div>

@@ -37,7 +37,7 @@ class AllDrop extends Component {
     render() {
         return(
             <div>
-                <FlatButton onClick={this.handleOpen} label='Menu' />
+                <button onClick={this.handleOpen} className='header-link-buttons' >Menu</button>
                 <Popover open={this.state.open}
                          onRequestClose={this.handleClose} 
                          anchorEl={this.state.anchorEl}

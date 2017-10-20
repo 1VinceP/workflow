@@ -93,7 +93,7 @@ class DisplayUsers extends Component {
     render() {
         let userInfo = this.props.company_users.map((e, i) => {
             return (
-                <div key={i}>
+                <div key={i} className='display-users-users-display'>
                     <div className="user-data">
                         <div className="user-name">
                             {e.user_firstname} {e.user_lastname}
@@ -102,8 +102,11 @@ class DisplayUsers extends Component {
                             {e.user_email}
                         </div>
                     </div>
-                    <RaisedButton onClick={() => this.editUser(e.user_firstname, e.user_lastname, e.user_email, e.user_id)} label="Edit User" primary={true} style={style} />
-                    <RaisedButton onClick={() => this.deleteUser(e.user_id)} label="Delete User" secondary={true} style={style} />
+                    <div className='display-users-users-display-button-div'>
+                        <button className='display-users-edit-button' onClick={() => this.editUser(e.user_firstname, e.user_lastname, e.user_email, e.user_id)}>Edit User</button>
+                        <button className='display-users-delete-button' onClick={() => this.deleteUser(e.user_id)} >Delete User</button>
+                    </div>
+                    
                 </div>
             )
         })
@@ -111,20 +114,14 @@ class DisplayUsers extends Component {
 
         return (
             <div className="display-users-container">
-                <div className="user-data-wrapper">
-                    <div className="title">
-                        Company User List
-                    </div>
-                    <div className="button-container">
-                        <Link to="/create-user"><RaisedButton primary={true} label="+ Create New User" /></Link>
-                    </div>
-                    <div className="left-column">
-                        <Link to="/edit-user"><RaisedButton label="Edit User" primary={true} style={style} /></Link>
-                        <RaisedButton label="Delete User" secondary={true} style={style} />
-                    </div>
-                    <div className="right-column">
-                        {userInfo}
-                    </div>
+                <div className="title">
+                    Company User List
+                </div>
+                <div className="button-container">
+                    <Link to="/create-user"><button className='display-users-create-new-button'>+ Create New User</button></Link>
+                </div>
+                <div className="display-users-data-column">
+                    {userInfo}
                 </div>
             </div>
         )

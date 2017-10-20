@@ -57,20 +57,38 @@ class DisplayTeams extends Component {
     }
 
     editUsersForTeam(id) {
+       function addUserToTeam(e, array){
+            var user = e;
+            var x;
+            if(array.includes(user)){
+                x = array.indexOf(user)
+                array.splice(x, 1)
+            } else {
+                newArray.push(user)
+            }
+            console.log('CLICKED NEW ARRAY:', array)
+            return array
+        }
+        var newArray = []
         var teamId = id
         var newArray = []
         var theUsers = this.props.company_users
         // return (<img src={x} alt="" />)
+        theUsers.map((e, i) => {
+            if(e.user_team === id){
+                newArray.push(e.user_id)
+            }
+        })
         var usersForTeam = theUsers.map((e, i) => {
-            if (e.user_team === id) {
                 return (
                     <div key={i}>
-                        <input id="allbox" type="checkbox" className="edit-team-users-user" />
-                        <label htmlFor="allbox">{e.user_firstname} {e.user_lastname}</label>
+                        <input onClick={() => addUserToTeam(e.user_id, newArray)} id={e.user_id} defaultChecked={e.user_team === id ? true : false} type="checkbox" className="edit-team-users-user" />
+                        <label htmlFor={e.user_id}>{e.user_firstname} {e.user_lastname}</label>
                     </div>
                 )
-    }
+    // }
 })
+console.log('NewAray YOOOOO: ', newArray)
 return usersForTeam
     }
 
@@ -175,10 +193,7 @@ render() {
                 <div className="button-container">
                     <Link to="/create-team"><RaisedButton primary={true} label="+ Create New Team" /></Link>
                 </div>
-                <div className="left-column">
-                    This will be team info
-                <RaisedButton label="Delete Team" secondary={true} style={style} />
-                </div>
+              
                 <div className="right-column">
                     {teamInfo}
                 </div>

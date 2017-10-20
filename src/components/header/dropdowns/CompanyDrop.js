@@ -37,7 +37,7 @@ class CompanyDrop extends Component {
     render() {
         return(
             <div>
-                <FlatButton onClick={this.handleOpen} label='Company' style={{marginRight: '5px'}} />
+                <button onClick={this.handleOpen} className='header-link-buttons' >Company</button>
                 <Popover open={this.state.open}
                          onRequestClose={this.handleClose} 
                          anchorEl={this.state.anchorEl}
