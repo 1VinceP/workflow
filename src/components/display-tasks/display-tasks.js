@@ -28,7 +28,7 @@ export default class DisplayTasks extends Component {
     // }
 
     render() {
-
+// eslint-disable-next-line
         let teamInfo = this.state.teamdata.map((e, i) => {
             return (
                 <div>

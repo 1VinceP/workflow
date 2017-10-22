@@ -1,6 +1,7 @@
 import axios from 'axios';
 // const company_controller = require('./controllers/company_controller')
 const GET_USER_INFO = "GET_USER_INFO";
+// eslint-disable-next-line
 const GET_TEAM_INFO = "GET_TEAM_INFO";
 const GET_COMPANY_INFO = "GET_COMPANY_INFO";
 const GET_COMPANY_USERS_INFO = "GET_COMPANY_USERS_INFO";
@@ -22,6 +23,7 @@ const EDIT_USER_ROLE = "EDIT_USER_ROLE";
 const EDIT_TEAM_NAME = "EDIT_TEAM_NAME";
 const EDIT_TEAM_DESCRIPTION = "EDIT_TEAM_DESCRIPTION";
 const ADD_UNIQUE_KEY_PROJECT_TASK = "ADD_UNIQUE_KEY_PROJECT_TASK";
+// eslint-disable-next-line
 const ADD_COMPANY_CODE = "ADD_COMPANY_CODE"
    
 var initialState = {
@@ -151,7 +153,7 @@ export function getCompanyUsersInfo(id) {
 }
 
 export function getCompanyTeamInfo(id) {
-    console.log("REDUCER ID: ", id)
+    // console.log("REDUCER ID: ", id)
     const companyTeamInfo = axios.get(`/api/company/team/${id}`).then(res => {
         console.log("COMPANY TEAM DATA", res.data)
         return res.data
@@ -173,7 +175,7 @@ export function addCompanyIndustry(industrySelected) {
 
 export function getUserInfo() {
     const userInfo = axios.get('/login/user').then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         return res.data
     })
     return {

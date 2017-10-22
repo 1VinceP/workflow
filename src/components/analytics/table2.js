@@ -13,12 +13,12 @@ class Table2 extends Component {
     }
 
     render() {
-
+        (console.log("Object", this.props.company_team))
             return (
-                < div >
+            < div >
                 <LineChart width={350} height={250} data={this.props.company_team} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
                     <Line strokeWidth={2} type="monotone" dataKey="team_projects_completed" stroke="#da863d" />
-                    <Line strokeWidth={2} type="monotone" dataKey="On Time" stroke="#ce1c2e" />
+                    <Line strokeWidth={2} type="monotone" dataKey="team_company" stroke="#ce1c2e" />
                     <Line strokeWidth={2} type="monotone" dataKey="Time to Completion(days)" stroke="#547cd5" />
                     <Line strokeWidth={2} type="monotone" dataKey="Time Per Task" stroke="#10a843" />
                     <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />

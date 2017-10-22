@@ -5,9 +5,7 @@ import { connect } from 'react-redux'
 
 import CreateCompany from '../create-company/create-company'
 
-let style = {
-    margin: 12,
-};
+
 
 class DisplayCompany extends Component {
 
