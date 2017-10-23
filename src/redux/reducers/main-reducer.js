@@ -356,12 +356,12 @@ export function getProject(projectData) {
 
 }
 
-export function currentProjectTasks( key ) {
+export function currentProjectTasks( key, body ) {
 
-    const task = axios.get( `/api/getProjectTasks/${key}` )
+    const task = axios.post( `/api/addtask/${key}`, body )
         .then( response => {
             console.log( 'redux task', response )
-            response.data 
+            return response.data 
         } )
 
     return {

@@ -46,7 +46,7 @@
     flex-wrap:wrap;
 }
 .create-project-body{
-    width: 100vw;
+    width: 100%;
     height: 100%;
     background: #F9F9FA;
 }
@@ -63,11 +63,11 @@
 }
 .project-tasks-created-container{
     height: 150px;
-    width:550px;
+    width: 80vw;
     overflow-x: scroll;
     padding:0;
     display: flex;
-    justify-content: space-between
+    /* justify-content: space-between */
 }
 
 .project-tasks-created-container::-webkit-scrollbar {
@@ -81,20 +81,75 @@
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
 }
 
-.project-created-task{
-    height: 120px;
-    width: 120px;
-    background: linear-gradient(to right, #6859ea , #34ebe9);
-    margin: 10px;
+.box-arrow {
+    display: flex;
+}
+
+.project-created-task {
+    height: 140px;
+    width: 160px;
+    background: green;
     padding: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
-    border-radius: 80px;
+    color: black;
     cursor: pointer;
     text-align: center;
+    border-radius: 5px 0 0 5px;
 }
+
+.arrow {
+    width: 0;
+	height: 0;
+	border-top: 70px solid transparent;
+    border-bottom: 70px solid transparent;
+    margin-right: -52px;
+}
+
+.task-odd {
+    background: red;
+}
+
+.task-even {
+    background: blue;
+}
+
+.task-odd-arrow {
+	border-left: 50px solid red;
+}
+
+.task-even-arrow {
+	border-left: 50px solid blue;
+}
+
+
+
+/* .project-created-task {
+    position: relative;
+	background: #88b7d5; */
+	/* border: 4px solid #c2e1f5; */
+/* } */
+
+/* .project-created-task:after, .project-created-task:before {
+    left: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+} */
+
+
+/* .project-created-task:before {
+    border-color: rgba(194, 225, 245, 0);
+	border-left-color: #c2e1f5;
+	border-width: 95px;
+	margin-top: -95px;
+} */
+
 .create-project-titles-created-task{
     margin: 60px;
 }

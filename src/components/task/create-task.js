@@ -95,11 +95,12 @@ class Create_task extends Component {
         task_show: state.taskShow,
         task_link: state.taskLink
       }
-      axios.post('/api/addtask', body)
-        .then( this.props.currentProjectTasks() )
-          .then( ()=>{ this.setState({
-            taskShow: false
-          })})
+      // axios.post('/api/addtask', body)
+      //   .then( this.props.currentProjectTasks( this.props.project_unique_key ) )
+      //     .then( ()=>{ this.setState({
+      //       taskShow: false
+      //     })})
+          this.props.currentProjectTasks( this.props.project_unique_key, body )
             .then(()=>{this.handleClose()})
               .then( console.log( this.props ) )
     }
