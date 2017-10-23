@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './dashboard.css';
 // import IconButton from 'material-ui/IconButton';
 import NewMenu from '../new-menu/new-menu';
+import {Link} from 'react-router-dom';
 // import axios from 'axios';
 // import Table1 from '../analytics/table1';
 // eslint-disable-next-line
@@ -53,6 +54,9 @@ export default class Dashboard extends Component {
                 </div>
                 <div className="current-stats-wrapper">
                         {/* <br/>Analytics<br/><br/><br/><Table1/> */}
+                </div>
+                <div >
+                    <Link className="chat" to="/chat">Chat</Link>
                 </div>
             </div>
         )

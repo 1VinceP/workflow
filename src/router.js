@@ -18,6 +18,7 @@ import DisplayProjects from './components/display-projects/display-projects';
 import DisplayCompany from './components/display-company/display-company';
 import CreateTeam from './components/create-team/create-team';
 import Analytics from './components/analytics/analytics';
+import Chat from './components/chat/chat';
 // import axios from 'axios';
 
 // function checkForLog() {
@@ -39,7 +40,7 @@ export default (
         
         {/* CLIENT ROUTES */}
         <Route path='/status'  />
-        <Route path='/chat' />
+        <Route path='/chat' component={Chat}/>
         <Route path='/edit-user' component={EditUser} />
         <Route path='/display-users' component={DisplayUsers} />
         <Route path='/display-company' component={DisplayCompany}/>

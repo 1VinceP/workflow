@@ -1,0 +1,51 @@
+.messagebox{
+
+}
+
+.singlemessage {
+
+}
+
+.infoholder{
+
+}
+
+.username {
+
+}
+
+.message {
+
+}
+
+.messagingcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.previous-messages {
+    width: 100vw;
+    background: lightgrey;
+}
+
+.formbox {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 40px;
+}
+
+.textarea {
+    height: 20px;
+    width: 100vw;
+}
+
+.intro {
+
+}
+
+.subintro {
+
+}
