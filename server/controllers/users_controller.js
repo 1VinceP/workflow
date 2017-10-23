@@ -32,6 +32,18 @@ module.exports = {
         delete_user: (req, res, next) => {
             req.app.get('db').users.delete_user(req.params.id).then(response => res.status(200).send(response))
         },
+
+        edit_user_team: (req,res,next) => {
+            let {user_team, user_id} = req.body;
+            
+            req.app.get('db').users.edit_user_team(user_team, user_id)
+            .then( () => res.status(200).send() );
+        },
+
+        remove_user_team: (req,res,next) => {            
+            req.app.get('db').users.remove_user_team(req.params.id).then( response => res.status(200).send(response) );
+        }, 
+        
         update_company_id_code: (req,res,next) =>{
             let {user_company, user_id} = req.body;
             
