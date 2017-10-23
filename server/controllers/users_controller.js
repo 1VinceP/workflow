@@ -29,7 +29,18 @@ module.exports = {
             .then( () => res.status(200).send() );
         },
 
-        delete_user: (req, res, nest) => {
+        delete_user: (req, res, next) => {
             req.app.get('db').users.delete_user(req.params.id).then(response => res.status(200).send(response))
-        }
+        },
+        update_company_id_code: (req,res,next) =>{
+            let {user_company, user_id} = req.body;
+            
+            req.app.get('db').users.update_user_company_code(user_company, user_id)
+            .then( () => res.status(200).send() );
+
+        },
+        get_user_by_email: (req, res, nest) => {
+            req.app.get('db').users.user_by_email(req.params.id).then(response => res.status(200).send(response))
+        },
+
     }

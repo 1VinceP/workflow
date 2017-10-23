@@ -1,6 +1,7 @@
 module.exports = {
 
     login: (req, res) => {
+        console.log(req.user)
         if (!req.user) {
             return res.status(404).send('User not found')
         } else {

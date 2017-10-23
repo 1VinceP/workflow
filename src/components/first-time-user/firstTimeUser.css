@@ -1,0 +1,82 @@
+.first-time-user-container{
+    width: 60%;
+    margin: auto;
+
+}
+.first-time-user-options-container{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.first-time-user-titles{
+    font-family: helvetica;
+    margin: 15px;
+    color: rgb(178, 178, 178);
+    font-size: 22px;
+    text-align: center;
+}
+.first-time-user-create-company-container{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 48%;
+    justify-content: space-between
+
+}
+
+.first-time-user-join-company-container{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 48%;
+
+}
+.first-time-user-divider-line{
+    height: 150px;
+    width: 1px;
+    background: lightgrey;
+    align-self: center;
+}
+.first-time-user-button-create{
+height: 35px;
+width: 150px;
+color: white;
+background: #509DEA;
+border: none;
+outline: none;
+border-radius: 4px;
+font-size: 16px;
+cursor: pointer;
+}
+.first-time-user-button-join{
+    height: 35px;
+    width: 150px;
+    color: white;
+    background: #509DEA;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    }
+    .first-time-user-button-join-input{
+        border: none;
+        outline: none;
+        font-family: helvetica;
+        font-size: 16px;
+        color: grey;
+        border-bottom: 1px solid rgb(227, 227, 227);
+        width: 255px;
+        height: 35px;
+
+        margin-bottom: 15px;
+    }
+
+    .task-create-task-input::placeholder{
+        border: none;
+        outline: none;
+        font-family: helvetica;
+        font-size: 16px;
+        color: rgb(217, 217, 217);
+    }

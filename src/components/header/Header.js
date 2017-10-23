@@ -24,6 +24,12 @@ let buttonStyle = {
 }
 
 class Header extends Component {
+    constructor(){
+        super();
+        this.state={
+            displayCompany: false
+        }
+    }
 
     componentDidMount() {
 
