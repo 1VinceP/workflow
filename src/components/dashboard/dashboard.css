@@ -112,3 +112,15 @@ html {
     align-items: center;
     border-radius: 5px
 }
+
+.chat {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    font-size: 25px;
+    padding: 7px 15px 7px 15px;
+    margin-right: 50px;
+    background: white;
+    border: 1px solid black;
+    border-radius: 7px 7px 0px 0px;
+}

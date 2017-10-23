@@ -8,8 +8,9 @@ class Create_Project_Tasks extends Component {
         super();
 
         this.state = {
-            showDetails: 'false',
-            open: null
+            showDetails: 'false', // This prevents the task info from appearing in unwanted places
+            open: null,
+            expandInfo: 'false' // This shows the task info when the task is clicked
         }
     }
 
@@ -20,27 +21,26 @@ class Create_Project_Tasks extends Component {
 
 
     showTaskDetails( taskName ) {
-
-        console.log( 'TASK NAME', taskName )
-
-        console.log( 'OPEN??', this.state.open )
-
         let task = document.getElementById( taskName )
+
         if( this.state.open === null ) {
-            this.setState({ open: taskName })
+            this.setState({ open: taskName, expandInfo: 'true' })
             task.style.width = '420px'
+            task.taskyShowDeets = 'true'
         }
         else if( this.state.open > 0 && this.state.open !== taskName ) {
              document.getElementById(this.state.open).style.width = '160px'
+             document.getElementById(this.state.open).taskyShowDeets = 'false'
+
              this.setState({ open: taskName })
              task.style.width = '420px'
+             task.taskyShowDeets = 'true'
         }
         else {
-            this.setState({ open: null })
+            this.setState({ open: null, expandInfo: 'false' })
             task.style.width = '160px'
+            task.taskyShowDeets = 'false'
         }
-
-        console.log( 'OPEN, OR NAH?', this.state.open )
     }
 
     render() {
@@ -63,13 +63,17 @@ class Create_Project_Tasks extends Component {
     //            <div className='tasky-close' onClick={ () => this.showTaskDetails() } >Close</div>
     //        </div>
     //    } ) 
-    //    : <p>No Tasks</p>
+    //    : null
 
        mappedTaskToCircle = this.props.current_project_tasks.map( ( task, i ) => {
            return (
                <section className='box-arrow' key={i}>
                    <div onClick={() => this.showTaskDetails( task.task_name )} id={task.task_name} className={`project-created-task ${ i % 2 === 0 ? 'task-odd' : 'task-even' }`} style={ { zIndex: 1000 - i + '' } } >
-                        {task.task_name}
+                        <div className='tasky-name'>{task.task_name}</div>
+                        <div taskyShowDeets='false' >{task.task_start_date}</div>
+                        <div taskyShowDeets='false' >{task.task_finished_date}</div>
+                        <div taskyShowDeets='false' >{task.task_description}</div>
+                        <div taskyShowDeets='false' >{task.task_link}</div>
                     </div>
                     <div className={`arrow ${ i % 2 === 0 ? 'task-odd-arrow' : 'task-even-arrow' }`} style={ { zIndex: 1000 - i + '' } } ></div>
                </section>

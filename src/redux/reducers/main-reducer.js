@@ -63,7 +63,9 @@ var initialState = {
     project_paid:false,
     project_creator:'',
     projects:[],
-    current_project_tasks: []
+    current_project_tasks: [],
+    project_tasks: [],
+    user_tasks: []
     }
     
     export default function reducer(state = initialState, action) {
