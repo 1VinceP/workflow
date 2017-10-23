@@ -170,13 +170,10 @@ app.post('/api/edituser', users_controller.edit_user)
 app.post('/api/adduser', users_controller.create_user)
 app.post('/api/admin/adduser', users_controller.admin_create_user)
 
-<<<<<<< HEAD
 app.post('/api/edituser/team', users_controller.edit_user_team)
 app.post('/api/edituser/removeteam/:id', users_controller.remove_user_team)
-=======
 app.put(`/api/company_code`, users_controller.update_company_id_code)
 
->>>>>>> master
 
 app.delete('/api/delete/user/:id', users_controller.delete_user)
 
