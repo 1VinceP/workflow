@@ -1,3 +1,16 @@
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.display-team-container {
+    width: 100%;
+    padding: 0 20%;
+    background: #F9F9FA;
+}
+
 .edit-team-popup input{
     /* width: 50px; */
 }
