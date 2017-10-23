@@ -2,6 +2,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    background: #F9F9FA;
+    padding: 0 5%;
 }
 
 .title{
@@ -51,16 +53,17 @@
 }
 
 .display-users-users-display {
-    width: 48%;
-    margin-top: 10px;
+    width: 45%;
+    margin-top: 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border-radius: 5px;
     padding: 10px 20px 20px 20px;
+    box-shadow: 0px 8px 12px #bdbdbd;
 }
 .display-users-users-display:nth-child(odd) {
-    background: linear-gradient(to left, #34ebe9, #d0ffae);    
+    background: linear-gradient(to left, #34ebe9, #d0ffae);
 }
 .display-users-users-display:nth-child(even) {
     background: linear-gradient(to right, #34ebe9, #d0ffae);    
@@ -73,7 +76,7 @@
     flex-direction: column;
     padding: 10px;
     background: rgba(0, 0, 0, 0.4);
-    box-shadow: 8px 8px 14px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.6);
     color: white;
     border-radius: 5px;
 }

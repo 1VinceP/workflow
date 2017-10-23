@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import { currentProjectTasks } from '../../redux/reducers/main-reducer';
 import { connect } from 'react-redux';
 import axios from 'axios'
 import Dialog from 'material-ui/Dialog';
@@ -94,11 +95,14 @@ class Create_task extends Component {
         task_show: state.taskShow,
         task_link: state.taskLink
       }
-      axios.post('/api/addtask', body).then(()=>{
-        axios.get('/api/task')
-      }).then(()=>{ this.setState({
-        taskShow: false
-      })}).then(()=>{this.handleClose()})
+      // axios.post('/api/addtask', body)
+      //   .then( this.props.currentProjectTasks( this.props.project_unique_key ) )
+      //     .then( ()=>{ this.setState({
+      //       taskShow: false
+      //     })})
+          this.props.currentProjectTasks( this.props.project_unique_key, body )
+            .then(()=>{this.handleClose()})
+              .then( console.log( this.props ) )
     }
     
       render() {
@@ -150,7 +154,6 @@ class Create_task extends Component {
                 <input  name='taskRole' placeholder='Role' className='task-create-task-input task-create-task-input-role'  onChange={(e)=>{
               this.handleTaskInput(e)}}/>
               </div>
-              <button onClick={()=>{this.createUniqueKey()}}>Key</button>
               <input  name='taskLink' placeholder='Task Link' className='task-create-task-input task-create-task-input-long'  onChange={(e)=>{
               this.handleTaskInput(e)}}/>
             </Dialog>
@@ -162,4 +165,4 @@ class Create_task extends Component {
       return state
     }
 
-export default connect( mapStateToProps, {} )(Create_task)
+export default connect( mapStateToProps, {currentProjectTasks} )(Create_task)

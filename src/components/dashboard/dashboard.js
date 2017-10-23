@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './dashboard.css';
 // import IconButton from 'material-ui/IconButton';
 import NewMenu from '../new-menu/new-menu';
+import axios from 'axios';
 import {Link} from 'react-router-dom';
 // import axios from 'axios';
 // import Table1 from '../analytics/table1';
@@ -19,9 +20,19 @@ let styles = {
 export default class Dashboard extends Component {
     constructor() {
         super()
+        
         this.state = {
          
         }
+    }
+
+    componentDidMount() {
+        axios.get( '/api/getTasksByUser' )
+            .then( response => {
+                this.setState({
+                    userTasks: response.data
+                })
+            } )
     }
 
     render() {
