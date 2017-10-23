@@ -38,8 +38,8 @@ class CreateCompany extends Component {
       company_code: this.props.company_code,
   }
      axios.post('/api/addcompany', data).then(response =>{
-      console.log('CODE IN PROPS', this.props )
-     })
+      console.log('CODE IN PROPS', response )
+     }).then()
     console.log(data)
     
 }
