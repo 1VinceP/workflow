@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
+// import FlatButton from 'material-ui/FlatButton';
 // import axios from 'axios';
 import { getUserInfo, getCompanyInfo, getCompanyUsersInfo, getCompanyTeamInfo } from '../../redux/reducers/main-reducer';
 import { connect } from 'react-redux';
@@ -10,7 +10,7 @@ import TeamDrop from './dropdowns/TeamDrop';
 import AllDrop from './dropdowns/AllDrop';
 import './header.css';
 
-
+// eslint-disable-next-line
 let buttonStyle = {
     headerButton: {
         paddingLeft:'5px',

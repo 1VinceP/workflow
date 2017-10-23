@@ -22,6 +22,7 @@ class DisplayProjects extends Component {
 
     render() {
 console.log('DISPLAY PROPS', this.props)
+// eslint-disable-next-line
         let teamInfo = this.state.teamdata.map((e, i) => {
             return (
                 <div>
@@ -43,7 +44,7 @@ console.log('DISPLAY PROPS', this.props)
                     
                     <div className="button-container">
                     <a href='/#/create-project'>
-                    <button className="display-projects-button-container" onClick={()=>{this.props.addProjectUniqueKey(this.props.company[0].company_name)}}> + New Project</button>
+                    <button className="display-projects-button-container" onClick={()=>{this.props.addProjectUniqueKey(this.props.company[0].company_name, this.props.user.user_id)}}> + New Project</button>
                     </a>
 
                     </div>

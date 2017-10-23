@@ -3,6 +3,7 @@
     margin: 15px;
     color: rgb(178, 178, 178);
     font-size: 22px;
+    text-align: center;
 }
 
 .project-create-project-input{
@@ -209,4 +210,117 @@
     bottom: 20px;
     right: 20px;
     cursor: pointer;
+}
+.project-created-project-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+    width: 500px;
+    border-bottom: 1px solid rgb(220, 220, 220);
+    padding-bottom: 30px;
+}
+.project-dates-start-end-container{
+    display: flex;
+    margin-bottom: 10px;
+
+}
+.project-created-descritpion{
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+.project-created-name{
+    font-size: 24px;
+    color: #f42e78;
+    margin-bottom: 10px;
+    font-family: helvetica;
+    font-weight: bold;
+}
+.project-created-price{
+    color:rgb(14, 178, 14);
+    margin-bottom: 10px;
+    font-size: 14px;
+    border: 1px solid rgb(14, 178, 14);
+    width: 100px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+}
+
+.project-created-save-project{
+    height: 35px;
+    width: 150px;
+    color: white;
+    background: #4dbf71;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.project-save-project{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.project-created-cont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    flex-wrap:wrap;
+}
+.project-save-add-tasks-text{
+    align-self: center;
+    margin: 0 10px 0 10px;
+    padding-right: 10px;
+    font-size: 12px;
+    color:rgb(178, 178, 178)
+}
+.project-created-edit-project{
+    height: 25px;
+    font-size: 10px;
+    width: 100px;
+    color: white;
+    background: #fe7b7b;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-size: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.project-created-submit-project{
+    height: 35px;
+    width: 150px;
+    color: white;
+    background: #4dbf71;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-top: 20px; 
+}
+.project-create-project-input-long-count{
+    width: 500px;
+    height: 35px;
+}
+.project-counter-container{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    
+
+}
+.project-character-count{
+    color: rgb(222, 222, 222);
+    margin-bottom:10px;
+    margin-left:-20px;
+    font-size: 10px;
 }

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import axios from 'axios'
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+// eslint-disable-next-line
 import RaisedButton from 'material-ui/RaisedButton';
 import DatePicker from 'material-ui/DatePicker';
 
@@ -38,6 +39,7 @@ class Create_task extends Component {
           this.handleTaskDateEnd =  this.handleTaskDateEnd.bind(this);
         
     }
+    
 
     handleOpen = () => {
         this.setState({open: true});
@@ -89,7 +91,7 @@ class Create_task extends Component {
         task_user_1: state.taskUser,
         task_description: state.taskDesc,
         task_role: state.taskRole,
-        task_unique_key: state.uniqueKey,
+        task_unique_key: this.props.project_unique_key,
         task_show: state.taskShow,
         task_link: state.taskLink
       }

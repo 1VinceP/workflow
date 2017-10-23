@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import './dashboard.css';
-import Badge from 'material-ui/Badge';
-import IconButton from 'material-ui/IconButton';
-import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
+// import IconButton from 'material-ui/IconButton';
 import NewMenu from '../new-menu/new-menu';
 import axios from 'axios';
-import Table1 from '../analytics/table1';
-
+// import Table1 from '../analytics/table1';
+// eslint-disable-next-line
 let styles = {
     
     icon: {
@@ -45,14 +43,14 @@ export default class Dashboard extends Component {
                     <div className="left-side">
                         <div className="notifications">
                             <div className='dash-module-title' >Alerts</div>
-                            <Badge 
+                            {/* <Badge 
                                 badgeContent={1}
                                 secondary={true}
                                 badgeStyle={{ top: 6, left: 9, height: 15, width: 15, transform: 'translateX(-11vw)' }}>
                                 <IconButton style={styles.icon} tooltip="Notifications">
                                     <NotificationsIcon />
                                 </IconButton>
-                            </Badge>
+                            </Badge> */}
                         </div>
                         <div className="calendar">
                             <div className='dash-module-title'>Calendar</div>
@@ -64,7 +62,7 @@ export default class Dashboard extends Component {
                     </div>
                 </div>
                 <div className="current-stats-wrapper">
-                        <br/>Analytics<br/><br/><br/><Table1/>
+                        {/* <br/>Analytics<br/><br/><br/><Table1/> */}
                 </div>
             </div>
         )
