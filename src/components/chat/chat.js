@@ -19,7 +19,7 @@ class Chat extends Component {
 
 
     componentDidMount() {
-        // this.setState({ username: this.props.user.user_firstname })
+        // this.props.getUserInfo();
     }
 
     handleChange(event) {
@@ -27,17 +27,18 @@ class Chat extends Component {
     }
 
     sendMessage() {
+        // e.preventDefault();
         if (this.value !== '') {
             console.log(this.state.value)
             this.state.messages.push(this.state.value)
             console.log(this.state.messages)
-            this.setState({
-                value: ''
-            })
         }
         else {
-            // console.log('enter message')
+            console.log('No message to send')
         }
+        this.setState({
+            value: ''
+        })
     }
 
     render() {
@@ -66,9 +67,11 @@ class Chat extends Component {
                 <div className="previous-messages">{messageList}</div>
                 <div className="formbox">
                 <div className="subintro">Begin chatting here.</div>
-                    <input type="text" value={this.value}
-                      onChange={(e) => this.handleChange(e.target.value)} autoFocus='true'></input>
-                      <button  onClick={() => this.sendMessage()}>Submit</button>
+                <form >
+                    <input type="text" value={this.state.value}
+                      onChange={(e) => this.handleChange(e.target.value)} autoFocus='true' placeholder='Message'></input>
+                      <button type="submit" onSubmit={() => this.sendMessage()}>Submit</button>
+                      </form>
                 </div>
                 {/* <EmbeddedSlackReact channel="https://dndevmtn.slack.com/messages/C7EG6DVEV" token="https://dndevmtn.slack.com/messages/C7EG6DVEV" /> */}
             </div>
