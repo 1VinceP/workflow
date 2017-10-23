@@ -19,14 +19,15 @@ class Table2 extends Component {
                 <LineChart width={350} height={250} data={this.props.company_team} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
                     <Line strokeWidth={2} type="monotone" dataKey="team_projects_completed" stroke="#da863d" />
                     <Line strokeWidth={2} type="monotone" dataKey="team_company" stroke="#ce1c2e" />
-                    <Line strokeWidth={2} type="monotone" dataKey="Time to Completion(days)" stroke="#547cd5" />
-                    <Line strokeWidth={2} type="monotone" dataKey="Time Per Task" stroke="#10a843" />
+                    {/* <Line strokeWidth={2} type="monotone" dataKey="7" stroke="#547cd5" />
+                    <Line strokeWidth={2} type="monotone" dataKey="6" stroke="#10a843" /> */}
                     <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
                     <XAxis dataKey="team_name" />
                     <YAxis />
                     {<Tooltip />}
                     <Legend />
                 </LineChart>
+
             </div >
             )
 
