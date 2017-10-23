@@ -1,6 +1,6 @@
 import React from 'react';
-import { Switch, Route, Redirect, render } from 'react-router-dom';
-import SignInPage from './components/sign-in-page/sign-in-page';
+import { Switch, Route } from 'react-router-dom';
+// import SignInPage from './components/sign-in-page/sign-in-page';
 import Dashboard from './components/dashboard/dashboard';
 // import Analytics from './components/analytics/analytics';
 import EditUser from './components/edit-user/edit-user';
@@ -18,6 +18,7 @@ import DisplayProjects from './components/display-projects/display-projects';
 import DisplayCompany from './components/display-company/display-company';
 import CreateTeam from './components/create-team/create-team';
 import Analytics from './components/analytics/analytics';
+import Chat from './components/chat/chat';
 // import axios from 'axios';
 
 // function checkForLog() {
@@ -37,9 +38,9 @@ export default (
         <Route path='/dashboard' component={Dashboard} />
         <Route path='/analytics' component={Analytics} />
         
-        /* CLIENT ROUTES */
+        {/* CLIENT ROUTES */}
         <Route path='/status'  />
-        <Route path='/chat' />
+        <Route path='/chat' component={Chat}/>
         <Route path='/edit-user' component={EditUser} />
         <Route path='/display-users' component={DisplayUsers} />
         <Route path='/display-company' component={DisplayCompany}/>
@@ -48,9 +49,7 @@ export default (
         <Route path='/display-teams' component={DisplayTeams}/>
         <Route path='/create-company' component={CreateCompany} />
         <Route path='/create-project' component={CreateProject} />
-        <Route path='/create-task' 
-        /* component={Create_task} */
-        />
+        <Route path='/create-task' /> 
         <Route path='/create-team'  component={CreateTeam}/>
         <Route path='/create-user' component={AddUser} />
 

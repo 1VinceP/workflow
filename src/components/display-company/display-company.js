@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import './display-company.css';
 import { connect } from 'react-redux'
 
-let style = {
-    margin: 12,
-};
+
+import CreateCompany from '../create-company/create-company'
+
+
 
 class DisplayCompany extends Component {
 

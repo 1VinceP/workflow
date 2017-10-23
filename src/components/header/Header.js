@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
+// import FlatButton from 'material-ui/FlatButton';
 // import axios from 'axios';
 import { getUserInfo, getCompanyInfo, getCompanyUsersInfo, getCompanyTeamInfo } from '../../redux/reducers/main-reducer';
 import { connect } from 'react-redux';
@@ -10,7 +10,7 @@ import TeamDrop from './dropdowns/TeamDrop';
 import AllDrop from './dropdowns/AllDrop';
 import './header.css';
 
-
+// eslint-disable-next-line
 let buttonStyle = {
     headerButton: {
         paddingLeft:'5px',
@@ -24,11 +24,15 @@ let buttonStyle = {
 }
 
 class Header extends Component {
-    constructor(){
+    constructor() {
         super();
-        this.state={
+
+        this.state = {
+            scroll: 'false',
             displayCompany: false
         }
+
+        this.adjustOnScroll = this.adjustOnScroll.bind(this)
     }
 
     componentDidMount() {
@@ -40,16 +44,32 @@ class Header extends Component {
             })
         })
 
+        this.adjustOnScroll()
+
+    };
+
+    adjustOnScroll() {
+        window.addEventListener( 'scroll', e => {
+
+            if( window.pageYOffset > 10 ) {
+                this.setState({
+                    scroll: 'true'
+                })
+            }
+            else {
+                this.setState({
+                    scroll: 'false'
+                })
+            }
+        } )
     };
 
     render() {
-
-        console.log( this.props )
         return(
-            <header className='header-header'>
+            <header className='header-header' page-has-scrolled={this.state.scroll}>
 
                 <div className='header-left'>
-                    <Link to='/' className='header-link'><div className='header-site-name'>PsuedoTrics</div></Link>
+                    <Link to='/' className='header-link'><div className='header-site-name' page-is-scrolled={this.state.scroll}>PsuedoTrics</div></Link>
                 </div>
 
                 <div className='header-right'>
@@ -57,7 +77,7 @@ class Header extends Component {
                     { !this.props.user
                         ? <div className='header-login'>
                             <a href={process.env.REACT_APP_LOGIN}>
-                            <div className='header-login-button'>Login</div>
+                            <div className='header-login-button' page-is-scrolled={this.state.scroll}>Login</div>
                             </a>
                             <a href={process.env.REACT_APP_LOGIN}>
                                 <button className='header-signup-button'>Sign Up</button>
@@ -80,10 +100,10 @@ class Header extends Component {
                     { this.props.user
                         ? <div style={{width: '100%'}}>
                             <div className='header-mid-buttons'>
-                                <Link to='/dashboard' className='header-link'><button className='header-link-buttons'>Home</button></Link>
-                                <Link to='/analytics' className='header-link'><button className='header-link-buttons'>Analytics</button></Link>
-                                <CompanyDrop />
-                                <TeamDrop />
+                                <Link to='/dashboard' className='header-link'><button className='header-link-buttons' page-is-scrolled={this.state.scroll}>Home</button></Link>
+                                <Link to='/analytics' className='header-link'><button className='header-link-buttons' page-is-scrolled={this.state.scroll}>Analytics</button></Link>
+                                <CompanyDrop scroll={this.state.scroll} />
+                                <TeamDrop scroll={this.state.scroll} />
                                 <a href={process.env.REACT_APP_LOGOUT} className='header-link'>
                                     <button className='header-link-buttons'>Logout</button>
                                 </a>
@@ -91,7 +111,7 @@ class Header extends Component {
                             <div className='header-tiny'>
                                 <Link to='/dashboard' className='header-link'><button className='header-link-buttons'>Home</button></Link>
                                 <AllDrop />
-                                <a href={process.env.REACT_APP_LOGOUT} className='header-link'>
+                                <a href={process.env.REACT_APP_LOGOUT} className='header-link' page-is-scrolled={this.state.scroll}>
                                     <button className='header-link-buttons'>Logout</button>
                                 </a>
                             </div>

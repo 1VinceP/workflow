@@ -1,6 +1,7 @@
 import axios from 'axios';
 // const company_controller = require('./controllers/company_controller')
 const GET_USER_INFO = "GET_USER_INFO";
+// eslint-disable-next-line
 const GET_TEAM_INFO = "GET_TEAM_INFO";
 const GET_COMPANY_INFO = "GET_COMPANY_INFO";
 const GET_COMPANY_USERS_INFO = "GET_COMPANY_USERS_INFO";
@@ -30,7 +31,7 @@ const ADD_PROJECT_START_DATE = "ADD_PROJECT_START_DATE";
 const ADD_PROJECT_FINISH_DATE = "ADD_PROJECT_FINISH_DATE";
 const ADD_PROJECT_DESCRIPTION = "ADD_PROJECT_DESCRIPTION";
 const ADD_PROJECT_PRICE = "ADD_PROJECT_PRICE";
-
+const CURRENT_PROJECT_TASKS = "CURRENT_PROJECT_TASKS";
 
 
    
@@ -66,6 +67,9 @@ var initialState = {
     assignUserCompany:[],
     assign_user_company_input:'',
 
+    current_project_tasks: [],
+    project_tasks: [],
+    user_tasks: []
     }
     
     export default function reducer(state = initialState, action) {
@@ -123,6 +127,8 @@ var initialState = {
                 return Object.assign({}, state, {projects: action.payload})
             case ADD_ASSIGN_COMPANY_USER_INPUT:
                 return Object.assign({}, state, {assign_user_company_input: action.payload})
+            case CURRENT_PROJECT_TASKS + '_FULFILLED':
+                return Object.assign({}, state, { current_project_tasks: action.payload })
             default:
                 return state;
         }
@@ -362,6 +368,20 @@ export function editUserRole(role) {
 export function getProject(projectData) {
     
 
+}
+
+export function currentProjectTasks( key, body ) {
+
+    const task = axios.post( `/api/addtask/${key}`, body )
+        .then( response => {
+            console.log( 'redux task', response )
+            return response.data 
+        } )
+
+    return {
+        type: CURRENT_PROJECT_TASKS,
+        payload: task
+    }
 }
 
 // let count = companyName.split('')

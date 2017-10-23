@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import './dashboard.css';
-import Badge from 'material-ui/Badge';
-import IconButton from 'material-ui/IconButton';
-import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
+// import IconButton from 'material-ui/IconButton';
 import NewMenu from '../new-menu/new-menu';
 import axios from 'axios';
 import Table1 from '../analytics/table1';
 import FirstTimeUser from '../first-time-user/FirstTimeUser'
 import { addProjectUniqueKey } from '../../redux/reducers/main-reducer'
+import  {Link} from 'react-router-dom'
 
 let styles = {
 
@@ -23,6 +22,7 @@ let styles = {
 class Dashboard extends Component {
     constructor() {
         super()
+        
         this.state = {
             newMenu: false,
         }
@@ -34,6 +34,15 @@ class Dashboard extends Component {
         })
     }
 
+
+    componentDidMount() {
+        axios.get( '/api/getTasksByUser' )
+            .then( response => {
+                this.setState({
+                    userTasks: response.data
+                })
+            } )
+    }
 
     render() {
         console.log('HELO', this.props.user)
@@ -74,6 +83,9 @@ class Dashboard extends Component {
                             <Table1 />
                         </div>
                     </div>
+                    <div >
+                    <Link className="chat" to="/chat">Chat</Link>
+                </div>
                 </div>
             )
                 :

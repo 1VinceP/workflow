@@ -1,0 +1,57 @@
+.messagebox{
+
+}
+
+.singlemessage {
+    border-bottom: 1px solid black;
+}
+
+.infoholder{
+
+}
+
+.username {
+
+}
+
+.message {
+
+}
+
+.messagingcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.previous-messages {
+    width: 100vw;
+    background: lightgrey;
+    margin-top: 10vh;
+    line-height: 1.5;
+   
+}
+
+.formbox {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 40px;
+}
+
+.textarea {
+    font-size: 40px;
+    height: 20px;
+    width: 100vw;
+    left: 50%;
+}
+
+.intro {
+
+}
+
+.subintro {
+    font-size: 11px;
+    opacity: .9;
+}

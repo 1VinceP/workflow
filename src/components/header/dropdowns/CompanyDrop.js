@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
+// import RaisedButton from 'material-ui/RaisedButton';
+// import FlatButton from 'material-ui/FlatButton';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
@@ -39,7 +41,7 @@ class CompanyDrop extends Component {
         // let compName = this.props.company[0].company_name
         return(
             <div>
-                <button onClick={this.handleOpen} className='header-link-buttons' >Company</button>
+                <button onClick={this.handleOpen} className='header-link-buttons' page-is-scrolled={this.props.scroll} >Company</button>
                 <Popover open={this.state.open}
                          onRequestClose={this.handleClose} 
                          anchorEl={this.state.anchorEl}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
+// import RaisedButton from 'material-ui/RaisedButton';
+// import FlatButton from 'material-ui/FlatButton';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
@@ -37,7 +37,7 @@ class TeamDrop extends Component {
     render() {
         return(
             <div>
-                <button onClick={this.handleOpen} className='header-link-buttons' >Teams</button>
+                <button onClick={this.handleOpen} className='header-link-buttons' page-is-scrolled={this.props.scroll} >Teams</button>
                 <Popover open={this.state.open}
                          onRequestClose={this.handleClose} 
                          anchorEl={this.state.anchorEl}
