@@ -45,7 +45,7 @@ var initialState = {
     user_display_name: '',
     user_team: '',
     user_role: '',
-    project_unique_key: '',
+    project_unique_key: 'ebayfri0oct020020170160220300gmt0060000mdt0',
     current_project_tasks: []
 }
 
@@ -287,7 +287,10 @@ export function editUserRole(role) {
 export function currentProjectTasks( key ) {
 
     const task = axios.get( `/api/getProjectTasks/${key}` )
-        .then( response => response.data )
+        .then( response => {
+            console.log( 'redux task', response )
+            response.data 
+        } )
 
     return {
         type: CURRENT_PROJECT_TASKS,
