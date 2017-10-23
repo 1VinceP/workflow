@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './analytics.css';
 // import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 import { connect } from 'react-redux';
+import Table1 from './table1';
 import Table2 from './table2';
 
 
@@ -25,6 +26,7 @@ class Analytics extends Component {
                     To keep your project on task, here are pieces of information we've found to be most relevent to on time completion of tasks.
                 </div>
                 <div className="firstchart">
+                    <Table1/>
                     <div className='subtitle'>
                     Team Completion Numbers To Date
                     </div>

@@ -7,7 +7,7 @@ const createInitialSession = require(`${__dirname}/middleware/session-check`)
 const massive = require('massive')
 const cors = require('cors')
 const session = require('express-session')
-const auth_controller = require( './controllers/auth_controller' )
+const auth_controller = require('./controllers/auth_controller')
 const chalk = require('chalk')
 
 const company_controller = require('./controllers/company_controller')
@@ -17,15 +17,18 @@ const task_controller = require('./controllers/task_controller')
 const role_controller = require('./controllers/role_controller')
 const users_controller = require('./controllers/users_controller')
 
+
 const app = express();
-app.use(bodyParser.json() );
-app.use(cors() );
+app.use(bodyParser.json());
+app.use(cors());
+
+
 
 massive(process.env.CONNECTIONSTRING).then(db => {
     app.set('db', db);
 })
 app.use(session({
-    secret:process.env.SECRET, 
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false
 }))
@@ -41,10 +44,10 @@ passport.use(new Auth0Strategy({
 }, function (accessToken, refreshToken, extraParams, profile, done) {
     // console.log(profile)
     const db = app.get('db');
-    console.log( chalk.greenBright('profile: ', profile.id) )
+    console.log(chalk.greenBright('profile: ', profile.id))
     db.users.find_user(profile.id).then(user => {
         if (user[0]) {
-            console.log( chalk.greenBright('strategy:'), user )
+            console.log(chalk.greenBright('strategy:'), user)
             return done(null, user);
         } else {
             db.users.create_user([profile.displayName, profile.emails[0].value, profile.picture, profile.id])
@@ -55,22 +58,22 @@ passport.use(new Auth0Strategy({
     })
 }))
 
-passport.serializeUser( (user, done) => {
-    console.log( chalk.greenBright('serial: '), user );
-    done( null, user );
+passport.serializeUser((user, done) => {
+    console.log(chalk.greenBright('serial: '), user);
+    done(null, user);
 })
 
 //USER COMES FROM SESSION - INVOKED ON EVERY ENDPOINT.
-passport.deserializeUser( (obj, done) => {
-        return done(null, obj[0]);
+passport.deserializeUser((obj, done) => {
+    return done(null, obj[0]);
 })
 app.get('/login', passport.authenticate('auth0', {
     successRedirect: 'http://localhost:3000/#/dashboard',
     failureRedirect: 'http://localhost:3000/#/'
 }));
 
-app.get( '/login/user', auth_controller.login );
-app.get( '/logout', auth_controller.logout );
+app.get('/login/user', auth_controller.login);
+app.get('/logout', auth_controller.logout);
 
 app.get('/auth/authorized', (req, res) => {
     if (!req.user) {
@@ -165,7 +168,14 @@ app.get('/api/roles/users', role_controller.get_user_roles)
 app.post('/api/addrole', role_controller.create_role)
 
 
+////////////////////////////            Chat            ////////////////////////////
+
+
+
+
+
+
 const port = 3005;
-app.listen(port, ()=>{
-    console.log( chalk.cyan.underline(`Listening_on_port_${port}`) )
+app.listen(port, () => {
+    console.log(chalk.cyan.underline(`Listening_on_port_${port}`))
 })
