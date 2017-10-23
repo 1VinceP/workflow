@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TextField from 'material-ui/TextField';
+// import TextField from 'material-ui/TextField';
 import './edit-user.css';
 import { Link } from 'react-router-dom';
 import {  editUserFirstname
@@ -69,7 +69,7 @@ class EditUser extends Component {
 
     componentWillReceiveProps(){
         if(this.props.user){
-        this.props.user.user_firstname
+        return this.props.user.user_firstname
         }
     }
 

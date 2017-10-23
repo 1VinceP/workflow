@@ -1,24 +1,23 @@
 .analytics-container {
-
+background: #F9F9FA;
+height: 100%;
 }
 .title {
-
+    padding: 1.1%;
 }
 .details {
-
+    padding: 1.5%;
 }
 .firstchart {
-    padding: 30px;
+    padding: 5px;
+}
+.subtitle {
+    font-size: 15px;
 }
 .firsty {
-    /* border: 1px solid black; */
-    margin-left: 10px;
     padding-top: 30px;
     padding-right: 40px;
     
-}
-.secondchart {
-    padding: 30px;
 }
 .thirdchart {
     background: #10a843;
@@ -26,4 +25,17 @@
     background: #ce1c2e;
     background: #da863d;
 
+}
+.chart {
+    height: 300;
+    width: 100;
+}
+
+@media(min-width: 400) {
+    .firstchart {
+        padding: 20px;
+    }
+    .firsty {
+        margin-left: 10px;
+    }
 }

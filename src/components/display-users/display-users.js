@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import './display-users.css';
-import RaisedButton from 'material-ui/RaisedButton';
+// import RaisedButton from 'material-ui/RaisedButton';
 import { getUserInfo, getCompanyInfo, getCompanyUsersInfo } from '../../redux/reducers/main-reducer';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
-let style = {
-    margin: 12,
-};
+// let style = {
+//     margin: 12,
+// };
 
 class DisplayUsers extends Component {
 

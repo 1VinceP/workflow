@@ -37,10 +37,13 @@ class DisplayTeams extends Component {
     }
 
     usersForTeam(id) {
+        // eslint-disable-next-line
         var teamId = id
+        // eslint-disable-next-line
         var newArray = []
         var theUsers = this.props.company_users
         // return (<img src={x} alt="" />)
+        // eslint-disable-next-line 
         var usersForTeam = theUsers.map((e, i) => {
             if (e.user_team === id) {
                 return (
@@ -80,6 +83,7 @@ class DisplayTeams extends Component {
         var arrayCopy = []
         var theUsers = this.props.company_users
         // return (<img src={x} alt="" />)
+        // eslint-disable-next-line
         theUsers.map((e, i) => {
             if(e.user_team === id){
                 newArray.push(e.user_id)
@@ -203,11 +207,11 @@ render() {
                 <div className="button-container">
                     <Link to="/create-team"><RaisedButton primary={true} label="+ Create New Team" /></Link>
                 </div>
+            </div>
               
                 <div className="right-column">
                     {teamInfo}
                 </div>
-            </div>
         </div>
     )
 }
