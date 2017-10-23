@@ -48,10 +48,12 @@ class DisplayTeams extends Component {
             if (e.user_team === id) {
                 return (
                     <div key={i}>
+                        <br/>
                         {e.user_firstname} {e.user_lastname}
                         <div>
                             {e.user_email}
                         </div>
+                        <br/>
                     </div>
                 )
             }
@@ -60,7 +62,10 @@ class DisplayTeams extends Component {
     }
 
     editUsersForTeam(id) {
+        //use underscore to compare the array copy and newarray.
+        
        function addUserToTeam(e, array){
+           
             var user = e;
             var x;
             if(array.includes(user)){
@@ -70,17 +75,19 @@ class DisplayTeams extends Component {
                 newArray.push(user)
             }
             console.log('CLICKED NEW ARRAY:', array)
+            console.log('Array Copy YOOOOO: ', arrayCopy)
             return array
         }
-        // var newArray = []
-        // var teamId = id
         var newArray = []
+        var teamId = id
+        var arrayCopy = []
         var theUsers = this.props.company_users
         // return (<img src={x} alt="" />)
         // eslint-disable-next-line
         theUsers.map((e, i) => {
             if(e.user_team === id){
                 newArray.push(e.user_id)
+                arrayCopy.push(e.user_id)
             }
         })
         var usersForTeam = theUsers.map((e, i) => {
@@ -93,6 +100,7 @@ class DisplayTeams extends Component {
     // }
 })
 console.log('NewAray YOOOOO: ', newArray)
+console.log('Array Copy YOOOOO: ', arrayCopy)
 return usersForTeam
     }
 
@@ -135,7 +143,9 @@ editTeam(team, description, id) {
                 <div className="edit-team-users-section">
                     <span className="users-header">Users</span>
                     <div className="edit-team-users-container">
+                    <br/>
                         {this.editUsersForTeam(id)}
+                        <br/>
                     </div>
                 </div>
             </div>),
