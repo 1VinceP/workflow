@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './chat.css';
+import {connect} from 'react-redux';
 // import EmbeddedSlackReact from 'embedded-slack-react'; 
 
 class Chat extends Component {
@@ -18,28 +19,21 @@ class Chat extends Component {
 
 
     componentDidMount() {
-        this.setState({ username: this.props.user_display_name })
+        // this.setState({ username: this.props.user.user_firstname })
     }
 
     handleChange(event) {
-        this.setState({ value: event.target.value });
+        this.setState({ value: event});
     }
 
-    sendMessage(mess) {
-        // event.preventDefault();
-        if (this.state.value !== '') {
-            // axios.post('/message/send',
-            this.setState ({
-                username: this.state.username,
+    sendMessage() {
+        if (this.value !== '') {
+            console.log(this.state.value)
+            this.state.messages.push(this.state.value)
+            console.log(this.state.messages)
+            this.setState({
+                value: ''
             })
-            this.messages.push(mess)
-                // .then(response => {
-                //     console.log(response)
-                // })
-                // .catch(error => {
-                //     console.log(error)
-                // })
-            this.setState({ value: '' })
         }
         else {
             // console.log('enter message')
@@ -49,19 +43,16 @@ class Chat extends Component {
     render() {
 
         const messages = this.state.messages;
-        const message = messages.map(i => {
+        const messageList = this.state.messages.map((e,i) => {
             return (
-                <div className="messagebox">
-                    <div className="singlemessage">
-                        {message}
-                    </div>
-                    <div className="infoholder" key={i.id}>
+                <div className="messagebox" key={i}>
                     <div className="username">
-                        {i.username}
+                        {this.props.user.user_firstname}:
                     </div>
-                    <div className="message">
-                        {i.message}
+                    <div className="singlemessage" >
+                        {messages[i]}
                     </div>
+                    <div className="infoholder" >
                     </div>
                 </div>
             )
@@ -69,14 +60,15 @@ class Chat extends Component {
 
         return (
             <div className="messagingcontainer">
-                <div className="previous-messages">{message}</div>
                 <div className="textarea">
-                <div className="intro">Welcome, {this.state.username}</div>
-                <div className="subintro">Begin chatting here.</div>
+                {<div className="intro">Welcome, {this.props.user.user_firstname}</div>}
                 </div>
+                <div className="previous-messages">{messageList}</div>
                 <div className="formbox">
-                    <input type="text" value={this.state.value}
-                      onChange={this.handleChange} autoFocus='true'></input><button  onSubmit={e => this.sendMessage(e.target.value)}>Submit</button>
+                <div className="subintro">Begin chatting here.</div>
+                    <input type="text" value={this.value}
+                      onChange={(e) => this.handleChange(e.target.value)} autoFocus='true'></input>
+                      <button  onClick={() => this.sendMessage()}>Submit</button>
                 </div>
                 {/* <EmbeddedSlackReact channel="https://dndevmtn.slack.com/messages/C7EG6DVEV" token="https://dndevmtn.slack.com/messages/C7EG6DVEV" /> */}
             </div>
@@ -84,4 +76,9 @@ class Chat extends Component {
     }
 }
 
-export default Chat;
+
+function mapStateToProps(state) {
+    return state;
+}
+
+export default connect(mapStateToProps)(Chat)
