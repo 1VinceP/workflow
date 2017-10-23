@@ -75,6 +75,7 @@ app.get('/login', passport.authenticate('auth0', {
 app.get('/login/user', auth_controller.login);
 app.get('/logout', auth_controller.logout);
 
+
 app.get('/auth/authorized', (req, res) => {
     if (!req.user) {
         return res.status(403).send(false)
@@ -115,6 +116,16 @@ app.get('/api/company/team/:id', (req, res, next) => {
 app.get('/api/company/getteams', (req, res, next) => {
     req.app.get('db').company.company_teams(req.params.id).then(response => res.status(200).send(response))
 })
+
+
+
+
+
+app.get('/api/company_code/:id', company_controller.getCompanyCode)
+
+
+
+
 app.get('/api/company/getusers', company_controller.getCompanyUsers)
 app.get('/api/company/:id', company_controller.getCompany)
 app.get('/api/company/users/:id', company_controller.getCompanyUsersById)
@@ -158,6 +169,9 @@ app.post('/api/edituser', users_controller.edit_user)
 app.post('/api/adduser', users_controller.create_user)
 app.post('/api/admin/adduser', users_controller.admin_create_user)
 
+app.put(`/api/company_code`, users_controller.update_company_id_code)
+
+
 app.delete('/api/delete/user/:id', users_controller.delete_user)
 
 
@@ -177,6 +191,6 @@ app.post('/api/addrole', role_controller.create_role)
 
 
 const port = 3005;
-app.listen(port, () => {
-    console.log(chalk.cyan.underline(`Listening_on_port_${port}`))
+app.listen(port, ()=>{
+    console.log( chalk.cyan.underline(`Listening_on_port_${port}`) )
 })

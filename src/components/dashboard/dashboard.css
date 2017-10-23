@@ -10,7 +10,7 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 30px;
+    padding:0 30px 60px 30px;
     background: #F9F9FA;
 }
 
@@ -21,13 +21,7 @@ html {
     margin: 1vw;
 }
 
-.button-span {
-    height: 50px;
-    width: 100%;
-    margin-top: 15px;
-    margin-bottom: -20px;
-    padding-left: 5px;
-}
+
 
 
 .project-button {
@@ -67,37 +61,26 @@ html {
     height: 20px;
     width: 20px;
 }
-
-.calendar {
-    height: 60%;
-    width: 30vw;
-    background: white;
-    margin-top: 3vh;
-    background: linear-gradient( to bottom, #8DF7C8, #34ebe9 );
-    border-radius: 5px;
-    box-shadow: 0px 8px 12px #bdbdbd;
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-}
-
 .task-list {
     height: 100%;
-    width: 60vw;
-    background: linear-gradient( to bottom, #fec180, #ff8993 );
-    box-shadow: 0px 8px 12px #bdbdbd;
+    width: 90vw;
+    background: white;
+    box-shadow: 2px 3px 2px #e7e7e7;
     border-radius: 5px;
+    border: 1px solid rgb(243, 243, 243);
     display: flex;
     flex-direction: column;
     padding: 15px;
+    margin: auto;
 }
 
 .current-stats-wrapper {
-    height: 27vh;
-    width: 100%;
+    height: 100%;
+    width: 90vw;
     margin-top: 20px;
-    background: linear-gradient( to bottom, #34ebe9, #04807b );
-    box-shadow: 0px 8px 12px #bdbdbd;
+    background: white;
+    box-shadow: 2px 3px 2px #e7e7e7;
+    border: 1px solid rgb(243, 243, 243);
     border-radius: 5px;
 }
 
@@ -112,6 +95,46 @@ html {
     align-items: center;
     border-radius: 5px
 }
+.dashboard_new_items_buttons{
+    height: 35px;
+    width: 90px;
+    color: white;
+    background: #4dbf71;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+
+}
+
+.button-span {
+    width: 90vw;
+    display: flex;
+    justify-content: flex-end;
+    }
+    .dashboard_new_menu_container{
+        display: flex;
+        width: 90vw;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .dashboard_menu_item_selection{
+        width:90px;
+        height: 40px;
+        padding: 10px 10px 10px 10px;
+        background: white;
+        color: #4dbf71;
+        text-align: right;
+    }
+    .dashboard-titles{
+        font-family: helvetica;
+        margin: 15px;
+        color: rgb(178, 178, 178);
+        font-size: 22px;
+        text-align: center;
+    }
 
 .chat {
     position: fixed;

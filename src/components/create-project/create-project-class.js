@@ -81,21 +81,6 @@ class Create_Project_Class extends Component {
                 }
               </div>
 
-{/* PROJECT DESC  */}  
-
-                {this.props.project_description === ''
-                ?
-                
-                <input placeholder='Project Description' className='project-create-project-input project-create-project-input-long' onChange={(e)=>this.props.addProjectDesc(e.target.value)}/>
-                
-                :
-                <div className='project-counter-container'>
-                <input defaultValue={this.props.project_description} className='project-create-project-input project-create-project-input-long' onChange={(e)=>this.props.addProjectDesc(e.target.value)}/>
-            
-                    <div className='project-character-count'>{this.props.project_description.length}/{300}</div>
-                    </div>
-            
-                }
 {/* PROJECT PRICE  */}  
                 {this.props.project_price === 0.00
                 ?
@@ -103,6 +88,22 @@ class Create_Project_Class extends Component {
                 :
                 <input defaultValue={this.props.project_price} className='project-create-project-input project-create-project-input-long' type='number' onChange={(e)=>this.props.addProjectPrice(e.target.value)}/>
             }
+
+            {/* PROJECT DESC  */}  
+
+            {this.props.project_description === ''
+                ?
+                
+                <input placeholder='Project Description' className='project-create-project-input project-create-project-input-long' onChange={(e)=>this.props.addProjectDesc(e.target.value)}/>
+                
+                :
+
+                <input defaultValue={this.props.project_description} className='project-create-project-input project-create-project-input-long' onChange={(e)=>this.props.addProjectDesc(e.target.value)}/>
+            
+                
+            
+                }
+                <div className='project-character-count'>{this.props.project_description.length}/{300}</div>
                 <div className='project-save-project'>
                     <button onClick={()=>{this.displayProject()}}  className='project-created-save-project'>Save Project</button>
                     <div className='project-save-add-tasks-text'>To Add Tasks</div>

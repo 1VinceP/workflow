@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import './dashboard.css';
 // import IconButton from 'material-ui/IconButton';
 import NewMenu from '../new-menu/new-menu';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
-// import axios from 'axios';
-// import Table1 from '../analytics/table1';
-// eslint-disable-next-line
+import Table1 from '../analytics/table1';
+import FirstTimeUser from '../first-time-user/FirstTimeUser'
+import { addProjectUniqueKey } from '../../redux/reducers/main-reducer'
+import  {Link} from 'react-router-dom'
+
 let styles = {
-    
+
     icon: {
         position: 'absolute',
         left: 0,
@@ -17,14 +19,21 @@ let styles = {
     }
 }
 
-export default class Dashboard extends Component {
+class Dashboard extends Component {
     constructor() {
         super()
         
         this.state = {
-         
+            newMenu: false,
         }
     }
+
+    displayNewMenu() {
+        this.setState({
+            newMenu: !this.state.newMenu
+        })
+    }
+
 
     componentDidMount() {
         axios.get( '/api/getTasksByUser' )
@@ -36,40 +45,56 @@ export default class Dashboard extends Component {
     }
 
     render() {
+        console.log('HELO', this.props.user)
+        let userInfo = false
+        console.log('USER INFO', userInfo)
+        if (this.props.user) {
+            if (this.props.user.user_company) {
+                userInfo = true;
+                console.log("USER INFO 2", userInfo)
+            }
+        }
         return (
-            <div className="dashboard-view">
-                <div className="button-span">
-                    <NewMenu />
-                </div>
-                <div className="content-wrapper">
-                    <div className="left-side">
-                        <div className="notifications">
-                            <div className='dash-module-title' >Alerts</div>
-                            {/* <Badge 
-                                badgeContent={1}
-                                secondary={true}
-                                badgeStyle={{ top: 6, left: 9, height: 15, width: 15, transform: 'translateX(-11vw)' }}>
-                                <IconButton style={styles.icon} tooltip="Notifications">
-                                    <NotificationsIcon />
-                                </IconButton>
-                            </Badge> */}
+            userInfo ? (
+                <div className="dashboard-view">
+                    <div className="button-span">
+                        <button className='dashboard_new_items_buttons' onClick={() => { this.displayNewMenu() }}>+ New</button>
+                    </div>
+                    {this.state.newMenu === true ?
+                        <div className='dashboard_new_menu_container'>
+                            <a href='/#/create-project'>
+                                <div className='dashboard_menu_item_selection' onClick={() => { this.props.addProjectUniqueKey(this.props.company[0].company_name, this.props.user.user_id) }}>Project</div></a>
+
+
+                            <div className='dashboard_menu_item_selection'>Team</div>
+                            <div className='dashboard_menu_item_selection'>User</div>
                         </div>
-                        <div className="calendar">
-                            <div className='dash-module-title'>Calendar</div>
-                                {/* <FontIcon className="material-icons">date_range</FontIcon> */}
+                        : null}
+                    <div className="content-wrapper">
+                        <div className="task-list">
+                            <div className='dashboard-titles'>Tasks</div>
+
+
                         </div>
                     </div>
-                    <div className="task-list">
-                        <div className='dash-module-title' >Tasks</div>
+                    <div className="current-stats-wrapper">
+                        <div>Analytics</div>
+                        <div>
+                            <Table1 />
+                        </div>
                     </div>
-                </div>
-                <div className="current-stats-wrapper">
-                        {/* <br/>Analytics<br/><br/><br/><Table1/> */}
-                </div>
-                <div >
+                    <div >
                     <Link className="chat" to="/chat">Chat</Link>
                 </div>
-            </div>
+                </div>
+            )
+                :
+                <FirstTimeUser />
         )
     }
 }
+function mapStateToProps(state) {
+    return state
+}
+
+export default connect(mapStateToProps, { addProjectUniqueKey })(Dashboard)

@@ -13,6 +13,7 @@ const ADD_COMPANY_PHONE = "ADD_COMPANY_PHONE";
 const ADD_COMPANY_URL = "ADD_COMPANY_LOGO_URL";
 const ADD_COMPANY = "ADD_COMPANY";
 const ADD_COMPANY_LOGO_URL = "ADD_COMPANY_LOGO_URL";
+const ADD_ASSIGN_COMPANY_USER_INPUT = 'ADD_ASSIGN_COMPANY_USER_INPUT'
 const EDIT_USER_FIRST_NAME = "EDIT_USER_FIRST_NAME";
 const EDIT_USER_LAST_NAME = "EDIT_USER_LAST_NAME";
 const EDIT_USER_EMAIL = "EDIT_USER_EMAIL";
@@ -63,6 +64,9 @@ var initialState = {
     project_paid:false,
     project_creator:'',
     projects:[],
+    assignUserCompany:[],
+    assign_user_company_input:'',
+
     current_project_tasks: [],
     project_tasks: [],
     user_tasks: []
@@ -121,6 +125,8 @@ var initialState = {
                 return Object.assign({}, state, {project_price: action.payload})
             case GET_PROJECT:
                 return Object.assign({}, state, {projects: action.payload})
+            case ADD_ASSIGN_COMPANY_USER_INPUT:
+                return Object.assign({}, state, {assign_user_company_input: action.payload})
             case CURRENT_PROJECT_TASKS + '_FULFILLED':
                 return Object.assign({}, state, { current_project_tasks: action.payload })
             default:
@@ -159,6 +165,12 @@ var initialState = {
         return { 
             payload: companyPhone, 
             type:ADD_COMPANY_PHONE}
+    }
+    export function assignCompanyCodeInput(companyCode) {
+        console.log(companyCode)
+        return { 
+            payload: companyCode, 
+            type:ADD_ASSIGN_COMPANY_USER_INPUT}
     }
     export function addCompanyLogo(companyLogo) {
         console.log(companyLogo)

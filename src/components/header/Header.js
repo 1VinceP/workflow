@@ -28,7 +28,8 @@ class Header extends Component {
         super();
 
         this.state = {
-            scroll: 'false'
+            scroll: 'false',
+            displayCompany: false
         }
 
         this.adjustOnScroll = this.adjustOnScroll.bind(this)

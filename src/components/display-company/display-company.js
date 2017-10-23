@@ -13,27 +13,19 @@ class DisplayCompany extends Component {
 
         return (
             <div className="display-company-container">
-                {this.props.state.company ? 
-                <div className="user-company-wrapper">
-                    <div className="title">
-                        <h2>{this.props.state.company.company_name}</h2>
-                        Company Information
+                <div>
+                    <div>{this.props.company[0].company_name}</div>
+                    <div>
+
                     </div>
-                    <div>This will be Company Info</div>
                 </div>
-                :
-                <div className="company-wrapper">
-                    <CreateCompany />
-                </div>
-                }
             </div>
         )
     }
 }
-function mapStateToProps(state) {
-    return {
-        state
-    };
-}
 
-export default connect(mapStateToProps)(DisplayCompany);
+function mapStateToProps(state) {
+    return state
+  }
+
+export default connect(mapStateToProps,({}))(DisplayCompany);
