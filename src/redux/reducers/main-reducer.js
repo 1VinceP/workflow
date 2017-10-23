@@ -210,9 +210,9 @@ var initialState = {
     }
     
     export function getCompanyUsersInfo(id) {
-        console.log("REDUCER ID: ", id)
+        
         const companyInfo = axios.get(`/api/company/users/${id}`).then(res => {
-            console.log("COMPANY DATA", res.data)
+
             return res.data
         })
         return {
@@ -221,9 +221,8 @@ var initialState = {
         }
     }
     export function getCompanyTeamInfo(id) {
-        console.log("REDUCER ID: ", id)
         const companyTeamInfo = axios.get(`/api/company/team/${id}`).then(res => {
-            console.log("COMPANY TEAM DATA", res.data)
+
             return res.data
         })
         return {
@@ -233,7 +232,6 @@ var initialState = {
     }
 
     export function addCompanyIndustry(industrySelected){
-        console.log('INDUSTRY', industrySelected)
         return{
             
             type: ADDCOMPANYINDUSTRY,
@@ -242,7 +240,6 @@ var initialState = {
     
     export function getUserInfo() {
         const userInfo = axios.get('/login/user').then(res => {
-            console.log( res.data )
             return res.data
         })
         return {
@@ -253,7 +250,6 @@ var initialState = {
 
     export function getCompanyInfo(id) {
         const companyInfo = axios.get(`/api/company/${id}`).then(res => {
-            console.log("COMPANY DATA", res.data)
             return res.data
         })
         return {

@@ -132,6 +132,7 @@ app.delete('/api/delete/team/:id', (req, res, nest) => {
 })
 
 app.post('/api/addteam', team_controller.add_team)
+app.post('/api/editteam', team_controller.edit_team)
 
 ////////////////////////////        PROJECT         /////////////////////////////////
 
@@ -153,6 +154,9 @@ app.get('/api/users/user/:id', users_controller.get_user_by_id)
 app.post('/api/edituser', users_controller.edit_user)
 app.post('/api/adduser', users_controller.create_user)
 app.post('/api/admin/adduser', users_controller.admin_create_user)
+
+app.post('/api/edituser/team', users_controller.edit_user_team)
+app.post('/api/edituser/removeteam/:id', users_controller.remove_user_team)
 
 app.delete('/api/delete/user/:id', users_controller.delete_user)
 

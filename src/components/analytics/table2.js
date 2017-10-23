@@ -4,13 +4,6 @@ import { connect } from 'react-redux';
 
 
 class Table2 extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            
-        }
-    }
 
     render() {
         (console.log("Object", this.props.company_team))
