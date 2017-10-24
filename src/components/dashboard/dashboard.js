@@ -74,7 +74,7 @@ class Dashboard extends Component {
                     <div className="button-span">
 
 
-{/* GOING TO PUP UP IF USER DOES NOT HAVE FIRST NAME WORKING */}
+{/* GOING TO POP UP IF USER DOES NOT HAVE FIRST NAME WORKING */}
                         <div>
                             <div>Update Personal Information</div>
                                 <div>
@@ -85,7 +85,7 @@ class Dashboard extends Component {
                                 </div>
                                 <button>Save</button>
                         </div>
-{/* GOING TO PUP UP IF USER DOES NOT HAVE FIRST NAME WORKING */}
+{/* GOING TO POP UP IF USER DOES NOT HAVE FIRST NAME WORKING */}
 
                         <button className='dashboard_new_items_buttons' onClick={() => { this.displayNewMenu() }}>+ New</button>
                     </div>

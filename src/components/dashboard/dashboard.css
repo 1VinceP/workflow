@@ -119,6 +119,8 @@ html {
     width: 90vw;
     flex-direction: column;
     align-items: flex-end;
+    position: absolute;
+    margin-top: 55px;
 }
 .dashboard_menu_item_selection{
     width:90px;
@@ -127,7 +129,14 @@ html {
     background: white;
     color: #4dbf71;
     text-align: right;
+    background: rgba( 251, 251, 255, 0.9 );
+    border: .5px dotted rgba( 0, 0, 0, 0.1 );
 }
+
+.dashboard_menu_item_selection:hover {
+    background: rgb(229, 229, 233);
+}
+
 .dashboard-titles{
     font-family: helvetica;
     margin: 15px;
