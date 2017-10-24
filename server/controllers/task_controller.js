@@ -1,7 +1,8 @@
 module.exports = {
 
-        get_tasks: (req, res, next) => {
-            req.app.get('db').task.all_task().then(response => res.status(200).send(response))
+        get_user_tasks: (req, res, next) => {
+            req.app.get('db').task.get_user_tasks( req.params.id )
+                .then(response => res.status(200).send(response))
         },
         
         get_project_tasks: ( req, res, next ) => {

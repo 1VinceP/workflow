@@ -1,1 +1,1 @@
-SELECT * FROM users WHERE user_company = 4 ORDER BY user_firstname;
+SELECT * FROM users WHERE user_company = $1 ORDER BY user_firstname;

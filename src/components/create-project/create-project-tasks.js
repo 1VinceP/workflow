@@ -22,8 +22,6 @@ class Create_Project_Tasks extends Component {
     showTaskDetails( taskName, taskId ) {
         let task = document.getElementById( taskName )
         let details = document.getElementsByClassName( taskId )
-        let oldTask = document.getElementById(this.state.open)
-        let oldDetails = document.getElementsByClassName(this.state.deets)
 
         // If no other element is open, open the clicked element
         if( this.state.open === null ) {
@@ -31,14 +29,14 @@ class Create_Project_Tasks extends Component {
             task.style.width = '420px'
             for( let i = 0; i < details.length; i++ ) {
                 details[i].style.display = 'flex'
-            }
+            }       
         }
         // If there is already an element open, close it and open the clicked element
-        else if( this.state.open > 0 && this.state.open !== taskName ) {
+        else if( this.state.open && this.state.open !== taskName ) {
             // Close old Element
-            oldTask.style.width = '160px'
-            for( let i = 0; i < oldDetails.length; i++ ) {
-                oldDetails[i].style.display = 'none'
+            document.getElementById(this.state.open).style.width = '160px'
+            for( let i = 0; i < document.getElementsByClassName(this.state.deets).length; i++ ) {
+                document.getElementsByClassName(this.state.deets)[i].style.display = 'none'
             }
 
             // Open new element
@@ -46,7 +44,7 @@ class Create_Project_Tasks extends Component {
             task.style.width = '420px'
             for( let i = 0; i < details.length; i++ ) {
                 details[i].style.display = 'flex'
-            }
+            }     
         }
         // If the open element is clicked, close it
         else {
@@ -54,7 +52,7 @@ class Create_Project_Tasks extends Component {
             task.style.width = '160px'
             for( let i = 0; i < details.length; i++ ) {
                 details[i].style.display = 'none'
-            }
+            }       
         }
     };
 

@@ -50,8 +50,8 @@ class Create_task extends Component {
     };
 
     handleTaskInput( e, event, date ) {
-      console.log('VALUE', e.target.value)
-      console.log('NAME',e.target.name)
+      // console.log('VALUE', e.target.value)
+      // console.log('NAME',e.target.name)
       let value = e.target.value
       let name = e.target.name
 
@@ -60,16 +60,16 @@ class Create_task extends Component {
       })
     };
     handleTaskDateStart(event, dateStart ) {
-      console.log('EVENT', event)
-      console.log('DATE', dateStart)
+      // console.log('EVENT', event)
+      // console.log('DATE', dateStart)
       this.setState({
         taskStart: dateStart
       })
     };
 
     handleTaskDateEnd(event, date ) {
-      console.log('EVENT', event)
-      console.log('DATE', date)
+      // console.log('EVENT', event)
+      // console.log('DATE', date)
       this.setState({
         taskEnd: date
       })
@@ -78,7 +78,7 @@ class Create_task extends Component {
     createUniqueKey(){
       let projectKey = this.props.company_name + new Date();
       let finalKey = projectKey.replace(/[^A-Z0-9]/ig, "0").toLowerCase();
-      console.log(finalKey)
+      // console.log(finalKey)
     }
 
 
@@ -102,11 +102,11 @@ class Create_task extends Component {
       //     })})
           this.props.currentProjectTasks( this.props.project_unique_key, body )
             .then(()=>{this.handleClose()})
-              .then( console.log( this.props ) )
+              .then( () => this.setState({ taskShow: false }) )
     }
     
       render() {
-        console.log('PROPS YO',this.props)
+        // console.log('PROPS YO',this.props)
         const actions = [
           <FlatButton
             label="Cancel"
