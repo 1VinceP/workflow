@@ -24,6 +24,7 @@ class Dashboard extends Component {
         
         this.state = {
             newMenu: false,
+            missingEmployeeInfo: false,
             newTaskReceived: false
         }
     }
@@ -35,15 +36,7 @@ class Dashboard extends Component {
     }
 
     render() {
-        console.log('HELO', this.props.user)
-        let userInfo = false
-        console.log('USER INFO', userInfo)
-        if (this.props.user) {
-            if (this.props.user.user_company) {
-                userInfo = true;
-                console.log("USER INFO 2", userInfo)
-            }
-        }
+
 
         let taskMapper = this.props.user_tasks.map( ( task, i ) => {
             return (
@@ -62,9 +55,25 @@ class Dashboard extends Component {
         } )
 
         return (
-            userInfo ? (
+            // userInfo ? 
+            (
                 <div className="dashboard-view">
                     <div className="button-span">
+
+
+{/* GOING TO PUP UP IF USER DOES NOT HAVE FIRST NAME WORKING */}
+                        <div>
+                            <div>Update Personal Information</div>
+                                <div>
+                                    <input placeholder='First Name' />
+                                </div>
+                                <div>
+                                <input placeholder='First Name' />
+                                </div>
+                                <button>Save</button>
+                        </div>
+{/* GOING TO PUP UP IF USER DOES NOT HAVE FIRST NAME WORKING */}
+
                         <button className='dashboard_new_items_buttons' onClick={() => { this.displayNewMenu() }}>+ New</button>
                     </div>
                     {this.state.newMenu === true ?
@@ -99,8 +108,7 @@ class Dashboard extends Component {
                 </div>
                 </div>
             )
-                :
-                <FirstTimeUser />
+
         )
     }
 }

@@ -12,6 +12,11 @@ module.exports = {
     logout: (req, res) => {
         req.logOut();
         return res.redirect(302, 'http://localhost:3000/#/');
+    },
+
+    logout_joined: (req, res) => {
+        req.logOut();
+        return res.redirect(302, 'http://localhost:3000/#/company-joined');
     }
 
 }

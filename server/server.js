@@ -22,6 +22,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+let userStuff;
+
 
 
 massive(process.env.CONNECTIONSTRING).then(db => {
@@ -47,9 +49,11 @@ passport.use(new Auth0Strategy({
     console.log(chalk.greenBright('profile: ', profile.id))
     db.users.find_user(profile.id).then(user => {
         if (user[0]) {
+            userStuff = true
             console.log(chalk.greenBright('strategy:'), user)
             return done(null, user);
         } else {
+            userStuff =  false
             db.users.create_user([profile.displayName, profile.emails[0].value, profile.picture, profile.id])
                 .then(user => {
                     return done(null, user);
@@ -59,7 +63,12 @@ passport.use(new Auth0Strategy({
 }))
 
 passport.serializeUser((user, done) => {
+    console.log('USER SAY WHAT', user[0].user_company)
+    if(user[0].user_company === null){
+        userStuff = false
+    } else {userStuff =  true}
     console.log(chalk.greenBright('serial: '), user);
+    console.log('USER STUFF YO',userStuff)
     done(null, user);
 })
 
@@ -68,12 +77,13 @@ passport.deserializeUser((obj, done) => {
     return done(null, obj[0]);
 })
 app.get('/login', passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000/#/dashboard',
+    successRedirect: 'http://localhost:3000/#/loading-page',
     failureRedirect: 'http://localhost:3000/#/'
 }));
 
 app.get('/login/user', auth_controller.login);
 app.get('/logout', auth_controller.logout);
+app.get('/logout-joined', auth_controller.logout_joined);
 
 
 app.get('/auth/authorized', (req, res) => {
