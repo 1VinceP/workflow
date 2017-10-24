@@ -171,6 +171,8 @@ app.get( '/api/getProjectTasks/:key', task_controller.get_project_tasks )
 
 app.post( '/api/addtask/:key', task_controller.create_task )
 
+app.put( '/api/completeTask/:id/:number/:key', task_controller.complete_task )
+
 ////////////////////////////        USERS         /////////////////////////////////
 
 app.get('/api/users', users_controller.get_users)
