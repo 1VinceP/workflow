@@ -58,7 +58,7 @@ class Table1 extends Component {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                </LineChart> */}
+                </LineChart>
             </div>
         )
     }

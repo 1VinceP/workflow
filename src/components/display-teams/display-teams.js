@@ -12,31 +12,6 @@ import 'semantic-ui-css/semantic.min.css'
 import { Button, Icon } from 'semantic-ui-react'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
-let style = {
-    margin: 12,
-};
-
-const options = [
-    { key: 'angular', text: 'John Wall', value: 'angular' },
-    { key: 'css', text: 'Steve Jobs', value: 'css' },
-    { key: 'design', text: 'Steph Curry', value: 'design' },
-    { key: 'ember', text: 'Shaq', value: 'ember' },
-    { key: 'html', text: 'Allen Iverson', value: 'html' },
-    { key: 'ia', text: 'Paul George', value: 'ia' },
-    { key: 'javascript', text: 'Javascript', value: 'javascript' },
-    { key: 'mech', text: 'Mechanical Engineering', value: 'mech' },
-    { key: 'meteor', text: 'Meteor', value: 'meteor' },
-    { key: 'node', text: 'NodeJS', value: 'node' },
-    { key: 'plumbing', text: 'Plumbing', value: 'plumbing' },
-    { key: 'python', text: 'Python', value: 'python' },
-    { key: 'rails', text: 'Rails', value: 'rails' },
-    { key: 'react', text: 'React', value: 'react' },
-    { key: 'repair', text: 'Kitchen Repair', value: 'repair' },
-    { key: 'ruby', text: 'Ruby', value: 'ruby', defaultSelectedLabel: 'true' },
-    { key: 'ui', text: 'UI Design', value: '1', defaultSelectedLabel: true },
-    { key: 'ux', text: 'User Experience', value: '2', selected: 'true' },
-  ]
-
 
 
 class DisplayTeams extends Component {
@@ -55,6 +30,7 @@ class DisplayTeams extends Component {
                         this.props.getUserInfo().then(res => {
                             this.props.getCompanyInfo(this.props.user.user_company).then(res => {
                                 this.props.getCompanyTeamInfo(this.props.user.user_company)
+                                this.props.getCompanyUsersInfo(this.props.user.user_company)
                             })
                         })
                     })
@@ -64,23 +40,14 @@ class DisplayTeams extends Component {
     }
 
     usersForTeam(id) {
-        // eslint-disable-next-line
         var teamId = id
-        // eslint-disable-next-line
         var newArray = []
         var theUsers = this.props.company_users
-        // return (<img src={x} alt="" />)
-        // eslint-disable-next-line 
         var usersForTeam = theUsers.map((e, i) => {
             if (e.user_team === id) {
                 return (
                     <div key={i}>
-                        <br />
                         {e.user_firstname} {e.user_lastname}
-                        <div>
-                            {e.user_email}
-                        </div>
-                        <br />
                     </div>
                 )
             }
@@ -88,157 +55,23 @@ class DisplayTeams extends Component {
         return usersForTeam
     }
 
-    // editUsersForTeam(id) {
-    //     //use underscore to compare the array copy and newarray.
-
-    //     function addUserToTeam(e, array) {
-
-    //         var user = e;
-    //         var x;
-    //         var diff;
-    //         var add;
-    //         if (array.includes(user)) {
-    //             x = array.indexOf(user)
-    //             array.splice(x, 1)
-    //         } else {
-    //             newArray.push(user)
-    //         }
-    //         console.log('CLICKED NEW ARRAY:', array)
-    //         console.log('Array Copy YOOOOO: ', arrayCopy)
-    //         diff = _.difference(arrayCopy, array)
-    //         add = _.difference(array, arrayCopy)
-    //         console.log('DIFFFFF', diff)
-    //         console.log('Users To Add:', add)
-    //         return array
-    //     }
-    //     var newArray = []
-    //     var teamId = id
-    //     var arrayCopy = []
-    //     var theUsers = this.props.company_users
-    //     // return (<img src={x} alt="" />)
-    //     // eslint-disable-next-line
-    //     theUsers.map((e, i) => {
-    //         if (e.user_team === id) {
-    //             newArray.push(e.user_id)
-    //             arrayCopy.push(e.user_id)
-    //         }
-    //     })
-    //     var usersForTeam = theUsers.map((e, i) => {
-    //         return (
-    //             <div key={i}>
-    //                 <input onClick={() => addUserToTeam(e.user_id, newArray)} id={e.user_id} defaultChecked={e.user_team === id ? true : false} type="checkbox" className="edit-team-users-user" />
-    //                 <label htmlFor={e.user_id}>{e.user_firstname} {e.user_lastname}</label>
-    //             </div>
-    //         )
-    //         // }
-    //     })
-    //     console.log('NewAray YOOOOO: ', newArray)
-    //     console.log('Array Copy YOOOOO: ', arrayCopy)
-    //     return usersForTeam
-    // }
-
-
-    //                  edit user team                  //
-
-
-
-    // for (let u = 0; u < add.length; u++) {
-    //     console.log('USER ID LOOP', add[u])
-    //     userToAdd.user_id = add[u];
-    //     console.log("ADD ARRAY:", add)
-    //     axios.post(`/api/edituser/team`, userToAdd).then(res => {
-    //         console.log("RESSSS", res)
-    //     })
-    // }
-    // for (let i = 0; i < diff.length; i++) {
-    //     axios.post(`/api/edituser/removeteam/${diff[i]}`)
-    //     console.log("DIFF i", diff[i])
-    // }
-
-
-    // var usersForTeam = theUsers.map((e, i) => {
-    //     return (
-    //         <div key={i}>
-    //             <input onClick={() => addUserToTeam(e.user_id, newArray)} id={e.user_id} defaultChecked={e.user_team === id ? true : false} type="checkbox" className="edit-team-users-user" />
-    //             <label htmlFor={e.user_id}>{e.user_firstname} {e.user_lastname}</label>
-    //         </div>
-    //     )
-    // })
-
-
-    // var theUsers = this.props.company_users
-    // var newArray = []
-    // var arrayCopy = []
-    // var diff;
-    // var add;
-
-    // function addUserToTeam(e, array) {
-    //     var user = e;
-    //     var x;
-    //     if (array.includes(user)) {
-    //         x = array.indexOf(user)
-    //         array.splice(x, 1)
-    //     } else {
-    //         newArray.push(user)
-    //     }
-    //     diff = _.difference(arrayCopy, array)
-    //     add = _.difference(array, arrayCopy)
-    //     return array
-    // }
-    // theUsers.map((e, i) => {
-    //     if (e.user_team === id) {
-    //         newArray.push(e.user_id)
-    //         arrayCopy.push(e.user_id)
-    //     }
-    // })
-
-
-    dropdownForUsers(){
-    
-        var theUsers = this.props.company_users
-        var user = []
-        theUsers.map((e, i) => {
-            user.push(
-                { value: e.user_id, label: e.user_firstname + " " + e.user_lastname})
-        })
-        return user
-        // console.log("USERS OBJECTTTT:" , user)
-    }
-
-
-    checkIfUserOnTeam(id){
-        var onTeam = []
-        var theUsers = this.props.company_users
-        theUsers.map((e, i) => {
-            if(e.user_team === id){
-                onTeam.push(e.user_id)
-            }
-        })
-        return onTeam
-    }
-
-
-    clickedUser(e){
-        var x = e.target.value
-        // console.log("USERS", theUsers[i].text)
-        console.log('EEEE,', e)
-        console.log('IT WORKED LOL', x)
-    }
-
-
-
-
-
-
-
-
 
     editTeam(team, description, id) {
+        var diff;
+        var add
+        var newArray = []
+        var teamId = id
+        var arrayCopy = []
+        var theUsers = this.props.company_users
         var teamId = id
         let data = {
             team_name: team,
             team_description: description,
             team_id: id
+        }
+        let userToAdd = {
+            user_team: id,
+            user_id: null
         }
         function teamNameDescription(e) {
             data.team_name = e.target.value
@@ -246,16 +79,60 @@ class DisplayTeams extends Component {
         function teamdescriptionFunction(e) {
             data.team_description = e.target.value
         }
+        function addUserToTeam(e, array) {
 
+            var user = e;
+            var x;
+            if (array.includes(user)) {
+                x = array.indexOf(user)
+                array.splice(x, 1)
+            } else {
+                newArray.push(user)
+            }
+            diff = _.difference(arrayCopy, array)
+            add = _.difference(array, arrayCopy)
+            console.log('DIFFFF:', diff)
+            console.log('ADDDD: ', add)
+            return array
+        }
+
+        theUsers.map((e, i) => {
+            if (e.user_team === id) {
+                newArray.push(e.user_id)
+                arrayCopy.push(e.user_id)
+            }
+        })
+        var usersForTeam = theUsers.map((e, i) => {
+            return (
+                <div key={i}>
+                    <input onClick={() => addUserToTeam(e.user_id, newArray)} id={e.user_id} defaultChecked={e.user_team === id ? true : false} type="checkbox" className="edit-team-users-user" />
+                    <label className="edit-user-label" htmlFor={e.user_id}>{e.user_firstname} {e.user_lastname} {e.user_team === null || e.user_team === id ? null : '*'} </label>
+                </div>
+            )
+
+        })
 
         confirmAlert({
             title: 'Edit Team',
             message: (
                 <div className="edit-team-popup">
-                    <span>Team Name: <input defaultValue={team} onChange={(e) => teamNameDescription(e)} /></span><br />
-                    <span>Description:</span>
+                    <span className="edit-team-name-span">Team Name: </span><br />
+                    <input className='edit-team-name-input-box' defaultValue={team} onChange={(e) => teamNameDescription(e)} />
+                    <br />
+                    <span className="edit-description-span">Description:</span>
                     <br />
                     <textarea className="edit-team-description" defaultValue={description} onChange={(e) => teamdescriptionFunction(e)} />
+                    <div className="edit-team-users-section">
+                        <div className="edit-team-users-span">
+                            <span className="users-header">Users</span>
+                            <span className="assigned-star">*</span><span className="already-on-team-span"> Currently assigned to another team</span>
+                        </div>
+                        <div className="edit-team-users-container">
+                            <br />
+                            {usersForTeam}
+                            <br />
+                        </div>
+                    </div>
                 </div>),
             confirmLabel: 'Confirm',
             cancelLabel: 'Cancel',
@@ -265,6 +142,18 @@ class DisplayTeams extends Component {
                     team_description: data.team_description && data.team_description,
                     team_id: data.team_id
                 })
+                if (diff) {
+                    diff.map((e, i) => {
+                        axios.post(`/api/edituser/removeteam/${e}`)
+                    })
+                }
+                if (add) {
+                    add.map((e, i) => {
+                        axios.post(`/api/edituser/team`, { user_team: id, user_id: e }).then(res => {
+                            console.log("RESSSS", res)
+                        })
+                    })
+                }
 
                 axios.post('/api/editteam', post)
                     .then(() => {
@@ -291,67 +180,59 @@ class DisplayTeams extends Component {
 
         let teamInfo = this.props.company_team.map((e, i) => {
             return (
-                <div className="team-container-yo">
+                <div key={i} className="team-container-yo">
                     <div key={i} className="team-section">
                         <div className="team-name-description">
-                            <div onClick={() => this.dropdownForUsers()} className="team-name-header">
-                                {e.team_name}
+                            <div className="team-name-users-header">
+                                <div className="team-name-header">
+                                    {e.team_name}
+                                </div>
+                                <div className="team-users-header">
+                                    <span className='users-header-team-box'>Users</span>
+                                </div>
                             </div>
                             <div className="header-underline">
                             </div>
-                            <div className="team-description-div">
-                                <span className="team-description">{e.team_description}</span>
+                            <div className="description-and-users">
+                                <div className="team-description-div">
+                                    <span className="team-description">{e.team_description}</span>
+                                </div>
+                                <div className="users-on-team-div">
+                                    <span className="users-span">{this.usersForTeam(e.team_id)}</span>
+                                </div>
                             </div>
                         </div>
-                        {/* {this.usersForTeam(e.team_id)} */}
-                    <div className="team-buttons-div">
-                        <Button onClick={() => this.editTeam(e.team_name, e.team_description, e.team_id)} color="white" size="big" className="team-settings-button">
-                            <Icon name='setting' />
-                        </Button>
-                        <Button onClick={() => this.deleteUser(e.team_id)} color="white" size="big" className="team-delete-button">
-                            <Icon name='trash' />
-                        </Button>
+                        <div className="team-buttons-div">
+                            <Button onClick={() => this.editTeam(e.team_name, e.team_description, e.team_id)} size="big" className="team-settings-button">
+                                <Icon name='setting' />
+                            </Button>
+                            <Button onClick={() => this.deleteUser(e.team_id)} size="big" className="team-delete-button">
+                                <Icon name='trash' />
+                            </Button>
+                        </div>
                     </div>
-                    </div>
-                    <div className="team-users-dropdown">
-                    <Select value="one" className="team-user-dropdown" options={this.dropdownForUsers()} />
-                    {/* <span className="team-members-span">Team Members</span> */}
-                    </div>
-
                 </div>
             )
         })
 
         return (
             <div className="analytics-container">
-
                 <div className="charts-container">
                     <div className="charts-main">
                         <div className="charts-left-navbar">
-                            <span className="analytics-navbar-title">Home</span>
+                            <span className="analytics-navbar-title">Teams</span>
                             <span>Create Team</span>
                             <span>Create User</span>
                             <span>Productivity</span>
                         </div>
-
                         <div>
                             {teamInfo}
                         </div>
-                        {/* <div className="table-container"> */}
-                        {/* <Table2 /> */}
-                        {/* </div> */}
                         <div className="charts-right-navbar">
                             <span className="right-navbar-title">Stay Updated</span>
                             <span>Setup Alerts to stay up to date.</span>
                             <button className="alert-button">Get Alerts</button>
                         </div>
-                    </div>
-
-                    <div className="charts-left-navbar under-nav">
-                        <span className="analytics-navbar-title">By Date</span>
-                        <span>Today</span>
-                        <span>This week</span>
-                        <span>Month-to-date</span>
                     </div>
                 </div>
             </div>
