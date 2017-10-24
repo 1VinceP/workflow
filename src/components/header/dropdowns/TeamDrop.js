@@ -37,7 +37,7 @@ class TeamDrop extends Component {
     render() {
         return(
             <div>
-                <button onClick={this.handleOpen} className='header-link-buttons' page-is-scrolled={this.props.scroll} >Teams</button>
+                <button onClick={this.handleOpen} className='header-link-buttons' page-is-scrolled={this.props.scroll} >Users</button>
                 <Popover open={this.state.open}
                          onRequestClose={this.handleClose} 
                          anchorEl={this.state.anchorEl}

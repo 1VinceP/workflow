@@ -4,19 +4,12 @@ import { connect } from 'react-redux';
 
 
 class Table2 extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            
-        }
-    }
 
     render() {
         (console.log("Object", this.props.company_team))
             return (
             < div >
-                <LineChart width={350} height={250} data={this.props.company_team} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+                <LineChart width={650} height={375} data={this.props.company_team} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
                     <Line strokeWidth={2} type="monotone" dataKey="team_projects_completed" stroke="#da863d" />
                     <Line strokeWidth={2} type="monotone" dataKey="team_company" stroke="#ce1c2e" />
                     {/* <Line strokeWidth={2} type="monotone" dataKey="7" stroke="#547cd5" />

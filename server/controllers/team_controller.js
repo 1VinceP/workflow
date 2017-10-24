@@ -12,9 +12,9 @@ module.exports = {
         },
 
         edit_team: (req,res,next) => {
-            let{team_name, team_date, team_description, team_projects_completed} = req.body;
+            let{team_name, team_description, team_id} = req.body;
 
-            req.app.get('db').team.edit_team(team_name, team_date, team_description, team_projects_completed)
+            req.app.get('db').team.edit_team(team_name, team_description, team_id)
             .then(() => res.status(200).send());
         }
     }
