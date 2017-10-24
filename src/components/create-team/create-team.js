@@ -39,6 +39,10 @@ class CreateTeam extends Component {
 
         return (
             <div className="team-modal">
+                <div className="top">
+                    <div>Creating Team</div>
+                </div>
+                    <div className="hmm">......</div>
                 <div className="teamname">
                     <TextField onChange={(e) => this.props.editTeamName(e.target.value)}
                     hintText="Team Name" />
@@ -48,10 +52,9 @@ class CreateTeam extends Component {
                     hintText="Team Description" />
                 </div>
                 <div className="teaminfo">
-                    Details about the team will appear here.
                 </div>
-                <Link to='/display-teams'><button onClick={() => this.submitTeam()}>Save Changes</button></Link>
-                <Link to='/display-teamss'><button>Cancel</button></Link>
+                <Link to='/display-teams'><button className="save" onClick={() => this.submitTeam()}>Save Changes</button></Link>
+                <Link to='/display-teamss'><button className="cancel">Cancel</button></Link>
             </div>
 
         )
