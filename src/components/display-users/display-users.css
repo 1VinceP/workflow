@@ -7,9 +7,10 @@
 }
 
 .title{
-    font-size: 50px;
+    font-size: 30px;
     height: 60px;
     width: 100%;
+    margin-top: 25px;
 }
 
 .button-container {
@@ -33,7 +34,7 @@
 .display-users-create-new-button:hover {
     background: white;
     color:#6859ea;
-    border: 2px solid #6859ea;
+    border: 1.5px solid #6859ea;
 }
 .display-users-create-new-button:active {
     background: #6859ea;
@@ -60,13 +61,13 @@
     justify-content: space-between;
     border-radius: 5px;
     padding: 10px 20px 20px 20px;
-    box-shadow: 0px 8px 12px #bdbdbd;
+    box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
 }
 .display-users-users-display:nth-child(odd) {
-    background: linear-gradient(to left, #34ebe9, #d0ffae);
+    background: linear-gradient(to left, white, #fcfcff);
 }
 .display-users-users-display:nth-child(even) {
-    background: linear-gradient(to right, #34ebe9, #d0ffae);    
+    background: linear-gradient(to right, white, #fcfcff);    
 }
 
 
@@ -75,14 +76,14 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
-    background: rgba(0, 0, 0, 0.4);
-    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.6);
-    color: white;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 8px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
+    color: rgba(0,0,0, .9);
     border-radius: 5px;
 }
 
 .user-name {
-
+    font-weight: bold;
 }
 
 .user-email {
@@ -102,18 +103,19 @@
     background: #44CEDF;
     border: none;
     outline: none;
-    border-radius: 4px;
+    border-radius: 3px;
     height: 35px;
     font-size: 16px;
     margin-top: 20px;
     color: white;
     cursor: pointer;
     margin-right: 40px;
+    
 }
 .display-users-edit-button:hover {
     background: transparent;
     color:#44CEDF;
-    border: 2px solid #44CEDF;
+    border: 1.5px solid #44CEDF;
 }
 .display-users-edit-button:active {
     background: #44CEDF;
@@ -126,7 +128,7 @@
     background: #f83d59;
     border: none;
     outline: none;
-    border-radius: 4px;
+    border-radius: 3px;
     height: 35px;
     font-size: 16px;
     margin-top: 20px;
@@ -136,10 +138,15 @@
 .display-users-delete-button:hover {
     background: transparent;
     color:#f83d59;
-    border: 2px solid #f83d59;
+    border: 1.5px solid #f83d59;
 }
 .display-users-delete-button:active {
     background: #f83d59;
     color:#fff;
     border: none;
+}
+@media(min-width: 480px) {
+    .title {
+        font-size: 50px;
+    }
 }

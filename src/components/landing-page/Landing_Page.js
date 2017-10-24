@@ -10,9 +10,9 @@ export default function () {
             <div>
                 <div className='landing-page-hero'>
                     <div className='landing-page-main-titles-container'>
-                        <div className='landing-page-main-title'>Project Management Software that let you actually manage your project</div>
+                        <div className='landing-page-main-title'>Project Management Software that lets you actually manage your project</div>
                         <div className='landing-page-divider-line'></div>
-                        <div className='landing-page-main-sub-title'>A Catchy Tag line of something</div>
+                        <div className='landing-page-main-sub-title'>Why settle for anything less than PsuedoTrics?</div>
                         <a href={process.env.REACT_APP_LOGIN}>
                             <button className='landing-page-bet-started-button'> Get Started </button>
                         </a>

@@ -24,7 +24,7 @@ class Analytics extends Component {
                         </div>
 
                         <div className="table-container">
-                            <Table1 />
+                            <Table2 />
                         </div>
                         {/* <div className="table-container"> */}
                         {/* <Table2 /> */}

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import './dashboard.css';
-// import IconButton from 'material-ui/IconButton';
 import NewMenu from '../new-menu/new-menu';
 import axios from 'axios';
-import Table1 from '../analytics/table1';
+import Table2 from '../analytics/table2';
 import FirstTimeUser from '../first-time-user/FirstTimeUser'
 import { addProjectUniqueKey } from '../../redux/reducers/main-reducer'
 import  {Link} from 'react-router-dom'
@@ -26,6 +25,7 @@ class Dashboard extends Component {
         this.state = {
             newMenu: false,
             missingEmployeeInfo: false,
+            newTaskReceived: false
         }
     }
 
@@ -35,26 +35,25 @@ class Dashboard extends Component {
         })
     }
 
-
-    componentDidMount() {
-        axios.get( '/api/getTasksByUser' )
-            .then( response => {
-                this.setState({
-                    userTasks: response.data
-                })
-            } )
-    }
-
     render() {
-        // console.log('HELO', this.props.user)
-        // let userInfo = false
-        // console.log('USER INFO', userInfo)
-        // if (this.props.user) {
-        //     if (this.props.user.user_company) {
-        //         userInfo = true;
-        //         console.log("USER INFO 2", userInfo)
-        //     }
-        // }
+
+
+        let taskMapper = this.props.user_tasks.map( ( task, i ) => {
+            return (
+                task.task_show ?
+                    <section className='dash-task' key={i} >
+                        <div className='dash-task-title' >{task.task_name}</div>
+                        <div className='dash-task-details' >
+                            <div>{task.task_start_date}</div>
+                            <div>{task.task_finished_date}</div>
+                            <div>{task.task_description}</div>
+                            <div>{task.task_link}</div>
+                        </div>
+                    </section>
+                : null
+            )
+        } )
+
         return (
             // userInfo ? 
             (
@@ -90,14 +89,18 @@ class Dashboard extends Component {
                     <div className="content-wrapper">
                         <div className="task-list">
                             <div className='dashboard-titles'>Tasks</div>
-
+                            <div className='dashboard-task-container'>
+                                <div className='dashboard-tasks' >
+                                    {taskMapper}
+                                </div>
+                            </div>
 
                         </div>
                     </div>
                     <div className="current-stats-wrapper">
-                        <div>Analytics</div>
+                        <div className='dashboard-titles'>Analytics</div>
                         <div>
-                            <Table1 />
+                            <Table2 />
                         </div>
                     </div>
                     <div >
