@@ -4,7 +4,7 @@ import './dashboard.css';
 // import IconButton from 'material-ui/IconButton';
 import NewMenu from '../new-menu/new-menu';
 import axios from 'axios';
-import Table1 from '../analytics/table1';
+import Table2 from '../analytics/table2';
 import FirstTimeUser from '../first-time-user/FirstTimeUser'
 import { addProjectUniqueKey } from '../../redux/reducers/main-reducer'
 import  {Link} from 'react-router-dom'
@@ -78,9 +78,9 @@ class Dashboard extends Component {
                         </div>
                     </div>
                     <div className="current-stats-wrapper">
-                        <div>Analytics</div>
+                        <div className='dashboard-titles'>Analytics</div>
                         <div>
-                            <Table1 />
+                            <Table2 />
                         </div>
                     </div>
                     <div >
