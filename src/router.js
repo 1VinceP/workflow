@@ -19,6 +19,10 @@ import DisplayCompany from './components/display-company/display-company';
 import CreateTeam from './components/create-team/create-team';
 import Analytics from './components/analytics/analytics';
 import Chat from './components/chat/chat';
+import InitialLoad from './components/initial-load/InitialLoadFunctional';
+import FirstTimeUser from './components/first-time-user/FirstTimeUser';
+import CompanyJoinedAdded from './components/company-joined-added/CompanyJoinedAdded'
+
 // import axios from 'axios';
 
 // function checkForLog() {
@@ -57,6 +61,10 @@ export default (
         <Route path='/contact' component={ContactUs} />
         <Route path='/our-company' component={WhatWeDo} />
         <Route path='/our-team' component={MeetTheTeam} />
+        <Route path='/loading-page' component={InitialLoad} />
+        <Route path='/first-time-user' component={FirstTimeUser} />
+        <Route path='/company-joined' component={CompanyJoinedAdded} />
+        
         
     </Switch>
 )
