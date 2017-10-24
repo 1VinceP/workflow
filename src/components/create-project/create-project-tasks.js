@@ -10,75 +10,71 @@ class Create_Project_Tasks extends Component {
         this.state = {
             showDetails: 'false', // This prevents the task info from appearing in unwanted places
             open: null,
+            deets: null,
             expandInfo: 'false' // This shows the task info when the task is clicked
         }
     }
 
     componentDidReceiveProps() {
         this.forceUpdate()
-    }
+    };
 
-
-
-    showTaskDetails( taskName ) {
+    showTaskDetails( taskName, taskId ) {
         let task = document.getElementById( taskName )
+        let details = document.getElementsByClassName( taskId )
+        let oldTask = document.getElementById(this.state.open)
+        let oldDetails = document.getElementsByClassName(this.state.deets)
 
+        // If no other element is open, open the clicked element
         if( this.state.open === null ) {
-            this.setState({ open: taskName, expandInfo: 'true' })
+            this.setState({ open: taskName, deets: taskId })
             task.style.width = '420px'
-            task.taskyShowDeets = 'true'
+            for( let i = 0; i < details.length; i++ ) {
+                details[i].style.display = 'flex'
+            }
         }
+        // If there is already an element open, close it and open the clicked element
         else if( this.state.open > 0 && this.state.open !== taskName ) {
-             document.getElementById(this.state.open).style.width = '160px'
-             document.getElementById(this.state.open).taskyShowDeets = 'false'
+            // Close old Element
+            oldTask.style.width = '160px'
+            for( let i = 0; i < oldDetails.length; i++ ) {
+                oldDetails[i].style.display = 'none'
+            }
 
-             this.setState({ open: taskName })
-             task.style.width = '420px'
-             task.taskyShowDeets = 'true'
+            // Open new element
+            this.setState({ open: taskName, deets: taskId })
+            task.style.width = '420px'
+            for( let i = 0; i < details.length; i++ ) {
+                details[i].style.display = 'flex'
+            }
         }
+        // If the open element is clicked, close it
         else {
-            this.setState({ open: null, expandInfo: 'false' })
+            this.setState({ open: null, deets: null })
             task.style.width = '160px'
-            task.taskyShowDeets = 'false'
+            for( let i = 0; i < details.length; i++ ) {
+                details[i].style.display = 'none'
+            }
         }
-    }
+    };
 
     render() {
-        var mappedTask, mappedTaskToCircle;
+        let mappedTaskToDiv;
 
-    //     this.props.current_project_tasks ?
-    //         mappedTask = this.props.current_project_tasks.map( ( task, i ) => {
-    //        <div key={i}>
-    //            <div className='tasky-name'>
-    //            <p>{task.task_name}</p>
-    //            <section>
-    //                <div>{task.task_start_date}</div>
-    //                <div className='task-spacer'>-</div>
-    //                <div>{task.task_finished_date}</div>
-    //            </section>
-    //            </div>
-    //            <div className='tasky-role'>{task.task_user_1}</div>
-    //            <div className='tasky-desc'>{task.task_description}</div>
-    //            <div className='tasky-link'>{task.task_link}</div>
-    //            <div className='tasky-close' onClick={ () => this.showTaskDetails() } >Close</div>
-    //        </div>
-    //    } ) 
-    //    : null
-
-       mappedTaskToCircle = this.props.current_project_tasks.map( ( task, i ) => {
-           return (
-               <section className='box-arrow' key={i}>
-                   <div onClick={() => this.showTaskDetails( task.task_name )} id={task.task_name} className={`project-created-task ${ i % 2 === 0 ? 'task-odd' : 'task-even' }`} style={ { zIndex: 1000 - i + '' } } >
-                        <div className='tasky-name'>{task.task_name}</div>
-                        <div taskyShowDeets='false' >{task.task_start_date}</div>
-                        <div taskyShowDeets='false' >{task.task_finished_date}</div>
-                        <div taskyShowDeets='false' >{task.task_description}</div>
-                        <div taskyShowDeets='false' >{task.task_link}</div>
-                    </div>
-                    <div className={`arrow ${ i % 2 === 0 ? 'task-odd-arrow' : 'task-even-arrow' }`} style={ { zIndex: 1000 - i + '' } } ></div>
-               </section>
-           )
-       } )
+        mappedTaskToDiv = this.props.current_project_tasks.map( ( task, i ) => {
+            return (
+                <section className='box-arrow' key={i}>
+                    <div onClick={() => this.showTaskDetails( task.task_name, task.task_id )} id={task.task_name} className={`project-created-task ${ i % 2 === 0 ? 'task-odd' : 'task-even' }`} style={ { zIndex: 1000 - i + '' } } >
+                            <div className='tasky-name'>{task.task_name}</div>
+                            <div className={`task-item ${task.task_id}`} >{task.task_start_date}</div>
+                            <div className={`task-item ${task.task_id}`} >{task.task_finished_date}</div>
+                            <div className={`task-item ${task.task_id}`} >{task.task_description}</div>
+                            <div className={`task-item ${task.task_id}`} >{task.task_link}</div>
+                        </div>
+                        <div onClick={() => this.showTaskDetails( task.task_name, task.task_id )} className={`arrow ${ i % 2 === 0 ? 'task-odd-arrow' : 'task-even-arrow' }`} style={ { zIndex: 1000 - i + '' } } ></div>
+                </section>
+            )
+        } )
 
         return(
             <div>
@@ -92,7 +88,7 @@ class Create_Project_Tasks extends Component {
                 </div>
 
                 <div className='project-tasks-created-container'>
-                    {mappedTaskToCircle}
+                    {mappedTaskToDiv}
                 </div>
             </div>
         )
