@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-// import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 import { connect } from 'react-redux';
 
-
+var table1 =[]
 
 
 class Table1 extends Component {
