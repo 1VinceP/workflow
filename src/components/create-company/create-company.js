@@ -20,6 +20,7 @@ class CreateCompany extends Component {
     this.state = {
       finished: false,
       stepIndex: 0,
+      company_id_for_code:'',
     };
   }
 
@@ -39,10 +40,24 @@ class CreateCompany extends Component {
   }
      axios.post('/api/addcompany', data).then(response =>{
       console.log('CODE IN PROPS', response )
-     }).then()
-    console.log(data)
+     }).then(()=>{axios.get(`/api/company_code/${this.props.company_code}`).then((response)=>{ 
+      this.setState({
+          company_id_for_code: response.data[0].company_id
+       })
+      }).then(()=>{
+          let data = {
+              user_company: this.state.company_id_for_code,
+              user_id: this.props.user.user_id,
+          }
+          axios.put(`/api/company_code`, data)
+      }).then(()=>{
+      return window.location.href =process.env.REACT_APP_LOGOUT_JOINED
+  })
+})
+  
+  }
+  
     
-}
 
   handleNext = () => {
     const { stepIndex } = this.state;
@@ -136,7 +151,6 @@ class CreateCompany extends Component {
           {finished ? (
             <p>
               <a
-                href="/#/dashboard"
                 onClick={(event) => {
                   event.preventDefault();
                   this.setState({ stepIndex: 0, finished: false });
@@ -157,7 +171,7 @@ class CreateCompany extends Component {
                   />
                   {stepIndex === 2
                     ?
-                    <a href='/#/dashboard'>
+                    <a >
                     <RaisedButton
                       label='Finish'
                       primary={true}

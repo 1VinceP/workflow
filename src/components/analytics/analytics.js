@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './analytics.css';
-// import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 import { connect } from 'react-redux';
 import Table1 from './table1';
 import Table2 from './table2';
@@ -24,7 +24,7 @@ class Analytics extends Component {
                         </div>
 
                         <div className="table-container">
-                            <Table1 />
+                            <Table2 />
                         </div>
                         {/* <div className="table-container">
                         <Table2 />

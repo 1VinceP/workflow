@@ -1,0 +1,20 @@
+.initial-load-main-title{
+    font-size: 24px;
+    margin: 20px;
+    color: rgb(176, 176, 176);
+
+}
+.initial-load-body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.initial-load-class-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import { assignCompanyCodeInput} from '../../redux/reducers/main-reducer'
+import { getUserInfo, getCompanyInfo, getCompanyUsersInfo, getCompanyTeamInfo } from '../../redux/reducers/main-reducer';
 import './firstTimeUser.css'
 import axios from 'axios'
 import {Redirect} from 'react-router';
@@ -27,10 +28,9 @@ class FirstTimeUser extends Component {
                }
                axios.put(`/api/company_code`, data)
            }).then(()=>{
-            //    this.setState({
-            //        redirect: true
-            //    })
-           })
+            return window.location.href =process.env.REACT_APP_LOGOUT_JOINED
+        })
+        
         }
 
         
@@ -72,4 +72,4 @@ function mapStateToProps( state ) {
   }
 
 
-export default connect( mapStateToProps, {assignCompanyCodeInput} )(FirstTimeUser)
+export default connect( mapStateToProps, {assignCompanyCodeInput, getUserInfo, getCompanyInfo, getCompanyUsersInfo, getCompanyTeamInfo} )(FirstTimeUser)
