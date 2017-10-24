@@ -65,6 +65,10 @@ class Header extends Component {
         } )
     };
 
+    updateUserTasks() {
+        this.props.getUserTasks( this.props.user.user_id )
+    }
+
     render() {
         return(
             <header className='header-header' page-has-scrolled={this.state.scroll}>
@@ -101,7 +105,7 @@ class Header extends Component {
                     { this.props.user
                         ? <div style={{width: '100%'}}>
                             <div className='header-mid-buttons'>
-                                <Link to='/dashboard' className='header-link'><button className='header-link-buttons' page-is-scrolled={this.state.scroll}>Home</button></Link>
+                                <Link to='/dashboard' className='header-link' onClick={ () => this.updateUserTasks() } ><button className='header-link-buttons' page-is-scrolled={this.state.scroll}>Home</button></Link>
                                 <Link to='/analytics' className='header-link'><button className='header-link-buttons' page-is-scrolled={this.state.scroll}>Analytics</button></Link>
                                 <CompanyDrop scroll={this.state.scroll} />
                                 <TeamDrop scroll={this.state.scroll} />

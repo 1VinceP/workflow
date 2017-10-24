@@ -146,12 +146,12 @@ html {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .dash-task {
     width: 23%;
-    height: 80%;
-    background: green;
+    background: rgb(185, 255, 185);
     margin: 5px;
 }
 
@@ -166,6 +166,12 @@ html {
     width: 100%;
     padding: 3px;
     background: rgba( 0, 0, 0, 0.4 );
+}
+
+.dash-check {
+    cursor: pointer;
+    position: relative;
+    right: -55px;
 }
 
 .chat {
