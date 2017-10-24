@@ -113,38 +113,60 @@ html {
     width: 90vw;
     display: flex;
     justify-content: flex-end;
-    }
-    .dashboard_new_menu_container{
-        display: flex;
-        position: absolute;
-        margin-top: 55px;
-        width: 90vw;
-        flex-direction: column;
-        align-items: flex-end;
-    }
-    .dashboard_menu_item_selection{
-        width:90px;
-        height: 40px;
-        padding: 10px 10px 10px 10px;
-        background: rgb(240, 235, 235);
-        color: #4dbf71;
-        text-align: right;
-    }
-    .dashboard_menu_item_selection:hover{
-        width:90px;
-        height: 40px;
-        padding: 10px 10px 10px 10px;
-        background: rgb(255, 251, 251);
-        color: #4dbf71;
-        text-align: right;
-    }
-    .dashboard-titles{
-        font-family: helvetica;
-        margin: 15px;
-        color: rgb(178, 178, 178);
-        font-size: 22px;
-        text-align: center;
-    }
+}
+.dashboard_new_menu_container{
+    display: flex;
+    width: 90vw;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.dashboard_menu_item_selection{
+    width:90px;
+    height: 40px;
+    padding: 10px 10px 10px 10px;
+    background: white;
+    color: #4dbf71;
+    text-align: right;
+}
+.dashboard-titles{
+    font-family: helvetica;
+    margin: 15px;
+    color: rgb(178, 178, 178);
+    font-size: 22px;
+    text-align: center;
+}
+
+.dashboard-task-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.dashboard-tasks {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dash-task {
+    width: 23%;
+    height: 80%;
+    background: green;
+    margin: 5px;
+}
+
+.dash-task-title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dash-task-details {
+    width: 100%;
+    padding: 3px;
+    background: rgba( 0, 0, 0, 0.4 );
+}
 
 .chat {
     position: fixed;

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import './dashboard.css';
-// import IconButton from 'material-ui/IconButton';
 import NewMenu from '../new-menu/new-menu';
 import axios from 'axios';
 import Table2 from '../analytics/table2';
@@ -25,6 +24,7 @@ class Dashboard extends Component {
         
         this.state = {
             newMenu: false,
+            newTaskReceived: false
         }
     }
 
@@ -32,16 +32,6 @@ class Dashboard extends Component {
         this.setState({
             newMenu: !this.state.newMenu
         })
-    }
-
-
-    componentDidMount() {
-        axios.get( '/api/getTasksByUser' )
-            .then( response => {
-                this.setState({
-                    userTasks: response.data
-                })
-            } )
     }
 
     render() {
@@ -54,6 +44,23 @@ class Dashboard extends Component {
                 console.log("USER INFO 2", userInfo)
             }
         }
+
+        let taskMapper = this.props.user_tasks.map( ( task, i ) => {
+            return (
+                task.task_show ?
+                    <section className='dash-task' key={i} >
+                        <div className='dash-task-title' >{task.task_name}</div>
+                        <div className='dash-task-details' >
+                            <div>{task.task_start_date}</div>
+                            <div>{task.task_finished_date}</div>
+                            <div>{task.task_description}</div>
+                            <div>{task.task_link}</div>
+                        </div>
+                    </section>
+                : null
+            )
+        } )
+
         return (
             userInfo ? (
                 <div className="dashboard-view">
@@ -73,7 +80,11 @@ class Dashboard extends Component {
                     <div className="content-wrapper">
                         <div className="task-list">
                             <div className='dashboard-titles'>Tasks</div>
-
+                            <div className='dashboard-task-container'>
+                                <div className='dashboard-tasks' >
+                                    {taskMapper}
+                                </div>
+                            </div>
 
                         </div>
                     </div>
