@@ -1,5 +1,7 @@
 .App {
     overflow-x: none;
+    /* font-family: 'Crimson Text', serif; */
+    font-size: 15px;
 }
 .landing-page-position{
     margin: auto;

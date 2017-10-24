@@ -172,11 +172,12 @@ html {
     position: fixed;
     right: 0;
     bottom: 0;
-    font-size: 25px;
+    font-size: 23px;
+    color: #0d96b5;
     padding: 7px 15px 7px 15px;
     margin-right: 50px;
     background: white;
-    border: 1px solid black;
+    border: 1px solid rgba(48, 48, 48, 0.4);
     border-radius: 7px 7px 0px 0px;
-    box-shadow: 0px 0px 8px rgba(48, 48, 48, 0.6);
+    box-shadow: 0px 0px 4px rgba(48, 48, 48, 0.6);
 }
