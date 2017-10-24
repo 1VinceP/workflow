@@ -21,6 +21,7 @@ const EDIT_USER_PICTURE_URL = "EDIT_USER_PICTURE_URL";
 const EDIT_USER_DISPLAY_NAME = "EDIT_USER_DISPLAY_NAME";
 const EDIT_USER_TEAM = "EDIT_USER_TEAM";
 const EDIT_USER_ROLE = "EDIT_USER_ROLE";
+const GET_USER_TASKS = "GET_USER_TASKS";
 const EDIT_TEAM_NAME = "EDIT_TEAM_NAME";
 const EDIT_TEAM_DESCRIPTION = "EDIT_TEAM_DESCRIPTION";
 const ADD_UNIQUE_KEY_PROJECT_TASK = "ADD_UNIQUE_KEY_PROJECT_TASK";
@@ -55,6 +56,7 @@ var initialState = {
     user_display_name: '',
     user_team: '',
     user_role:'',
+    user_tasks: '',
     project_unique_key:'',
     project_name:'',
     project_start_date:'',
@@ -70,7 +72,7 @@ var initialState = {
     current_project_tasks: [],
     project_tasks: [],
     user_tasks: []
-    }
+}
     
     export default function reducer(state = initialState, action) {
         // console.log('action',action.type)
@@ -111,6 +113,8 @@ var initialState = {
                 return Object.assign({}, state, {user_team: action.payload})
             case EDIT_USER_ROLE:
                 return Object.assign({}, state, {user_role: action.payload})
+            case GET_USER_TASKS + '_FULFILLED':
+                return Object.assign({}, state, { user_tasks: action.payload })
             case ADD_UNIQUE_KEY_PROJECT_TASK:
                 return Object.assign({}, state, {project_unique_key: action.payload, project_creator: action.projectCreator})
             case ADD_PROJECT_NAME:
@@ -366,11 +370,24 @@ export function getProject(projectData) {
 
 }
 
+export function getUserTasks( id, body ) {
+    
+        const tasks = axios.get( `/api/getUserTasks/${id}` )
+            .then( response => {
+                console.log( 'redux tasks', response )
+                return response.data 
+            } )
+    
+        return {
+            type: GET_USER_TASKS,
+            payload: tasks
+        }
+    }
+
 export function currentProjectTasks( key, body ) {
 
     const task = axios.post( `/api/addtask/${key}`, body )
         .then( response => {
-            console.log( 'redux task', response )
             return response.data 
         } )
 

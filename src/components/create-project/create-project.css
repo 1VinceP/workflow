@@ -105,7 +105,7 @@
 	height: 0;
 	border-top: 70px solid transparent;
     border-bottom: 70px solid transparent;
-    margin-right: -52px;
+    margin-right: -53px;
 }
 
 .task-odd {
@@ -129,7 +129,11 @@
 }
 
 [taskyShowDeets='true'] {
-    
+    display: flex;
+}
+
+.task-item {
+    display: none;
 }
 
 .create-project-titles-created-task{

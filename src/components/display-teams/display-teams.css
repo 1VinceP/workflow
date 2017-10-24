@@ -12,7 +12,7 @@ html {
 }
 
 .edit-team-popup input{
-    /* width: 50px; */
+    margin-bottom: 15px;
 }
 
 .edit-team-description{
@@ -20,19 +20,20 @@ html {
     padding-left: 10px;
     margin-top: 10px;
     height: auto;
-    height: 70px;
-    width: 320px;
+    height: 100px;
+    width: 440px;
     border: 1px solid rgba(0,0,0, .1);
-    
+    color: rgba(0,0,0,.50);
     border-radius: 5px;
     resize: none;
 }
 
 .edit-team-description:focus{
-    border: 1px solid rgba(0,0,0, .3);
+    border: 1px solid rgba(0,0,0, .45);
     outline: none;
     text-align: left;
     box-shadow: 0px 1px 2px rgba(0,0,0, .14);
+    color: rgba(0,0,0,.88);
 }
 .edit-team-users-section{
     display: flex;
@@ -40,24 +41,61 @@ html {
     margin-top: 25px;
 }
 
+.edit-description-span{
+    
+}
+
 .edit-team-users-container {
-    height: 120px;
+    height: 170px;
     width: 440px;
-    overflow: scroll;
-    /* border-top: 1px solid rgba(0,0,0, .3); */
+    overflow: auto;
+    border-top: 1px solid rgba(0,0,0, .45);
+    
+    
+}
+
+
+
+
+.edit-team-name-input-box{
+    padding-left: 10px !important;
+    border: 1px solid rgba(0,0,0, .1);
+    border-radius: 3px;
+    margin-top: 6px;
+    color: rgba(0,0,0,.50);
+}
+
+.edit-team-name-input-box:focus{
+    border: 1px solid rgba(0,0,0, .45);
+    outline: none;
+    box-shadow: 0px 1px 2px rgba(0,0,0, .14);
+    color: rgba(0,0,0,.88);
+}
+
+.edit-team-name-span, .edit-description-span, .users-header{
+    color: black !important;
+    font-weight: 900;
 }
 
 .edit-team-users-user{
-    margin-top: 10px;
-    margin-left: 33px;
+    margin-bottom: 7px !important;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.edit-user-label{
+    font-weight: 100;
+    color: black;
+    padding-left: 15px;
+    cursor: pointer;
 }
 
 .users-header{
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid rgba(0,0,0, .3);
     padding-bottom: 5px;
     font-size: 20px;
+    padding-left: 3px;
 }
 
 .analytics-container {
@@ -115,6 +153,8 @@ html {
     padding: 10px;
     box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
     font-weight: 100;
+    border-top: 2px solid rgb(119, 88, 236);
+    border-radius: 3px;
 }
 
 .under-nav{
@@ -146,7 +186,9 @@ html {
     height: 173px;
     background: white;
     padding: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18)
+    box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
+    border-top: 2px solid rgb(119, 88, 236);
+    border-radius: 3px;
 }
 
 .charts-right-navbar span {
@@ -173,6 +215,7 @@ html {
 .alert-button:focus{
     outline: none;
 }
+
 
 
 
@@ -210,11 +253,17 @@ html {
     flex-direction: column;
     justify-content: space-around;
     width: 770px;
-    height: 150px;
+    height: 170px;
     box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
     background: white;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     padding-right: 15px;
+    padding-top: 10px;
+    border-radius: 3px;
+}
+
+.team-container-yo:hover{
+    box-shadow: 0 2px 4px rgba(0,0,0,.25), 0 0 1px rgba(0,0,0,.28);
 }
 
 
@@ -222,6 +271,8 @@ html {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: flex-start;
+    
     /* padding-bottom: 20px; */
     
 }
@@ -229,6 +280,12 @@ html {
 .team-description{
     font-weight: 200;
     font-size: 13px !important;
+}
+
+.description-and-users{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .team-members-span{
@@ -239,20 +296,22 @@ html {
 }
 
 .team-description-div{
-    width:420px;
+    width:350px;
     text-overflow: ellipsis;
     cursor: pointer;
-    overflow:hidden;
-    white-space: nowrap;
-    
-}
-.team-description-div:hover{
-    width: 420px;
     overflow: visible; 
     white-space: normal;
     height:auto;
     
 }
+
+.users-on-team-div{
+    width: 170px;
+    height: 100px;
+    overflow: auto;
+    
+}
+
 
 .team-users-dropdown{
     display: flex;
@@ -262,17 +321,19 @@ html {
 }
 
 .team-user-dropdown{
-    margin-right: auto !important;
+    width: 450px;
 }
 
 
 .header-underline{
-    width: 400px;
+    position: relative;
+    z-index: 20;
+    width: 640px;
     height: 1px;
-    background: linear-gradient(to right, rgba(0,0,0, .6), rgba(0,0,0, .4), rgba(0,0,0, .0));
+    background: linear-gradient(to right, rgba(0,0,0, .5), rgba(0,0,0, .5), rgba(0,0,0, .5), rgba(255,255,255, .5));
     /* background: rgba(0,0,0, .5); */
     margin-bottom: 10px;
-    margin-top: -4px;
+    
 }
 
 .team-settings-button {
@@ -288,11 +349,49 @@ html {
 .team-buttons-div{
     display: flex;
     justify-content: center;
+    margin-top: -15px;
   }
 
-.team-user-dropdown{
+
+.team-name-users-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+
+.users-header-team-box{
+    border: none;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    margin-right: 105px;
+}
+
+.edit-team-users-span{
+    display: flex;
+    justify-content: flex-start;
+
+    flex-direction: row;
+}
+
+.already-on-team-span{
+    position: fixed;
+    font-size: 10px;
+    margin-left: 270px !important;
+    margin-top: 7px !important; 
+    font-weight: 100 !important;
     
 }
+
+.assigned-star{
+    color: black;
+    font-weight: 100 !important;
+    margin-left: 205px !important;
+    font-size: 18px !important;
+    margin-top: 11px !important; 
+    margin-bottom: -10px;
+}
+
 @media(min-width: 400) {
     .firstchart {
         padding: 20px;

@@ -48,7 +48,7 @@ class Table1 extends Component {
 
         return (
             <div>
-                <LineChart  width={650} height={375} data={table1} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+                <LineChart  width={650} height={375} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
                     <Line strokeWidth={2} type="monotone" dataKey="Projects Completed" stroke="#da863d" />
                     <Line strokeWidth={2} type="monotone" dataKey="On Time" stroke="#ce1c2e" />
                     <Line strokeWidth={2} type="monotone" dataKey="Time to Completion(days)" stroke="#547cd5" />
@@ -58,7 +58,7 @@ class Table1 extends Component {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                </LineChart> */}
+                </LineChart>
             </div>
         )
     }
