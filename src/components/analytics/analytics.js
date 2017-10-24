@@ -4,7 +4,7 @@ import './analytics.css';
 import { connect } from 'react-redux';
 import Table1 from './table1';
 import Table2 from './table2';
-import Table1 from './table1'
+
 
 
 class Analytics extends Component {
@@ -26,9 +26,9 @@ class Analytics extends Component {
                         <div className="table-container">
                             <Table1 />
                         </div>
-                        {/* <div className="table-container"> */}
-                        {/* <Table2 /> */}
-                        {/* </div> */}
+                        {/* <div className="table-container">
+                        <Table2 />
+                        </div> */}
                         <div className="charts-right-navbar">
                         <span className="right-navbar-title">Stay Updated</span>
                         <span>Setup Alerts to stay up to date.</span>
