@@ -29,8 +29,8 @@ class DisplayTeams extends Component {
                     .then(() => {
                         this.props.getUserInfo().then(res => {
                             this.props.getCompanyInfo(this.props.user.user_company).then(res => {
-                                this.props.getCompanyTeamInfo(this.props.user.user_company)
                                 this.props.getCompanyUsersInfo(this.props.user.user_company)
+                                this.props.getCompanyTeamInfo(this.props.user.user_company)
                             })
                         })
                     })

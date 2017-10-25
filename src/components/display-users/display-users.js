@@ -22,59 +22,6 @@ class DisplayUsers extends Component {
             cancelLabel: 'Cancel',
             onConfirm: () => {
                 axios.delete(`/api/delete/user/${id}`)
-                .then(() => {
-                    this.props.getUserInfo().then(res => {
-                        this.props.getCompanyInfo(this.props.user.user_company).then(res => {
-                            this.props.getCompanyUsersInfo(this.props.user.user_company)
-                        })
-                    })
-                })
-            },    // Action after Confirm
-            onCancel: () => null,
-        })
-    }
-
-    editUser(first, last, email, id) {
-
-        // let firstNameInput = ''
-        // let lastNameInput = ''
-        // let emailInput = ''
-        let data = {
-            user_firstname: first,
-            user_lastname: last,
-            user_email: email,
-            user_id: id
-        }
-       function firstNameFunction(e){
-           console.log(e.target.value)
-            data.user_firstname = e.target.value      
-        }
-        function lastNameFunction(e){
-            console.log(e.target.value)
-            data.user_lastname = e.target.value
-        }
-        function emailFunction(e){
-            console.log(e.target.value)
-            data.user_email = e.target.value
-        }
-            confirmAlert({
-                title: 'Edit User',
-                message: (
-                    <div>
-                        <span>First Name: <input defaultValue={first} onChange={(e) => firstNameFunction(e)}/></span><br/>
-                        <span>Last Name: <input defaultValue={last} onChange={(e) => lastNameFunction(e)}/></span><br/>
-                        <span>Email: <input defaultValue={email} onChange={(e) => emailFunction(e)}/></span>
-                    </div>),
-                confirmLabel: 'Confirm',
-                cancelLabel: 'Cancel',
-                onConfirm: () => {
-                   var post = Object.assign({}, {
-                        user_firstname: data.user_firstname && data.user_firstname,
-                        user_lastname: data.user_lastname && data.user_lastname,
-                        user_email: data.user_email && data.user_email,
-                        user_id: data.user_id
-                    })
-                    axios.post('/api/edituser', post)
                     .then(() => {
                         this.props.getUserInfo().then(res => {
                             this.props.getCompanyInfo(this.props.user.user_company).then(res => {
@@ -82,31 +29,81 @@ class DisplayUsers extends Component {
                             })
                         })
                     })
-                },
+            },    // Action after Confirm
+            onCancel: () => null,
+        })
+    }
 
-                onCancel: () => null,
-            })
-            
+    editUser(first, last, email, id) {
+
+        let data = {
+            user_firstname: first,
+            user_lastname: last,
+            user_email: email,
+            user_id: id
+        }
+        function firstNameFunction(e) {
+            console.log(e.target.value)
+            data.user_firstname = e.target.value
+        }
+        function lastNameFunction(e) {
+            console.log(e.target.value)
+            data.user_lastname = e.target.value
+        }
+        function emailFunction(e) {
+            console.log(e.target.value)
+            data.user_email = e.target.value
+        }
+        confirmAlert({
+            title: 'Edit User',
+            message: (
+                <div>
+                    <span>First Name: <input defaultValue={first} onChange={(e) => firstNameFunction(e)} /></span><br />
+                    <span>Last Name: <input defaultValue={last} onChange={(e) => lastNameFunction(e)} /></span><br />
+                    <span>Email: <input defaultValue={email} onChange={(e) => emailFunction(e)} /></span>
+                </div>),
+            confirmLabel: 'Confirm',
+            cancelLabel: 'Cancel',
+            onConfirm: () => {
+                var post = Object.assign({}, {
+                    user_firstname: data.user_firstname && data.user_firstname,
+                    user_lastname: data.user_lastname && data.user_lastname,
+                    user_email: data.user_email && data.user_email,
+                    user_id: data.user_id
+                })
+                axios.post('/api/edituser', post)
+                    .then(() => {
+                        this.props.getUserInfo().then(res => {
+                            this.props.getCompanyInfo(this.props.user.user_company).then(res => {
+                                this.props.getCompanyUsersInfo(this.props.user.user_company)
+                            })
+                        })
+                    })
+            },
+
+            onCancel: () => null,
+        })
+
     }
 
 
     render() {
         let userInfo = this.props.company_users.map((e, i) => {
             return (
-                <div key={i} className='display-users-users-display'>
-                    <div className="user-data">
-                        <div className="user-name">
+                <div key={i} >
+                    <div >
+                        <div>
                             {e.user_firstname} {e.user_lastname}
                         </div>
-                        <div className="user-email">
+                        <div>
                             {e.user_email}
                         </div>
                     </div>
-                    <div className='display-users-users-display-button-div'>
+                    <div>
                         <button className='display-users-edit-button' onClick={() => this.editUser(e.user_firstname, e.user_lastname, e.user_email, e.user_id)}>Edit User</button>
                         <button className='display-users-delete-button' onClick={() => this.deleteUser(e.user_id)} >Delete User</button>
                     </div>
-                    
+
                 </div>
             )
         })
@@ -114,14 +111,35 @@ class DisplayUsers extends Component {
 
         return (
             <div className="display-users-container">
-                <div className="title">
-                    Company User List
-                </div>
-                <div className="button-container">
-                    <Link to="/create-user"><button className='display-users-create-new-button'>+ Create New User</button></Link>
-                </div>
-                <div className="display-users-data-column">
-                    {userInfo}
+
+                <div className="charts-container">
+                    <div className="charts-main">
+                        <div className="charts-left-navbar">
+                            <span className="display-users-navbar-title">Users</span>
+                            <span>Create User</span>
+                            <span>Tasks</span>
+                            <span>Productivity</span>
+                        </div>
+
+                        <div className="users-table-container">
+                            <div className="users-top-table">
+                                <div className="users-top-table-text">
+                                    <span>Name</span>
+                                    <span>Team</span>
+                                </div>
+                            </div>
+                            {userInfo}
+                        </div>
+                        {/* <div className="table-container">
+                        <Table2 />
+                        </div> */}
+                        <div className="charts-right-navbar">
+                            <span className="right-navbar-title">Stay Updated</span>
+                            <span>Setup Alerts to stay up to date.</span>
+                            <button className="alert-button">Get Alerts</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         )
