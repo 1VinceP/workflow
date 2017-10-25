@@ -1,8 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-// import SignInPage from './components/sign-in-page/sign-in-page';
 import Dashboard from './components/dashboard/dashboard';
-// import Analytics from './components/analytics/analytics';
 import EditUser from './components/edit-user/edit-user';
 import AddUser from './components/admin-add-user/admin-add-user';
 import DisplayUsers from './components/display-users/display-users';

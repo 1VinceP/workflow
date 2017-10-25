@@ -181,7 +181,7 @@ html {
 }
 
 .charts-right-navbar{
-    display: flex;
+   
     flex-direction: column;
     width: 200px; 
     height: 173px;
@@ -190,6 +190,7 @@ html {
     box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
     border-top: 2px solid rgb(119, 88, 236);
     border-radius: 3px;
+    display: none;
 }
 
 .charts-right-navbar span {
@@ -432,7 +433,7 @@ html {
 }
 
 
-@media(min-width: 400) {
+@media(min-width: 400px) {
     .firstchart {
         padding: 20px;
     }
@@ -441,4 +442,8 @@ html {
     }
 }
 
-
+@media(min-width: 1200px) {
+    .charts-right-navbar{
+        display: flex;
+    }
+}

@@ -86,172 +86,66 @@
 }
 
 .project-created-task {
-    height: 140px;
+    height: 120px;
     width: 160px;
-    background: green;
-    padding: 40px;
+    padding-left: 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: black;
+    color: white;
     cursor: pointer;
     text-align: center;
+    font-size: 14px;
     border-radius: 5px 0 0 5px;
 }
 
 .arrow {
     width: 0;
 	height: 0;
-	border-top: 70px solid transparent;
-    border-bottom: 70px solid transparent;
+	border-top: 60px solid transparent;
+    border-bottom: 60px solid transparent;
     margin-right: -53px;
+    position: relative;
 }
 
 .task-odd {
-    background: red;
+    background: rgb(141, 141, 141);
 }
 
 .task-even {
-    background: blue;
+    background: rgb(100, 100, 126);
 }
 
 .task-odd-arrow {
-	border-left: 50px solid red;
+	border-left: 50px solid rgb(141, 141, 141);
 }
 
 .task-even-arrow {
-	border-left: 50px solid blue;
-}
-
-[taskyShowDeets='false'] {
-    display: none;
-}
-
-[taskyShowDeets='true'] {
-    display: flex;
+	border-left: 50px solid rgb(100, 100, 126);
 }
 
 .task-item {
     display: none;
 }
 
+.tasky-name {
+    width: 100%;
+}
+
+.task-delete-button {
+    position: absolute;
+    left: -40px;
+    top: -10px;
+    color: white;
+    cursor: pointer;
+}
+
 .create-project-titles-created-task{
     margin: 60px;
 }
 
-[create-project-tasks-show-task-info='true'] {
-    height: 50vh;
-    width: 50vw;
-    position: fixed;
-    left: calc( 100vw / 4 );
-    box-shadow: 12px 12px 20px gray;
-    background: linear-gradient( to top right, #7e43aa, #6681ea );
-    margin-top: -380px;
-    border-radius: 10px;
-    padding: 20px;
-    color: white;
-    animation-name: fadeIn;
-    animation-duration: .35s;
-}
 
-@keyframes fadeIn {
-    0% { opacity: 0; transform: scale(.75); }
-    100% { opacity: 1; transform: scale(1) }
-}
-
-[create-project-tasks-show-task-info='fade-out'] {
-    height: 50vh;
-    width: 50vw;
-    position: fixed;
-    left: calc( 100vw / 4 );
-    box-shadow: 12px 12px 20px gray;
-    background: linear-gradient( to top right, #7e43aa, #6681ea );
-    margin-top: -380px;
-    border-radius: 10px;
-    padding: 20px;
-    color: white;
-    animation-name: fadeOut;
-    animation-duration: .35s;
-}    
-
-@keyframes fadeOut {
-    0% { opacity: 1; transform: scale(1); }
-    75% { opacity: 0; }
-    100% { opacity: 0; transform: scale(.75) }    
-}
-
-[create-project-tasks-show-deets='false'] {
-    display: none;
-}
-
-/* .tasky-name {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 8px 8px 14px rgba(0, 0, 0, 0.6);
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 5px;
-    padding: 5px 0;
-    margin-bottom: 25px;
-}
-
-.tasky-name p {
-    font-size: 24px;
-    margin: 5px 0;
-}
-
-.tasky-name section {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 14px;
-}
-
-.task-spacer {
-    width: 16px;
-    text-align: center;
-}
-
-.tasky-desc {
-    width: 100%;
-    min-height: 100px;
-    max-height: 150px;
-    text-align: left;
-    padding: 10px 20px;
-    overflow-y: scroll;
-}
-
-.tasky-desc::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
-}
-
-.tasky-role {
-    width: 100%;
-    text-align: center;
-}
-
-.tasky-link {
-    width: 100%;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.tasky-close {
-    box-shadow: 8px 8px 14px rgba(0, 0, 0, 0.6);
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 5px;
-    padding: 5px;
-    text-align: center;
-    width: 80px;
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    cursor: pointer;
-} */
 .project-created-project-body{
     display: flex;
     flex-direction: column;

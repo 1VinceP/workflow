@@ -53,32 +53,36 @@ class AddUser extends Component {
     render() {
 
         return (
-            <div className="profile-modal">
-                <div className="heading">Creating User....</div>
-                <div className="firstname">
-                    <TextField onChange={(e) => this.props.editUserFirstname(e.target.value)}
-                        hintText="First Name" />
-                </div>
-                <div className="lastname">
-                    <TextField onChange={(e) => this.props.editUserLastname(e.target.value)}
-                        hintText="Last Name" />
-                </div>
-                <div className="email">
-                    <TextField onChange={(e) => this.props.editUserEmail(e.target.value)}
-                        hintText="Email"
-                    />
-                </div>
+            <div className="user-container">
+                <div className="profile-modal">
+                    <div className="heading">Creating User....</div>
+                    <div className="infobox">
+                        <div className="field">
+                            <TextField onChange={(e) => this.props.editUserFirstname(e.target.value)}
+                                hintText="First Name"  />
+                        </div>
+                        <div className="field">
+                            <TextField onChange={(e) => this.props.editUserLastname(e.target.value)}
+                                hintText="Last Name"  />
+                        </div>
+                        <div className="field">
+                            <TextField onChange={(e) => this.props.editUserEmail(e.target.value)}
+                                hintText="Email" 
+                            />
+                        </div>
 
-                <div className="team">
-                    <TextField onChange={(e) => this.props.editUserTeam(e.target.value)}
-                        hintText="Team" />
+                        <div className="field">
+                            <TextField onChange={(e) => this.props.editUserTeam(e.target.value)}
+                                hintText="Team"  />
+                        </div>
+                        <div className="field">
+                            <TextField onChange={(e) => this.props.editUserRole(e.target.value)}
+                                hintText="Role"  />
+                        </div>
+                        <Link to='/display-users'><button className="save1" onClick={() => this.submitUser()}>Save Changes</button></Link>
+                        <Link to='/display-users'><button className="cancel1">Cancel</button></Link>
+                    </div>
                 </div>
-                <div className="Role">
-                    <TextField onChange={(e) => this.props.editUserRole(e.target.value)}
-                        hintText="Role" />
-                </div>
-                <Link to='/display-users'><button className="save" onClick={() => this.submitUser()}>Save Changes</button></Link>
-                <Link to='/display-users'><button className="cancel">Cancel</button></Link>
             </div>
         )
     }
