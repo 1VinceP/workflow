@@ -36,6 +36,9 @@ class Dashboard extends Component {
         this.state = {
             newMenu: false,
             missingEmployeeInfo: false,
+            money: 0,
+            tasktotal: 0,
+            moneypertask: ''
         }
     }
 
@@ -61,7 +64,36 @@ class Dashboard extends Component {
         this.props.getUserTasks( this.props.user.user_id )
 
 
+        this.getMoney();
+        this.getTaskTotal();
+        
     }
+
+    getMoney() {
+        axios.get(`/api/getMoney/byTask/${this.props.user.user_company}`).then(res => {
+            let x = res.data[0].sum.substring(1,10).split(',').join('')
+            this.setState({
+                money: x
+            })
+            console.log ('MOneys', this.state.money);
+        })
+    }
+    getTaskTotal() {
+        axios.get(`/api/getTaskTotal/${this.props.user.user_id}`).then(res => {
+            this.setState({
+                tasktotal: res.data[0].count
+            })
+            console.log('tasks', this.state.tasktotal)
+        })
+    }
+    divide(){
+       let  x = Math.ceil(this.state.money/this.state.tasktotal);
+       console.log("this is", x);
+       this.setState({
+           moneypertask: x
+       })
+    }
+
     addUsersName() {
         let data = Object.assign({}, {
             user_firstname: this.props.user_firstname,
@@ -237,20 +269,24 @@ class Dashboard extends Component {
                     
                     <div className='dashnoard-second-section-layout'>
                         <UnstyledCalendar className='dashboard-calendar' />
-                        <div className='dashboard-second-section-cont2'></div>
-                        <div className='dashboard-second-section-cont1'></div>
+                        <div className='dashboard-second-section-cont2'>Tasks Due Today:</div>
+                        <div className='dashboard-second-section-cont1'>Money Made per Task:
+                            <div className="number">$ {this.state.moneypertask}</div>
+                            <div className='money'><button className="calculator" onClick={() => this.divide()}>Calculate</button></div>
+                        
+                        </div>
 
                     </div>
 
 
 
-
+{/* 
                     <div className="current-stats-wrapper">
                         <div className='dashboard-titles'>Analytics</div>
                         <div>
                             <Table2 />
                         </div>
-                    </div>
+                    </div> */}
                     <div >
                         <Link className="chat" to="/chat">Chat</Link>
                     </div>

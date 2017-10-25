@@ -146,9 +146,9 @@ class DisplayUsers extends Component {
                     <div className="charts-main">
                         <div className="charts-left-navbar">
                             <span className="display-users-navbar-title">Users</span>
-                            <span>Create User</span>
-                            <span>Tasks</span>
-                            <span>Productivity</span>
+                            <span><Link to="/create-user">Create User</Link></span>
+                            <span><Link to="/dashboard">Tasks</Link></span>
+                            {/* <span><Link to="/there-is-no-productivity-here-gandalf-stormcrow">Productivity</Link></span> */}
                         </div>
 
                         <div className="users-table-container">
