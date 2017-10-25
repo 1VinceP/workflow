@@ -33,6 +33,8 @@ const ADD_PROJECT_FINISH_DATE = "ADD_PROJECT_FINISH_DATE";
 const ADD_PROJECT_DESCRIPTION = "ADD_PROJECT_DESCRIPTION";
 const ADD_PROJECT_PRICE = "ADD_PROJECT_PRICE";
 const CURRENT_PROJECT_TASKS = "CURRENT_PROJECT_TASKS";
+const UPDATE_EMPLOYEE_NAME = "UPDATE_EMPLOYEE_NAME";
+const GET_USER_INFO_AFTER = 'GET_USER_INFO_AFTER';
 
 
    
@@ -79,6 +81,8 @@ var initialState = {
         // console.log('payload',action.payload)
         // console.log('action',action)
         switch(action.type) {
+            case GET_USER_INFO + '_FULFILLED':
+                return Object.assign({}, state, {user: action.payload})
             case GET_USER_INFO + '_FULFILLED':
                 return Object.assign({}, state, {user: action.payload})
             case GET_COMPANY_INFO + '_FULFILLED':
@@ -269,6 +273,16 @@ var initialState = {
         }
     }
 
+    export function getUserInfoAfter(id) {
+        const userInfoAfterUpdate = axios.get(`/api/users/user/${id}`).then(res => {
+            return res.data
+        })
+        return {
+            type: GET_USER_INFO_AFTER,
+            payload: userInfoAfterUpdate
+        }
+    }
+
     export function getCompanyInfo(id) {
         const companyInfo = axios.get(`/api/company/${id}`).then(res => {
             return res.data
@@ -289,7 +303,7 @@ var initialState = {
 }
 
 export function editTeamName(teamname) {
-    console.log('teamname is ', teamname)
+    // console.log('teamname is ', teamname)
     return {
         type: EDIT_TEAM_NAME,
         payload: teamname
@@ -297,7 +311,7 @@ export function editTeamName(teamname) {
 }
 
 export function editTeamDescription(description) {
-    console.log('Description is ', description)
+    // console.log('Description is ', description)
     return {
         type: EDIT_TEAM_DESCRIPTION,
         payload: description
