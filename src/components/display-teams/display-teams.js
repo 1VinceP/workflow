@@ -29,8 +29,8 @@ class DisplayTeams extends Component {
                     .then(() => {
                         this.props.getUserInfo().then(res => {
                             this.props.getCompanyInfo(this.props.user.user_company).then(res => {
-                                this.props.getCompanyTeamInfo(this.props.user.user_company)
                                 this.props.getCompanyUsersInfo(this.props.user.user_company)
+                                this.props.getCompanyTeamInfo(this.props.user.user_company)
                             })
                         })
                     })
@@ -46,7 +46,7 @@ class DisplayTeams extends Component {
         var usersForTeam = theUsers.map((e, i) => {
             if (e.user_team === id) {
                 return (
-                    <div key={i}>
+                    <div key={i} className="display-teams-users-users">
                         {e.user_firstname} {e.user_lastname}
                     </div>
                 )
@@ -117,11 +117,11 @@ class DisplayTeams extends Component {
             message: (
                 <div className="edit-team-popup">
                     <span className="edit-team-name-span">Team Name: </span><br />
-                    <input className='edit-team-name-input-box' defaultValue={team} onChange={(e) => teamNameDescription(e)} />
+                    <input maxLength={30} className='edit-team-name-input-box' defaultValue={team} onChange={(e) => teamNameDescription(e)} />
                     <br />
                     <span className="edit-description-span">Description:</span>
                     <br />
-                    <textarea className="edit-team-description" defaultValue={description} onChange={(e) => teamdescriptionFunction(e)} />
+                    <textarea maxLength={300} className="edit-team-description" defaultValue={description} onChange={(e) => teamdescriptionFunction(e)} />
                     <div className="edit-team-users-section">
                         <div className="edit-team-users-span">
                             <span className="users-header">Users</span>
@@ -226,7 +226,13 @@ class DisplayTeams extends Component {
                             <span><Link to='/there-is-no-productivity-here-gandalf-stormcrow'>Productivity</Link></span>
                         </div>
                         <div>
-                            {teamInfo}
+                            {this.props.company_team[0] ? teamInfo :
+                                <div className="no-team-box">
+                                    <span className="no-team-span">No teams created yet</span>
+                                    <Link to='/create-team'><button className="no-team-button">Create a team</button></Link>
+                                </div>
+
+                            }
                         </div>
                         <div className="charts-right-navbar">
                             <span className="right-navbar-title">Stay Updated</span>

@@ -23,6 +23,8 @@
 
 .teamdescription {
     padding-top: 30px;
+    border: none;
+    outline: none;
 }
 
 .teamname {
@@ -35,21 +37,26 @@
     color: rgba(0,0,0,.3);
   }
 
+
 .teamdesbox{
-    min-width: 50px;
-    min-height: 30px;
-    max-width: 200px;
-    max-height: 50px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgb(227, 227, 227);
+}
+
+.teamdesbox:focus{
+    outline: none;
+
 }
 
 .nameinput {
     border: none;
-    border-bottom: 1px solid rgba(0,0,0, .15);
     height: 30px;
 }
 .nameinput:focus {
     border: none;
-    border-bottom: 1px solid rgb(13, 117, 155);
+
+    outline: none;
 }
 
 .save {
