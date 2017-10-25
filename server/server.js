@@ -151,7 +151,7 @@ app.get('/api/team', (req, res, next) => {
     req.app.get('db').team.all_team().then(response => res.status(200).send(response))
 })
 
-app.delete('/api/delete/team/:id', (req, res, nest) => {
+app.delete('/api/delete/team/:id', (req, res, next) => {
     req.app.get('db').team.delete_team(req.params.id).then(response => res.status(200).send(response))
 })
 
@@ -174,6 +174,13 @@ app.post( '/api/addtask/:key', task_controller.create_task )
 app.put( '/api/completeTask/:id/:number/:key', task_controller.complete_task )
 
 app.delete( '/api/deleteTask/:id/:key', task_controller.delete_task )
+
+app.get('/api/getMoney/byTask/:id', (req, res, next) => {
+    req.app.get('db').analytics.get_average_money_per_user_task(req.params.id).then(response => res.status(200).send(response))
+})
+app.get('/api/getTaskTotal/:id', (req, res, next) => {
+    req.app.get('db').analytics.get_task_total(req.params.id).then(response => res.status(200).send(response))
+})
 
 ////////////////////////////        USERS         /////////////////////////////////
 

@@ -353,6 +353,9 @@ margin-right: 7px;
     border: 1px solid rgb(243, 243, 243);
     border-top: 2px solid rgb(10, 183, 10);
     margin: 0 1.5vw 0 1.5vw;
+    font-size: 20px;
+    padding-left: 30px;
+    padding-top: 20px;
 }
 .dashnoard-second-section-layout{
     display: flex;
@@ -362,4 +365,25 @@ margin-right: 7px;
 .dashboard-main-title{
     position: relative;
     
+}
+
+.number {
+    font-size: 30px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    color: green;
+    margin-left: 90px;
+}
+.calculator {
+    position: absolute;
+    bottom: 0;
+    margin-left: 100px;
+    color: white;
+    background: #4dbf71;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px;
 }
