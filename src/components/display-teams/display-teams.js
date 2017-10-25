@@ -223,7 +223,7 @@ class DisplayTeams extends Component {
                             <span className="analytics-navbar-title">Teams</span>
                             <span><Link to='/create-team'>Create Team</Link></span>
                             <span><Link to='create-user'>Create User</Link></span>
-                            <span><Link to='/there-is-no-productivity-here-gandalf-stormcrow'>Productivity</Link></span>
+                            {/* <span><Link to='/there-is-no-productivity-here-gandalf-stormcrow'>Productivity</Link></span> */}
                         </div>
                         <div>
                             {this.props.company_team[0] ? teamInfo :
