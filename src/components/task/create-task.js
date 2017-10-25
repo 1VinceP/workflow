@@ -32,7 +32,7 @@ class Create_task extends Component {
             taskRole: '',
             taskUniqueKey:'',
             taskShow: true,
-            taskLink: '',
+            taskLink: 'http://',
             taskNumber: 1
           };
 
@@ -77,23 +77,29 @@ class Create_task extends Component {
 
 
     createNewTask() {
+      let link;
+      if( this.state.taskLink === 'http://' )
+        link = ''
+      else
+        link = this.state.taskLink
+
       let state = this.state
       let body = {
         task_name: state.taskName,
-        task_start_date: state.taskStart,
-        task_finished_date: state.taskEnd,
+        task_start_date: state.taskStart +'',
+        task_finished_date: state.taskEnd + '',
         task_user_1: state.taskUser,
         task_description: state.taskDesc,
         task_role: state.taskRole,
         task_unique_key: this.props.project_unique_key,
         task_show: state.taskShow,
-        task_link: state.taskLink,
+        task_link: link,
         task_number: state.taskNumber
       }
 
       this.props.currentProjectTasks( this.props.project_unique_key, body )
         .then(()=>{this.handleClose()})
-          .then( () => this.setState({ taskShow: false, taskNumber: this.state.taskNumber + 1 }) )
+          .then( () => this.setState({ taskShow: false, taskNumber: this.state.taskNumber + 1, taskLink: 'http://' }) )
     }
     
       render() {
@@ -158,7 +164,7 @@ class Create_task extends Component {
               </div>
 
 {/* TASK LINK */}
-              <input  name='taskLink' placeholder='Task Link' className='task-create-task-input task-create-task-input-long'  onChange={(e)=>{
+              <input  name='taskLink' placeholder='Task Link' defaultValue='http://' className='task-create-task-input task-create-task-input-long'  onChange={(e)=>{
               this.handleTaskInput(e)}}/>
             </Dialog>
           </div>

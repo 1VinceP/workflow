@@ -74,8 +74,8 @@ class Create_Project_Tasks extends Component {
                 <section className='box-arrow' key={i}>
                     <div onClick={() => this.showTaskDetails( task.task_name, task.task_id )} id={task.task_name} className={`project-created-task ${ i % 2 === 0 ? 'task-odd' : 'task-even' }`} style={ { zIndex: 1000 - i + '' } } >
                             <div className='tasky-name'>{task.task_name}</div>
-                            <div className={`task-item ${task.task_id}`} >{task.task_start_date}</div>
-                            <div className={`task-item ${task.task_id}`} >{task.task_finished_date}</div>
+                            <div className={`task-item ${task.task_id}`} >{task.task_start_date.split(' ', 4).join(' ')}</div>
+                            <div className={`task-item ${task.task_id}`} >{task.task_finished_date.split(' ', 4).join(' ')}</div>
                             <div className={`task-item ${task.task_id}`} >{task.task_description}</div>
                             <div className={`task-item ${task.task_id}`} >{task.task_link}</div>
                         </div>
