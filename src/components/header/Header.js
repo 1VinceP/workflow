@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
 // import FlatButton from 'material-ui/FlatButton';
 // import axios from 'axios';
-import { getUserInfo, getCompanyInfo, getCompanyUsersInfo, getCompanyTeamInfo } from '../../redux/reducers/main-reducer';
+import { getUserInfo, getCompanyInfo, getCompanyUsersInfo, getCompanyTeamInfo, getUserTasks } from '../../redux/reducers/main-reducer';
 import { connect } from 'react-redux';
 import CompanyDrop from './dropdowns/CompanyDrop';
 import TeamDrop from './dropdowns/TeamDrop';
@@ -64,6 +64,10 @@ class Header extends Component {
         } )
     };
 
+    updateUserTasks() {
+        this.props.getUserTasks( this.props.user.user_id )
+    }
+
     render() {
         return(
             <header className='header-header' page-has-scrolled={this.state.scroll}>
@@ -100,7 +104,7 @@ class Header extends Component {
                     { this.props.user
                         ? <div style={{width: '100%'}}>
                             <div className='header-mid-buttons'>
-                                <Link to='/dashboard' className='header-link'><button className='header-link-buttons' page-is-scrolled={this.state.scroll}>Home</button></Link>
+                                <Link to='/dashboard' className='header-link' onClick={ () => this.updateUserTasks() } ><button className='header-link-buttons' page-is-scrolled={this.state.scroll}>Home</button></Link>
                                 <Link to='/analytics' className='header-link'><button className='header-link-buttons' page-is-scrolled={this.state.scroll}>Analytics</button></Link>
                                 <CompanyDrop scroll={this.state.scroll} />
                                 <TeamDrop scroll={this.state.scroll} />
@@ -131,4 +135,4 @@ function mapStateToProps( state ) {
     };
 }
 
-export default connect( mapStateToProps, {getUserInfo, getCompanyInfo, getCompanyUsersInfo, getCompanyTeamInfo} )(Header);
+export default connect( mapStateToProps, {getUserInfo, getCompanyInfo, getCompanyUsersInfo, getCompanyTeamInfo, getUserTasks } )(Header);

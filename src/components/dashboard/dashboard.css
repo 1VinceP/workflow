@@ -138,6 +138,8 @@ html {
     width: 90vw;
     flex-direction: column;
     align-items: flex-end;
+    position: absolute;
+    margin-top: 55px;
 }
 .dashboard_menu_item_selection{
     width:90px;
@@ -146,7 +148,14 @@ html {
     background: white;
     color: #4dbf71;
     text-align: right;
+    background: rgba( 251, 251, 255, 0.9 );
+    border: .5px dotted rgba( 0, 0, 0, 0.1 );
 }
+
+.dashboard_menu_item_selection:hover {
+    background: rgb(229, 229, 233);
+}
+
 .dashboard-titles{
     font-family: helvetica;
     margin: 15px;
@@ -165,13 +174,15 @@ html {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .dash-task {
     width: 23%;
-    height: 80%;
-    background: green;
+    background: rgb(187, 187, 187);
     margin: 5px;
+    border-radius: 10px;
+    font-size: 14px;
 }
 
 .dash-task-title {
@@ -179,12 +190,30 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 3px;
+    border-bottom: 1px solid black;
+    text-align: center;
 }
 
 .dash-task-details {
     width: 100%;
     padding: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between
+}
+
+.dash-check {
+    cursor: pointer;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: rgba( 0, 0, 0, 0.4 );
+    border-radius: 5px;
+    color: white;
+    margin-top: 5px;
 }
 
 .chat {

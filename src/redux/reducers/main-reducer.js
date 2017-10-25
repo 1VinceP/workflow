@@ -37,7 +37,7 @@ const UPDATE_EMPLOYEE_NAME = "UPDATE_EMPLOYEE_NAME";
 const GET_USER_INFO_AFTER = 'GET_USER_INFO_AFTER';
 
 
-   
+
 var initialState = {
     user: null,
     team: null,
@@ -50,26 +50,28 @@ var initialState = {
     company_url: '',
     company_industry: '',
     company_badge: '',
-    company_code:'',
+    company_code: '',
     user_firstname: '',
     user_lastname: '',
     user_email: '',
     user_picture: '',
     user_display_name: '',
     user_team: '',
-    user_role:'',
+    user_role: '',
     user_tasks: '',
-    project_unique_key:'',
-    project_name:'',
-    project_start_date:'',
-    project_finish_date:'',
-    project_description:'',
-    project_price:0.00,
-    project_paid:false,
-    project_creator:'',
-    projects:[],
-    assignUserCompany:[],
-    assign_user_company_input:'',
+    team_name: '',
+    team_description: '',
+    project_unique_key: '',
+    project_name: '',
+    project_start_date: '',
+    project_finish_date: '',
+    project_description: '',
+    project_price: 0.00,
+    project_paid: false,
+    project_creator: '',
+    projects: [],
+    assignUserCompany: [],
+    assign_user_company_input: '',
 
     current_project_tasks: [],
     project_tasks: [],
@@ -137,141 +139,158 @@ var initialState = {
                 return Object.assign({}, state, {assign_user_company_input: action.payload})
             case CURRENT_PROJECT_TASKS + '_FULFILLED':
                 return Object.assign({}, state, { current_project_tasks: action.payload })
+            case EDIT_TEAM_NAME:
+                return Object.assign({}, state, { team_name: action.payload })
+            case EDIT_TEAM_DESCRIPTION:
+                return Object.assign({}, state, { team_description: action.payload })
             default:
                 return state;
         }
     }
-    export function addCompanyName(companyName) {
-        let badge = companyName.split(' ')
-        console.log(badge)
-        const badgeFinal =[]
-        for(let i = 0; i < badge.length; i++){
-          badgeFinal.push(badge[i].charAt(0))
-        }
-        let company_badge = badgeFinal.join('').toUpperCase();
-        
-        let company_code = '';
-        let count = companyName.split('')
-        let projectKey = companyName.charAt(0) + companyName.charAt(1) + companyName.charAt(2) + count.length + count[count.length - 2];
-        company_code = projectKey.toUpperCase()
+
+
+export function addCompanyName(companyName) {
+    let badge = companyName.split(' ')
+    console.log(badge)
+    const badgeFinal = []
+    for (let i = 0; i < badge.length; i++) {
+        badgeFinal.push(badge[i].charAt(0))
+    }
+    let company_badge = badgeFinal.join('').toUpperCase();
+
+    let company_code = '';
+    let count = companyName.split('')
+    let projectKey = companyName.charAt(0) + companyName.charAt(1) + companyName.charAt(2) + count.length + count[count.length - 2];
+    company_code = projectKey.toUpperCase()
 
 
 
-        return { 
-            payload: companyName, company_badge, company_code,  
-            type:ADD_COMPANY_NAME
-        }
+    return {
+        payload: companyName, company_badge, company_code,
+        type: ADD_COMPANY_NAME
     }
-    export function addCompanyEmail(companyEmail) {
-        console.log(companyEmail)
-        return { 
-            payload: companyEmail, 
-            type:ADD_COMPANY_EMAIL}
+}
+export function addCompanyEmail(companyEmail) {
+    console.log(companyEmail)
+    return {
+        payload: companyEmail,
+        type: ADD_COMPANY_EMAIL
     }
-    export function addCompanyPhone(companyPhone) {
-        console.log(companyPhone)
-        return { 
-            payload: companyPhone, 
-            type:ADD_COMPANY_PHONE}
+}
+export function addCompanyPhone(companyPhone) {
+    console.log(companyPhone)
+    return {
+        payload: companyPhone,
+        type: ADD_COMPANY_PHONE
     }
-    export function assignCompanyCodeInput(companyCode) {
-        console.log(companyCode)
-        return { 
-            payload: companyCode, 
-            type:ADD_ASSIGN_COMPANY_USER_INPUT}
+}
+export function assignCompanyCodeInput(companyCode) {
+    console.log(companyCode)
+    return {
+        payload: companyCode,
+        type: ADD_ASSIGN_COMPANY_USER_INPUT
     }
-    export function addCompanyLogo(companyLogo) {
-        console.log(companyLogo)
-        return { 
-            payload: companyLogo, 
-            type:ADD_COMPANY_URL}
+}
+export function addCompanyLogo(companyLogo) {
+    console.log(companyLogo)
+    return {
+        payload: companyLogo,
+        type: ADD_COMPANY_URL
     }
-    
-    export function addProjectName(projectName) {
-        console.log(projectName)
-        return { 
-            payload: projectName, 
-            type:ADD_PROJECT_NAME}
-    }
-    
-    export function addProjectStart(event, date ) {
-        let formatDate = date.toString().split(' ')
-        let projectDate = `${formatDate[1]} ${formatDate[2]} ${formatDate[3]}`
-        console.log(projectDate )
-        return { 
-            payload: projectDate, 
-            type:ADD_PROJECT_START_DATE}
-    }
-    export function addProjectEnd(event, date) {
-        let formatDate = date.toString().split(' ')
-        let projectDate = `${formatDate[1]} ${formatDate[2]} ${formatDate[3]}`
-        console.log(projectDate )
-        return { 
-            payload: projectDate, 
-            type:ADD_PROJECT_FINISH_DATE}
-    }
-    export function addProjectDesc(projectDesc) {
-        console.log(projectDesc)
-        return { 
-            payload: projectDesc, 
-            type:ADD_PROJECT_DESCRIPTION}
-    }
-    export function addProjectPrice(projectPrice) {
-        let convertCurrency = Math.round(projectPrice * 100)/100
-        console.log(convertCurrency)
-        return { 
-            payload: convertCurrency, 
-            type:ADD_PROJECT_PRICE}
-    }
+}
 
-    export function addProjectUniqueKey(companyName, projectCreator) {
-        let projectKey = companyName + new Date();
-        let finalKey = projectKey.replace(/[^A-Z0-9]/ig, "0").toLowerCase();
+export function addProjectName(projectName) {
+    console.log(projectName)
+    return {
+        payload: projectName,
+        type: ADD_PROJECT_NAME
+    }
+}
 
-        console.log(finalKey)
-        return { 
-            payload: finalKey, projectCreator,
-            type:ADD_UNIQUE_KEY_PROJECT_TASK}
+export function addProjectStart(event, date) {
+    let formatDate = date.toString().split(' ')
+    let projectDate = `${formatDate[1]} ${formatDate[2]} ${formatDate[3]}`
+    console.log(projectDate)
+    return {
+        payload: projectDate,
+        type: ADD_PROJECT_START_DATE
     }
-    
-    export function getCompanyUsersInfo(id) {
-        
-        const companyInfo = axios.get(`/api/company/users/${id}`).then(res => {
+}
+export function addProjectEnd(event, date) {
+    let formatDate = date.toString().split(' ')
+    let projectDate = `${formatDate[1]} ${formatDate[2]} ${formatDate[3]}`
+    console.log(projectDate)
+    return {
+        payload: projectDate,
+        type: ADD_PROJECT_FINISH_DATE
+    }
+}
+export function addProjectDesc(projectDesc) {
+    console.log(projectDesc)
+    return {
+        payload: projectDesc,
+        type: ADD_PROJECT_DESCRIPTION
+    }
+}
+export function addProjectPrice(projectPrice) {
+    let convertCurrency = Math.round(projectPrice * 100) / 100
+    console.log(convertCurrency)
+    return {
+        payload: convertCurrency,
+        type: ADD_PROJECT_PRICE
+    }
+}
 
-            return res.data
-        })
-        return {
-            type: GET_COMPANY_USERS_INFO,
-            payload: companyInfo
-        }
-    }
-    export function getCompanyTeamInfo(id) {
-        const companyTeamInfo = axios.get(`/api/company/team/${id}`).then(res => {
+export function addProjectUniqueKey(companyName, projectCreator) {
+    let projectKey = companyName + new Date();
+    let finalKey = projectKey.replace(/[^A-Z0-9]/ig, "0").toLowerCase();
 
-            return res.data
-        })
-        return {
-            type: GET_COMPANY_TEAM_INFO,
-            payload: companyTeamInfo
-        }
+    console.log(finalKey)
+    return {
+        payload: finalKey, projectCreator,
+        type: ADD_UNIQUE_KEY_PROJECT_TASK
     }
+}
 
-    export function addCompanyIndustry(industrySelected){
-        return{
-            
-            type: ADDCOMPANYINDUSTRY,
-            payload: industrySelected}
+export function getCompanyUsersInfo(id) {
+
+    const companyInfo = axios.get(`/api/company/users/${id}`).then(res => {
+
+        return res.data
+    })
+    return {
+        type: GET_COMPANY_USERS_INFO,
+        payload: companyInfo
     }
-    
-    export function getUserInfo() {
-        const userInfo = axios.get('/login/user').then(res => {
-            return res.data
-        })
-        return {
-            type: GET_USER_INFO,
-            payload: userInfo
-        }
+}
+export function getCompanyTeamInfo(id) {
+    const companyTeamInfo = axios.get(`/api/company/team/${id}`).then(res => {
+
+        return res.data
+    })
+    return {
+        type: GET_COMPANY_TEAM_INFO,
+        payload: companyTeamInfo
     }
+}
+
+export function addCompanyIndustry(industrySelected) {
+    return {
+
+        type: ADDCOMPANYINDUSTRY,
+        payload: industrySelected
+    }
+}
+
+export function getUserInfo() {
+    const userInfo = axios.get('/login/user').then(res => {
+        return res.data
+    })
+    return {
+        type: GET_USER_INFO,
+        payload: userInfo
+    }
+}
 
     export function getUserInfoAfter(id) {
         const userInfoAfterUpdate = axios.get(`/api/users/user/${id}`).then(res => {
@@ -293,10 +312,11 @@ var initialState = {
         }
     }
 
-    export function addCompany(data) {
-        console.log(data)
-        return{
-        type:ADD_COMPANY,    
+
+export function addCompany(data) {
+    console.log(data)
+    return {
+        type: ADD_COMPANY,
         payload: data
 
     }
@@ -380,35 +400,48 @@ export function editUserRole(role) {
     }
 }
 export function getProject(projectData) {
-    
+
 
 }
 
-export function getUserTasks( id, body ) {
-    
-        const tasks = axios.get( `/api/getUserTasks/${id}` )
-            .then( response => {
-                console.log( 'redux tasks', response )
-                return response.data 
-            } )
-    
-        return {
-            type: GET_USER_TASKS,
-            payload: tasks
-        }
+export function getUserTasks(id, body) {
+
+    const tasks = axios.get(`/api/getUserTasks/${id}`)
+        .then(response => {
+            console.log('redux tasks', response)
+            return response.data
+        })
+
+    return {
+        type: GET_USER_TASKS,
+        payload: tasks
     }
+}
 
-export function currentProjectTasks( key, body ) {
+export function currentProjectTasks(key, body) {
 
-    const task = axios.post( `/api/addtask/${key}`, body )
-        .then( response => {
-            return response.data 
-        } )
+    const task = axios.post(`/api/addtask/${key}`, body)
+        .then(response => {
+            return response.data
+        })
 
     return {
         type: CURRENT_PROJECT_TASKS,
         payload: task
     }
+}
+
+export function deleteProjectTask( id, key ) {
+
+    const tasks = axios.delete( `/api/deleteTask/${id}/${key}` )
+        .then( response => {
+            return response.data
+        } )
+
+        return {
+            type: CURRENT_PROJECT_TASKS,
+            payload: tasks
+        }
 }
 
 // let count = companyName.split('')

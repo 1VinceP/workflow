@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 import { connect } from 'react-redux';
+import utils from '../utlities/utilities';
 
 var table1 =[]
 
@@ -15,12 +16,7 @@ class Table1 extends Component {
     }
 
     compareProjectDates() {
-        console.log("teamprojects", this.props.projects);
-        if(this.props.projects.project_start_date !== this.props.projects.project_finished_date) {
-            return ((this.props.projects.project_finished_date - this.props.projects.project_start_date), "days" )
-        } else {
-            return (Number(1), "day" );
-        }
+        utils.compareProjectDates(this.props.project_start_date, this.props.project_finished_date)
     }
 
     compareTaskDates() {

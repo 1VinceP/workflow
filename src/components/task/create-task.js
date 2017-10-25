@@ -32,7 +32,8 @@ class Create_task extends Component {
             taskRole: '',
             taskUniqueKey:'',
             taskShow: true,
-            taskLink: ''
+            taskLink: '',
+            taskNumber: 1
           };
 
           this.handleTaskDateStart = this.handleTaskDateStart.bind(this);
@@ -50,8 +51,6 @@ class Create_task extends Component {
     };
 
     handleTaskInput( e, event, date ) {
-      // console.log('VALUE', e.target.value)
-      // console.log('NAME',e.target.name)
       let value = e.target.value
       let name = e.target.name
 
@@ -60,16 +59,12 @@ class Create_task extends Component {
       })
     };
     handleTaskDateStart(event, dateStart ) {
-      // console.log('EVENT', event)
-      // console.log('DATE', dateStart)
       this.setState({
         taskStart: dateStart
       })
     };
 
     handleTaskDateEnd(event, date ) {
-      // console.log('EVENT', event)
-      // console.log('DATE', date)
       this.setState({
         taskEnd: date
       })
@@ -78,7 +73,6 @@ class Create_task extends Component {
     createUniqueKey(){
       let projectKey = this.props.company_name + new Date();
       let finalKey = projectKey.replace(/[^A-Z0-9]/ig, "0").toLowerCase();
-      // console.log(finalKey)
     }
 
 
@@ -93,16 +87,13 @@ class Create_task extends Component {
         task_role: state.taskRole,
         task_unique_key: this.props.project_unique_key,
         task_show: state.taskShow,
-        task_link: state.taskLink
+        task_link: state.taskLink,
+        task_number: state.taskNumber
       }
-      // axios.post('/api/addtask', body)
-      //   .then( this.props.currentProjectTasks( this.props.project_unique_key ) )
-      //     .then( ()=>{ this.setState({
-      //       taskShow: false
-      //     })})
-          this.props.currentProjectTasks( this.props.project_unique_key, body )
-            .then(()=>{this.handleClose()})
-              .then( () => this.setState({ taskShow: false }) )
+
+      this.props.currentProjectTasks( this.props.project_unique_key, body )
+        .then(()=>{this.handleClose()})
+          .then( () => this.setState({ taskShow: false, taskNumber: this.state.taskNumber + 1 }) )
     }
     
       render() {
