@@ -54,6 +54,7 @@ class AddUser extends Component {
 
         return (
             <div className="profile-modal">
+                <div className="heading">Creating User....</div>
                 <div className="firstname">
                     <TextField onChange={(e) => this.props.editUserFirstname(e.target.value)}
                         hintText="First Name" />
@@ -76,8 +77,8 @@ class AddUser extends Component {
                     <TextField onChange={(e) => this.props.editUserRole(e.target.value)}
                         hintText="Role" />
                 </div>
-                <Link to='/display-users'><button onClick={() => this.submitUser()}>Save Changes</button></Link>
-                <Link to='/display-users'><button>Cancel</button></Link>
+                <Link to='/display-users'><button className="save" onClick={() => this.submitUser()}>Save Changes</button></Link>
+                <Link to='/display-users'><button className="cancel">Cancel</button></Link>
             </div>
         )
     }
