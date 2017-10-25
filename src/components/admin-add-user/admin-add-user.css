@@ -1,21 +1,54 @@
+.user-container {
+    height: 100vh;
+    width: 100vw;
+    background: #F9F9FA;
+    position: absolute;
+}
+
+
 .profile-modal {
     height: 70vh;
     width: 50vw;
-    /* border: 1px solid black; */
-    box-shadow: 2px 2px 6px rgba(0,0,0,.4);
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
     align-self: center;
-    transform: translateX(50%);
+    transform: translateX(25vw);
     margin-top: 10vh;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 100;
+    border-top: 2px solid rgb(119, 88, 236);
+    overflow: hidden;
 }
 
 .heading {
-    padding-bottom: 20px;
-    font-size: 16px;
+    border-bottom: 1px solid rgba(0,0,0, .15);
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 17px !important;
+    padding-left: 2px !important;
+    font-weight: 500 !important;
 }
 
-.save {
+.infobox{
+    margin-right: 10vw;
+    height: 60%;
+    max-width: 100%;
+    min-width: 50%;
+    
+}
+
+.field {
+    min-width: 150px;
+    width: 50vw;
+}
+
+
+.save1 {
     width: 120px;
-    background: #44CEDF;
+    background: rgb(119, 88, 236);
     border: none;
     outline: none;
     border-radius: 3px;
@@ -24,22 +57,21 @@
     margin-top: 20px;
     color: white;
     cursor: pointer;
-    margin-right: 40px;
-
+    /* margin-left: 80%; */
 }
 
-.save:hover {
+.save1:hover {
     background: transparent;
-    color:#44CEDF;
-    border: 1.5px solid #44CEDF;
+    color:rgb(119, 88, 236);
+    border: 1.5px solid rgb(119, 88, 236);
 }
-.save:active {
-    background: #44CEDF;
+.save1:active {
+    background: rgb(119, 88, 236);
     color:#fff;
     border: none;
 }
 
-.cancel {
+.cancel1 {
     width: 120px;
     background: #f83d59;
     border: none;
@@ -50,15 +82,24 @@
     margin-top: 20px;
     color: white;
     cursor: pointer;
-    margin-right: 40px;
+    /* margin-left: 80%; */
 }
-.cancel:hover {
+.cancel1:hover {
     background: transparent;
     color:#f83d59;
     border: 1.5px solid #f83d59;
 }
-.cancel:active {
+.cancel1:active {
     background: #f83d59;
     color:#fff;
     border: none;
+}
+
+@media(min-width: 900px) {
+    .save1 {
+        margin-left: 100%;
+    }
+    .cancel1 {
+        margin-left: 100%;
+    }
 }

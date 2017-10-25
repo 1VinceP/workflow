@@ -14,6 +14,7 @@
     "jest": "^21.2.1",
     "massive": "^4.4.0",
     "material-ui": "^0.19.4",
+    "moment": "^2.19.1",
     "passport": "^0.4.0",
     "passport-auth0": "^0.6.0",
     "react": "^16.0.0",
