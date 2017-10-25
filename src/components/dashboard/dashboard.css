@@ -155,13 +155,15 @@ html {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .dash-task {
     width: 23%;
-    height: 80%;
-    background: green;
+    background: rgb(187, 187, 187);
     margin: 5px;
+    border-radius: 10px;
+    font-size: 14px;
 }
 
 .dash-task-title {
@@ -169,12 +171,30 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 3px;
+    border-bottom: 1px solid black;
+    text-align: center;
 }
 
 .dash-task-details {
     width: 100%;
     padding: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between
+}
+
+.dash-check {
+    cursor: pointer;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: rgba( 0, 0, 0, 0.4 );
+    border-radius: 5px;
+    color: white;
+    margin-top: 5px;
 }
 
 .chat {

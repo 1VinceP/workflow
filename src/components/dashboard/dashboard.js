@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import './dashboard.css';
 import NewMenu from '../new-menu/new-menu';
 import axios from 'axios';
 import Table2 from '../analytics/table2';
-import FirstTimeUser from '../first-time-user/FirstTimeUser'
-import { addProjectUniqueKey } from '../../redux/reducers/main-reducer'
-import  {Link} from 'react-router-dom'
+import FirstTimeUser from '../first-time-user/FirstTimeUser';
+import { addProjectUniqueKey, getUserTasks } from '../../redux/reducers/main-reducer';
+import  {Link} from 'react-router-dom';
+import _ from 'underscore-node';
 
 let styles = {
 
@@ -25,7 +26,6 @@ class Dashboard extends Component {
         this.state = {
             newMenu: false,
             missingEmployeeInfo: false,
-            newTaskReceived: false
         }
     }
 
@@ -35,19 +35,32 @@ class Dashboard extends Component {
         })
     }
 
+    markTaskAsCompleted( taskId, taskNumber, taskKey ) {
+        console.log( 'button hit' )
+
+        taskNumber++
+
+        axios.put( `/api/completeTask/${taskId}/${taskNumber}/${taskKey}` )
+            .then( () => this.props.getUserTasks( this.props.user.user_id ) )
+    }
+
     render() {
 
+        let sortedTasks = _.sortBy( this.props.user_tasks, sorted => sorted )
 
-        let taskMapper = this.props.user_tasks.map( ( task, i ) => {
+        let taskMapper = sortedTasks.map( ( task, i ) => {
             return (
-                task.task_show ?
+                task.task_show && !task.task_completed ?
                     <section className='dash-task' key={i} >
-                        <div className='dash-task-title' >{task.task_name}</div>
+                        <div className='dash-task-title' >
+                            {task.task_name}
+                        </div>
                         <div className='dash-task-details' >
                             <div>{task.task_start_date}</div>
                             <div>{task.task_finished_date}</div>
                             <div>{task.task_description}</div>
                             <div>{task.task_link}</div>
+                            <div className='dash-check' onClick={() => this.markTaskAsCompleted(task.task_id * 1, task.task_number, task.task_unique_key)} >&#10003;</div>
                         </div>
                     </section>
                 : null
@@ -116,4 +129,4 @@ function mapStateToProps(state) {
     return state
 }
 
-export default connect(mapStateToProps, { addProjectUniqueKey })(Dashboard)
+export default connect(mapStateToProps, { addProjectUniqueKey, getUserTasks })(Dashboard)

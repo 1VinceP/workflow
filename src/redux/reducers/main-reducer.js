@@ -397,6 +397,19 @@ export function currentProjectTasks( key, body ) {
     }
 }
 
+export function deleteProjectTask( id, key ) {
+
+    const tasks = axios.delete( `/api/deleteTask/${id}/${key}` )
+        .then( response => {
+            return response.data
+        } )
+
+        return {
+            type: CURRENT_PROJECT_TASKS,
+            payload: tasks
+        }
+}
+
 // let count = companyName.split('')
 // let projectKey = companyName.charAt(0) + companyName.charAt(1) + companyName.charAt(2) + count.length + count[count.length - 2];
 // return projectKey.toUpperCase()
