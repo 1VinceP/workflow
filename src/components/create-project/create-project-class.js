@@ -94,11 +94,11 @@ class Create_Project_Class extends Component {
             {this.props.project_description === ''
                 ?
                 
-                <input placeholder='Project Description' className='project-create-project-input project-create-project-input-long' onChange={(e)=>this.props.addProjectDesc(e.target.value)}/>
+                <input placeholder='Project Description' className='project-create-project-input project-create-project-input-long' onChange={(e)=>this.props.addProjectDesc(e.target.value)} maxLength='300' />
                 
                 :
 
-                <input defaultValue={this.props.project_description} className='project-create-project-input project-create-project-input-long' onChange={(e)=>this.props.addProjectDesc(e.target.value)}/>
+                <input defaultValue={this.props.project_description} className='project-create-project-input project-create-project-input-long' onChange={(e)=>this.props.addProjectDesc(e.target.value)} maxLength='300' />
             
                 
             

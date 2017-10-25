@@ -124,20 +124,31 @@ class Create_task extends Component {
               contentStyle={customContentStyle}
               onRequestClose={this.handleClose}
             >
+
+{/* TASK NAME */}
               <input name='taskName' placeholder='Task Name' className='task-create-task-input task-create-task-input-long' onChange={(e)=>{
-              this.handleTaskInput(e)}}/>
+              this.handleTaskInput(e)}} maxLength='50'/>
+              <div className='task-char-count'>{this.state.taskName.length}/{50}</div>              
+
+{/* TASK START DATE */}
               <div className='task-start-finish-date'>
               <DatePicker  hintText="Start Date" 
                 name='taskStart'  onChange={
               this.handleTaskDateStart}/>
 
+{/* TASK FINISH DATE */}
               <div className='task-start-finish-date-spacer'></div>
               <DatePicker  name='taskEnd' hintText="Finish Date" 
                onChange={
               this.handleTaskDateEnd}/>
               </div>
+
+{/* TASK DESCRIPTION */}
               <input  name='taskDesc' placeholder='Task Description' className='task-create-task-input task-create-task-input-long'  onChange={(e)=>{
-              this.handleTaskInput(e)}}/>
+              this.handleTaskInput(e)}} maxLength='100'/>
+              <div className='task-char-count'>{this.state.taskDesc.length}/{100}</div>
+
+{/* TASK USER OR ROLE */}
               <div>
                 <input  name='taskUser' placeholder='User' className='task-create-task-input'  onChange={(e)=>{
               this.handleTaskInput(e)}}/>
@@ -145,6 +156,8 @@ class Create_task extends Component {
                 <input  name='taskRole' placeholder='Role' className='task-create-task-input task-create-task-input-role'  onChange={(e)=>{
               this.handleTaskInput(e)}}/>
               </div>
+
+{/* TASK LINK */}
               <input  name='taskLink' placeholder='Task Link' className='task-create-task-input task-create-task-input-long'  onChange={(e)=>{
               this.handleTaskInput(e)}}/>
             </Dialog>

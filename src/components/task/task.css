@@ -53,3 +53,10 @@
     width: 563px;  
     height: 35px;
 }
+
+.task-char-count {
+    color: rgb(213, 213, 213);
+    margin-top:-10px;
+    font-size: 10px;
+    color: #4dbf71;
+}
