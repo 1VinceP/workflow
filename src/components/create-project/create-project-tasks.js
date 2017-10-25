@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { deleteProjectTask } from '../../redux/reducers/main-reducer';
 import _ from 'underscore-node';
 import './create-project.css';
 
@@ -57,10 +58,16 @@ class Create_Project_Tasks extends Component {
         }
     };
 
+    deleteTask( taskId, taskKey ) {
+
+        this.props.deleteProjectTask( taskId, taskKey )
+    }
+
     render() {
         let mappedTaskToDiv;
 
-        let sortedTasks = _.sortBy( this.props.current_project_tasks, sorted => sorted )
+        let sorted = this.props.current_project_tasks
+        let sortedTasks = _.sortBy( sorted, 'task_number' )
 
         mappedTaskToDiv = sortedTasks.map( ( task, i ) => {
             return (
@@ -72,7 +79,9 @@ class Create_Project_Tasks extends Component {
                             <div className={`task-item ${task.task_id}`} >{task.task_description}</div>
                             <div className={`task-item ${task.task_id}`} >{task.task_link}</div>
                         </div>
-                        <div onClick={() => this.showTaskDetails( task.task_name, task.task_id )} className={`arrow ${ i % 2 === 0 ? 'task-odd-arrow' : 'task-even-arrow' }`} style={ { zIndex: 1000 - i + '' } } ></div>
+                        <div className={`arrow ${ i % 2 === 0 ? 'task-odd-arrow' : 'task-even-arrow' }`} style={ { zIndex: 1000 - i + '' } } >
+                            <div className='task-delete-button' onClick={() => this.deleteTask( task.task_id, task.task_unique_key )} >&#10005;</div>
+                        </div>
                 </section>
             )
         } )
@@ -80,13 +89,6 @@ class Create_Project_Tasks extends Component {
         return(
             <div>
                 <div className='create-project-titles create-project-titles-created-task'>Created Tasks</div> 
-
-                {/*<div create-project-tasks-show-task-info={ this.state.showDetails } >
-                    <div create-project-tasks-show-deets={this.state.showDetails}>
-                        { mappedTask }
-                    </div>
-                    
-                </div>*/}
 
                 <div className='project-tasks-created-container'>
                     {mappedTaskToDiv}
@@ -105,4 +107,4 @@ function mapStateToProps( state ) {
     }
 }
 
-export default connect( mapStateToProps, {} )(Create_Project_Tasks);
+export default connect( mapStateToProps, {deleteProjectTask} )(Create_Project_Tasks);

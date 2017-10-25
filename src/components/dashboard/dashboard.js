@@ -54,13 +54,13 @@ class Dashboard extends Component {
                     <section className='dash-task' key={i} >
                         <div className='dash-task-title' >
                             {task.task_name}
-                            <div className='dash-check' onClick={() => this.markTaskAsCompleted(task.task_id * 1, task.task_number, task.task_unique_key)} >&#10003;</div>
                         </div>
                         <div className='dash-task-details' >
                             <div>{task.task_start_date}</div>
                             <div>{task.task_finished_date}</div>
                             <div>{task.task_description}</div>
                             <div>{task.task_link}</div>
+                            <div className='dash-check' onClick={() => this.markTaskAsCompleted(task.task_id * 1, task.task_number, task.task_unique_key)} >&#10003;</div>
                         </div>
                     </section>
                 : null

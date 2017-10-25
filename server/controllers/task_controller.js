@@ -12,10 +12,8 @@ module.exports = {
         },
     
         create_task: (req,res,next) => {
-            console.log('TAEGET REACHED 1')
             let {task_name, task_start_date, task_finished_date, task_user_1, task_description, task_role, task_unique_key, task_show, task_link, task_number} = req.body;
 
-            console.log('TAEGET REACHED 2', req.body)
             req.app.get('db').task.add_task(task_name, task_start_date, task_finished_date, task_user_1, task_description, task_role, task_unique_key, task_show, task_link, task_number, req.params.key)
                 .then( prop => res.status(200).send(prop) )
         },
@@ -26,5 +24,10 @@ module.exports = {
                     res.status(200).send(response)
                 } )
                 .catch( err => console.log( err ) )
+        },
+
+        delete_task: ( req, res, next ) => {
+            req.app.get('db').task.delete_task( req.params.id, req.params.key )
+                .then( response => res.status(200).send(response) )
         }
     }
