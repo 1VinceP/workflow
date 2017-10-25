@@ -41,7 +41,6 @@ class Header extends Component {
             this.props.getCompanyInfo(this.props.user.user_company).then(res => {
                 this.props.getCompanyUsersInfo(this.props.user.user_company)
                 this.props.getCompanyTeamInfo(this.props.user.user_company)
-                this.props.getUserTasks( this.props.user.user_id )
             })
         })
 
@@ -136,4 +135,4 @@ function mapStateToProps( state ) {
     };
 }
 
-export default connect( mapStateToProps, {getUserInfo, getCompanyInfo, getCompanyUsersInfo, getCompanyTeamInfo, getUserTasks} )(Header);
+export default connect( mapStateToProps, {getUserInfo, getCompanyInfo, getCompanyUsersInfo, getCompanyTeamInfo, getUserTasks } )(Header);
