@@ -63,6 +63,7 @@ html {
     border-radius: 3px;
     margin-top: 6px;
     color: rgba(0,0,0,.50);
+    width: 250px;
 }
 
 .edit-team-name-input-box:focus{
@@ -233,8 +234,9 @@ html {
 
 .team-name-header{
     padding-bottom: 5px;
-    font-size: 16px !important;
-    font-weight: 600 !important;
+    font-size: 23px !important;
+    font-weight: 100 !important;
+    color: black;
 }
 
 /* .team-container{
@@ -281,12 +283,14 @@ html {
 .team-description{
     font-weight: 200;
     font-size: 13px !important;
+    color: gray;
 }
 
 .description-and-users{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    
 }
 
 .team-members-span{
@@ -310,7 +314,7 @@ html {
     width: 170px;
     height: 100px;
     overflow: auto;
-    
+    margin-right: 16px;
 }
 
 
@@ -365,7 +369,7 @@ html {
     border: none;
     font-size: 16px !important;
     font-weight: 600 !important;
-    margin-right: 105px;
+    margin-right: 145px;
 }
 
 .edit-team-users-span{
@@ -392,6 +396,42 @@ html {
     margin-top: 11px !important; 
     margin-bottom: -10px;
 }
+
+.display-teams-users-users{
+    margin-bottom: 5px;
+}
+
+.no-team-box{
+    margin-top: 41px;
+    width: 770px;
+    height: 195px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-team-span{
+    font-size: 20px;
+    padding-bottom: 35px;
+    font-weight: 100;
+    color: rgba(65,65,65, .5);
+}
+
+.no-team-button{
+    width: 150px;
+    height: 35px;
+    
+    border-radius: 3px;
+    color: white;
+    background: #F6A623;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
 
 @media(min-width: 400px) {
     .firstchart {
