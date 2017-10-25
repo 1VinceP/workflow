@@ -8,12 +8,13 @@
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
+    align-self: flex-end
 }
 
 .task-open-modal:hover {
     background: white;
     color: #509DEA;
-    border: 2px solid #509DEA;
+    border: 1px solid #509DEA;
 }
 
 .task-open-modal:active {

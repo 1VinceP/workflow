@@ -44,7 +44,9 @@ class Dashboard extends Component {
             newMenu: !this.state.newMenu
         })
     }
-
+    componentWillMount(){
+        if(!this.props.user){
+            return window.location.href ='http://localhost:3000/#/'  }}
 
     componentDidMount() {
         this.props.getUserInfo().then(res => {

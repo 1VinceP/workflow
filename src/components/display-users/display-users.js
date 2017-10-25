@@ -36,13 +36,14 @@ class DisplayUsers extends Component {
         })
     }
 
-    editUser(first, last, email, id) {
+    editUser(first, last, email, id, role) {
 
         let data = {
             user_firstname: first,
             user_lastname: last,
             user_email: email,
-            user_id: id
+            user_id: id,
+            user_role: role,
         }
         function firstNameFunction(e) {
             console.log(e.target.value)
@@ -55,6 +56,10 @@ class DisplayUsers extends Component {
         function emailFunction(e) {
             console.log(e.target.value)
             data.user_email = e.target.value
+        }
+        function roleFunction(e) {
+            console.log(e.target.value)
+            data.user_role = e.target.value
         }
         confirmAlert({
             title: 'Edit User',
@@ -70,16 +75,24 @@ class DisplayUsers extends Component {
                         <div className='dashboard-input-names-cont'>
                             <input className='dashboard-input-names' defaultValue={email} onChange={(e) => { emailFunction(e) }} required />
                         </div>
+                        <div className='dashboard-input-names-cont'>
+                            <select className='dashboard-input-names' onChange={(e) => { roleFunction(e) }} selected='User Role'>
+                            <option selected='selected' disabled='Disabled'>User Role</option>
+                            <option value={0}>Employee</option>
+                            <option value={1}>Manager</option>
+                            </select>
+                        </div>
                     </div>
                 </div>),
-            confirmLabel: 'Confirm',
+            confirmLabel: 'Save',
             cancelLabel: 'Cancel',
             onConfirm: () => {
                 var post = Object.assign({}, {
                     user_firstname: data.user_firstname && data.user_firstname,
                     user_lastname: data.user_lastname && data.user_lastname,
                     user_email: data.user_email && data.user_email,
-                    user_id: data.user_id
+                    user_id: data.user_id,
+                    user_role: data.user_role,
                 })
                 axios.post('/api/edituser', post)
                     .then(() => {
