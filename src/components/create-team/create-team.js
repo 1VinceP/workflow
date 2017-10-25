@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import './create-team.css';
-import {editTeamName, editTeamDescription, getCompanyInfo, getCompanyTeamInfo} from '../../redux/reducers/main-reducer';
+import {getUserInfo, editTeamName, editTeamDescription, getCompanyInfo, getCompanyTeamInfo} from '../../redux/reducers/main-reducer';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
@@ -16,20 +16,17 @@ class CreateTeam extends Component {
     }
 
     submitTeam() {
-        console.log(this.props)
         let data = {
             team_name: this.props.team_name,
-            team_date: this.props.team_date,
             team_description: this.props.team_description,
-            team_projects_completed: this.props.team_projects_completed,
             team_company: this.props.user.user_company
         }
         console.log("data : ", data)
         axios.post('/api/addteam', data)
         .then(() => {
-            this.props.getTeamInfo().then(res => {
+            this.props.getUserInfo().then(res => {
                 this.props.getCompanyInfo(this.props.user.user_company).then(res => {
-                    this.props.getCompanyTeamsInfo(this.props.user.user_company)
+                    this.props.getCompanyTeamInfo(this.props.user.user_company)
                 })
             })
         })
@@ -65,5 +62,5 @@ function mapStateToProps(state) {
     return state;
 }
 
-export default connect(mapStateToProps, {
+export default connect(mapStateToProps, {getUserInfo, 
     editTeamName, editTeamDescription, getCompanyInfo, getCompanyTeamInfo})(CreateTeam)

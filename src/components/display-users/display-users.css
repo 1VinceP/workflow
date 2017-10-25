@@ -21,16 +21,8 @@
     height: 90vh;
 }
 
-.charts-main{
-    display: flex;
-    justify-content: space-between;
-}
 
 
-.chart {
-    height: 300;
-    width: 100;
-}
 
 /*          Left nav bar           */
 
@@ -120,22 +112,108 @@
 .users-table-container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     background: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
+    box-shadow: 0 2px 4px rgba(0,0,0,.25), 0 0 1px rgba(0,0,0,.28);
     width: 675px;
-    height: auto;
+    height: 100%;
     border-radius: 3px;
 }
 
 
 .users-top-table{
-    border-bottom: 1px solid rgba(0,0,0, .3)
+    border-bottom: 3px solid rgba(0,0,0, .1);
+    height: 43px;
+    background: #7953F5;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.users-top-table-text{
+    display: flex;
+    font-size: 17px;
+    font-weight: 900;
+    margin-top: 12px;
+    color: white
+}
+
+.display-users-name{
+    font-size: 17px;  
+    /* padding-right: 300px;  */
+    font-weight: 900;
+    padding-bottom: 5px;
+    white-space: nowrap;
+    width: 200px;
 }
 
 
+.display-users-user-container{
+    /* margin-bottom: 5px; */
+    border-bottom: 1px solid rgba(0,0,0, .3);
+    display: flex;
+    height: 75px;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+}
 
+.display-users-name-header{
+    padding-right: 280px;
+    padding-left: 30px;
+}
+
+.display-users-name-email{
+    padding-left: 30px;
+}
+
+.users-buttons-div{
+    margin-right: 15px;
+}
+
+.display-users-email{
+    font-size: 12px;
+    font-weight: 100;
+    margin-left: 20px;
+}
+
+.users-email-button{
+    
+    background: none !important;
+    border: none !important;
+    outline: none;
+    margin-left: -31px !important;
+    margin-top: -10px !important;
+    z-index: 0;
+}
+
+.users-email-span{
+    margin-left: -10px;
+}
+
+.users-team-name{
+    text-align: left;
+    width: 140px;
+    margin-left: 38px;
+}
+
+
+.dashboard-input-names{
+    border: none;
+    outline: none;
+    font-family: helvetica;
+    font-size: 16px;
+    color: grey;
+    border-bottom: 1px solid rgb(227, 227, 227);
+    width: 255px;
+    height: 35px;
+    margin: 10px 20px 10px 0px;
+}
+.dashboard-input-names::placeholder{
+    border: none;
+    outline: none;
+    font-family: helvetica;
+    font-size: 16px;
+    color: rgb(217, 217, 217);
+}
 
 @media(min-width: 400) {
     .firstchart {
@@ -145,3 +223,4 @@
         margin-left: 10px;
     }
 }
+

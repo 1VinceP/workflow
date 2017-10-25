@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
+import 'semantic-ui-css/semantic.min.css'
+import { Button, Icon } from 'semantic-ui-react'
 // let style = {
 //     margin: 12,
 // };
@@ -16,7 +18,7 @@ class DisplayUsers extends Component {
 
     deleteUser(id) {
         confirmAlert({
-            title: 'Confirm to submit',
+            title: 'Delete User',
             message: 'Are you sure you want to do this.',
             confirmLabel: 'Confirm',
             cancelLabel: 'Cancel',
@@ -57,10 +59,18 @@ class DisplayUsers extends Component {
         confirmAlert({
             title: 'Edit User',
             message: (
-                <div>
-                    <span>First Name: <input defaultValue={first} onChange={(e) => firstNameFunction(e)} /></span><br />
-                    <span>Last Name: <input defaultValue={last} onChange={(e) => lastNameFunction(e)} /></span><br />
-                    <span>Email: <input defaultValue={email} onChange={(e) => emailFunction(e)} /></span>
+                <div className='dashboard-input-name-container'>
+                    <div className='dashboard-all-input-sections'>
+                        <div className='dashboard-input-names-cont'>
+                            <input maxLength={30} className='dashboard-input-names' defaultValue={first} onChange={(e) => { firstNameFunction(e) }} required />
+                        </div>
+                        <div className='dashboard-input-names-cont'>
+                            <input className='dashboard-input-names' defaultValue={last} onChange={(e) => { lastNameFunction(e) }} required />
+                        </div>
+                        <div className='dashboard-input-names-cont'>
+                            <input className='dashboard-input-names' defaultValue={email} onChange={(e) => { emailFunction(e) }} required />
+                        </div>
+                    </div>
                 </div>),
             confirmLabel: 'Confirm',
             cancelLabel: 'Cancel',
@@ -87,26 +97,46 @@ class DisplayUsers extends Component {
     }
 
 
+    getTeamName(id) {
+        // console.log('id', id)
+        // console.log("COMPANY PROPS", this.props.company_team[0].team_id)
+        var teamId = this.props.company_team
+        for (let i = 0; i < teamId.length; i++) {
+            if (teamId[i].team_id === id) {
+                return teamId[i].team_name
+            }
+        }
+    }
+
+
     render() {
         let userInfo = this.props.company_users.map((e, i) => {
             return (
-                <div key={i} >
-                    <div >
-                        <div>
+                <div key={i} className="display-users-user-container">
+                    <div className="display-users-name-email" >
+                        <div className="display-users-name">
                             {e.user_firstname} {e.user_lastname}
                         </div>
-                        <div>
-                            {e.user_email}
+                        <div className="display-users-email">
+                            <Button href={`mailto:${e.user_email}`} circular icon='mail outline' className="users-email-button" /> <span className="users-email-span">{e.user_email}</span>
                         </div>
                     </div>
-                    <div>
-                        <button className='display-users-edit-button' onClick={() => this.editUser(e.user_firstname, e.user_lastname, e.user_email, e.user_id)}>Edit User</button>
-                        <button className='display-users-delete-button' onClick={() => this.deleteUser(e.user_id)} >Delete User</button>
+                    <div className="users-team-name">
+                        {this.getTeamName(e.user_team)}
+                    </div>
+                    <div className="users-buttons-div">
+                        <Button onClick={() => this.editUser(e.user_firstname, e.user_lastname, e.user_email, e.user_id)} size="big" className="team-settings-button">
+                            <Icon name='setting' />
+                        </Button>
+                        <Button onClick={() => this.deleteUser(e.user_id)} size="big" className="team-delete-button">
+                            <Icon name='trash' />
+                        </Button>
                     </div>
 
                 </div>
             )
         })
+
 
 
         return (
@@ -124,7 +154,7 @@ class DisplayUsers extends Component {
                         <div className="users-table-container">
                             <div className="users-top-table">
                                 <div className="users-top-table-text">
-                                    <span>Name</span>
+                                    <span className="display-users-name-header">Name</span>
                                     <span>Team</span>
                                 </div>
                             </div>
