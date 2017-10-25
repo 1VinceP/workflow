@@ -1,0 +1,132 @@
+{
+	"info": {
+		"name": "Group Project Collection Testing",
+		"_postman_id": "bc4edb63-93ee-2d1a-3359-a504a9cd4d40",
+		"description": "This will be used to test the endpoints of our group project.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/api/company/getteams",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Response status code 200', () => {",
+							"pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test('Response is array', function() {",
+							"    pm.expect(Array.isArray(pm.response.json())).to.eql(true);",
+							"})",
+							"",
+							"pm.test('> 0 user objects in reponse', function() {",
+							"    pm.expect(pm.response.json().length);",
+							"})",
+							"",
+							"",
+							"pm.test(\"Response time is less than 600ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/api/company/getteams",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"company",
+						"getteams"
+					]
+				},
+				"description": "Testing get teams"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/getusers(error)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Response status code 404', () => {",
+							"pm.response.to.have.status(404);",
+							"})",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/api/getusers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"getusers"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Testing adding a company",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Response status code 404', () => {",
+							"pm.response.to.have.status(404);",
+							"})",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/api/addcompany",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"addcompany"
+					]
+				},
+				"description": "http://localhost:3000/api/addcompany"
+			},
+			"response": []
+		}
+	]
+}
