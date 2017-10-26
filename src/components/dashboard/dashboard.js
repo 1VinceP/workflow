@@ -47,7 +47,9 @@ class Dashboard extends Component {
             newMenu: !this.state.newMenu
         })
     }
-
+    componentWillMount(){
+        if(!this.props.user){
+            return window.location.href ='http://localhost:3000/#/'  }}
 
     componentDidMount() {
         this.props.getUserInfo().then(res => {
@@ -60,6 +62,10 @@ class Dashboard extends Component {
                 // console.log('BOOM')
             }
         })
+
+        this.props.getUserTasks( this.props.user.user_id )
+
+
         this.getMoney();
         this.getTaskTotal()
         this.props.getUserTasks( this.props.user.user_id )
@@ -170,22 +176,32 @@ class Dashboard extends Component {
 
     render() {
         console.log(this.props)
-        let sortedTasks = _.sortBy( this.props.user_tasks, sorted => sorted )
+        let sorted = this.props.user_tasks
+        let sortedTasks = _.sortBy( sorted, key => {
+            return ( new Date(key.task_finished_date).getTime() )
+        }  )
 
-        let taskMapper = this.props.user_tasks.map((task, i) => {
+        let taskMapper = sortedTasks.map((task, i) => {
             return (
                 task.task_show && !task.task_completed ?
                     <section className='dash-task' key={i} >
-                        <div className='dash-task-title' >
-                            {task.task_name}
+
+                        <div className='dash-task-title' >{task.task_name}</div>
+
+                        <div className='dash-task-everything-else' >
+                            <div className='dash-task-dates' >
+                                <div>{task.task_start_date.split(' ', 4).splice( 1 ).join(' ')}</div>
+                                <div className='dash-date-dash' >-</div>
+                                <div>{task.task_finished_date.split(' ', 4).splice( 1 ).join(' ')}</div>
+                            </div>
+                            <div className='dash-task-details' >
+                                <div>{task.task_description}</div>
+                                <a href={task.task_link} target='_blank' >{task.task_link}</a>
+                            </div>
+                            
+                            <button className='dash-check' onClick={() => this.markTaskAsCompleted(task.task_id * 1, task.task_number, task.task_unique_key)} >Complete</button>
                         </div>
-                        <div className='dash-task-details' >
-                            <div>{task.task_start_date}</div>
-                            <div>{task.task_finished_date}</div>
-                            <div>{task.task_description}</div>
-                            <div>{task.task_link}</div>
-                            <div className='dash-check' onClick={() => this.markTaskAsCompleted(task.task_id * 1, task.task_number, task.task_unique_key)} >&#10003;</div>
-                        </div>
+                        
                     </section>
                     : null
             )
