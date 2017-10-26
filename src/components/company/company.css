@@ -1,0 +1,38 @@
+.company-info-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    padding: 50px;
+}
+.company-info-container{
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: 70vw;
+    padding: 30px;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    box-shadow: 2px 3px 2px #e7e7e7;
+    border-radius: 5px;
+    border: 1px solid rgb(243, 243, 243);
+    border-top: 2px solid #7953F5;
+    margin-left: 3vw;
+}
+.company-main-title{
+    font-size: 30px;
+    margin: 20px;
+
+}
+.company-subtitle-container{
+    display: flex;
+    flex-direction: colu
+}
+.company-main-code{
+    font-size: 20px;
+    margin: 10px;
+}
+.company-main-subtitle{
+    font-size: 14px;
+    margin: 10px;
+}

@@ -17,6 +17,7 @@ import UserIcon from './images/user.svg';
 import Calendar from 'react-calendar'
 import UnstyledCalendar from 'react-calendar/build/entry.nostyle';
 import _ from 'underscore-node';
+import SideNavLinks from './Sidebar'
 
 
 let styles = {
@@ -48,6 +49,11 @@ class Dashboard extends Component {
         })
     }
 
+    componentWillMount() {
+        if (!this.props.user) {
+            return window.location.href = 'http://localhost:3000/#/'
+        }
+    }
 
     componentDidMount() {
         this.props.getUserInfo().then(res => {
@@ -61,21 +67,21 @@ class Dashboard extends Component {
             }
         })
 
-        this.props.getUserTasks( this.props.user.user_id )
+        this.props.getUserTasks(this.props.user.user_id)
 
 
         this.getMoney();
         this.getTaskTotal();
-        
+
     }
 
     getMoney() {
         axios.get(`/api/getMoney/byTask/${this.props.user.user_company}`).then(res => {
-            let x = res.data[0].sum.substring(1,10).split(',').join('')
+            let x = res.data[0].sum.substring(1, 10).split(',').join('')
             this.setState({
                 money: x
             })
-            console.log ('MOneys', this.state.money);
+            console.log('MOneys', this.state.money);
         })
     }
     getTaskTotal() {
@@ -86,12 +92,12 @@ class Dashboard extends Component {
             console.log('tasks', this.state.tasktotal)
         })
     }
-    divide(){
-       let  x = Math.ceil(this.state.money/this.state.tasktotal);
-       console.log("this is", x);
-       this.setState({
-           moneypertask: x
-       })
+    divide() {
+        let x = Math.ceil(this.state.money / this.state.tasktotal);
+        console.log("this is", x);
+        this.setState({
+            moneypertask: x
+        })
     }
 
     addUsersName() {
@@ -160,13 +166,13 @@ class Dashboard extends Component {
     }
 
 
-    markTaskAsCompleted( taskId, taskNumber, taskKey ) {
-        console.log( 'button hit' )
+    markTaskAsCompleted(taskId, taskNumber, taskKey) {
+        console.log('button hit')
 
         taskNumber++
 
-        axios.put( `/api/completeTask/${taskId}/${taskNumber}/${taskKey}` )
-            .then( () => this.props.getUserTasks( this.props.user.user_id ) )
+        axios.put(`/api/completeTask/${taskId}/${taskNumber}/${taskKey}`)
+            .then(() => this.props.getUserTasks(this.props.user.user_id))
     }
 
 
@@ -175,9 +181,9 @@ class Dashboard extends Component {
     render() {
         console.log(this.props)
         let sorted = this.props.user_tasks
-        let sortedTasks = _.sortBy( sorted, key => {
-            return ( new Date(key.task_finished_date).getTime() )
-        }  )
+        let sortedTasks = _.sortBy(sorted, key => {
+            return (new Date(key.task_finished_date).getTime())
+        })
 
         let taskMapper = sortedTasks.map((task, i) => {
             return (
@@ -187,19 +193,21 @@ class Dashboard extends Component {
                         <div className='dash-task-title' >{task.task_name}</div>
 
                         <div className='dash-task-everything-else' >
-                            <div className='dash-task-dates' >
-                                <div>{task.task_start_date.split(' ', 4).splice( 1 ).join(' ')}</div>
-                                <div className='dash-date-dash' >-</div>
-                                <div>{task.task_finished_date.split(' ', 4).splice( 1 ).join(' ')}</div>
+                            <div>
+                                <div className='dash-task-dates' >
+                                    <div>{task.task_start_date.split(' ', 4).splice(1).join(' ')}</div>
+                                    <div className='dash-date-dash' >-</div>
+                                    <div>{task.task_finished_date.split(' ', 4).splice(1).join(' ')}</div>
+                                </div>
+                                <div className='dash-task-details' >
+                                    <div>{task.task_description}</div>
+                                    <a href={task.task_link} target='_blank' >{task.task_link}</a>
+                                </div>
                             </div>
-                            <div className='dash-task-details' >
-                                <div>{task.task_description}</div>
-                                <a href={task.task_link} target='_blank' >{task.task_link}</a>
-                            </div>
-                            
+
                             <button className='dash-check' onClick={() => this.markTaskAsCompleted(task.task_id * 1, task.task_number, task.task_unique_key)} >Complete</button>
                         </div>
-                        
+
                     </section>
                     : null
             )
@@ -209,87 +217,61 @@ class Dashboard extends Component {
 
             (
                 <div className="dashboard-view">
+                        <div className='dashboard-main-header-title'>Dashboard</div>
                     <div className="button-span">
                         {/* <div className='dashboard-main-title'>Dashboard</div> */}
                         <button className='dashboard_new_items_buttons' onClick={() => { this.displayNewMenu() }}>+ New</button>
-                    </div>
-                    {this.state.newMenu === true ?
-                        <div className='dashboard_new_menu_container'>
-                            <a href='/#/create-project'>
-                                <div className='dashboard_menu_item_selection' onClick={() => { this.props.addProjectUniqueKey(this.props.company[0].company_name, this.props.user.user_id) }}>Project</div></a>
 
+                        {this.state.newMenu === true ?
+                            <div className='dashboard_new_menu_container'>
+                                <a href='/#/create-project'>
+                                    <div className='dashboard_menu_item_selection' onClick={() => { this.props.addProjectUniqueKey(this.props.company[0].company_name, this.props.user.user_id) }}>Project</div></a>
 
-                            <div className='dashboard_menu_item_selection'>Team</div>
-                            <div className='dashboard_menu_item_selection'>User</div>
-                        </div>
-                        : null}
-                    <div className="content-wrapper">
-                        <div className='dashboard-side-nav-body'>
-                            <div className='dashboard-sidenav-title'>Home</div>
-                            <div className='dashboard-sidenav-title-divider'></div>
-                            <div className='dashboard-sidenav-links-all'>
-                            <a href='/#/display-users' className='dashboard-side-nav-selections-cont'>
-                                <img src={UserIcon} className='dashboard-icon-sidenav'/>
-                                <div className='dashboard-text-sidenav'>Users</div>
-                            </a>
+                                <a href='/#/create-team'>
+                                    <div className='dashboard_menu_item_selection'>Team</div>
+                                </a>
 
-                            <a href='/#/display-teams' className='dashboard-side-nav-selections-cont'>
-                                <img src={TeamsIcon} className='dashboard-icon-sidenav'/>
-                                <div className='dashboard-text-sidenav'>Teams</div>
-                            </a>
-
-                            <a href='#' className='dashboard-side-nav-selections-cont'>
-                                <img src={CompanyIcon} className='dashboard-icon-sidenav'/>
-                                <div className='dashboard-text-sidenav'>Company</div>
-                            </a>
-
-                            <a href='/#/display-projects' className='dashboard-side-nav-selections-cont'>
-                                <img src={ProjectIcon} className='dashboard-icon-sidenav'/>
-                                <div className='dashboard-text-sidenav'>Projects</div>
-                            </a>
-
-                            <a href='/#/analytics' className='dashboard-side-nav-selections-cont'>
-                                <img src={AnalyticsIcon} className='dashboard-icon-sidenav'/>
-                                <div className='dashboard-text-sidenav'>Analytics</div>
-                            </a>
-
+                                <a href='/#/create-user'>
+                                    <div className='dashboard_menu_item_selection-1'>User</div>
+                                </a>
                             </div>
-
-                        </div>
+                            : null}
+                    </div>
+                    <div className="content-wrapper">
+                        <SideNavLinks />
                         <div className="task-list">
                             <div className='dashboard-titles'>Tasks</div>
-                            <div className='dashboard-task-container'>
-                                <div className='dashboard-tasks' >
-                                    {taskMapper}
-                                </div>
-                            </div>
+
+
+                            {taskMapper}
+
 
                         </div>
                     </div>
-                    
+
                     <div className='dashnoard-second-section-layout'>
                         <UnstyledCalendar className='dashboard-calendar' />
                         <div className='dashboard-second-section-cont2'>Tasks Due Today:</div>
                         <div className='dashboard-second-section-cont1'>Money Made per Task:
                             <div className="number">$ {this.state.moneypertask}</div>
                             <div className='money'><button className="calculator" onClick={() => this.divide()}>Calculate</button></div>
-                        
+
                         </div>
 
                     </div>
 
 
 
-{/* 
+                    {/* 
                     <div className="current-stats-wrapper">
                         <div className='dashboard-titles'>Analytics</div>
                         <div>
                             <Table2 />
                         </div>
                     </div> */}
-                    <div >
+                    {/* <div >
                         <Link className="chat" to="/chat">Chat</Link>
-                    </div>
+                    </div> */}
                 </div>
             )
 

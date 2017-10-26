@@ -106,7 +106,6 @@ class Header extends Component {
                             <div className='header-mid-buttons'>
                                 <Link to='/dashboard' className='header-link' onClick={ () => this.updateUserTasks() } ><button className='header-link-buttons' page-is-scrolled={this.state.scroll}>Home</button></Link>
                                 <Link to='/analytics' className='header-link'><button className='header-link-buttons' page-is-scrolled={this.state.scroll}>Analytics</button></Link>
-                                <CompanyDrop scroll={this.state.scroll} />
                                 <TeamDrop scroll={this.state.scroll} />
                                 <a href={process.env.REACT_APP_LOGOUT} className='header-link'>
                                     <button className='header-link-buttons'>Logout</button>
