@@ -178,42 +178,85 @@ html {
 }
 
 .dash-task {
-    width: 23%;
-    background: rgb(187, 187, 187);
+    width: 180px;
+    height: 180px;
+    background: white;
     margin: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
     font-size: 14px;
+    box-shadow: 2px 3px 2px #e7e7e7;
+    border-left: 1px solid #e7e7e7;
+    display: flex;
+    flex-direction: column;
 }
 
 .dash-task-title {
     width: 100%;
+    height: 26px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 3px;
-    border-bottom: 1px solid black;
+    font-size: 12px;
+    line-height: 120%;
     text-align: center;
+    background: #7953F5;
+    border-radius: 5px 5px 0 0;
+    color: white;
+}
+
+.dash-task-everything-else {
+    width: 100%;
+    height: 154px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.dash-task-dates {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 6px 10px;
+    font-size: 10px;
+}
+
+.dash-task-dates div {
+    text-align: center;
+    line-height: 130%;
+    /* border-bottom: 1px solid black; */
+}
+
+.dash-date-dash {
+    margin: 0 3px;
 }
 
 .dash-task-details {
     width: 100%;
-    padding: 3px;
+    padding: 6px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between
+    justify-content: space-between;
+    text-align: left;
+    font-size: 12px;
+    line-height: 120%;
+}
+
+.dash-task-details a {
+
 }
 
 .dash-check {
-    cursor: pointer;
-    width: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba( 0, 0, 0, 0.4 );
+    width: 90px;
+    background: rgb(144, 216, 29);
+    border: none;
     border-radius: 5px;
+    outline: none;
+    padding: 3px;
     color: white;
-    margin-top: 5px;
+    cursor: pointer;
+    font-size: 10px;
+    margin-left: 90px;
 }
 
 .chat {
@@ -353,6 +396,9 @@ margin-right: 7px;
     border: 1px solid rgb(243, 243, 243);
     border-top: 2px solid rgb(10, 183, 10);
     margin: 0 1.5vw 0 1.5vw;
+    font-size: 20px;
+    padding-left: 30px;
+    padding-top: 20px;
 }
 .dashnoard-second-section-layout{
     display: flex;
@@ -362,4 +408,25 @@ margin-right: 7px;
 .dashboard-main-title{
     position: relative;
     
+}
+
+.number {
+    font-size: 30px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    color: green;
+    margin-left: 90px;
+}
+.calculator {
+    position: absolute;
+    bottom: 0;
+    margin-left: 100px;
+    color: white;
+    background: #4dbf71;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px;
 }

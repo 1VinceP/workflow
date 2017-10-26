@@ -5,7 +5,7 @@ import NewMenu from '../new-menu/new-menu';
 import axios from 'axios';
 import Table2 from '../analytics/table2';
 import FirstTimeUser from '../first-time-user/FirstTimeUser'
-import { addProjectUniqueKey, editUserFirstname, editUserLastname, getUserInfo, getCompanyInfo, getCompanyTeamInfo, getCompanyUsersInfo, getUserInfoAfter } from '../../redux/reducers/main-reducer'
+import { addProjectUniqueKey, editUserFirstname, editUserLastname, getUserInfo, getCompanyInfo, getCompanyTeamInfo, getCompanyUsersInfo, getUserInfoAfter, getUserTasks } from '../../redux/reducers/main-reducer'
 import { Link } from 'react-router-dom'
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
@@ -36,6 +36,9 @@ class Dashboard extends Component {
         this.state = {
             newMenu: false,
             missingEmployeeInfo: false,
+            money: 0,
+            tasktotal: 0,
+            moneypertask: ''
         }
     }
 
@@ -44,7 +47,9 @@ class Dashboard extends Component {
             newMenu: !this.state.newMenu
         })
     }
-
+    componentWillMount(){
+        if(!this.props.user){
+            return window.location.href ='http://localhost:3000/#/'  }}
 
     componentDidMount() {
         this.props.getUserInfo().then(res => {
@@ -57,7 +62,40 @@ class Dashboard extends Component {
                 // console.log('BOOM')
             }
         })
+
+        this.props.getUserTasks( this.props.user.user_id )
+
+
+        this.getMoney();
+        this.getTaskTotal()
+        this.props.getUserTasks( this.props.user.user_id )
     }
+
+    getMoney() {
+        axios.get(`/api/getMoney/byTask/${this.props.user.user_company}`).then(res => {
+            let x = res.data[0].sum.substring(1,10).split(',').join('')
+            this.setState({
+                money: x
+            })
+            console.log ('MOneys', this.state.money);
+        })
+    }
+    getTaskTotal() {
+        axios.get(`/api/getTaskTotal/${this.props.user.user_id}`).then(res => {
+            this.setState({
+                tasktotal: res.data[0].count
+            })
+            console.log('tasks', this.state.tasktotal)
+        })
+    }
+    divide(){
+       let  x = Math.ceil(this.state.money/this.state.tasktotal);
+       console.log("this is", x);
+       this.setState({
+           moneypertask: x
+       })
+    }
+
     addUsersName() {
         let data = Object.assign({}, {
             user_firstname: this.props.user_firstname,
@@ -138,22 +176,32 @@ class Dashboard extends Component {
 
     render() {
         console.log(this.props)
-        let sortedTasks = _.sortBy( this.props.user_tasks, sorted => sorted )
+        let sorted = this.props.user_tasks
+        let sortedTasks = _.sortBy( sorted, key => {
+            return ( new Date(key.task_finished_date).getTime() )
+        }  )
 
-        let taskMapper = this.props.user_tasks.map((task, i) => {
+        let taskMapper = sortedTasks.map((task, i) => {
             return (
                 task.task_show && !task.task_completed ?
                     <section className='dash-task' key={i} >
-                        <div className='dash-task-title' >
-                            {task.task_name}
+
+                        <div className='dash-task-title' >{task.task_name}</div>
+
+                        <div className='dash-task-everything-else' >
+                            <div className='dash-task-dates' >
+                                <div>{task.task_start_date.split(' ', 4).splice( 1 ).join(' ')}</div>
+                                <div className='dash-date-dash' >-</div>
+                                <div>{task.task_finished_date.split(' ', 4).splice( 1 ).join(' ')}</div>
+                            </div>
+                            <div className='dash-task-details' >
+                                <div>{task.task_description}</div>
+                                <a href={task.task_link} target='_blank' >{task.task_link}</a>
+                            </div>
+                            
+                            <button className='dash-check' onClick={() => this.markTaskAsCompleted(task.task_id * 1, task.task_number, task.task_unique_key)} >Complete</button>
                         </div>
-                        <div className='dash-task-details' >
-                            <div>{task.task_start_date}</div>
-                            <div>{task.task_finished_date}</div>
-                            <div>{task.task_description}</div>
-                            <div>{task.task_link}</div>
-                            <div className='dash-check' onClick={() => this.markTaskAsCompleted(task.task_id * 1, task.task_number, task.task_unique_key)} >&#10003;</div>
-                        </div>
+                        
                     </section>
                     : null
             )
@@ -173,8 +221,8 @@ class Dashboard extends Component {
                                 <div className='dashboard_menu_item_selection' onClick={() => { this.props.addProjectUniqueKey(this.props.company[0].company_name, this.props.user.user_id) }}>Project</div></a>
 
 
-                            <div className='dashboard_menu_item_selection'>Team</div>
-                            <div className='dashboard_menu_item_selection'>User</div>
+                                <Link to="/create-team"><div className='dashboard_menu_item_selection'>Team</div></Link>
+                            <Link to="/create-user"><div className='dashboard_menu_item_selection'>User</div></Link>
                         </div>
                         : null}
                     <div className="content-wrapper">
@@ -223,20 +271,24 @@ class Dashboard extends Component {
                     
                     <div className='dashnoard-second-section-layout'>
                         <UnstyledCalendar className='dashboard-calendar' />
-                        <div className='dashboard-second-section-cont2'></div>
-                        <div className='dashboard-second-section-cont1'></div>
+                        <div className='dashboard-second-section-cont2'>Tasks Due Today:</div>
+                        <div className='dashboard-second-section-cont1'>Money Made per Task:
+                            <div className="number">$ {this.state.moneypertask}</div>
+                            <div className='money'><button className="calculator" onClick={() => this.divide()}>Calculate</button></div>
+                        
+                        </div>
 
                     </div>
 
 
 
-
+{/* 
                     <div className="current-stats-wrapper">
                         <div className='dashboard-titles'>Analytics</div>
                         <div>
                             <Table2 />
                         </div>
-                    </div>
+                    </div> */}
                     <div >
                         <Link className="chat" to="/chat">Chat</Link>
                     </div>
@@ -250,4 +302,4 @@ function mapStateToProps(state) {
     return state
 }
 
-export default connect(mapStateToProps, { addProjectUniqueKey, editUserFirstname, editUserLastname, getCompanyInfo, getCompanyTeamInfo, getUserInfo, getCompanyUsersInfo, getUserInfoAfter })(Dashboard)
+export default connect(mapStateToProps, { addProjectUniqueKey, editUserFirstname, editUserLastname, getCompanyInfo, getCompanyTeamInfo, getUserInfo, getCompanyUsersInfo, getUserInfoAfter, getUserTasks })(Dashboard)

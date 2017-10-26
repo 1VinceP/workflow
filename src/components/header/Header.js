@@ -35,6 +35,7 @@ class Header extends Component {
         this.adjustOnScroll = this.adjustOnScroll.bind(this)
     }
 
+
     componentDidMount() {
 
         this.props.getUserInfo().then(res => {

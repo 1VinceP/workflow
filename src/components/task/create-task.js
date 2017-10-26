@@ -32,7 +32,7 @@ class Create_task extends Component {
             taskRole: '',
             taskUniqueKey:'',
             taskShow: true,
-            taskLink: '',
+            taskLink: 'http://',
             taskNumber: 1
           };
 
@@ -77,23 +77,29 @@ class Create_task extends Component {
 
 
     createNewTask() {
+      let link;
+      if( this.state.taskLink === 'http://' )
+        link = ''
+      else
+        link = this.state.taskLink
+
       let state = this.state
       let body = {
         task_name: state.taskName,
-        task_start_date: state.taskStart,
-        task_finished_date: state.taskEnd,
+        task_start_date: state.taskStart +'',
+        task_finished_date: state.taskEnd + '',
         task_user_1: state.taskUser,
         task_description: state.taskDesc,
         task_role: state.taskRole,
         task_unique_key: this.props.project_unique_key,
         task_show: state.taskShow,
-        task_link: state.taskLink,
+        task_link: link,
         task_number: state.taskNumber
       }
 
       this.props.currentProjectTasks( this.props.project_unique_key, body )
         .then(()=>{this.handleClose()})
-          .then( () => this.setState({ taskShow: false, taskNumber: this.state.taskNumber + 1 }) )
+          .then( () => this.setState({ taskShow: false, taskNumber: this.state.taskNumber + 1, taskLink: 'http://' }) )
     }
     
       render() {
@@ -124,20 +130,31 @@ class Create_task extends Component {
               contentStyle={customContentStyle}
               onRequestClose={this.handleClose}
             >
+
+{/* TASK NAME */}
               <input name='taskName' placeholder='Task Name' className='task-create-task-input task-create-task-input-long' onChange={(e)=>{
-              this.handleTaskInput(e)}}/>
+              this.handleTaskInput(e)}} maxLength='50'/>
+              <div className='task-char-count'>{this.state.taskName.length}/{50}</div>              
+
+{/* TASK START DATE */}
               <div className='task-start-finish-date'>
               <DatePicker  hintText="Start Date" 
                 name='taskStart'  onChange={
               this.handleTaskDateStart}/>
 
+{/* TASK FINISH DATE */}
               <div className='task-start-finish-date-spacer'></div>
               <DatePicker  name='taskEnd' hintText="Finish Date" 
                onChange={
               this.handleTaskDateEnd}/>
               </div>
+
+{/* TASK DESCRIPTION */}
               <input  name='taskDesc' placeholder='Task Description' className='task-create-task-input task-create-task-input-long'  onChange={(e)=>{
-              this.handleTaskInput(e)}}/>
+              this.handleTaskInput(e)}} maxLength='100'/>
+              <div className='task-char-count'>{this.state.taskDesc.length}/{100}</div>
+
+{/* TASK USER OR ROLE */}
               <div>
                 <input  name='taskUser' placeholder='User' className='task-create-task-input'  onChange={(e)=>{
               this.handleTaskInput(e)}}/>
@@ -145,7 +162,9 @@ class Create_task extends Component {
                 <input  name='taskRole' placeholder='Role' className='task-create-task-input task-create-task-input-role'  onChange={(e)=>{
               this.handleTaskInput(e)}}/>
               </div>
-              <input  name='taskLink' placeholder='Task Link' className='task-create-task-input task-create-task-input-long'  onChange={(e)=>{
+
+{/* TASK LINK */}
+              <input  name='taskLink' placeholder='Task Link' defaultValue='http://' className='task-create-task-input task-create-task-input-long'  onChange={(e)=>{
               this.handleTaskInput(e)}}/>
             </Dialog>
           </div>

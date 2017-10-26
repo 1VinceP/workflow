@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
 import CreateTaskFunctional from '../task/create-task-functional'
 import DatePicker from 'material-ui/DatePicker';
 import Create_Project_Task from './create-project-tasks'
@@ -18,8 +19,8 @@ class Create_Project_Class extends Component {
     submitProject(){
         let data={
             project_name:this.props.project_name,
-            project_start_date: this.props.project_start_date,
-            project_finished_date: this.props.project_finish_date,
+            project_start_date: this.props.project_start_date + '',
+            project_finished_date: this.props.project_finish_date + '',
             project_description:this.props.project_description,
             project_company:this.props.company[0].company_id,
             project_price:this.props.project_price,
@@ -94,11 +95,11 @@ class Create_Project_Class extends Component {
             {this.props.project_description === ''
                 ?
                 
-                <input placeholder='Project Description' className='project-create-project-input project-create-project-input-long' onChange={(e)=>this.props.addProjectDesc(e.target.value)}/>
+                <input placeholder='Project Description' className='project-create-project-input project-create-project-input-long' onChange={(e)=>this.props.addProjectDesc(e.target.value)} maxLength='300' />
                 
                 :
 
-                <input defaultValue={this.props.project_description} className='project-create-project-input project-create-project-input-long' onChange={(e)=>this.props.addProjectDesc(e.target.value)}/>
+                <input defaultValue={this.props.project_description} className='project-create-project-input project-create-project-input-long' onChange={(e)=>this.props.addProjectDesc(e.target.value)} maxLength='300' />
             
                 
             
@@ -118,13 +119,12 @@ class Create_Project_Class extends Component {
                 <div className='project-dates-start-end-container'>
                     <div> {`${this.props.project_start_date} - ${this.props.project_finish_date}`}</div>
                 </div>
-                <div className='project-created-descritpion'> {this.props.project_description}</div>
                 <div className='project-created-price'> ${this.props.project_price}</div> 
                 <button onClick={()=>{this.displayProject()}} className='project-created-edit-project'>Edit Project</button>
                 </div>
                 <CreateTaskFunctional />
                 <Create_Project_Task />
-                <button className='project-created-submit-project' onClick={()=>{this.submitProject()}}> Submit Project</button>
+                <Link to="/display-projects"><button className='project-created-submit-project' onClick={()=>{this.submitProject()}}> Submit Project</button></Link>
             </div>
         }
             </div>
