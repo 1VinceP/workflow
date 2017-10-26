@@ -67,8 +67,8 @@ class Dashboard extends Component {
 
 
         this.getMoney();
-        this.getTaskTotal();
-        
+        this.getTaskTotal()
+        this.props.getUserTasks( this.props.user.user_id )
     }
 
     getMoney() {
@@ -221,8 +221,8 @@ class Dashboard extends Component {
                                 <div className='dashboard_menu_item_selection' onClick={() => { this.props.addProjectUniqueKey(this.props.company[0].company_name, this.props.user.user_id) }}>Project</div></a>
 
 
-                            <div className='dashboard_menu_item_selection'>Team</div>
-                            <div className='dashboard_menu_item_selection'>User</div>
+                                <Link to="/create-team"><div className='dashboard_menu_item_selection'>Team</div></Link>
+                            <Link to="/create-user"><div className='dashboard_menu_item_selection'>User</div></Link>
                         </div>
                         : null}
                     <div className="content-wrapper">
