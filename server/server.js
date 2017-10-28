@@ -168,6 +168,8 @@ app.post('/api/editteam', team_controller.edit_team)
 
 app.get('/api/project', project_controller.get_projects)
 
+app.delete('/api/delete/project/:id', project_controller.delete_project)
+
 app.post('/api/addproject', project_controller.create_project)
 
 ////////////////////////////        TASK         /////////////////////////////////

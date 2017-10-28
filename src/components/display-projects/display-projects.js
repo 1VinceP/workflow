@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import './display-projects.css'
-// import RaisedButton from 'material-ui/RaisedButton';
-import { getUserInfo, getCompanyInfo, getCompanyUsersInfo } from '../../redux/reducers/main-reducer';
+
+import {
+    getUserInfo
+    , getCompanyInfo
+    , getCompanyUsersInfo
+    , getCompanyProjectInfo
+    , addProjectStart
+    , addProjectEnd
+} from '../../redux/reducers/main-reducer';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
@@ -9,101 +16,167 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import 'semantic-ui-css/semantic.min.css'
 import { Button, Icon } from 'semantic-ui-react'
-// let style = {
-//     margin: 12,
-// };
+import DatePicker from 'material-ui/DatePicker';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+
 
 class DisplayUsers extends Component {
 
 
-    // deleteUser(id) {
-    //     confirmAlert({
-    //         title: 'Delete User',
-    //         message: 'Are you sure you want to do this.',
-    //         confirmLabel: 'Confirm',
-    //         cancelLabel: 'Cancel',
-    //         onConfirm: () => {
-    //             axios.delete(`/api/delete/user/${id}`)
-    //                 .then(() => {
-    //                     this.props.getUserInfo().then(res => {
-    //                         this.props.getCompanyInfo(this.props.user.user_company).then(res => {
-    //                             this.props.getCompanyUsersInfo(this.props.user.user_company)
-    //                         })
-    //                     })
-    //                 })
-    //         },    // Action after Confirm
-    //         onCancel: () => null,
-    //     })
-    // }
-
-
     deleteProject(id) {
-        console.log("IT WOKRED!", id)
+        confirmAlert({
+            title: 'Delete Project',
+            message: 'Are you sure you want to do this.',
+            confirmLabel: 'Confirm',
+            cancelLabel: 'Cancel',
+            onConfirm: () => {
+                axios.delete(`/api/delete/project/${id}`)
+                    .then(() => {
+                        this.props.getUserInfo().then(res => {
+                            this.props.getCompanyInfo(this.props.user.user_company)
+                            this.props.getCompanyUsersInfo(this.props.user.user_company)
+                            this.props.getCompanyProjectInfo(this.props.user.user_company)
+                        })
+                    })
+            },    // Action after Confirm
+            onCancel: () => null,
+        })
     }
+
+
+
+
+
+    // editProject(name, start, end, description, price, id) {
+    //     console.log("it worked lol", name, start, end, description, price, id)
+    // }
 
     editProject(name, start, end, description, price, id) {
-        console.log("it worked lol", name, start, end, description, price, id)
+        let data = {
+            project_name: name,
+            project_start_date: start,
+            project_finished_date: end,
+            project_description: description,
+            project_price: price,
+            project_id: id
+        }
+        function nameFunction(e) {
+            console.log(e.target.value)
+            data.project_name = e.target.value
+        }
+
+        function descriptionFunction(e){
+            console.log(e)
+            data.project_description = e
+        }
+
+
+        function startFunction(event, date) {
+            let formatDate = date.toString().split(' ')
+            let projectDate = `${formatDate[1]} ${formatDate[2]} ${formatDate[3]}`
+            data.project_start_date = projectDate
+        }
+
+        function endFunction(event, date) {
+            let formatDate = date.toString().split(' ')
+            let projectDate = `${formatDate[1]} ${formatDate[2]} ${formatDate[3]}`
+            data.project_finished_date = projectDate
+        }
+
+        function testDesc(){
+            return data.project_description.length
+        }
+        
+        let desLength = data.project_description.length
+
+        confirmAlert({
+            title: 'Edit User',
+            message: (
+                <div className='dashboard-input-name-container'>
+                    <div className='dashboard-all-input-sections'>
+                        <div className='dashboard-input-names-cont'>
+                            <input maxLength={30} className='dashboard-input-names' defaultValue={name} onChange={(e) => { nameFunction(e) }} required />
+                        </div>
+                        {description
+                        ?             
+                        <input defaultValue={description} className='project-create-project-input project-create-project-input-long' onChange={(e)=> {descriptionFunction(e.target.value); testDesc()} } maxLength='300' />
+                        :
+                        <input placeholder='Project Description' className='project-create-project-input project-create-project-input-long' onChange={(e)=> {descriptionFunction(e.target.value); testDesc() }} maxLength='300' />
+        
+                    
+                        }
+                        <div className='project-character-count'>{desLength}/{300}</div>
+                        <div className='dashboard-input-names-cont'>
+                            <input className='dashboard-input-names' defaultValue={price} onChange={(e) => { endFunction(e) }} required />
+                        </div>
+                        <div>
+                            <MuiThemeProvider>
+                                <div className=''>
+
+                                    {start
+                                        ?
+                                        <DatePicker hintText={start}
+                                            onChange={startFunction} />
+                                        :
+                                        <DatePicker hintText="Start Date"
+                                            onChange={endFunction} />
+                                    }
+                                    {/* PROJECT END DATE  */}
+                                    <div className='project-start-finish-date-spacer'></div>
+
+                                    {end
+                                        ?
+                                        <DatePicker hintText={end}
+                                            onChange={endFunction} />
+                                        :
+                                        <DatePicker hintText="Finish Date"
+                                            onChange={endFunction} />
+                                    }
+                                </div>
+                            </MuiThemeProvider>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>),
+            confirmLabel: 'Confirm',
+            cancelLabel: 'Cancel',
+            onConfirm: () => {
+                // var post = Object.assign({}, {
+                //     project_name: data.project_name && data.project_name,
+                //     project_start_date: data.project_start_date && data.project_start_date,
+                //     project_finished_date: data.project_finished_date && data.project_finished_date,
+                //     project_description: data.project_description && data.project_description,
+                //     project_price: data.project_price && data.project_price,
+                //     project_id: data.project_id
+                // })
+                // axios.post('/api/edituser', post)
+                //     .then(() => {
+                //         this.props.getUserInfo().then(res => {
+                //             this.props.getCompanyInfo(this.props.user.user_company).then(res => {
+                //                 this.props.getCompanyUsersInfo(this.props.user.user_company)
+                //             })
+                //         })
+                //     })
+                console.log("it worked on confirm")
+            },
+
+            onCancel: () => null,
+        })
     }
-
-    // editUser(first, last, email, id) {
-
-    //     let data = {
-    //         user_firstname: first,
-    //         user_lastname: last,
-    //         user_email: email,
-    //         user_id: id
-    //     }
-    //     function firstNameFunction(e) {
-    //         console.log(e.target.value)
-    //         data.user_firstname = e.target.value
-    //     }
-    //     function lastNameFunction(e) {
-    //         console.log(e.target.value)
-    //         data.user_lastname = e.target.value
-    //     }
-    //     function emailFunction(e) {
-    //         console.log(e.target.value)
-    //         data.user_email = e.target.value
-    //     }
-    //     confirmAlert({
-    //         title: 'Edit User',
-    //         message: (
-    //             <div className='dashboard-input-name-container'>
-    //                 <div className='dashboard-all-input-sections'>
-    //                     <div className='dashboard-input-names-cont'>
-    //                         <input maxLength={30} className='dashboard-input-names' defaultValue={first} onChange={(e) => { firstNameFunction(e) }} required />
-    //                     </div>
-    //                     <div className='dashboard-input-names-cont'>
-    //                         <input className='dashboard-input-names' defaultValue={last} onChange={(e) => { lastNameFunction(e) }} required />
-    //                     </div>
-    //                     <div className='dashboard-input-names-cont'>
-    //                         <input className='dashboard-input-names' defaultValue={email} onChange={(e) => { emailFunction(e) }} required />
-    //                     </div>
-    //                 </div>
-    //             </div>),
-    //         confirmLabel: 'Confirm',
-    //         cancelLabel: 'Cancel',
-    //         onConfirm: () => {
-    //             var post = Object.assign({}, {
-    //                 user_firstname: data.user_firstname && data.user_firstname,
-    //                 user_lastname: data.user_lastname && data.user_lastname,
-    //                 user_email: data.user_email && data.user_email,
-    //                 user_id: data.user_id
-    //             })
-    //             axios.post('/api/edituser', post)
-    //                 .then(() => {
-    //                     this.props.getUserInfo().then(res => {
-    //                         this.props.getCompanyInfo(this.props.user.user_company).then(res => {
-    //                             this.props.getCompanyUsersInfo(this.props.user.user_company)
-    //                         })
-    //                     })
-    //                 })
-    //         },
-
-    //         onCancel: () => null,
-    //     })
-
-    // }
 
 
     // getTeamName(id) {
@@ -133,7 +206,9 @@ class DisplayUsers extends Component {
                     <div className="projects-start-end-price-yo">
                         <div className="projects-dates">{e.project_start_date ? e.project_start_date : '0000-00-00'}</div>
                         <div className="projects-dates1">{e.project_finished_date ? e.project_finished_date : '0000-00-00'}</div>
-                        <div>{e.project_price ? e.project_price : '$'}</div>
+                        <div className="project-price">
+                            <div>{e.project_price ? e.project_price : '$'}</div>
+                        </div>
                     </div>
                     <div className="projects-buttons-div">
                         <Button onClick={() => this.editProject(e.project_name, e.project_start_date, e.project_finished_date, e.project_description, e.project_price, e.project_id)} size="big" className="team-settings-button">
@@ -155,7 +230,7 @@ class DisplayUsers extends Component {
 
                 <div className="charts-container">
                     <div className="charts-main">
-                        <div className="charts-left-navbar">
+                        <div className="projects-charts-left-navbar">
                             <span className="display-project-navbar-title">Projects</span>
                             <span><Link to="/create-project">Create Project</Link></span>
                             <span><Link to="/dashboard">Tasks</Link></span>
@@ -178,10 +253,10 @@ class DisplayUsers extends Component {
                         {/* <div className="table-container">
                         <Table2 />
                         </div> */}
-                        <div className="charts-right-navbar">
+                        <div className="projects-charts-right-navbar">
                             <span className="right-navbar-title">Stay Updated</span>
                             <span>Setup Alerts to stay up to date.</span>
-                            <button className="alert-button">Get Alerts</button>
+                            <button className="project-alert-button">Get Alerts</button>
                         </div>
                     </div>
 
@@ -195,4 +270,13 @@ function mapStateToProps(state) {
     return state;
 }
 
-export default connect(mapStateToProps, { getUserInfo, getCompanyInfo, getCompanyUsersInfo })(DisplayUsers)
+export default connect(mapStateToProps,
+    {
+        getUserInfo
+        , getCompanyInfo
+        , getCompanyUsersInfo
+        , getCompanyProjectInfo
+        , addProjectEnd
+        , addProjectStart
+
+    })(DisplayUsers)

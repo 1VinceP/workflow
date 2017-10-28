@@ -18,7 +18,7 @@
 .charts-container{    
     margin-top: 25px;
     width: 1210px;
-    height: 90vh;
+    height: auto;
 }
 
 
@@ -35,7 +35,7 @@
     font-weight: 500 !important;
 }
 
-.charts-left-navbar{
+.projects-charts-left-navbar{
     display: flex;
     flex-direction: column;
     width: 200px; 
@@ -44,13 +44,15 @@
     padding: 10px;
     box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
     font-weight: 100;
+    border-top: 2px solid rgba(243,173,94, 1);
+    border-radius: 3px;
 }
 
 .under-nav{
     margin-top: -35px;
 }
 
-.charts-left-navbar span {
+.projects-charts-left-navbar span {
     padding-top: 20px;
     font-size: 14px;
     padding-left: 15px;
@@ -68,26 +70,29 @@
     font-weight: 500 !important;
 }
 
-.charts-right-navbar{
+.projects-charts-right-navbar{
     display: flex;
     flex-direction: column;
     width: 200px; 
     height: 173px;
     background: white;
     padding: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18)
+    box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
+    border-top: 2px solid rgba(243,173,94, 1);
+    border-radius: 3px;
+    padding-left: 15px;
 }
 
-.charts-right-navbar span {
+.projects-charts-right-navbar span {
     padding-top: 20px;
     font-size: 14px;
-    padding-left: 10px;
+    padding-left: 1px;
     font-weight: 100;
 }
 
-.alert-button{
+.project-alert-button{
     justify-content: center;
-    background-color: #7953F5; 
+    background-color: gray; 
     height: 20px;
     font-size: 12px;
     border-radius: 3px;
@@ -110,10 +115,10 @@
 
 .projects-start-end-price-yo{
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
-    margin-left: 278px;
-    width: 325px;
+    margin-left: 300px;
+    width: 300px;
 }
 
 .projects-dates{
@@ -129,9 +134,16 @@
     flex-direction: column;
     background: white;
     box-shadow: 0 2px 4px rgba(0,0,0,.25), 0 0 1px rgba(0,0,0,.28);
-    width: 675px;
+    width: 750px;
     height: 100%;
     border-radius: 3px;
+}
+
+
+.project-price{
+    width: 45px;
+    height: auto;
+    padding-left: 5px;
 }
 
 
@@ -150,8 +162,8 @@
     font-weight: 900;
     margin-top: 12px;
     color: white;
-    margin-left: -15px;
-    padding-right: 25px;
+    margin-left: -25px;
+    padding-right: 40px;
 }
 
 .display-project-name{
@@ -166,7 +178,7 @@
 
 .start-end-price{
     display: flex;
-    width: 325px;
+    width: 360px;
     justify-content: space-around;
 }
 
@@ -182,7 +194,7 @@
 }
 
 .display-project-name-header{
-    padding-right: 30px;
+    padding-right: 35px; 
     margin-left: -20px;
 }
 
