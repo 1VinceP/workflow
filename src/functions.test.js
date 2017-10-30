@@ -43,10 +43,24 @@ test('get first user', () => {
 
 // /////////Chandler/////////////
 
+describe('Chandler', function(){
+    test('Test unique key is string', () => {
+    expect(utils.createUniqueKeyString('ebay')).toBe('string');
+    });
+    test('Test create unique key', () => {
+    expect(utils.createUniqueKey('ebay')).toBe('ebay10010017');
+    });
+    test('Test max character not exceeded', () => {
+    expect(utils.handleTaskInput('Build Backend')).toBe('can accept task');
+    });
+    test('Test user assigned to task', () => {
+    expect(utils.handleTaskUser('')).toBe(('PLEASE ASSIGN USER', false));
+    });
+    test('Test user assigned to task', () => {
+    expect(utils.dateCheck('10/30/17', '10/31/17')).toBe(('dates are viable', true));
+    });
+});
 
-// test('description of the test', () => {
-//     expect(functionName(arguments).toBe('expectedanswer'));
-// });
 // test('description of the test', () => {
 //     expect(functionName(arguments).toBe('expectedanswer'));
 // });

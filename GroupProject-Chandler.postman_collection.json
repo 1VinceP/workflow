@@ -1,0 +1,178 @@
+{
+	"variables": [],
+	"info": {
+		"name": "GroupProject-Chandler",
+		"_postman_id": "e72afea7-5f9a-d526-7546-7fc747eb600f",
+		"description": "5 endpoint tests for the poject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/api/users/user/10",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"const res = pm.response.json();",
+							"",
+							"pm.test('return user', function(){",
+							"    pm.expect(res.length).to.eql(1)",
+							"})",
+							"",
+							"pm.test('userInfo', function(){",
+							"    const info={",
+							"        \"user_id\": 10,",
+							"        \"user_firstname\": \"Chandler\",",
+							"        \"user_company\": 4,",
+							"        \"user_team\": 18,",
+							"        \"user_role\": 1",
+							"    }",
+							"    let correctInfo = true;",
+							"    for(let prop in info){",
+							"        if(info[prop] !== res[0][prop]){",
+							"            correctInfo = false",
+							"        }",
+							"        pm.expect(correctInfo).to.eql(true);",
+							"    }",
+							"    ",
+							"    ",
+							"    pm.expect()",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/users/user/10",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/edituser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('ERROR in edit user', function(){",
+							"    pm.response.to.have.status(404);",
+							"})",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/edituser",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"cheese@gmail.com\"\n\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/delete/user/2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('DELETE USER status 200', function(){",
+							"    pm.response.to.have.status(200)",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/delete/user/2",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/admin/adduser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('200 Add User Success', function(){",
+							"    pm.response.to.have.status(200)",
+							"})",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/admin/adduser",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"user_firstname\": \"Batman\",\n\"user_lastname\": \"Smith\", \n\"user_email\": \"batman@gmail.com\", \n\"user_team\": 4, \n\"user_role\": 1, \n\"user_company\": 4\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/project",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"pm.test('Projects is array', function() {",
+							"    pm.expect(Array.isArray(pm.response.json())).to.eql(true);",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/project",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
