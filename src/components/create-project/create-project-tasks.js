@@ -54,7 +54,7 @@ class Create_Project_Tasks extends Component {
             task.style.width = '160px'
             for( let i = 0; i < details.length; i++ ) {
                 details[i].style.display = 'none'
-            }       
+            }
         }
     };
 

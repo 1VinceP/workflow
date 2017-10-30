@@ -1,6 +1,6 @@
 
 import React from 'react'
-import CreateTaskFunctional from '../task/create-task-functional'
+// import CreateTaskFunctional from '../task/create-task-functional'
 import Create_Project_Class from './create-project-class'
 import Create_Project_Task from './create-project-tasks'
 import './create-project.css'
