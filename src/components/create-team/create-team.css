@@ -16,9 +16,7 @@
     box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
     margin-left: 3vw;
 
-
-
-    justify-content: center;
+    justify-content: space-around;
     flex-direction: column;
     align-items: center;
     font-weight: 100;

@@ -12,7 +12,7 @@ html {
     display: flex;
     position: fixed;
     z-index: 100;
-
+padding: 0 80px 0 80px;
     transition: background .15s, height .15s, color .15s;
 }
 
@@ -25,6 +25,8 @@ html {
 .header-link {
     text-decoration: none;
     color: white;
+    display: flex;
+    align-items: center;
 }
 
 .header-left {
@@ -39,10 +41,15 @@ html {
 
 .header-site-name {
     height: 50%;
-    margin-left: 20px;
     display: flex;
     align-items: center;
     color: grey;
+}
+.header-site-name-2 {
+    height: 50%;
+    display: flex;
+    align-items: center;
+    color: #4dbf71;
 }
 
 .header-right {
@@ -136,4 +143,8 @@ a{
 
 [page-is-scrolled='true'] {
     color: grey;
+}
+.header-company-logo-icon{
+    height: 40px;
+    margin-left: 5px;
 }

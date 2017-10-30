@@ -9,6 +9,7 @@ import CompanyDrop from './dropdowns/CompanyDrop';
 import TeamDrop from './dropdowns/TeamDrop';
 import AllDrop from './dropdowns/AllDrop';
 import './header.css';
+import CompLogo from './images/comp_logo.svg'
 
 // eslint-disable-next-line
 let buttonStyle = {
@@ -73,7 +74,11 @@ class Header extends Component {
             <header className='header-header' page-has-scrolled={this.state.scroll}>
 
                 <div className='header-left'>
-                    <Link to='/' className='header-link'><div className='header-site-name' page-is-scrolled={this.state.scroll}>PsuedoTrics</div></Link>
+                    <Link to='/' className='header-link'>
+                    <div className='header-site-name' page-is-scrolled={this.state.scroll}>Work</div>
+                    <div className='header-site-name-2' page-is-scrolled={this.state.scroll}>Flow</div>
+                    <img src={CompLogo} className='header-company-logo-icon'/>
+                    </Link>
                 </div>
 
                 <div className='header-right'>

@@ -12,12 +12,12 @@ class Table2 extends Component {
         }
     }
     componentDidMount(){
-        axios.get(`/api/company/get_users_tasks/${this.props.company[0].company_id}`).them(response =>{
-            this.setState({
-                users_taks:response.data
-            })
-            console.log(this.state)
-        })
+        // axios.get(`/api/company/get_users_tasks/${this.props.company[0].company_id}`).them(response =>{
+        //     this.setState({
+        //         users_taks:response.data
+        //     })
+        //     console.log(this.state)
+        // })
     }
 
     render() {
