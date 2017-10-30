@@ -6,7 +6,7 @@ import DatePicker from 'material-ui/DatePicker';
 import Create_Project_Task from './create-project-tasks'
 import axios from 'axios'
 import './create-project.css'
-import {  addProjectDesc, addProjectEnd, addProjectName, addProjectPrice, addProjectStart} from '../../redux/reducers/main-reducer';
+import {  addProjectDesc, addProjectEnd, addProjectName, addProjectPrice, addProjectStart, getCompanyProjectInfo, getCompanyInfo} from '../../redux/reducers/main-reducer';
 
 class Create_Project_Class extends Component {
     constructor(){
@@ -28,8 +28,11 @@ class Create_Project_Class extends Component {
             project_creator: this.props.project_creator,
             project_unique_key: this.props.project_unique_key,
         }
-        axios.post('/api/addproject', data)
-        console.log(data)
+        axios.post('/api/addproject', data).then(res => {
+            this.props.getCompanyInfo(this.props.user.user_company)
+            this.props.getCompanyProjectInfo(this.props.user.user_company)
+        })
+        
     }
 
 
@@ -137,4 +140,4 @@ function mapStateToProps(state) {
     return state;
 }
 
-export default connect(mapStateToProps, {addProjectDesc, addProjectEnd, addProjectName, addProjectPrice, addProjectStart})(Create_Project_Class);
+export default connect(mapStateToProps, {addProjectDesc, addProjectEnd, addProjectName, addProjectPrice, addProjectStart, getCompanyProjectInfo, getCompanyInfo})(Create_Project_Class);
