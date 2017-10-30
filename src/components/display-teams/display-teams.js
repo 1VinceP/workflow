@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './display-teams.css';
-import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
@@ -10,8 +9,6 @@ import 'react-confirm-alert/src/react-confirm-alert.css'
 import _ from 'underscore-node'
 import 'semantic-ui-css/semantic.min.css'
 import { Button, Icon } from 'semantic-ui-react'
-import Select from 'react-select'
-import 'react-select/dist/react-select.css'
 
 
 class DisplayTeams extends Component {
@@ -40,8 +37,6 @@ class DisplayTeams extends Component {
     }
 
     usersForTeam(id) {
-        var teamId = id
-        var newArray = []
         var theUsers = this.props.company_users
         var usersForTeam = theUsers.map((e, i) => {
             if (e.user_team === id) {
@@ -60,10 +55,8 @@ class DisplayTeams extends Component {
         var diff;
         var add
         var newArray = []
-        var teamId = id
         var arrayCopy = []
         var theUsers = this.props.company_users
-        var teamId = id
         let data = {
             team_name: team,
             team_description: description,
@@ -76,7 +69,7 @@ class DisplayTeams extends Component {
         function teamNameDescription(e) {
             data.team_name = e.target.value
         }
-        function teamdescriptionFunction(e) {
+        function teamDescriptionFunction(e) {
             data.team_description = e.target.value
         }
         function addUserToTeam(e, array) {
@@ -121,7 +114,7 @@ class DisplayTeams extends Component {
                     <br />
                     <span className="edit-description-span">Description:</span>
                     <br />
-                    <textarea maxLength={300} className="edit-team-description" defaultValue={description} onChange={(e) => teamdescriptionFunction(e)} />
+                    <textarea maxLength={300} className="edit-team-description" defaultValue={description} onChange={(e) => teamDescriptionFunction(e)} />
                     <div className="edit-team-users-section">
                         <div className="edit-team-users-span">
                             <span className="users-header">Users</span>

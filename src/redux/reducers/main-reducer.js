@@ -6,6 +6,7 @@ const GET_TEAM_INFO = "GET_TEAM_INFO";
 const GET_COMPANY_INFO = "GET_COMPANY_INFO";
 const GET_COMPANY_USERS_INFO = "GET_COMPANY_USERS_INFO";
 const GET_COMPANY_TEAM_INFO = "GET_COMPANY_TEAM_INFO";
+const GET_COMPANY_PROJECT_INFO = "GET_COMPANY_PROJECT_INFO";
 const ADDCOMPANYINDUSTRY = "ADDCOMPANYINDUSTRY";
 const ADD_COMPANY_NAME = "ADD_COMPANY_NAME";
 const ADD_COMPANY_EMAIL = "ADD_COMPANY_EMAIL";
@@ -44,6 +45,7 @@ var initialState = {
     company: [],
     company_users: [],
     company_team: [],
+    company_project: [],
     company_name: '',
     company_email: '',
     company_phone: '',
@@ -77,76 +79,78 @@ var initialState = {
     project_tasks: [],
     user_tasks: []
 }
-    
-    export default function reducer(state = initialState, action) {
-        // console.log('action',action.type)
-        // console.log('payload',action.payload)
-        // console.log('action',action)
-        switch(action.type) {
-            case GET_USER_INFO + '_FULFILLED':
-                return Object.assign({}, state, {user: action.payload})
-            case GET_USER_INFO + '_FULFILLED':
-                return Object.assign({}, state, {user: action.payload})
-            case GET_COMPANY_INFO + '_FULFILLED':
-                return Object.assign({}, state, { company: action.payload })
-            case GET_COMPANY_TEAM_INFO + '_FULFILLED':
-                return Object.assign({}, state, { company_team: action.payload })
-            case ADDCOMPANYINDUSTRY:
-                return Object.assign({}, state, {company_industry: action.payload})
-            case ADD_COMPANY_NAME:
-                return Object.assign({}, state, {company_name: action.payload, company_badge:action.company_badge, company_code: action.company_code})
-            case ADD_COMPANY_EMAIL:
-                return Object.assign({}, state, {company_email: action.payload})
-            case ADD_COMPANY_PHONE:
-                return Object.assign({}, state, {company_phone: action.payload})
-            case ADD_COMPANY_URL:
-                return Object.assign({}, state, {company_url: action.payload})
-            case GET_COMPANY_USERS_INFO + '_FULFILLED':
-                return Object.assign({}, state, { company_users: action.payload })
-            case ADD_COMPANY_LOGO_URL:
-                return Object.assign({}, state, {company_logo_url: action.payload})
-            case EDIT_USER_FIRST_NAME:
-                return Object.assign({}, state, {user_firstname: action.payload})
-            case EDIT_USER_LAST_NAME:
-                return Object.assign({}, state, {user_lastname: action.payload})
-            case EDIT_USER_EMAIL:
-                return Object.assign({}, state, {user_email: action.payload})
-            case EDIT_USER_PICTURE_URL:
-                return Object.assign({}, state, {user_picture: action.payload})
-            case EDIT_USER_DISPLAY_NAME:
-                return Object.assign({}, state, {user_display_name: action.payload})
-            case EDIT_USER_TEAM:
-                return Object.assign({}, state, {user_team: action.payload})
-            case EDIT_USER_ROLE:
-                return Object.assign({}, state, {user_role: action.payload})
-            case GET_USER_TASKS + '_FULFILLED':
-                return Object.assign({}, state, { user_tasks: action.payload })
-            case ADD_UNIQUE_KEY_PROJECT_TASK:
-                return Object.assign({}, state, {project_unique_key: action.payload, project_creator: action.projectCreator})
-            case ADD_PROJECT_NAME:
-                return Object.assign({}, state, {project_name: action.payload})
-            case ADD_PROJECT_START_DATE:
-                return Object.assign({}, state, {project_start_date: action.payload})
-            case ADD_PROJECT_FINISH_DATE:
-                return Object.assign({}, state, {project_finish_date: action.payload})
-            case ADD_PROJECT_DESCRIPTION:
-                return Object.assign({}, state, {project_description: action.payload})
-            case ADD_PROJECT_PRICE:
-                return Object.assign({}, state, {project_price: action.payload})
-            case GET_PROJECT:
-                return Object.assign({}, state, {projects: action.payload})
-            case ADD_ASSIGN_COMPANY_USER_INPUT:
-                return Object.assign({}, state, {assign_user_company_input: action.payload})
-            case CURRENT_PROJECT_TASKS + '_FULFILLED':
-                return Object.assign({}, state, { current_project_tasks: action.payload })
-            case EDIT_TEAM_NAME:
-                return Object.assign({}, state, { team_name: action.payload })
-            case EDIT_TEAM_DESCRIPTION:
-                return Object.assign({}, state, { team_description: action.payload })
-            default:
-                return state;
-        }
+
+export default function reducer(state = initialState, action) {
+    // console.log('action',action.type)
+    // console.log('payload',action.payload)
+    // console.log('action',action)
+    switch (action.type) {
+        case GET_USER_INFO + '_FULFILLED':
+            return Object.assign({}, state, { user: action.payload })
+        case GET_USER_INFO + '_FULFILLED':
+            return Object.assign({}, state, { user: action.payload })
+        case GET_COMPANY_INFO + '_FULFILLED':
+            return Object.assign({}, state, { company: action.payload })
+        case GET_COMPANY_TEAM_INFO + '_FULFILLED':
+            return Object.assign({}, state, { company_team: action.payload })
+        case GET_COMPANY_PROJECT_INFO + '_FULFILLED':
+            return Object.assign({}, state, { company_project: action.payload })
+        case ADDCOMPANYINDUSTRY:
+            return Object.assign({}, state, { company_industry: action.payload })
+        case ADD_COMPANY_NAME:
+            return Object.assign({}, state, { company_name: action.payload, company_badge: action.company_badge, company_code: action.company_code })
+        case ADD_COMPANY_EMAIL:
+            return Object.assign({}, state, { company_email: action.payload })
+        case ADD_COMPANY_PHONE:
+            return Object.assign({}, state, { company_phone: action.payload })
+        case ADD_COMPANY_URL:
+            return Object.assign({}, state, { company_url: action.payload })
+        case GET_COMPANY_USERS_INFO + '_FULFILLED':
+            return Object.assign({}, state, { company_users: action.payload })
+        case ADD_COMPANY_LOGO_URL:
+            return Object.assign({}, state, { company_logo_url: action.payload })
+        case EDIT_USER_FIRST_NAME:
+            return Object.assign({}, state, { user_firstname: action.payload })
+        case EDIT_USER_LAST_NAME:
+            return Object.assign({}, state, { user_lastname: action.payload })
+        case EDIT_USER_EMAIL:
+            return Object.assign({}, state, { user_email: action.payload })
+        case EDIT_USER_PICTURE_URL:
+            return Object.assign({}, state, { user_picture: action.payload })
+        case EDIT_USER_DISPLAY_NAME:
+            return Object.assign({}, state, { user_display_name: action.payload })
+        case EDIT_USER_TEAM:
+            return Object.assign({}, state, { user_team: action.payload })
+        case EDIT_USER_ROLE:
+            return Object.assign({}, state, { user_role: action.payload })
+        case GET_USER_TASKS + '_FULFILLED':
+            return Object.assign({}, state, { user_tasks: action.payload })
+        case ADD_UNIQUE_KEY_PROJECT_TASK:
+            return Object.assign({}, state, { project_unique_key: action.payload, project_creator: action.projectCreator })
+        case ADD_PROJECT_NAME:
+            return Object.assign({}, state, { project_name: action.payload })
+        case ADD_PROJECT_START_DATE:
+            return Object.assign({}, state, { project_start_date: action.payload })
+        case ADD_PROJECT_FINISH_DATE:
+            return Object.assign({}, state, { project_finish_date: action.payload })
+        case ADD_PROJECT_DESCRIPTION:
+            return Object.assign({}, state, { project_description: action.payload })
+        case ADD_PROJECT_PRICE:
+            return Object.assign({}, state, { project_price: action.payload })
+        case GET_PROJECT:
+            return Object.assign({}, state, { projects: action.payload })
+        case ADD_ASSIGN_COMPANY_USER_INPUT:
+            return Object.assign({}, state, { assign_user_company_input: action.payload })
+        case CURRENT_PROJECT_TASKS + '_FULFILLED':
+            return Object.assign({}, state, { current_project_tasks: action.payload })
+        case EDIT_TEAM_NAME:
+            return Object.assign({}, state, { team_name: action.payload })
+        case EDIT_TEAM_DESCRIPTION:
+            return Object.assign({}, state, { team_description: action.payload })
+        default:
+            return state;
     }
+}
 
 
 export function addCompanyName(companyName) {
@@ -274,6 +278,19 @@ export function getCompanyTeamInfo(id) {
     }
 }
 
+export function getCompanyProjectInfo(id) {
+    const companyProjectInfo = axios.get(`/api/company/project/${id}`).then(res => {
+
+        return res.data
+    })
+    return {
+        type: GET_COMPANY_PROJECT_INFO,
+        payload: companyProjectInfo
+    }
+}
+
+
+
 export function addCompanyIndustry(industrySelected) {
     return {
 
@@ -292,25 +309,25 @@ export function getUserInfo() {
     }
 }
 
-    export function getUserInfoAfter(id) {
-        const userInfoAfterUpdate = axios.get(`/api/users/user/${id}`).then(res => {
-            return res.data
-        })
-        return {
-            type: GET_USER_INFO_AFTER,
-            payload: userInfoAfterUpdate
-        }
+export function getUserInfoAfter(id) {
+    const userInfoAfterUpdate = axios.get(`/api/users/user/${id}`).then(res => {
+        return res.data
+    })
+    return {
+        type: GET_USER_INFO_AFTER,
+        payload: userInfoAfterUpdate
     }
+}
 
-    export function getCompanyInfo(id) {
-        const companyInfo = axios.get(`/api/company/${id}`).then(res => {
-            return res.data
-        })
-        return {
-            type: GET_COMPANY_INFO,
-            payload: companyInfo
-        }
+export function getCompanyInfo(id) {
+    const companyInfo = axios.get(`/api/company/${id}`).then(res => {
+        return res.data
+    })
+    return {
+        type: GET_COMPANY_INFO,
+        payload: companyInfo
     }
+}
 
 
 export function addCompany(data) {
@@ -431,17 +448,17 @@ export function currentProjectTasks(key, body) {
     }
 }
 
-export function deleteProjectTask( id, key ) {
+export function deleteProjectTask(id, key) {
 
-    const tasks = axios.delete( `/api/deleteTask/${id}/${key}` )
-        .then( response => {
+    const tasks = axios.delete(`/api/deleteTask/${id}/${key}`)
+        .then(response => {
             return response.data
-        } )
+        })
 
-        return {
-            type: CURRENT_PROJECT_TASKS,
-            payload: tasks
-        }
+    return {
+        type: CURRENT_PROJECT_TASKS,
+        payload: tasks
+    }
 }
 
 // let count = companyName.split('')

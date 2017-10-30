@@ -20,5 +20,25 @@ module.exports = {
         } else {
             return ( "1 day" );
         }
+    },
+    clickedFunction(e){
+        return !e;
+    },
+    teamNameDescription(e) {
+        var team_name = e
+        return team_name
+    },
+    addUserToTeam(e, array) {
+        if (array.includes(e)){
+            return true
+        } 
+    },
+    removeUserFromTeam(e, array) {
+        if (array.includes(e)){
+            return true
+        }
+    },
+    getFirstUser(array){
+        return array[0]
     }
 }

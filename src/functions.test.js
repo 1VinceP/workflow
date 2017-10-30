@@ -20,22 +20,25 @@ test('Negative date test', () => {
 /////////Alec///////////
 
 
-// test('description of the test', () => {
-//     expect(functionName(arguments).toBe('expectedanswer'));
-// });
-// test('description of the test', () => {
-//     expect(functionName(arguments).toBe('expectedanswer'));
-// });
-// test('description of the test', () => {
-//     expect(functionName(arguments).toBe('expectedanswer'));
-// });
-// test('description of the test', () => {
-//     expect(functionName(arguments).toBe('expectedanswer'));
-// });
-// test('description of the test', () => {
-//     expect(functionName(arguments).toBe('expectedanswer'));
-// });
+test('if clicked', () => {
+    expect(utils.clickedFunction(true)).toBe(false);
+});
 
+test('update team name', () => {
+    expect(utils.teamNameDescription("Ebay")).toBe("Ebay");
+});
+
+test('check if add user', () => {
+    expect(utils.addUserToTeam('mark', ['alec', 'mark', 'steve'])).toBe(true);
+});
+
+test('update team name', () => {
+    expect(utils.removeUserFromTeam('mark', ['alec', 'mark', 'steve'])).toBe(true);
+});
+
+test('get first user', () => {
+    expect(utils.getFirstUser(['alec', 'mark', 'steve'])).toBe('alec');
+});
 
 
 // /////////Chandler/////////////
