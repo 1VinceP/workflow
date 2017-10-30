@@ -23,7 +23,7 @@ class AddUser extends Component {
         super();
 
         this.state = {
-
+            user_role: ''
         }
         this.submitUser = this.submitUser.bind(this);
     }
@@ -36,7 +36,7 @@ class AddUser extends Component {
             user_lastname: this.props.user_lastname,
             user_email: this.props.user_email,
             user_team: this.props.user_team,
-            user_role: this.props.user_role,
+            user_role: this.state.user_role * 1,
             user_company: this.props.user.user_company
             // user_authid: this.props.user_authid
         }
@@ -49,8 +49,17 @@ class AddUser extends Component {
                     })
                 })
             })
+            return window.location.href ='http://localhost:3000/#/display-users'
     }
 
+    roleFunction(e) {
+        console.log("EEEE", e)
+        var x = e
+        this.setState({
+            role: x
+        })
+        return console.log("ROLLLLLLLLLE",this.state.role)
+    }
     render() {
         let teamInfo = this.props.company_team.map((e, i) => {
             return (
@@ -58,6 +67,8 @@ class AddUser extends Component {
             )
         })
 
+  
+        
         return (
             <div className="user-container">
                 <div className='sidenav-spacing-user'>
@@ -80,6 +91,18 @@ class AddUser extends Component {
                                 hintText="Email"
                             />
                         </div>
+                           
+                            <div className="field">
+                                <TextField onChange={(e) => this.props.editUserTeam(e.target.value)}
+                                    placeholder="Team" />
+                            </div>
+                            <div className='dashboard-input-names-cont'>
+                                <select className='dashboard-input-names' onChange={(e) => { this.roleFunction(e.target.value) }} selected='User Role'>
+                                    <option selected='selected' disabled='Disabled'>User Role</option>
+                                    <option value={0}>Employee</option>
+                                    <option value={1}>Manager</option>
+                                </select>
+                            </div>
 
 
                         <div>

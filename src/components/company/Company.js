@@ -13,6 +13,7 @@ class Company extends Component {
     }
 
     render() {
+        console.log("HERO ITS ME")
         return(
             <div className='company-info-body'>
                 
@@ -35,4 +36,4 @@ function mapStateToProps(state) {
     return state;
 }
 
-export default connect(mapStateToProps,{})(Company);
+export default connect(mapStateToProps)(Company);

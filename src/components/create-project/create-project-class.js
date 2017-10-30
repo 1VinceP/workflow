@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
 import CreateTaskFunctional from '../task/create-task-functional'
 import DatePicker from 'material-ui/DatePicker';
 import Create_Project_Task from './create-project-tasks'
@@ -139,7 +140,7 @@ class Create_Project_Class extends Component {
                 </div>
                 <CreateTaskFunctional />
                 <Create_Project_Task />
-                <button className='project-created-submit-project' onClick={()=>{this.submitProject()}}> Submit Project</button>
+                <Link to="/display-projects"><button className='project-created-submit-project' onClick={()=>{this.submitProject()}}> Submit Project</button></Link>
             </div>
         }
             </div>

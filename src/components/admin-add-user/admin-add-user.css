@@ -56,6 +56,7 @@
 }
 
 .save1 {
+    
     width: 120px;
     background: rgb(119, 88, 236);
     border: none;
@@ -65,6 +66,7 @@
     font-size: 16px;
     margin-top: 20px;
     color: white;
+    
     cursor: pointer;
     margin-right: 30px;
     /* margin-left: 80%; */

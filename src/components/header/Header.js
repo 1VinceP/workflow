@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
 // import FlatButton from 'material-ui/FlatButton';
 // import axios from 'axios';
-import { getUserInfo, getCompanyInfo, getCompanyUsersInfo, getCompanyTeamInfo, getUserTasks } from '../../redux/reducers/main-reducer';
+import { getUserInfo, getCompanyInfo, getCompanyUsersInfo, getCompanyTeamInfo, getUserTasks, getCompanyProjectInfo } from '../../redux/reducers/main-reducer';
 import { connect } from 'react-redux';
 import CompanyDrop from './dropdowns/CompanyDrop';
 import TeamDrop from './dropdowns/TeamDrop';
@@ -36,12 +36,14 @@ class Header extends Component {
         this.adjustOnScroll = this.adjustOnScroll.bind(this)
     }
 
+
     componentDidMount() {
 
         this.props.getUserInfo().then(res => {
             this.props.getCompanyInfo(this.props.user.user_company).then(res => {
                 this.props.getCompanyUsersInfo(this.props.user.user_company)
                 this.props.getCompanyTeamInfo(this.props.user.user_company)
+                this.props.getCompanyProjectInfo(this.props.user.user_company)
             })
         })
 
@@ -70,6 +72,7 @@ class Header extends Component {
     }
 
     render() {
+        
         return(
             <header className='header-header' page-has-scrolled={this.state.scroll}>
 
@@ -139,4 +142,4 @@ function mapStateToProps( state ) {
     };
 }
 
-export default connect( mapStateToProps, {getUserInfo, getCompanyInfo, getCompanyUsersInfo, getCompanyTeamInfo, getUserTasks } )(Header);
+export default connect( mapStateToProps, {getUserInfo, getCompanyInfo, getCompanyUsersInfo, getCompanyTeamInfo, getUserTasks, getCompanyProjectInfo } )(Header);

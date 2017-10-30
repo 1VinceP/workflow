@@ -123,6 +123,12 @@ app.get('/api/company/team/:id', (req, res, next) => {
     req.app.get('db').company.company_team(req.params.id).then(response => res.status(200).send(response))
 })
 
+app.get('/api/company/project/:id', (req, res, next) => {
+    req.app.get('db').company.company_project(req.params.id).then(response => res.status(200).send(response))
+})
+
+
+
 app.get('/api/company/getteams', (req, res, next) => {
     req.app.get('db').company.company_teams(req.params.id).then(response => res.status(200).send(response))
 })
@@ -166,7 +172,11 @@ app.post('/api/editteam', team_controller.edit_team)
 
 app.get('/api/project', project_controller.get_projects)
 
+app.delete('/api/delete/project/:id', project_controller.delete_project)
+
 app.post('/api/addproject', project_controller.create_project)
+
+app.post('/api/editproject', project_controller.edit_project)
 
 ////////////////////////////        TASK         /////////////////////////////////
 
