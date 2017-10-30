@@ -7,6 +7,9 @@ import Create_Project_Task from './create-project-tasks'
 import axios from 'axios'
 import './create-project.css'
 import {  addProjectDesc, addProjectEnd, addProjectName, addProjectPrice, addProjectStart} from '../../redux/reducers/main-reducer';
+import 'semantic-ui-css/semantic.min.css'
+import { Button, Icon } from 'semantic-ui-react'
+import SideBarNav from '../dashboard/Sidebar'
 
 class Create_Project_Class extends Component {
     constructor(){
@@ -30,6 +33,7 @@ class Create_Project_Class extends Component {
         }
         axios.post('/api/addproject', data)
         console.log(data)
+        return window.location.href ='http://localhost:3000/#/dashboard'
     }
 
 
@@ -46,7 +50,11 @@ class Create_Project_Class extends Component {
             
             <div>
             {this.state.displayProjectInfo === false ?
+            <div className='create-project-details-body'>
+                <SideBarNav />
+                <div className='create-project-nav-divider'></div>
             <div className='project-container'>
+            <div className='create-project-titles'>Create Project</div>
 
 {/* PROJECT NAME  */}
                 {this.props.project_name === ''
@@ -112,15 +120,23 @@ class Create_Project_Class extends Component {
                 
    
             </div>
+            </div>
             :
             <div className='project-created-cont'>
+                <div className='create-tasks-main-titles'>Create Tasks</div>
             <div className='project-created-project-body'>
                 <div className='project-created-name'> {this.props.project_name}</div>
                 <div className='project-dates-start-end-container'>
                     <div> {`${this.props.project_start_date} - ${this.props.project_finish_date}`}</div>
                 </div>
                 <div className='project-created-price'> ${this.props.project_price}</div> 
-                <button onClick={()=>{this.displayProject()}} className='project-created-edit-project'>Edit Project</button>
+
+
+                <Button  onClick={()=>{this.displayProject()}} size="big" className='project-created-edit-project'>
+                            <Icon name='setting' className='project-created-edit-project_icon' />
+                        </Button>
+
+                {/* <button onClick={()=>{this.displayProject()}} className='project-created-edit-project'>Edit Project</button> */}
                 </div>
                 <CreateTaskFunctional />
                 <Create_Project_Task />

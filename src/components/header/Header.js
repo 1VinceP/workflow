@@ -9,6 +9,7 @@ import CompanyDrop from './dropdowns/CompanyDrop';
 import TeamDrop from './dropdowns/TeamDrop';
 import AllDrop from './dropdowns/AllDrop';
 import './header.css';
+import CompLogo from './images/comp_logo.svg'
 
 // eslint-disable-next-line
 let buttonStyle = {
@@ -76,7 +77,11 @@ class Header extends Component {
             <header className='header-header' page-has-scrolled={this.state.scroll}>
 
                 <div className='header-left'>
-                    <Link to='/' className='header-link'><div className='header-site-name' page-is-scrolled={this.state.scroll}>PsuedoTrics</div></Link>
+                    <Link to='/' className='header-link'>
+                    <div className='header-site-name' page-is-scrolled={this.state.scroll}>Work</div>
+                    <div className='header-site-name-2' page-is-scrolled={this.state.scroll}>Flow</div>
+                    <img src={CompLogo} className='header-company-logo-icon'/>
+                    </Link>
                 </div>
 
                 <div className='header-right'>
@@ -109,7 +114,6 @@ class Header extends Component {
                             <div className='header-mid-buttons'>
                                 <Link to='/dashboard' className='header-link' onClick={ () => this.updateUserTasks() } ><button className='header-link-buttons' page-is-scrolled={this.state.scroll}>Home</button></Link>
                                 <Link to='/analytics' className='header-link'><button className='header-link-buttons' page-is-scrolled={this.state.scroll}>Analytics</button></Link>
-                                <CompanyDrop scroll={this.state.scroll} />
                                 <TeamDrop scroll={this.state.scroll} />
                                 <a href={process.env.REACT_APP_LOGOUT} className='header-link'>
                                     <button className='header-link-buttons'>Logout</button>

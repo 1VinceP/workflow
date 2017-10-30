@@ -2,18 +2,20 @@
     height: 100vh;
     width: 100vw;
     background: #F9F9FA;
-    position: absolute;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+
 }
 
 .team-modal{
     display: flex;
-    height: 65vh;
-    width: 50vw;
+    height: 400px;
+    width: 500px;
     background: white;
     box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
-    align-self: center;
-    transform: translateX(25vw);
-    margin-top: 10vh;
+    margin-left: 3vw;
+
     justify-content: space-around;
     flex-direction: column;
     align-items: center;
@@ -22,9 +24,7 @@
 }
 
 .teamdescription {
-    padding-top: 30px;
-    border: none;
-    outline: none;
+
 }
 
 .teamname {
@@ -48,11 +48,23 @@
     outline: none;
 
 }
+.button-container-create-team{
 
-.nameinput {
-    border: none;
+}
+
+.nameinputss {
+    border:none;
+    border-bottom:1px solid lightgrey;
     height: 30px;
 
+    outline: none;
+    font-family: helvetica;
+    font-size: 16px;
+    color: grey;
+
+    width: 255px;
+    height: 35px;
+    margin: 10px 20px 10px 0px;
 }
 .nameinput:focus {
     border: none;
@@ -69,20 +81,17 @@
     height: 35px;
     font-size: 16px;
     margin-top: 20px;
+    margin-left: 20px;
     color: white;
     cursor: pointer;
-    position: relative;
-    margin-bottom: -15px;
 }
 
-
-
-
-.save:active {
-    background: rgb(119, 88, 236);
-    color:#fff;
-    border: none;
+.save:hover {
+    background: transparent;
+    color:rgb(119, 88, 236);
+    border: 1.5px solid rgb(119, 88, 236);
 }
+
 
 .cancel {
     width: 120px;
@@ -95,64 +104,17 @@
     margin-top: 20px;
     color: white;
     cursor: pointer;
-    position: relative;
+}
+.cancel:hover {
+    background: transparent;
+    color:#f83d59;
+    border: 1.5px solid #f83d59;
 }
 
-.cancel:active {
-    background: #f83d59;
-    color:#fff;
-    border: none;
-}
 .top {
-    margin-right: 0;
-    
-    padding-bottom: 10px;
-    padding-top: 20px;
-    /* margin-top: -75px; */
-    font-size: 17px !important;
-    padding-left: 2px !important;
-    font-weight: 500 !important;
-    position: relative;
+    font-family: helvetica;
+    margin: 15px;
+    color: rgb(178, 178, 178);
+    font-size: 22px;
+    text-align: center;
 }
-
-.hmm { 
-    width: 4ch; 
-    width: 4ch;
-    margin: 2em 1em;
-    white-space: nowrap;
-    overflow: hidden;
-    animation: typing 3s infinite alternate;
-    margin-left: 163px;
-    transform: translateY(-60px);
-}
-
-
-    
-@keyframes typing { from { width: 0 } }
-
-@media(min-width: 900px) {
-    .save {
-        margin-left: 100%;
-    }
-    .cancel {
-        margin-left: 100%;
-    }
-}
-
-@media(min-width: 700px) {
-    .teamdesbox{
-        min-width: 100px;
-        min-height: 40px;
-        max-width: 300px;
-        max-height: 50px;
-    }
-}
-@media(min-width: 900px) {
-    .teamdesbox{
-        min-width: 300px;
-        min-height: 45px;
-        max-width: 450px;
-        max-height: 50px;
-    }
-}
-
