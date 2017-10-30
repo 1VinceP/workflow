@@ -5,6 +5,7 @@ import { getUserInfo, editTeamName, editTeamDescription, getCompanyInfo, getComp
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import SideBarNav from '../dashboard/Sidebar'
 
 class CreateTeam extends Component {
     constructor() {
@@ -37,23 +38,24 @@ class CreateTeam extends Component {
 
         return (
             <div className="team-container">
+                <SideBarNav />
                 <div className="team-modal">
                     <div className="top">
-                        <div>Creating Team</div>
+                        <div>Create Team</div>
                     </div>
                     <div className="create-team-name-description">
                     <div className="dashboard-input-names">
-                        <input className="nameinput" onChange={(e) => this.props.editTeamName(e.target.value)}
-                            placeholder="Team Name (Required)" fullWidth='false' />
+                        <input className="nameinputss" onChange={(e) => this.props.editTeamName(e.target.value)}
+                            placeholder="Team Name (Required)" />
                     </div>
                     <div className="teamdescription">
-                        <input className="teamdesbox" onChange={(e) => this.props.editTeamDescription(e.target.value)}
+                        <input className="nameinputss" onChange={(e) => this.props.editTeamDescription(e.target.value)}
                             placeholder="Team Description" fullWidth='false' />
                     </div>
                     </div>
-                    <div className="create-team-button">
+                    <div className='button-container-create-team'>
+                    <Link to='/display-teamss'><button className="cancel">Cancel</button></Link>
                     <Link to='/display-teams'><button className="save" onClick={() => this.submitTeam()}>Save Changes</button></Link>
-                    <Link to='/display-teams'><button className="cancel">Cancel</button></Link>
                     </div>
                 </div>
             </div>

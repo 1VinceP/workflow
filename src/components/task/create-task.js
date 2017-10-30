@@ -116,6 +116,14 @@ class Create_task extends Component {
             onClick={()=>{this.createNewTask()}}
           />,
         ];
+
+        let userInfo = this.props.company_users.map((e, i) => {
+          return (
+                  <option key={i} value={e.user_id}>{`${e.user_firstname} ${e.user_lastname}`}</option>
+          )
+      })
+
+
     
         return (
           <div>
@@ -156,11 +164,11 @@ class Create_task extends Component {
 
 {/* TASK USER OR ROLE */}
               <div>
-                <input  name='taskUser' placeholder='User' className='task-create-task-input'  onChange={(e)=>{
-              this.handleTaskInput(e)}}/>
-                or
-                <input  name='taskRole' placeholder='Role' className='task-create-task-input task-create-task-input-role'  onChange={(e)=>{
-              this.handleTaskInput(e)}}/>
+              <select name='taskUser' className='task-create-task-input'  onChange={(e)=>{
+              this.handleTaskInput(e)}}>
+              <option selected='User' disabled='User'>User</option>
+                  {userInfo}
+                </select>
               </div>
 
 {/* TASK LINK */}

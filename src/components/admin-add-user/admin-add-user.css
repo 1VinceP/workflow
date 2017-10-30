@@ -1,66 +1,59 @@
 .user-container {
-    height: 100vh;
-    width: 100vw;
+
+    padding-top: 50px;
+    padding-bottom: 100px;
     background: #F9F9FA;
-    position: absolute;
-}
-
-
-
-.create-user-main-container{
     display: flex;
     justify-content: center;
-
 }
 
-.create-user-header{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 35px;
-    margin-top: 20px;
-}
 
-.profile-modal {
-    height: 70vh;
-    width: 50vw;
+.profile-modal-add-user {
+    height: 450px;
+    width: 550px;
     background: white;
     box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
-    margin-top: 40px;
-    font-weight: 100;
+    margin: auto;
     border-top: 2px solid rgb(119, 88, 236);
+    padding: 30px;
 }
 
-.create-user-buttons{
-    display: flex;
-    margin-top: 90px;
-    margin-left: 90px;
-}
-
-.heading {
-    margin-bottom: 20px;
-    /* margin-top: 10px; */
-    /* margin-bottom: 10px; */
-    font-size: 24px !important;
-    
-    font-weight: 500 !important;
+.heading-add-user {
+    font-family: helvetica;
+    margin: 15px;
+    color: rgb(178, 178, 178);
+    font-size: 22px;
+    text-align: center;
 }
 
 .infobox{
+
+    height: 60%;
     display: flex;
     flex-direction: column;
-    margin-left: 70px;
-    max-width: 100%;
-    min-width: 50%;
-    margin-top: -20px;
-    padding-top: 20px;
+    align-items: center;
+}
+.sidenav-spacing-user{
+    margin-right: 3vw;
 }
 
 .field {
-    min-width: 150px;
-    width: 50vw;
+    border: none;
+    outline: none;
+    font-family: helvetica;
+    font-size: 16px;
+    color: grey;
+
+    width: 255px;
+    height: 35px;
+    margin: 10px 20px 10px 0px;
+}
+.button_container-add-user{
+    display: flex;
+
+
 
 }
-
 
 .save1 {
     
@@ -75,14 +68,18 @@
     color: white;
     
     cursor: pointer;
+    margin-right: 30px;
     /* margin-left: 80%; */
 }
 
-
-
+.save1:hover {
+    background: transparent;
+    color:rgb(119, 88, 236);
+    border: 1.5px solid rgb(119, 88, 236);
+}
 
 .cancel1 {
-    width: 120px;
+    width: 100px;
     background: #f83d59;
     border: none;
     outline: none;
@@ -92,16 +89,16 @@
     margin-top: 20px;
     color: white;
     cursor: pointer;
-    margin-right: 20px;
+    margin-right: 10px;
     /* margin-left: 80%; */
 }
-
-
-@media(min-width: 900px) {
-    .save1 {
-        margin-left: 100%;
-    }
-    .cancel1 {
-        margin-left: 100%;
-    }
+.cancel1:hover {
+    background: transparent;
+    color:#f83d59;
+    border: 1.5px solid #f83d59;
+}
+.cancel1:active {
+    background: #f83d59;
+    color:#fff;
+    border: none;
 }

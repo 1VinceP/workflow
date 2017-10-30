@@ -37,6 +37,23 @@
     width: 563px;
     height: 35px;
 }
+.create-project-details-body{
+    display: flex;
+    flex-wrap: wrap;
+}
+.create-project-nav-divider{
+    width: 3vw;
+}
+.create-project-divider{
+    height: 3vw;
+}
+.create-tasks-main-titles{
+    font-family: helvetica;
+    margin: 15px;
+    color: black;
+    font-size: 22px;
+    text-align: center;
+}
 .project-container{
 
     padding: 30px;
@@ -44,6 +61,12 @@
     flex-direction: column;
     margin: auto;
     flex-wrap:wrap;
+
+    background: white;
+    box-shadow: 2px 3px 2px #e7e7e7;
+    border-radius: 5px;
+    border: 1px solid rgb(243, 243, 243);
+    border-top: 2px solid rgb(245, 172, 83);
 }
 .create-project-body{
     width: 100%;
@@ -110,27 +133,29 @@
 }
 
 .task-odd {
-    background: rgb(141, 141, 141);
+    background: #7953F5;
 }
 
 .task-even {
-    background: rgb(100, 100, 126);
+    background: rgb(163, 135, 255);
 }
 
 .task-odd-arrow {
-	border-left: 50px solid rgb(141, 141, 141);
+	border-left: 50px solid #7953F5;
 }
 
 .task-even-arrow {
-	border-left: 50px solid rgb(100, 100, 126);
+	border-left: 50px solid rgb(163, 135, 255);
 }
 
 .task-item {
     display: none;
+    font-weight: lighter;
 }
 
 .tasky-name {
     width: 100%;
+    font-weight: bold;
 }
 
 .task-delete-button {
@@ -224,13 +249,17 @@
     font-size: 10px;
     width: 90px;
     color: white;
-    background: #fe7b7b;
+    background: none !important;
     border: none;
     outline: none;
     border-radius: 4px;
     font-size: 10px;
     cursor: pointer;
-    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    margin-top: -15px !important; 
+    margin-right: -15px !important; 
+
 }
 .project-created-submit-project{
     height: 35px;
@@ -261,4 +290,7 @@
     margin-top:-10px;
     font-size: 10px;
     color: #4dbf71;
+}
+.project-created-edit-project_icon{
+    margin-top: 50px;
 }
