@@ -17,7 +17,7 @@ module.exports = {
 
         admin_create_user: (req, res, next) => {
             let {user_firstname, user_lastname, user_email, user_team, user_role, user_company} = req.body;
-            
+            console.log('controller', req.body)
             req.app.get('db').users.admin_create_user(user_firstname, user_lastname, user_email, user_team, user_role, user_company)
             .then( () => res.status(200).send() );
         },
