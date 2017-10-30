@@ -10,7 +10,7 @@ export default function () {
         <div className='create-project-body'>
             <div className='create-project-main-container'>
                 <div>
-                    <div className='create-project-titles'>Create Project</div>
+                    <div className='create-project-divider'></div>
                    
                 </div>
                     <Create_Project_Class />

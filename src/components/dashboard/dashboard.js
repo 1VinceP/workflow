@@ -18,6 +18,8 @@ import Calendar from 'react-calendar'
 import UnstyledCalendar from 'react-calendar/build/entry.nostyle';
 import _ from 'underscore-node';
 import SideNavLinks from './Sidebar'
+import linkURL from './images/upload.svg'
+import userLG from './images/usersLG.svg'
 
 
 let styles = {
@@ -39,8 +41,23 @@ class Dashboard extends Component {
             missingEmployeeInfo: false,
             money: 0,
             tasktotal: 0,
-            moneypertask: ''
+            moneypertask: '',
+            user_team: ''
         }
+    }
+
+    user_team() {
+        let selectedTeam;
+        let userTeam = this.props.company_team.map((team, i) => {
+            if (team.team_id === this.props.user.user_team) {
+                selectedTeam = team.team_name
+            }
+            console.log('USER TEAM', selectedTeam)
+            return selectedTeam
+        })
+        this.setState({
+            user_team: selectedTeam
+        })
     }
 
     displayNewMenu() {
@@ -53,6 +70,7 @@ class Dashboard extends Component {
         if (!this.props.user) {
             return window.location.href = 'http://localhost:3000/#/'
         }
+
     }
 
     componentDidMount() {
@@ -65,13 +83,16 @@ class Dashboard extends Component {
                 // })
                 // console.log('BOOM')
             }
+
+        }).then(() => {
+            this.props.getUserTasks(this.props.user.user_id)
+
+        }).then(() => {
+            this.user_team()
+            console.log(this.state)
         })
 
-        this.props.getUserTasks(this.props.user.user_id)
 
-
-        this.getMoney();
-        this.getTaskTotal();
 
     }
 
@@ -179,6 +200,20 @@ class Dashboard extends Component {
 
 
     render() {
+        console.log(this.state)
+
+
+
+        var needToCompleteCount = 0
+        let needToComplete = this.props.user_tasks.map((task, i) => {
+
+            console.log(task.task_show)
+            if (task.task_completed !== true) {
+                1 * needToCompleteCount++
+            }
+        })
+
+
         console.log(this.props)
         let sorted = this.props.user_tasks
         let sortedTasks = _.sortBy(sorted, key => {
@@ -193,17 +228,22 @@ class Dashboard extends Component {
                         <div className='dash-task-title' >{task.task_name}</div>
 
                         <div className='dash-task-everything-else' >
-                            <div>
+                            <div className='dash-task-everything-else-details'>
+
                                 <div className='dash-task-dates' >
                                     <div>{task.task_start_date.split(' ', 4).splice(1).join(' ')}</div>
                                     <div className='dash-date-dash' >-</div>
                                     <div>{task.task_finished_date.split(' ', 4).splice(1).join(' ')}</div>
                                 </div>
-                                <div className='dash-task-details' >
-                                    <div>{task.task_description}</div>
-                                    <a href={task.task_link} target='_blank' >{task.task_link}</a>
-                                </div>
+
+                                <div className='task-description-dashboard'>{task.task_description}</div>
+
+                                {task.task_link ?
+                                    <a href={task.task_link} target='_blank' ><img className='link-icon-dash' src={linkURL} /></a>
+                                    :
+                                    null}
                             </div>
+
 
                             <button className='dash-check' onClick={() => this.markTaskAsCompleted(task.task_id * 1, task.task_number, task.task_unique_key)} >Complete</button>
                         </div>
@@ -217,7 +257,7 @@ class Dashboard extends Component {
 
             (
                 <div className="dashboard-view">
-                        <div className='dashboard-main-header-title'>Dashboard</div>
+                    <div className='dashboard-main-header-title'>Dashboard</div>
                     <div className="button-span">
                         {/* <div className='dashboard-main-title'>Dashboard</div> */}
                         <button className='dashboard_new_items_buttons' onClick={() => { this.displayNewMenu() }}>+ New</button>
@@ -251,10 +291,19 @@ class Dashboard extends Component {
 
                     <div className='dashnoard-second-section-layout'>
                         <UnstyledCalendar className='dashboard-calendar' />
-                        <div className='dashboard-second-section-cont2'>Tasks Due Today:</div>
-                        <div className='dashboard-second-section-cont1'>Money Made per Task:
-                            <div className="number">$ {this.state.moneypertask}</div>
-                            <div className='money'><button className="calculator" onClick={() => this.divide()}>Calculate</button></div>
+                        <div className='dashboard-second-section-cont2'>
+                            <div className='dash-tasks-to-complete'>{needToCompleteCount}</div>
+                            <div className='dash-tasks-to-complete-description'>Tasks To Complete</div>
+                        </div>
+                        <div className='dashboard-second-section-cont1'>
+                            <div className='dash-section-2-info-body'>
+                                <div className='dash-section-2-company-name'>{this.props.company[0].company_name}</div>
+                                <div className='dash-section-2-other-info-container'>
+                                    <div className='dash-section-2-team-name'><img src={userLG} className='dash-section-2-icon'/>{`${this.state.user_team}`}</div>
+                                    <div className='dash-section-2-user-name'>{`${this.props.user.user_firstname} ${this.props.user.user_lastname}`}</div>
+                                </div>
+                            </div>
+
 
                         </div>
 

@@ -16,6 +16,7 @@ import {
 import { connect } from 'react-redux';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import SideBarNav from '../dashboard/Sidebar'
 
 class AddUser extends Component {
     constructor() {
@@ -51,37 +52,50 @@ class AddUser extends Component {
     }
 
     render() {
+        let teamInfo = this.props.company_team.map((e, i) => {
+            return (
+                <option key={i} value={e.team_id}>{`${e.team_name}`}</option>
+            )
+        })
 
         return (
             <div className="user-container">
-                <div className="profile-modal">
-                    <div className="heading">Creating User....</div>
+                <div className='sidenav-spacing-user'>
+                <SideBarNav />
+                </div>
+                <div>
+                <div className="profile-modal-add-user">
+                    <div className="heading-add-user">Create User</div>
                     <div className="infobox">
                         <div className="field">
                             <TextField onChange={(e) => this.props.editUserFirstname(e.target.value)}
-                                hintText="First Name"  />
+                                hintText="First Name" />
                         </div>
                         <div className="field">
                             <TextField onChange={(e) => this.props.editUserLastname(e.target.value)}
-                                hintText="Last Name"  />
+                                hintText="Last Name" />
                         </div>
                         <div className="field">
                             <TextField onChange={(e) => this.props.editUserEmail(e.target.value)}
-                                hintText="Email" 
+                                hintText="Email"
                             />
                         </div>
 
-                        <div className="field">
-                            <TextField onChange={(e) => this.props.editUserTeam(e.target.value)}
-                                hintText="Team"  />
+
+                        <div>
+                            <select name='taskUser' className='task-create-task-input' onChange={(e) => { this.props.editUserTeam(e.target.value) }}>
+                                <option selected='User' disabled='User'>Teams</option>
+                                {teamInfo}
+                            </select>
                         </div>
-                        <div className="field">
-                            <TextField onChange={(e) => this.props.editUserRole(e.target.value)}
-                                hintText="Role"  />
-                        </div>
-                        <Link to='/display-users'><button className="save1" onClick={() => this.submitUser()}>Save Changes</button></Link>
+
+
+                        <div className='button_container-add-user'>
                         <Link to='/display-users'><button className="cancel1">Cancel</button></Link>
+                        <Link to='/display-users'><button className="save1" onClick={() => this.submitUser()}>Save</button></Link>
+                        </div>
                     </div>
+                </div>
                 </div>
             </div>
         )

@@ -20,5 +20,45 @@ module.exports = {
         } else {
             return ( "1 day" );
         }
-    }
+    },
+
+    /////////////////////////////////////////CHANDLER/////////////////////////////////////////
+    createUniqueKeyString(compName){
+        if(typeof(compName) === 'string'){
+            return 'string'
+        } else {
+            return false
+        }
+      },
+      createUniqueKey(compName){
+        let projectKey = compName + '10/10/17';
+        let finalKey = projectKey.replace(/[^A-Z0-9]/ig, "0").toLowerCase();
+        return finalKey
+      },
+
+      handleTaskInput(taskInput){
+        let task = taskInput;
+        if (task.length < 50){
+            return 'can accept task'
+        } else {
+            return 'not able to submit task'
+        }
+      },
+
+      handleTaskUser(user){
+          let assignedUser=''
+          if(assignedUser === ''){
+              return ('PLEASE ASSIGN USER', false)
+          } else {
+              return ('USER ASSIGNED', true)
+          }
+      },
+      dateCheck(date1, date2){
+        if( moment(date1) > moment(date2)){
+            return ('begin date is past end date', false)
+        } else {
+            return ('dates are viable', true)
+        }
+    },
+     /////////////////////////////////////END OF CHANDLER/////////////////////////////////////
 }

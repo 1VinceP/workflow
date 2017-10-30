@@ -8,6 +8,7 @@ import './create-project.css'
 import {  addProjectDesc, addProjectEnd, addProjectName, addProjectPrice, addProjectStart} from '../../redux/reducers/main-reducer';
 import 'semantic-ui-css/semantic.min.css'
 import { Button, Icon } from 'semantic-ui-react'
+import SideBarNav from '../dashboard/Sidebar'
 
 class Create_Project_Class extends Component {
     constructor(){
@@ -31,6 +32,7 @@ class Create_Project_Class extends Component {
         }
         axios.post('/api/addproject', data)
         console.log(data)
+        return window.location.href ='http://localhost:3000/#/dashboard'
     }
 
 
@@ -47,7 +49,11 @@ class Create_Project_Class extends Component {
             
             <div>
             {this.state.displayProjectInfo === false ?
+            <div className='create-project-details-body'>
+                <SideBarNav />
+                <div className='create-project-nav-divider'></div>
             <div className='project-container'>
+            <div className='create-project-titles'>Create Project</div>
 
 {/* PROJECT NAME  */}
                 {this.props.project_name === ''
@@ -113,8 +119,10 @@ class Create_Project_Class extends Component {
                 
    
             </div>
+            </div>
             :
             <div className='project-created-cont'>
+                <div className='create-tasks-main-titles'>Create Tasks</div>
             <div className='project-created-project-body'>
                 <div className='project-created-name'> {this.props.project_name}</div>
                 <div className='project-dates-start-end-container'>

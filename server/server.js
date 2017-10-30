@@ -127,6 +127,10 @@ app.get('/api/company/getteams', (req, res, next) => {
     req.app.get('db').company.company_teams(req.params.id).then(response => res.status(200).send(response))
 })
 
+app.get('/api/company/get_users_tasks/:id', (req, res, next) => {
+    req.app.get('db').analytics.get_company_tasks(req.params.id).then(response => res.status(200).send(response))
+})
+
 
 
 
