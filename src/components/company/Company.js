@@ -14,6 +14,7 @@ class Company extends Component {
 
     render() {
         console.log("HERO ITS ME")
+        console.log(this.props)
         return(
             <div className='company-info-body'>
                 
