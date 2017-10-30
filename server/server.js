@@ -172,6 +172,8 @@ app.delete('/api/delete/project/:id', project_controller.delete_project)
 
 app.post('/api/addproject', project_controller.create_project)
 
+app.post('/api/editproject', project_controller.edit_project)
+
 ////////////////////////////        TASK         /////////////////////////////////
 
 app.get( '/api/getUserTasks/:id', task_controller.get_user_tasks )

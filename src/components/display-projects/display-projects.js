@@ -65,6 +65,10 @@ class DisplayUsers extends Component {
             data.project_name = e.target.value
         }
 
+        function priceFunction(e){
+            data.project_price = e.target.value
+        }
+
         function descriptionFunction(e){
             console.log(e)
             data.project_description = e
@@ -83,14 +87,10 @@ class DisplayUsers extends Component {
             data.project_finished_date = projectDate
         }
 
-        function testDesc(){
-            return data.project_description.length
-        }
         
-        let desLength = data.project_description.length
 
         confirmAlert({
-            title: 'Edit User',
+            title: 'Edit Project',
             message: (
                 <div className='dashboard-input-name-container'>
                     <div className='dashboard-all-input-sections'>
@@ -99,15 +99,12 @@ class DisplayUsers extends Component {
                         </div>
                         {description
                         ?             
-                        <input defaultValue={description} className='project-create-project-input project-create-project-input-long' onChange={(e)=> {descriptionFunction(e.target.value); testDesc()} } maxLength='300' />
+                        <input defaultValue={description} className='project-create-project-input' onChange={(e)=> descriptionFunction(e.target.value) } maxLength='300' />
                         :
-                        <input placeholder='Project Description' className='project-create-project-input project-create-project-input-long' onChange={(e)=> {descriptionFunction(e.target.value); testDesc() }} maxLength='300' />
-        
-                    
+                        <input placeholder='Project Description' className='project-create-project-input' onChange={(e)=> descriptionFunction(e.target.value)} maxLength='300' />
                         }
-                        <div className='project-character-count'>{desLength}/{300}</div>
                         <div className='dashboard-input-names-cont'>
-                            <input className='dashboard-input-names' defaultValue={price} onChange={(e) => { endFunction(e) }} required />
+                            <input className='dashboard-input-names' defaultValue={price} onChange={(e) => { priceFunction(e) }} required />
                         </div>
                         <div>
                             <MuiThemeProvider>
@@ -135,43 +132,29 @@ class DisplayUsers extends Component {
                                 </div>
                             </MuiThemeProvider>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         </div>
                     </div>
                 </div>),
             confirmLabel: 'Confirm',
             cancelLabel: 'Cancel',
             onConfirm: () => {
-                // var post = Object.assign({}, {
-                //     project_name: data.project_name && data.project_name,
-                //     project_start_date: data.project_start_date && data.project_start_date,
-                //     project_finished_date: data.project_finished_date && data.project_finished_date,
-                //     project_description: data.project_description && data.project_description,
-                //     project_price: data.project_price && data.project_price,
-                //     project_id: data.project_id
-                // })
-                // axios.post('/api/edituser', post)
-                //     .then(() => {
-                //         this.props.getUserInfo().then(res => {
-                //             this.props.getCompanyInfo(this.props.user.user_company).then(res => {
-                //                 this.props.getCompanyUsersInfo(this.props.user.user_company)
-                //             })
-                //         })
-                //     })
-                console.log("it worked on confirm")
+                var post = Object.assign({}, {
+                    project_name: data.project_name && data.project_name,
+                    project_start_date: data.project_start_date && data.project_start_date,
+                    project_finished_date: data.project_finished_date && data.project_finished_date,
+                    project_description: data.project_description && data.project_description,
+                    project_price: data.project_price && data.project_price,
+                    project_id: data.project_id
+                })
+                axios.post('/api/editproject', post)
+                    .then(() => {
+                        this.props.getUserInfo().then(res => {
+                            this.props.getCompanyInfo(this.props.user.user_company).then(res => {
+                                this.props.getCompanyUsersInfo(this.props.user.user_company)
+                                this.props.getCompanyProjectInfo(this.props.user.user_company)
+                            })
+                        })
+                    })
             },
 
             onCancel: () => null,
