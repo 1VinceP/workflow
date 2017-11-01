@@ -1,8 +1,8 @@
 
 import React from 'react'
 import './landing-page.css'
-import MacbookPro from './images/macbookpro.png'
-import Iphone from './images/iphone.png'
+import MacbookPro from './images/dash.png'
+import Iphone from './images/dash2.png'
 
 export default function () {
     return (
@@ -12,11 +12,12 @@ export default function () {
                     <div className='landing-page-main-titles-container'>
                         <div className='landing-page-main-title'>Project Management Software that lets you actually manage your project</div>
                         <div className='landing-page-divider-line'></div>
-                        <div className='landing-page-main-sub-title'>Why settle for anything less than PsuedoTrics?</div>
+                        <div className='landing-page-main-sub-title'>Increase productivity with WorkFlow</div>
                         <a href={process.env.REACT_APP_LOGIN}>
                             <button className='landing-page-bet-started-button'> Get Started </button>
                         </a>
                     </div>
+                    <div className='landing-page-spacer'></div>
                     <div className='landing-page-images'>
                         <img src={MacbookPro} alt='' className='landing-page-macbookpro' />
                         <img src={Iphone} alt='' className='landing-page-iphone' />
