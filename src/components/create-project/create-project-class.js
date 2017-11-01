@@ -34,9 +34,8 @@ class Create_Project_Class extends Component {
         }
         axios.post('/api/addproject', data).then(res => {
             this.props.getCompanyInfo(this.props.user.user_company)
-            this.props.getCompanyProjectInfo(this.props.user.user_company).then(() => {
-                return window.location.href ='http://localhost:3000/#/dashboard'
-            })
+            this.props.getCompanyProjectInfo(this.props.user.user_company)
+            return window.location.href ='http://localhost:3000/#/dashboard'
         })        
     }
 
@@ -63,13 +62,13 @@ class Create_Project_Class extends Component {
 {/* PROJECT NAME  */}
                 {this.props.project_name === ''
                 ?
-                <input 
+                <input maxLength={30}
                 placeholder='Project Name'  className='project-create-project-input project-create-project-input-long' onChange={(e)=>this.props.addProjectName(e.target.value)}/>
                 :
-                <input 
+                <input maxLength={30}
                 placeholder={this.props.project_name === ''? 'Project Name' : this.props.project_name} defaultValue={this.props.project_name} className='project-create-project-input project-create-project-input-long' onChange={(e)=>this.props.addProjectName(e.target.value)}/>
                 }
-
+                <div className='project-character-count'>{this.props.project_name.length}/{30}</div>
 {/* PROJECT START DATE  */}
             <div className='project-start-project-date'>
 

@@ -6,23 +6,23 @@
     background: rgba(249,249,250, 1);
     width: 100%;
     padding-top: 15px;
-}
-
-.firstchart {
-    display: flex;
-    justify-content: space-between;
+    
 }
 
 
 
-.charts-container{    
+
+
+.users-charts-container{    
     margin-top: 25px;
     width: 1210px;
-    height: 90vh;
+    height: auto;
 }
 
-
-
+.users-charts-main{
+    display: flex;
+    justify-content: center;
+}
 
 /*          Left nav bar           */
 
@@ -64,42 +64,43 @@
     padding-bottom: 5px;
     margin-top: -15px;
     font-size: 17px !important;
-    margin-left: -5px !important;
     font-weight: 500 !important;
 }
 
-.charts-right-navbar{
+.users-right-navbar{
     display: flex;
     flex-direction: column;
     width: 200px; 
-    height: 173px;
+    height: 125px;
     background: white;
     padding: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18)
+    box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
+    border-top: 2px solid rgba(82, 189, 116, 1);
+    border-radius: 3px;
+    padding-left: 15px;
 }
 
-.charts-right-navbar span {
+.users-right-navbar span {
     padding-top: 20px;
     font-size: 14px;
-    padding-left: 10px;
+    padding-left: 2px;
     font-weight: 100;
 }
 
-.alert-button{
-    justify-content: center;
-    background-color: #7953F5; 
-    height: 20px;
-    font-size: 12px;
+.users-create-user-button{    
+    background-color: rgba(82, 189, 116, 1); 
+    height: 25px;
+    font-size: 15px;
     border-radius: 3px;
-    width: 75px;
+    width: 100px;
     color: white;
     border: none;
     margin-top: 25px;
-    margin-left: 50px;
+    margin-left: 35px;
     cursor: pointer;
 }
 
-.alert-button:focus{
+.users-create-user-button:focus{
     outline: none;
 }
 
@@ -114,16 +115,17 @@
     flex-direction: column;
     background: white;
     box-shadow: 0 2px 4px rgba(0,0,0,.25), 0 0 1px rgba(0,0,0,.28);
-    width: 725px;
+    width: 770px;
     height: 100%;
     border-radius: 3px;
+    margin: 0 3vw;
 }
 
 
 .users-top-table{
-    border-bottom: 3px solid rgba(0,0,0, .1);
+    border-bottom: 3px solid rgba(255,255,255, .5);
     height: 43px;
-    background: #7953F5;
+    background: rgba(82, 189, 116, 1);
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
 }
@@ -148,16 +150,17 @@
 
 .display-users-user-container{
     /* margin-bottom: 5px; */
-    border-bottom: 1px solid rgba(0,0,0, .3);
+    border-bottom: 1px solid rgba(0,0,0, .1);
     display: flex;
     height: 75px;
     align-items: center;
     justify-content: space-between;
     text-align: left;
+    
 }
 
 .display-users-name-header{
-    padding-right: 280px;
+    padding-right: 325px;
     padding-left: 30px;
 }
 

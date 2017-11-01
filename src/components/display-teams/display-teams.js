@@ -9,7 +9,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'
 import _ from 'underscore-node'
 import 'semantic-ui-css/semantic.min.css'
 import { Button, Icon } from 'semantic-ui-react'
-
+import LeftNav from '../dashboard/Sidebar'
 
 class DisplayTeams extends Component {
 
@@ -174,7 +174,7 @@ class DisplayTeams extends Component {
         let teamInfo = this.props.company_team.map((e, i) => {
             return (
                 <div key={i} className="team-container-yo">
-                    <div key={i} className="team-section">
+                    <div className="team-section">
                         <div className="team-name-description">
                             <div className="team-name-users-header">
                                 <div className="team-name-header">
@@ -209,28 +209,30 @@ class DisplayTeams extends Component {
         })
 
         return (
-            <div className="analytics-container">
-                <div className="charts-container">
-                    <div className="charts-main">
-                        <div className="charts-left-navbar">
-                            <span className="analytics-navbar-title">Teams</span>
-                            <span><Link to='/create-team'>Create Team</Link></span>
-                            <span><Link to='create-user'>Create User</Link></span>
-                            {/* <span><Link to='/there-is-no-productivity-here-gandalf-stormcrow'>Productivity</Link></span> */}
-                        </div>
-                        <div>
-                            {this.props.company_team[0] ? teamInfo :
-                                <div className="no-team-box">
-                                    <span className="no-team-span">No teams created yet</span>
-                                    <Link to='/create-team'><button className="no-team-button">Create a team</button></Link>
-                                </div>
+            <div className="team-analytics-container">
+                <div className="team-charts-container">
+                    <div className="team-charts-main">
+                        <LeftNav />
+                        <div className="teams-middle-section">
+                            <div className="team-table-container">
+                                <div className="team-top-table">
+                                    <div className="team-top-table-text">
+                                        <span className="display-users-name-header">Name</span>
+                                        <span>Team</span>
+                                    </div>
+                                    {this.props.company_team[0] ? teamInfo :
+                                        <div className="no-team-box">
+                                            <span className="no-team-span">No teams created yet</span>
+                                            <Link to='/create-team'><button className="no-team-button">Create a team</button></Link>
+                                        </div>
 
-                            }
+                                    }
+                                </div>
+                            </div>
                         </div>
-                        <div className="charts-right-navbar">
-                            <span className="right-navbar-title">Stay Updated</span>
-                            <span>Setup Alerts to stay up to date.</span>
-                            <button className="alert-button">Get Alerts</button>
+                        <div className="team-right-navbar">
+                            <span className="team-right-navbar-title">Teams</span>
+                            <Link to='create-team'><button className="team-create-user-button">Create Team</button></Link>
                         </div>
                     </div>
                 </div>
