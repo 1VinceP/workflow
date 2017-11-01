@@ -5,6 +5,7 @@
     background: #F9F9FA;
     display: flex;
     justify-content: center;
+    
 }
 
 
@@ -16,6 +17,7 @@
     margin: auto;
     border-top: 2px solid rgb(119, 88, 236);
     padding: 30px;
+    border-radius: 3px;
 }
 
 .heading-add-user {

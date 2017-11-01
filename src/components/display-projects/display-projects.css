@@ -21,6 +21,11 @@
     height: auto;
 }
 
+.projects-charts-main{
+    display: flex;
+    justify-content: center;
+}
+
 
 
 
@@ -31,7 +36,7 @@
     padding-bottom: 5px;
     margin-top: -15px;
     font-size: 17px !important;
-    padding-left: 2px !important;
+    /* padding-left: 2px !important; */
     font-weight: 500 !important;
 }
 
@@ -55,7 +60,7 @@
 .projects-charts-left-navbar span {
     padding-top: 20px;
     font-size: 14px;
-    padding-left: 15px;
+    /* padding-left: 15px; */
 }
 
 
@@ -74,7 +79,7 @@
     display: flex;
     flex-direction: column;
     width: 200px; 
-    height: 173px;
+    height: 125px;
     background: white;
     padding: 10px;
     box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
@@ -90,20 +95,19 @@
     font-weight: 100;
 }
 .project-alert-button{
-    justify-content: center;
-    background-color: gray; 
-    height: 20px;
-    font-size: 12px;
+    background: rgba(243,173,94, 1);
+    height: 25px;
+    font-size: 15px;
     border-radius: 3px;
-    width: 75px;
+    width: 115px;
     color: white;
     border: none;
     margin-top: 25px;
-    margin-left: 50px;
+    margin-left: 30px;
     cursor: pointer;
 }
 
-.alert-button:focus{
+.project-alert-button:focus{
     outline: none;
 }
 
@@ -116,7 +120,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-left: 300px;
+    margin-left: 308px;
     width: 300px;
 }
 
@@ -132,10 +136,11 @@
     display: flex;
     flex-direction: column;
     background: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,.25), 0 0 1px rgba(0,0,0,.28);
-    width: 750px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
+    width: 770px;
     height: 100%;
     border-radius: 3px;
+    margin: 0 3vw;
 }
 
 
@@ -183,13 +188,15 @@
 
 .display-project-user-container{
     /* margin-bottom: 5px; */
-    border-bottom: 1px solid rgba(0,0,0, .3);
+    
     display: flex;
     height: auto;
     min-height: 75px;
     align-items: center;
     justify-content: space-between;
     text-align: left;
+    padding-left: 9px;
+    border-bottom: 1px solid rgba(0,0,0, .1);
 }
 
 .display-project-name-header{
@@ -254,6 +261,38 @@
     font-size: 16px;
     color: rgb(217, 217, 217);
 }
+
+.project-no-team-box{
+    width: 770px;
+    height: 200px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-no-team-span{
+    font-size: 20px;
+    padding-bottom: 35px;
+    font-weight: 100;
+    color: rgba(65,65,65, .5);
+}
+
+.project-no-team-button{
+    width: 150px;
+    height: 35px;
+    
+    border-radius: 3px;
+    color: white;
+    background: rgba(243,173,94, 1);
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+
+
 
 @media(min-width: 400) {
     .firstchart {

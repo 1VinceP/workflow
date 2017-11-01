@@ -5,11 +5,6 @@ html {
     box-sizing: inherit;
 }
 
-.display-team-container {
-    width: 100%;
-    padding: 0 20%;
-    background: #F9F9FA;
-}
 
 .edit-team-popup input{
     margin-bottom: 15px;
@@ -99,34 +94,42 @@ html {
     padding-left: 3px;
 }
 
-.analytics-container {
+.team-charts-container{
+    margin-top: 25px;
+    width: 1210px;
+    height: auto;
+}
+
+.team-main-container {
+    display: flex;
+    justify-content: center;
+    background: rgba(249,249,250, 1);
+    width: 100%;
+    padding-top: 15px;
+}
+
+.team-analytics-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex-flow: wrap;
     align-items: center;
     background: rgba(249,249,250, 1);
     width: 100%;
     padding-top: 15px;
 }
 
-.firstchart {
+.team-charts-main{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 
 
-.charts-container{    
-    margin-top: 25px;
-    width: 1210px;
-    height: 90vh;
-}
-
-.charts-main{
+/* .team-charts-main{
     display: flex;
-    justify-content: space-between;
-}
+    justify-content: center;
+    margin: 0 3vw;
+} */
 
 
 .chart {
@@ -171,50 +174,49 @@ html {
 
 
 /*          right nav bar           */
-.right-navbar-title{
+.team-right-navbar-title{
     border-bottom: 1px solid rgba(0,0,0, .15);
     padding-bottom: 5px;
     margin-top: -15px;
     font-size: 17px !important;
-    margin-left: -5px !important;
+    margin-left: -6px !important;
     font-weight: 500 !important;
 }
 
-.charts-right-navbar{
-   
+.team-right-navbar{
+    display: flex;
     flex-direction: column;
     width: 200px; 
-    height: 173px;
+    height: 125px;
     background: white;
     padding: 10px;
     box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
-    border-top: 2px solid rgb(119, 88, 236);
+    border-top: 2px solid rgba(253, 46, 84, 1);
     border-radius: 3px;
-    display: none;
+    padding-left: 15px;
 }
 
-.charts-right-navbar span {
+.team-right-navbar span {
     padding-top: 20px;
     font-size: 14px;
-    padding-left: 10px;
+    padding-left: 2px;
     font-weight: 100;
 }
 
-.alert-button{
-    justify-content: center;
-    background-color: #7953F5; 
-    height: 20px;
-    font-size: 12px;
+.team-create-user-button{    
+    background-color: rgba(253, 46, 84, 1); 
+    height: 25px;
+    font-size: 15px;
     border-radius: 3px;
-    width: 75px;
+    width: 100px;
     color: white;
     border: none;
     margin-top: 25px;
-    margin-left: 50px;
+    margin-left: 35px;
     cursor: pointer;
 }
 
-.alert-button:focus{
+.team-create-user-button:focus{
     outline: none;
 }
 
@@ -259,15 +261,10 @@ html {
     height: 170px;
     box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
     background: white;
-    margin-bottom: 15px;
-    padding-right: 15px;
-    padding-top: 10px;
-    border-radius: 3px;
+    border-bottom: 1px solid rgba(0,0,0, .1);
+    
 }
 
-.team-container-yo:hover{
-    box-shadow: 0 2px 4px rgba(0,0,0,.25), 0 0 1px rgba(0,0,0,.28);
-}
 
 
 .team-section{
@@ -401,10 +398,13 @@ html {
     margin-bottom: 5px;
 }
 
+
+
+
+
 .no-team-box{
-    margin-top: 41px;
     width: 770px;
-    height: 195px;
+    height: 200px;
     box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
     background: white;
     display: flex;
@@ -426,10 +426,40 @@ html {
     
     border-radius: 3px;
     color: white;
-    background: #F6A623;
+    background: rgba(253, 46, 84, 1);
     border: none;
     outline: none;
     font-size: 15px;
+}
+
+.team-table-container{
+    display: flex;
+    flex-direction: column;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,.25), 0 0 1px rgba(0,0,0,.28);
+    width: 770px;
+    height: auto;
+    border-radius: 3px;
+    margin: 0 3vw;
+    
+}
+
+.team-top-table{
+    border-bottom: 3px solid rgba(255,255,255, .5);
+    height: 43px;
+    background: rgba(253, 46, 84, 1);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    
+}
+
+.team-top-table-text{
+    display: flex;
+    font-size: 17px;
+    font-weight: 900;
+    margin-top: 12px;
+    color: white;
+    padding-bottom: 12px; 
 }
 
 
