@@ -11,7 +11,7 @@
 
 .firstchart {
     display: flex;
-    justify-content: space-between;
+    
 }
 
 
@@ -24,7 +24,7 @@
 
 .charts-main{
     display: flex;
-    justify-content: space-between;
+    
 }
 
 
