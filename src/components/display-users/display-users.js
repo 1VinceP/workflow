@@ -8,10 +8,9 @@ import { connect } from 'react-redux'
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import 'semantic-ui-css/semantic.min.css'
-import { Button, Icon } from 'semantic-ui-react'
-// let style = {
-//     margin: 12,
-// };
+import { Button, Icon } from 'semantic-ui-react';
+import LeftNav from '../dashboard/Sidebar'
+
 
 class DisplayUsers extends Component {
 
@@ -155,15 +154,9 @@ class DisplayUsers extends Component {
         return (
             <div className="display-users-container">
 
-                <div className="charts-container">
-                    <div className="charts-main">
-                        <div className="charts-left-navbar">
-                            <span className="display-users-navbar-title">Users</span>
-                            <span><Link to="/create-user">Create User</Link></span>
-                            <span><Link to="/dashboard">Tasks</Link></span>
-                            {/* <span><Link to="/there-is-no-productivity-here-gandalf-stormcrow">Productivity</Link></span> */}
-                        </div>
-
+                <div className="users-charts-container">
+                    <div className="users-charts-main">
+                    <LeftNav />
                         <div className="users-table-container">
                             <div className="users-top-table">
                                 <div className="users-top-table-text">
@@ -176,10 +169,9 @@ class DisplayUsers extends Component {
                         {/* <div className="table-container">
                         <Table2 />
                         </div> */}
-                        <div className="charts-right-navbar">
-                            <span className="right-navbar-title">Stay Updated</span>
-                            <span>Setup Alerts to stay up to date.</span>
-                            <button className="alert-button">Get Alerts</button>
+                        <div className="users-right-navbar">
+                            <span className="right-navbar-title">Users</span>
+                            <Link to='create-user'><button className="users-create-user-button">Create User</button></Link>
                         </div>
                     </div>
 
