@@ -64,7 +64,10 @@ export default (
         <Route path='/loading-page' component={InitialLoad} />
         <Route path='/first-time-user' component={FirstTimeUser} />
         <Route path='/company-joined' component={CompanyJoinedAdded} />
-        
+        <Route render={() => {
+        return(<div>I'm sorry, the page you're looking for cannot be found. A highly trained monkey is working to build the page as you read this.
+        </div>)
+    }} />
         
     </Switch>
 )
