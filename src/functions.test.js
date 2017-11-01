@@ -15,6 +15,9 @@ test('Different date test', () => {
 test('Negative date test', () => {
     expect(utils.compareProjectDates(2017-11-13,2017-10-13)).toBe("days");
 });
+test('Positive date test', () => {
+    expect(utils.compareProjectDates(2017-10-13,2017-10-14)).toBe("2 days");
+});
 
 
 /////////Alec///////////
@@ -60,19 +63,6 @@ describe('Chandler', function(){
     expect(utils.dateCheck('10/30/17', '10/31/17')).toBe(('dates are viable', true));
     });
 });
-
-// test('description of the test', () => {
-//     expect(functionName(arguments).toBe('expectedanswer'));
-// });
-// test('description of the test', () => {
-//     expect(functionName(arguments).toBe('expectedanswer'));
-// });
-// test('description of the test', () => {
-//     expect(functionName(arguments).toBe('expectedanswer'));
-// });
-// test('description of the test', () => {
-//     expect(functionName(arguments).toBe('expectedanswer'));
-// });
 
 
 

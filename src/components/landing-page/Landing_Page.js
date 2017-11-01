@@ -12,7 +12,7 @@ export default function () {
                     <div className='landing-page-main-titles-container'>
                         <div className='landing-page-main-title'>Project Management Software that lets you actually manage your project</div>
                         <div className='landing-page-divider-line'></div>
-                        <div className='landing-page-main-sub-title'>Why settle for anything less than PsuedoTrics?</div>
+                        <div className='landing-page-main-sub-title'>Achieve your flow, with WorkFlow.</div>
                         <a href={process.env.REACT_APP_LOGIN}>
                             <button className='landing-page-bet-started-button'> Get Started </button>
                         </a>
