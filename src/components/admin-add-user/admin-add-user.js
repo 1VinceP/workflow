@@ -64,6 +64,13 @@ class AddUser extends Component {
             user_role: utils.roleThings( e, this.state.user_role )
         })
     }
+    componentWillMount() {
+        if (!this.props.user) {
+            return window.location.href = 'http://localhost:3000/#/'
+
+        }
+
+    }
     render() {
         let teamInfo = this.props.company_team.map((e, i) => {
             return (
