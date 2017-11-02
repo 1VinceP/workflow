@@ -100,13 +100,6 @@ html {
     height: auto;
 }
 
-.team-main-container {
-    display: flex;
-    justify-content: center;
-    background: rgba(249,249,250, 1);
-    width: 100%;
-    padding-top: 15px;
-}
 
 .team-analytics-container{
     display: flex;
@@ -139,14 +132,6 @@ html {
 
 /*          Left nav bar           */
 
-.analytics-navbar-title{
-    border-bottom: 1px solid rgba(0,0,0, .15);
-    padding-bottom: 5px;
-    margin-top: -15px;
-    font-size: 17px !important;
-    padding-left: 2px !important;
-    font-weight: 500 !important;
-}
 
 .charts-left-navbar{
     display: flex;
@@ -159,10 +144,6 @@ html {
     font-weight: 100;
     border-top: 2px solid rgb(119, 88, 236);
     border-radius: 3px;
-}
-
-.under-nav{
-    margin-top: 30px !important;
 }
 
 .charts-left-navbar span {
@@ -179,13 +160,13 @@ html {
     padding-bottom: 5px;
     margin-top: -15px;
     font-size: 17px !important;
-    margin-left: -6px !important;
     font-weight: 500 !important;
 }
 
 .team-right-navbar{
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 200px; 
     height: 125px;
     background: white;
@@ -193,14 +174,14 @@ html {
     box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
     border-top: 2px solid rgba(253, 46, 84, 1);
     border-radius: 3px;
-    padding-left: 15px;
 }
 
 .team-right-navbar span {
+    display: flex;
     padding-top: 20px;
     font-size: 14px;
-    padding-left: 2px;
     font-weight: 100;
+    width: 100%;
 }
 
 .team-create-user-button{    
@@ -212,7 +193,7 @@ html {
     color: white;
     border: none;
     margin-top: 25px;
-    margin-left: 35px;
+
     cursor: pointer;
 }
 
@@ -220,6 +201,10 @@ html {
     outline: none;
 }
 
+.team-name-description-section{
+    display: flex;
+    flex-direction: column;
+}
 
 
 
@@ -228,10 +213,10 @@ html {
 
 .team-name-description{
     display: flex;
-    flex-direction: column;
-    padding-left: 45px;
-    /* max-width: 60px; */
-    overflow: hidden;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding-left: 3px;
 }
 
 .team-name-header{
@@ -239,6 +224,7 @@ html {
     font-size: 23px !important;
     font-weight: 100 !important;
     color: black;
+    margin-top: 0;
 }
 
 /* .team-container{
@@ -258,23 +244,17 @@ html {
     flex-direction: column;
     justify-content: space-around;
     width: 770px;
-    height: 170px;
+    min-height: 100px;
+    height: auto;
     box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
     background: white;
     border-bottom: 1px solid rgba(0,0,0, .1);
-    
 }
 
 
 
 .team-section{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    
-    /* padding-bottom: 20px; */
-    
+    padding: 15px 0;
 }
 
 .team-description{
@@ -284,10 +264,7 @@ html {
 }
 
 .description-and-users{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    
+    padding-bottom: 5px
 }
 
 .team-members-span{
@@ -298,20 +275,20 @@ html {
 }
 
 .team-description-div{
-    width:350px;
+    width:300px;
     text-overflow: ellipsis;
     cursor: pointer;
     overflow: visible; 
     white-space: normal;
     height:auto;
-    
+    margin-right: 45px;
 }
 
 .users-on-team-div{
+    display: flex;
     width: 170px;
-    height: 100px;
-    overflow: auto;
-    margin-right: 16px;
+    height: auto;
+    /* margin-bottom: 10px; */
 }
 
 
@@ -322,21 +299,7 @@ html {
     padding-left: 15px;
 }
 
-.team-user-dropdown{
-    width: 450px;
-}
 
-
-.header-underline{
-    position: relative;
-    z-index: 20;
-    width: 640px;
-    height: 1px;
-    background: linear-gradient(to right, rgba(0,0,0, .5), rgba(0,0,0, .5), rgba(0,0,0, .5), rgba(255,255,255, .5));
-    /* background: rgba(0,0,0, .5); */
-    margin-bottom: 10px;
-    
-}
 
 .team-settings-button {
     background: none !important;
@@ -349,16 +312,15 @@ html {
   }
 
 .team-buttons-div{
-    display: flex;
-    justify-content: center;
-    margin-top: -15px;
+    margin-right: 10px;
+    margin-top: -25px;
   }
 
 
 .team-name-users-header{
     display: flex;
     flex-direction: row;
-    justify-content: space-between
+    justify-content: space-between;
 }
 
 
@@ -372,7 +334,6 @@ html {
 .edit-team-users-span{
     display: flex;
     justify-content: flex-start;
-
     flex-direction: row;
 }
 
@@ -398,7 +359,10 @@ html {
     margin-bottom: 5px;
 }
 
-
+.display-team-name-header{
+    padding-right: 350px;
+    padding-left: 30px;
+}
 
 
 
@@ -438,7 +402,7 @@ html {
     background: white;
     box-shadow: 0 2px 4px rgba(0,0,0,.25), 0 0 1px rgba(0,0,0,.28);
     width: 770px;
-    height: auto;
+    height: 100%;
     border-radius: 3px;
     margin: 0 3vw;
     
@@ -463,17 +427,7 @@ html {
 }
 
 
-@media(min-width: 400px) {
-    .firstchart {
-        padding: 20px;
-    }
-    .firsty {
-        margin-left: 10px;
-    }
-}
 
-@media(min-width: 1200px) {
-    .charts-right-navbar{
-        display: flex;
-    }
-}
+
+
+

@@ -176,32 +176,29 @@ class DisplayTeams extends Component {
                 <div key={i} className="team-container-yo">
                     <div className="team-section">
                         <div className="team-name-description">
-                            <div className="team-name-users-header">
-                                <div className="team-name-header">
-                                    {e.team_name}
+                            <div className="team-name-description-section">
+                                <div className="team-name-users-header">
+                                    <div className="team-name-header">
+                                        {e.team_name}
+                                    </div>
                                 </div>
-                                <div className="team-users-header">
-                                    <span className='users-header-team-box'>Users</span>
-                                </div>
-                            </div>
-                            <div className="header-underline">
-                            </div>
-                            <div className="description-and-users">
-                                <div className="team-description-div">
-                                    <span className="team-description">{e.team_description}</span>
-                                </div>
-                                <div className="users-on-team-div">
-                                    <span className="users-span">{this.usersForTeam(e.team_id)}</span>
+                                <div className="description-and-users">
+                                    <div className="team-description-div">
+                                        <span className="team-description">{e.team_description}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="team-buttons-div">
-                            <Button onClick={() => this.editTeam(e.team_name, e.team_description, e.team_id)} size="big" className="team-settings-button">
-                                <Icon name='setting' />
-                            </Button>
-                            <Button onClick={() => this.deleteUser(e.team_id)} size="big" className="team-delete-button">
-                                <Icon name='trash' />
-                            </Button>
+                            <div className="users-on-team-div">
+                                <span className="users-span">{this.usersForTeam(e.team_id)}</span>
+                            </div>
+                            <div className="team-buttons-div">
+                                <Button onClick={() => this.editTeam(e.team_name, e.team_description, e.team_id)} size="big" className="team-settings-button">
+                                    <Icon name='setting' />
+                                </Button>
+                                <Button onClick={() => this.deleteUser(e.team_id)} size="big" className="team-delete-button">
+                                    <Icon name='trash' />
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -213,26 +210,26 @@ class DisplayTeams extends Component {
                 <div className="team-charts-container">
                     <div className="team-charts-main">
                         <LeftNav />
-                        <div className="teams-middle-section">
-                            <div className="team-table-container">
-                                <div className="team-top-table">
-                                    <div className="team-top-table-text">
-                                        <span className="display-users-name-header">Name</span>
-                                        <span>Team</span>
-                                    </div>
-                                    {this.props.company_team[0] ? teamInfo :
-                                        <div className="no-team-box">
-                                            <span className="no-team-span">No teams created yet</span>
-                                            <Link to='/create-team'><button className="no-team-button">Create a team</button></Link>
-                                        </div>
 
-                                    }
+                        <div className="team-table-container">
+                            <div className="team-top-table">
+                                <div className="team-top-table-text">
+                                    <span className="display-team-name-header">Name</span>
+                                    <span>Team Members</span>
                                 </div>
+                                {this.props.company_team[0] ? teamInfo :
+                                    <div className="no-team-box">
+                                        <span className="no-team-span">No teams created yet</span>
+                                        <Link to='/create-team'><button className="no-team-button">Create a team</button></Link>
+                                    </div>
+
+                                }
                             </div>
                         </div>
+
                         <div className="team-right-navbar">
                             <span className="team-right-navbar-title">Teams</span>
-                            <Link to='create-team'><button className="team-create-user-button">Create Team</button></Link>
+                            <Link className="create-users-button-right" to='create-team'><button className="team-create-user-button">Create Team</button></Link>
                         </div>
                     </div>
                 </div>
