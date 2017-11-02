@@ -49,6 +49,8 @@ class Dashboard extends Component {
         }
     }
 
+
+
     user_team() {
         let selectedTeam;
         let userTeam = this.props.company_team.map((team, i) => {
@@ -79,6 +81,24 @@ class Dashboard extends Component {
             return window.location.href = 'http://localhost:3000/#/'
 
         } else {
+            this.props.getUserInfo().then(res => {
+                this.props.getCompanyInfo(this.props.user.user_company).then(res => {
+                console.log('PROPS', res)})
+                if (this.props.user_firstname === '' && this.props.user.user_firstname === null) {
+                    this.editUserName()
+                    // this.setState({
+                    //     missingEmployeeInfo: true
+                    // })
+                    // console.log('BOOM')
+                }
+    
+            }).then(() => {
+                this.props.getUserTasks(this.props.user.user_id)
+    
+            }).then(() => {
+                this.user_team()
+                console.log(this.state)
+            }).then(()=>{
         
             axios.get(`/api/company_notifications/${this.props.user.user_company}`).then(res =>{
                 console.log(res)
@@ -89,6 +109,7 @@ class Dashboard extends Component {
             }).then(()=>{
                 console.log("STATE", this.state)
             })
+        })
         }
 
 
@@ -96,24 +117,7 @@ class Dashboard extends Component {
 
     componentDidMount() {
         
-        this.props.getUserInfo().then(res => {
-            this.props.getCompanyInfo(this.props.user.user_company).then(res => {
-            console.log('PROPS', res)})
-            if (this.props.user_firstname === '' && this.props.user.user_firstname === null) {
-                this.editUserName()
-                // this.setState({
-                //     missingEmployeeInfo: true
-                // })
-                // console.log('BOOM')
-            }
 
-        }).then(() => {
-            this.props.getUserTasks(this.props.user.user_id)
-
-        }).then(() => {
-            this.user_team()
-            console.log(this.state)
-        })
     }
 
     getMoney() {
@@ -281,6 +285,7 @@ class Dashboard extends Component {
                     <div className="button-span">
                         {/* <div className='dashboard-main-title'>Dashboard</div> */}
                         <button className='dashboard_new_items_buttons' onClick={() => { this.displayNewMenu() }}>+ New</button>
+
 
                         {this.state.newMenu === true ?
                             <div className='dashboard_new_menu_container'>

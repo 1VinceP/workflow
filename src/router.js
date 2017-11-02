@@ -22,6 +22,7 @@ import FirstTimeUser from './components/first-time-user/FirstTimeUser';
 import CompanyJoinedAdded from './components/company-joined-added/CompanyJoinedAdded'
 import CompanyInfor from './components/company/Company'
 import Notifications from './components/notifications/Notifications'
+import PageLoading from './components/page-loading/PageLoading'
 
 // import axios from 'axios';
 
@@ -66,6 +67,7 @@ export default (
         <Route path='/loading-page' component={InitialLoad} />
         <Route path='/first-time-user' component={FirstTimeUser} />
         <Route path='/company-joined' component={CompanyJoinedAdded} />
+        <Route path='/loading' component={PageLoading} />
         
         
     </Switch>
