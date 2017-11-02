@@ -175,7 +175,6 @@ app.get('/api/project', project_controller.get_projects)
 app.delete('/api/delete/project/:id', project_controller.delete_project)
 
 app.post('/api/addproject', project_controller.create_project)
-
 app.post('/api/editproject', project_controller.edit_project)
 
 ////////////////////////////        TASK         /////////////////////////////////

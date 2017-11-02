@@ -19,7 +19,8 @@ module.exports = {
         },
 
         complete_task: ( req, res, next ) => {
-            req.app.get('db').task.complete_task( req.params.id, req.params.number, req.params.key )
+            let lastTask = req.params.number - 1
+            req.app.get('db').task.complete_task( req.params.id, req.params.number, req.params.key, lastTask + '' )
                 .then( response => {
                     res.status(200).send(response)
                 } )

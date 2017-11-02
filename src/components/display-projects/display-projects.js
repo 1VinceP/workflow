@@ -177,31 +177,34 @@ class DisplayUsers extends Component {
     render() {
         let projectInfo = this.props.company_project.map((e, i) => {
             return (
-                <div key={i} className="display-project-user-container">
-                    <div className="display-project-name-email" >
-                        <div className="display-project-name">
-                            {e.project_name}
+                <div key={i}>
+                    { e.project_paid === false ?
+                        <div className="display-project-user-container">
+                            <div className="display-project-name-email" >
+                                <div className="display-project-name">
+                                    {e.project_name}
+                                </div>
+                                <div className="display-project-email">
+                                    <span className="projects-email-span">{e.project_description}</span>
+                                </div>
+                            </div>
+                            <div className="projects-start-end-price-yo">
+                                <div className="projects-dates">{e.project_start_date ? e.project_start_date : '0000-00-00'}</div>
+                                <div className="projects-dates1">{e.project_finished_date ? e.project_finished_date : '0000-00-00'}</div>
+                                <div className="project-price">
+                                    <div>{e.project_price ? e.project_price : '$'}</div>
+                                </div>
+                            </div>
+                            <div className="projects-buttons-div">
+                                <Button onClick={() => this.editProject(e.project_name, e.project_start_date, e.project_finished_date, e.project_description, e.project_price, e.project_id)} size="big" className="team-settings-button">
+                                    <Icon name='setting' />
+                                </Button>
+                                <Button onClick={() => this.deleteProject(e.project_id)} size="big" className="team-delete-button">
+                                    <Icon name='trash' />
+                                </Button>
+                            </div>
                         </div>
-                        <div className="display-project-email">
-                            <span className="projects-email-span">{e.project_description}</span>
-                        </div>
-                    </div>
-                    <div className="projects-start-end-price-yo">
-                        <div className="projects-dates">{e.project_start_date ? e.project_start_date : '0000-00-00'}</div>
-                        <div className="projects-dates1">{e.project_finished_date ? e.project_finished_date : '0000-00-00'}</div>
-                        <div className="project-price">
-                            <div>{e.project_price ? e.project_price : '$'}</div>
-                        </div>
-                    </div>
-                    <div className="projects-buttons-div">
-                        <Button onClick={() => this.editProject(e.project_name, e.project_start_date, e.project_finished_date, e.project_description, e.project_price, e.project_id)} size="big" className="team-settings-button">
-                            <Icon name='setting' />
-                        </Button>
-                        <Button onClick={() => this.deleteProject(e.project_id)} size="big" className="team-delete-button">
-                            <Icon name='trash' />
-                        </Button>
-                    </div>
-
+                    : null }
                 </div>
             )
         })
