@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { currentProjectTasks } from '../../redux/reducers/main-reducer';
+import { currentProjectTasks, addProjectLastTask } from '../../redux/reducers/main-reducer';
 import { connect } from 'react-redux';
 import axios from 'axios'
 import Dialog from 'material-ui/Dialog';
@@ -31,7 +31,7 @@ class Create_task extends Component {
             taskDesc: '',
             taskRole: '',
             taskUniqueKey:'',
-            taskShow: true,
+            taskShow: false,
             taskLink: 'http://',
             taskNumber: 1
           };
@@ -98,8 +98,9 @@ class Create_task extends Component {
       }
 
       this.props.currentProjectTasks( this.props.project_unique_key, body )
-        .then(()=>{this.handleClose()})
-          .then( () => this.setState({ taskShow: false, taskNumber: this.state.taskNumber + 1, taskLink: 'http://' }) )
+        .then( () => this.props.addProjectLastTask( state.taskNumber ) )
+          .then(()=>{this.handleClose()})
+            .then( () => this.setState({ taskShow: false, taskNumber: this.state.taskNumber + 1, taskLink: 'http://' }) )
     }
     
       render() {
@@ -183,4 +184,4 @@ class Create_task extends Component {
       return state
     }
 
-export default connect( mapStateToProps, {currentProjectTasks} )(Create_task)
+export default connect( mapStateToProps, {currentProjectTasks, addProjectLastTask} )(Create_task)

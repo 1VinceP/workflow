@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 import { connect } from 'react-redux';
 import axios from 'axios'
@@ -11,16 +11,9 @@ class Table2 extends Component {
             users_taks:[],
         }
     }
-    componentDidMount(){
-        // axios.get(`/api/company/get_users_tasks/${this.props.company[0].company_id}`).them(response =>{
-        //     this.setState({
-        //         users_taks:response.data
-        //     })
-        //     console.log(this.state)
-        // })
-    }
 
     render() {
+
         (console.log("Object", this.props.company_team))
             return (
             < div >

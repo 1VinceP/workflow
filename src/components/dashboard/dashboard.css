@@ -170,6 +170,10 @@ font-size: 30px;
     background: rgb(229, 229, 233);
 }
 
+.dashboard_menu_item_selection-1:hover {
+    background: rgb(229, 229, 233);
+}
+
 .dashboard-titles{
     font-family: helvetica;
     margin: 15px;

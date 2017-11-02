@@ -33,6 +33,7 @@ const ADD_PROJECT_START_DATE = "ADD_PROJECT_START_DATE";
 const ADD_PROJECT_FINISH_DATE = "ADD_PROJECT_FINISH_DATE";
 const ADD_PROJECT_DESCRIPTION = "ADD_PROJECT_DESCRIPTION";
 const ADD_PROJECT_PRICE = "ADD_PROJECT_PRICE";
+const ADD_PROJECT_LAST_TASK = "ADD_PROJECT_LAST_TASK";
 const CURRENT_PROJECT_TASKS = "CURRENT_PROJECT_TASKS";
 const UPDATE_EMPLOYEE_NAME = "UPDATE_EMPLOYEE_NAME";
 const GET_USER_INFO_AFTER = 'GET_USER_INFO_AFTER';
@@ -71,6 +72,7 @@ var initialState = {
     project_price: 0.00,
     project_paid: false,
     project_creator: '',
+    project_last_task: '',
     projects: [],
     assignUserCompany: [],
     assign_user_company_input: '',
@@ -137,6 +139,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { project_description: action.payload })
         case ADD_PROJECT_PRICE:
             return Object.assign({}, state, { project_price: action.payload })
+        case ADD_PROJECT_LAST_TASK:
+            return Object.assign( {}, state, { project_last_task: action.payload } )
         case GET_PROJECT:
             return Object.assign({}, state, { projects: action.payload })
         case ADD_ASSIGN_COMPANY_USER_INPUT:
@@ -253,6 +257,13 @@ export function addProjectUniqueKey(companyName, projectCreator) {
     return {
         payload: finalKey, projectCreator,
         type: ADD_UNIQUE_KEY_PROJECT_TASK
+    }
+}
+
+export function addProjectLastTask( num ) {
+    return {
+        type: ADD_PROJECT_LAST_TASK,
+        payload: num
     }
 }
 
