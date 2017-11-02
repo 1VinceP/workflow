@@ -207,6 +207,7 @@ class DisplayTeams extends Component {
 
         return (
             <div className="team-analytics-container">
+                <button>lol</button>
                 <div className="team-charts-container">
                     <div className="team-charts-main">
                         <LeftNav />
