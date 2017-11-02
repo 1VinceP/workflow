@@ -61,7 +61,7 @@ class CreateTeam extends Component {
                     </div>
                     </div>
                     <div className='button-container-create-team'>
-                    <Link to='/display-teamss'><button className="cancel">Cancel</button></Link>
+                    <Link to='/display-teams'><button className="cancel">Cancel</button></Link>
                     <Link to='/display-teams'><button className="save" onClick={() => this.submitTeam()}>Save Changes</button></Link>
                     </div>
                 </div>
