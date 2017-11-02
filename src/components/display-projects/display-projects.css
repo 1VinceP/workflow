@@ -78,6 +78,7 @@
 .projects-charts-right-navbar{
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 200px; 
     height: 125px;
     background: white;
@@ -85,14 +86,15 @@
     box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
     border-top: 2px solid rgba(243,173,94, 1);
     border-radius: 3px;
-    padding-left: 15px;
+
 }
 
 .projects-charts-right-navbar span {
+    display: flex;
     padding-top: 20px;
     font-size: 14px;
-    padding-left: 1px;
     font-weight: 100;
+    width: 100%;
 }
 .project-alert-button{
     background: rgba(243,173,94, 1);
@@ -103,7 +105,7 @@
     color: white;
     border: none;
     margin-top: 25px;
-    margin-left: 30px;
+    
     cursor: pointer;
 }
 
@@ -154,6 +156,7 @@
 .projects-top-table{
     border-bottom: 3px solid rgba(255,255,255, .3);
     height: 43px;
+    width: 770px;
     background: rgba(243,173,94, 1);
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
@@ -166,7 +169,7 @@
     font-weight: 900;
     margin-top: 12px;
     color: white;
-    margin-left: -25px;
+    margin-left: -37px;
     padding-right: 40px;
 }
 
@@ -206,7 +209,7 @@
 
 .display-project-name-email{
     position: absolute;
-    padding-left: 30px;
+    padding-left: 20px;
 }
 
 .projects-buttons-div{
@@ -294,12 +297,5 @@
 
 
 
-@media(min-width: 400) {
-    .firstchart {
-        padding: 20px;
-    }
-    .firsty {
-        margin-left: 10px;
-    }
-}
+
 

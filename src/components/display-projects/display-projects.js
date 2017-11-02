@@ -242,7 +242,7 @@ class DisplayUsers extends Component {
                         </div> */}
                         <div className="projects-charts-right-navbar">
                             <span className="right-navbar-title">Projects</span>
-                            <a href='/#/create-project'>
+                            <a className="create-users-button-right"  href='/#/create-project'>
                                 <button onClick={() => { this.props.addProjectUniqueKey(this.props.company[0].company_name, this.props.user.user_id) }} className="project-alert-button">Create Project</button>
                             </a>
                         </div>
