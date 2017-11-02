@@ -96,10 +96,6 @@ class AddUser extends Component {
                             />
                         </div>
                            
-                            <div className="field">
-                                <TextField onChange={(e) => this.props.editUserTeam(e.target.value)}
-                                    placeholder="Team" />
-                            </div>
                             <div className='dashboard-input-names-cont'>
                                 <select className='dashboard-input-names' onChange={(e) => { this.roleFunction(e.target.value) }} selected='User Role'>
                                     <option selected='selected' disabled='Disabled'>User Role</option>

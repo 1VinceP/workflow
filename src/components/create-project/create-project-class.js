@@ -6,7 +6,8 @@ import DatePicker from 'material-ui/DatePicker';
 import Create_Project_Task from './create-project-tasks'
 import axios from 'axios'
 import './create-project.css'
-import {  addProjectDesc, addProjectEnd, addProjectName, addProjectPrice, addProjectStart} from '../../redux/reducers/main-reducer';
+import {  addProjectDesc, addProjectEnd, addProjectName, addProjectPrice, addProjectStart, getCompanyProjectInfo, getCompanyInfo} from '../../redux/reducers/main-reducer';
+
 import 'semantic-ui-css/semantic.min.css'
 import { Button, Icon } from 'semantic-ui-react'
 import SideBarNav from '../dashboard/Sidebar'
@@ -32,9 +33,11 @@ class Create_Project_Class extends Component {
             project_unique_key: this.props.project_unique_key,
             project_last_task: this.props.project_last_task
         }
-        axios.post('/api/addproject', data)
-        console.log(data)
-        return window.location.href ='http://localhost:3000/#/dashboard'
+        axios.post('/api/addproject', data).then(res => {
+            this.props.getCompanyInfo(this.props.user.user_company)
+            this.props.getCompanyProjectInfo(this.props.user.user_company)
+            return window.location.href ='http://localhost:3000/#/dashboard'
+        })        
     }
 
 
@@ -60,13 +63,13 @@ class Create_Project_Class extends Component {
 {/* PROJECT NAME  */}
                 {this.props.project_name === ''
                 ?
-                <input 
+                <input maxLength={30}
                 placeholder='Project Name'  className='project-create-project-input project-create-project-input-long' onChange={(e)=>this.props.addProjectName(e.target.value)}/>
                 :
-                <input 
+                <input maxLength={30}
                 placeholder={this.props.project_name === ''? 'Project Name' : this.props.project_name} defaultValue={this.props.project_name} className='project-create-project-input project-create-project-input-long' onChange={(e)=>this.props.addProjectName(e.target.value)}/>
                 }
-
+                <div className='project-character-count'>{this.props.project_name.length}/{30}</div>
 {/* PROJECT START DATE  */}
             <div className='project-start-project-date'>
 
@@ -154,4 +157,4 @@ function mapStateToProps(state) {
     return state;
 }
 
-export default connect(mapStateToProps, {addProjectDesc, addProjectEnd, addProjectName, addProjectPrice, addProjectStart})(Create_Project_Class);
+export default connect(mapStateToProps, {addProjectDesc, addProjectEnd, addProjectName, addProjectPrice, addProjectStart, getCompanyProjectInfo, getCompanyInfo})(Create_Project_Class);

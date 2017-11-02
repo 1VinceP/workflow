@@ -67,16 +67,22 @@ class Dashboard extends Component {
         })
     }
 
+
+
+    
+
     componentWillMount() {
         if (!this.props.user) {
             return window.location.href = 'http://localhost:3000/#/'
+
         }
 
     }
 
     componentDidMount() {
         this.props.getUserInfo().then(res => {
-            console.log('PROPS', res)
+            this.props.getCompanyInfo(this.props.user.user_company).then(res => {
+            console.log('PROPS', res)})
             if (this.props.user_firstname === '' && this.props.user.user_firstname === null) {
                 this.editUserName()
                 // this.setState({

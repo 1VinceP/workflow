@@ -8,6 +8,7 @@ import {
     , getCompanyProjectInfo
     , addProjectStart
     , addProjectEnd
+    , addProjectUniqueKey
 } from '../../redux/reducers/main-reducer';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -18,7 +19,7 @@ import 'semantic-ui-css/semantic.min.css'
 import { Button, Icon } from 'semantic-ui-react'
 import DatePicker from 'material-ui/DatePicker';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-
+import LeftNav from '../dashboard/Sidebar'
 
 class DisplayUsers extends Component {
 
@@ -65,11 +66,11 @@ class DisplayUsers extends Component {
             data.project_name = e.target.value
         }
 
-        function priceFunction(e){
+        function priceFunction(e) {
             data.project_price = e.target.value
         }
 
-        function descriptionFunction(e){
+        function descriptionFunction(e) {
             console.log(e)
             data.project_description = e
         }
@@ -87,7 +88,7 @@ class DisplayUsers extends Component {
             data.project_finished_date = projectDate
         }
 
-        
+
 
         confirmAlert({
             title: 'Edit Project',
@@ -98,10 +99,10 @@ class DisplayUsers extends Component {
                             <input maxLength={30} className='dashboard-input-names' defaultValue={name} onChange={(e) => { nameFunction(e) }} required />
                         </div>
                         {description
-                        ?             
-                        <input defaultValue={description} className='project-create-project-input' onChange={(e)=> descriptionFunction(e.target.value) } maxLength='300' />
-                        :
-                        <input placeholder='Project Description' className='project-create-project-input' onChange={(e)=> descriptionFunction(e.target.value)} maxLength='300' />
+                            ?
+                            <input defaultValue={description} className='project-create-project-input' onChange={(e) => descriptionFunction(e.target.value)} maxLength='300' />
+                            :
+                            <input placeholder='Project Description' className='project-create-project-input' onChange={(e) => descriptionFunction(e.target.value)} maxLength='300' />
                         }
                         <div className='dashboard-input-names-cont'>
                             <input className='dashboard-input-names' defaultValue={price} onChange={(e) => { priceFunction(e) }} required />
@@ -215,14 +216,8 @@ class DisplayUsers extends Component {
             <div className="display-project-container">
 
                 <div className="charts-container">
-                    <div className="charts-main">
-                        <div className="projects-charts-left-navbar">
-                            <span className="display-project-navbar-title">Projects</span>
-                            <span><Link to="/create-project">Create Project</Link></span>
-                            <span><Link to="/dashboard">Tasks</Link></span>
-                            {/* <span><Link to="/there-is-no-productivity-here-gandalf-stormcrow">Productivity</Link></span> */}
-                        </div>
-
+                    <div className="projects-charts-main">
+                        <LeftNav />
                         <div className="projects-table-container">
                             <div className="projects-top-table">
                                 <div className="projects-top-table-text">
@@ -234,15 +229,22 @@ class DisplayUsers extends Component {
                                     </div>
                                 </div>
                             </div>
-                            {projectInfo}
+                            {this.props.company_project[0] ? projectInfo :
+                                <div className="project-no-team-box">
+                                    <span className="project-no-team-span">No projects created yet</span>
+                                    <a href='/#/create-project'>
+                                        <button onClick={() => { this.props.addProjectUniqueKey(this.props.company[0].company_name, this.props.user.user_id) }} className="project-no-team-button">Create a Project</button>
+                                    </a>
+                                </div>}
                         </div>
                         {/* <div className="table-container">
                         <Table2 />
                         </div> */}
                         <div className="projects-charts-right-navbar">
-                            <span className="right-navbar-title">Stay Updated</span>
-                            <span>Setup Alerts to stay up to date.</span>
-                            <button className="project-alert-button">Get Alerts</button>
+                            <span className="right-navbar-title">Projects</span>
+                            <a href='/#/create-project'>
+                                <button onClick={() => { this.props.addProjectUniqueKey(this.props.company[0].company_name, this.props.user.user_id) }} className="project-alert-button">Create Project</button>
+                            </a>
                         </div>
                     </div>
 
@@ -264,5 +266,6 @@ export default connect(mapStateToProps,
         , getCompanyProjectInfo
         , addProjectEnd
         , addProjectStart
+        , addProjectUniqueKey
 
     })(DisplayUsers)

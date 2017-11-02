@@ -5,17 +5,19 @@
     background: #F9F9FA;
     display: flex;
     justify-content: center;
+    
 }
 
 
 .profile-modal-add-user {
-    height: 450px;
+    height: 480px;
     width: 550px;
     background: white;
     box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
     margin: auto;
     border-top: 2px solid rgb(119, 88, 236);
     padding: 30px;
+    border-radius: 3px;
 }
 
 .heading-add-user {

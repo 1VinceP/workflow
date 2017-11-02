@@ -15,6 +15,9 @@ test('Different date test', () => {
 test('Negative date test', () => {
     expect(utils.compareProjectDates(2017-11-13,2017-10-13)).toBe("days");
 });
+test('Positive date test', () => {
+    expect(utils.compareProjectDates(2017-10-13,2017-10-14)).toBe("2 days");
+});
 
 
 /////////Alec///////////
