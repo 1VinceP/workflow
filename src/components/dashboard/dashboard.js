@@ -17,9 +17,10 @@ import UserIcon from './images/user.svg';
 import Calendar from 'react-calendar'
 import UnstyledCalendar from 'react-calendar/build/entry.nostyle';
 import _ from 'underscore-node';
-import SideNavLinks from './Sidebar'
-import linkURL from './images/upload.svg'
-import userLG from './images/usersLG.svg'
+import SideNavLinks from './Sidebar';
+import linkURL from './images/upload.svg';
+import userLG from './images/usersLG.svg';
+import utils from '../utlities/utilities';
 
 
 let styles = {
@@ -120,11 +121,11 @@ class Dashboard extends Component {
         })
     }
     divide() {
-        let x = Math.ceil(this.state.money / this.state.tasktotal);
-        console.log("this is", x);
         this.setState({
-            moneypertask: x
+            moneypertask: utils.divideThings(this.state.money, this.state.tasktotal)
         })
+        
+        
     }
 
     addUsersName() {
@@ -214,7 +215,7 @@ class Dashboard extends Component {
         let needToComplete = this.props.user_tasks.map((task, i) => {
 
             console.log(task.task_show)
-            if (task.task_completed !== true) {
+            if (task.task_completed !== true && task.task_show === true ) {
                 1 * needToCompleteCount++
             }
         })
