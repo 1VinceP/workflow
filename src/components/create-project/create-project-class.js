@@ -39,7 +39,13 @@ class Create_Project_Class extends Component {
         })        
     }
 
+    componentWillMount() {
+        if (!this.props.user) {
+            return window.location.href = 'http://localhost:3000/#/'
 
+        }
+
+    }
 
 
     displayProject(){

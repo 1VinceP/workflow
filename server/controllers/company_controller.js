@@ -16,6 +16,10 @@ module.exports = {
         console.log(req.params.id)
         req.app.get('db').company.get_company_code(req.params.id).then(response => res.status(200).send(response))
     },
+    getCompanyNotifications: (req, res, next) => {
+        console.log(req.params.id)
+        req.app.get('db').company.get_company_notifications(req.params.id).then(response => res.status(200).send(response))
+    },
 
 
 
@@ -25,5 +29,11 @@ module.exports = {
 
     getCompanyUsersById: (req, res, next) => {
         req.app.get('db').company.company_users(req.params.id).then(response => res.status(200).send(response))
+    },
+    create_notification: (req,res,next) => {
+        let {notification, notification_company, notification_date, notification_user_name, notification_user} = req.body;
+        
+        req.app.get('db').company.add_notification(notification, notification_company, notification_date, notification_user_name, notification_user)
+        .then( () => res.status(200).send() );
     }
 }

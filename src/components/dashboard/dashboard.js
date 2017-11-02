@@ -20,6 +20,7 @@ import _ from 'underscore-node';
 import SideNavLinks from './Sidebar'
 import linkURL from './images/upload.svg'
 import userLG from './images/usersLG.svg'
+import CAT from './images/cat.svg'
 
 
 let styles = {
@@ -42,7 +43,9 @@ class Dashboard extends Component {
             money: 0,
             tasktotal: 0,
             moneypertask: '',
-            user_team: ''
+            user_team: '',
+            notifications1:{},
+            notifications2:{},
         }
     }
 
@@ -71,14 +74,28 @@ class Dashboard extends Component {
     
 
     componentWillMount() {
+
         if (!this.props.user) {
             return window.location.href = 'http://localhost:3000/#/'
 
+        } else {
+        
+            axios.get(`/api/company_notifications/${this.props.user.user_company}`).then(res =>{
+                console.log(res)
+                this.setState({
+                    notifications1: res.data[0],
+                    notifications2: res.data[1]
+                })
+            }).then(()=>{
+                console.log("STATE", this.state)
+            })
         }
+
 
     }
 
     componentDidMount() {
+        
         this.props.getUserInfo().then(res => {
             this.props.getCompanyInfo(this.props.user.user_company).then(res => {
             console.log('PROPS', res)})
@@ -97,9 +114,6 @@ class Dashboard extends Component {
             this.user_team()
             console.log(this.state)
         })
-
-
-
     }
 
     getMoney() {
@@ -278,7 +292,10 @@ class Dashboard extends Component {
                                 </a>
 
                                 <a href='/#/create-user'>
-                                    <div className='dashboard_menu_item_selection-1'>User</div>
+                                    <div className='dashboard_menu_item_selection'>User</div>
+                                </a>
+                                <a href='/#/create-notification'>
+                                    <div className='dashboard_menu_item_selection-1'>Notification</div>
                                 </a>
                             </div>
                             : null}
@@ -288,8 +305,15 @@ class Dashboard extends Component {
                         <div className="task-list">
                             <div className='dashboard-titles'>Tasks</div>
 
-
-                            {taskMapper}
+                            {needToCompleteCount === 0 ?
+                            <div className='dashboard-tasks-complete-message'>
+                                <img src={CAT} alt='' className='dashboard-tasks-complete-image'/>
+                                <div className='dashboard-tasks-complete-note'>No tasks to complete right MEOW!!</div>
+                                
+                            </div>
+                        :
+                            taskMapper
+                        }
 
 
                         </div>
@@ -301,12 +325,18 @@ class Dashboard extends Component {
                             <div className='dash-tasks-to-complete'>{needToCompleteCount}</div>
                             <div className='dash-tasks-to-complete-description'>Tasks To Complete</div>
                         </div>
+
+
                         <div className='dashboard-second-section-cont1'>
                             <div className='dash-section-2-info-body'>
-                                <div className='dash-section-2-company-name'>{this.props.company[0].company_name}</div>
+                                <div className='dash-section-2-notifications-title'>Notifications</div>
                                 <div className='dash-section-2-other-info-container'>
-                                    <div className='dash-section-2-team-name'><img src={userLG} className='dash-section-2-icon'/>{`${this.state.user_team}`}</div>
-                                    <div className='dash-section-2-user-name'>{`${this.props.user.user_firstname} ${this.props.user.user_lastname}`}</div>
+
+                                    <div className='dash-section-2-notifications'>
+                                        <div className='dash-section-2-notification-not1'>{this.state.notifications1.notification}</div>
+                                        <div className='dash-section-2-notification-not1'>{this.state.notifications2.notification}</div>
+
+                                    </div>
                                 </div>
                             </div>
 
@@ -315,18 +345,6 @@ class Dashboard extends Component {
 
                     </div>
 
-
-
-                    {/* 
-                    <div className="current-stats-wrapper">
-                        <div className='dashboard-titles'>Analytics</div>
-                        <div>
-                            <Table2 />
-                        </div>
-                    </div> */}
-                    {/* <div >
-                        <Link className="chat" to="/chat">Chat</Link>
-                    </div> */}
                 </div>
             )
 

@@ -8,6 +8,14 @@ import Table2 from './table2';
 
 
 class Analytics extends Component {
+    
+    componentWillMount() {
+        if (!this.props.user) {
+            return window.location.href = 'http://localhost:3000/#/'
+
+        }
+
+    }
  
     render() {
 

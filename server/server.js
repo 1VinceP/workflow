@@ -143,6 +143,8 @@ app.get('/api/company/get_users_tasks/:id', (req, res, next) => {
 
 app.get('/api/company_code/:id', company_controller.getCompanyCode)
 
+app.get('/api/company_notifications/:id', company_controller.getCompanyNotifications)
+
 
 
 
@@ -221,8 +223,8 @@ app.get('/api/roles/users', role_controller.get_user_roles)
 app.post('/api/addrole', role_controller.create_role)
 
 
-////////////////////////////            Chat            ////////////////////////////
-
+////////////////////////////            Notifications            ////////////////////////////
+app.post('/api/add-notification', company_controller.create_notification)
 
 
 

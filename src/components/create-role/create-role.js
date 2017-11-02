@@ -3,6 +3,12 @@ import {connect} from 'react-redux'
 class CreateRole extends Component {
         
     componentWillMount(){
+
+            if (!this.props.user) {
+                return window.location.href = 'http://localhost:3000/#/'
+    
+            }
+    
         if(this.props.company){
             console.log('truuuuuuu')
         } else {

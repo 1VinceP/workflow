@@ -33,7 +33,14 @@ class CreateTeam extends Component {
             })
     }
 
+    componentWillMount() {
+        if (!this.props.user) {
+            return window.location.href = 'http://localhost:3000/#/'
+        } else if(this.props.user.user_role === 0){
+            return window.location.href = 'http://localhost:3000/#/dashboard'
+        }
 
+    }
     render() {
 
         return (

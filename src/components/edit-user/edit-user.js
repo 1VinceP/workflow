@@ -72,6 +72,13 @@ class EditUser extends Component {
         return this.props.user.user_firstname
         }
     }
+    componentWillMount() {
+        if (!this.props.user) {
+            return window.location.href = 'http://localhost:3000/#/'
+
+        }
+
+    }
 
     render() {
 

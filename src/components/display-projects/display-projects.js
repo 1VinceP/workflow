@@ -22,6 +22,14 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import LeftNav from '../dashboard/Sidebar'
 
 class DisplayUsers extends Component {
+    
+    componentWillMount() {
+        if (!this.props.user) {
+            return window.location.href = 'http://localhost:3000/#/'
+
+        }
+
+    }
 
 
     deleteProject(id) {

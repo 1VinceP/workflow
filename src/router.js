@@ -21,6 +21,7 @@ import InitialLoad from './components/initial-load/InitialLoadFunctional';
 import FirstTimeUser from './components/first-time-user/FirstTimeUser';
 import CompanyJoinedAdded from './components/company-joined-added/CompanyJoinedAdded'
 import CompanyInfor from './components/company/Company'
+import Notifications from './components/notifications/Notifications'
 
 // import axios from 'axios';
 
@@ -56,6 +57,7 @@ export default (
         <Route path='/create-team'  component={CreateTeam}/>
         <Route path='/create-user' component={AddUser} />
         <Route path='/company-info' component={CompanyInfor} />
+        <Route path='/create-notification' component={Notifications} />
 
         {/* SIGN IN ROUTES */}
         <Route path='/contact' component={ContactUs} />
