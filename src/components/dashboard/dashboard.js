@@ -20,6 +20,8 @@ import _ from 'underscore-node';
 import SideNavLinks from './Sidebar'
 import linkURL from './images/upload.svg'
 import userLG from './images/usersLG.svg'
+import NOTIFICATION_IMAGE from './images/dog.svg'
+import utils from '../utlities/utilities';
 
 
 let styles = {
@@ -42,9 +44,13 @@ class Dashboard extends Component {
             money: 0,
             tasktotal: 0,
             moneypertask: '',
-            user_team: ''
+            user_team: '',
+            notifications1:{},
+            notifications2:{},
         }
     }
+
+
 
     user_team() {
         let selectedTeam;
@@ -71,34 +77,47 @@ class Dashboard extends Component {
     
 
     componentWillMount() {
+
         if (!this.props.user) {
             return window.location.href = 'http://localhost:3000/#/'
 
+        } else {
+            this.props.getUserInfo().then(res => {
+                this.props.getCompanyInfo(this.props.user.user_company).then(res => {
+                console.log('PROPS', res)})
+                if (this.props.user_firstname === '' && this.props.user.user_firstname === null) {
+                    this.editUserName()
+                    // this.setState({
+                    //     missingEmployeeInfo: true
+                    // })
+                    // console.log('BOOM')
+                }
+    
+            }).then(() => {
+                this.props.getUserTasks(this.props.user.user_id)
+    
+            }).then(() => {
+                this.user_team()
+                console.log(this.state)
+            }).then(()=>{
+        
+            axios.get(`/api/company_notifications/${this.props.user.user_company}`).then(res =>{
+                console.log(res)
+                this.setState({
+                    notifications1: res.data[0],
+                    notifications2: res.data[1]
+                })
+            }).then(()=>{
+                console.log("STATE", this.state)
+            })
+        })
         }
+
 
     }
 
     componentDidMount() {
-        this.props.getUserInfo().then(res => {
-            this.props.getCompanyInfo(this.props.user.user_company).then(res => {
-            console.log('PROPS', res)})
-            if (this.props.user_firstname === '' && this.props.user.user_firstname === null) {
-                this.editUserName()
-                // this.setState({
-                //     missingEmployeeInfo: true
-                // })
-                // console.log('BOOM')
-            }
-
-        }).then(() => {
-            this.props.getUserTasks(this.props.user.user_id)
-
-        }).then(() => {
-            this.user_team()
-            console.log(this.state)
-        })
-
-
+        
 
     }
 
@@ -120,11 +139,11 @@ class Dashboard extends Component {
         })
     }
     divide() {
-        let x = Math.ceil(this.state.money / this.state.tasktotal);
-        console.log("this is", x);
         this.setState({
-            moneypertask: x
+            moneypertask: utils.divideThings(this.state.money, this.state.tasktotal)
         })
+        
+        
     }
 
     addUsersName() {
@@ -214,7 +233,7 @@ class Dashboard extends Component {
         let needToComplete = this.props.user_tasks.map((task, i) => {
 
             console.log(task.task_show)
-            if (task.task_completed !== true) {
+            if (task.task_completed !== true && task.task_show === true ) {
                 1 * needToCompleteCount++
             }
         })
@@ -268,6 +287,7 @@ class Dashboard extends Component {
                         {/* <div className='dashboard-main-title'>Dashboard</div> */}
                         <button className='dashboard_new_items_buttons' onClick={() => { this.displayNewMenu() }}>+ New</button>
 
+
                         {this.state.newMenu === true ?
                             <div className='dashboard_new_menu_container'>
                                 <a href='/#/create-project'>
@@ -278,7 +298,10 @@ class Dashboard extends Component {
                                 </a>
 
                                 <a href='/#/create-user'>
-                                    <div className='dashboard_menu_item_selection-1'>User</div>
+                                    <div className='dashboard_menu_item_selection'>User</div>
+                                </a>
+                                <a href='/#/create-notification'>
+                                    <div className='dashboard_menu_item_selection-1'>Notification</div>
                                 </a>
                             </div>
                             : null}
@@ -288,8 +311,15 @@ class Dashboard extends Component {
                         <div className="task-list">
                             <div className='dashboard-titles'>Tasks</div>
 
-
-                            {taskMapper}
+                            {needToCompleteCount === 0 ?
+                            <div className='dashboard-tasks-complete-message'>
+                                <img src={NOTIFICATION_IMAGE} alt='' className='dashboard-tasks-complete-image'/>
+                                <div className='dashboard-tasks-complete-note'>No tasks to complete! That wasn't too RUFF!</div>
+                                
+                            </div>
+                        :
+                            taskMapper
+                        }
 
 
                         </div>
@@ -301,12 +331,22 @@ class Dashboard extends Component {
                             <div className='dash-tasks-to-complete'>{needToCompleteCount}</div>
                             <div className='dash-tasks-to-complete-description'>Tasks To Complete</div>
                         </div>
+
+
                         <div className='dashboard-second-section-cont1'>
                             <div className='dash-section-2-info-body'>
-                                <div className='dash-section-2-company-name'>{this.props.company[0].company_name}</div>
+                                <div className='dash-section-2-notifications-title'>Notifications</div>
                                 <div className='dash-section-2-other-info-container'>
-                                    <div className='dash-section-2-team-name'><img src={userLG} className='dash-section-2-icon'/>{`${this.state.user_team}`}</div>
-                                    <div className='dash-section-2-user-name'>{`${this.props.user.user_firstname} ${this.props.user.user_lastname}`}</div>
+
+                                    <div className='dash-section-2-notifications'>
+                                        <div className='dash-section-2-notification-not1'>{this.state.notifications1=== {} || this.state.notifications1 === undefined? 
+                    null :
+                    this.state.notifications1.notification}</div>
+                                        <div className='dash-section-2-notification-not1'>{this.state.notifications2 === {} || this.state.notifications2 === undefined ? 
+                    null :
+                    this.state.notifications2.notification}</div>
+
+                                    </div>
                                 </div>
                             </div>
 
@@ -315,18 +355,6 @@ class Dashboard extends Component {
 
                     </div>
 
-
-
-                    {/* 
-                    <div className="current-stats-wrapper">
-                        <div className='dashboard-titles'>Analytics</div>
-                        <div>
-                            <Table2 />
-                        </div>
-                    </div> */}
-                    {/* <div >
-                        <Link className="chat" to="/chat">Chat</Link>
-                    </div> */}
                 </div>
             )
 

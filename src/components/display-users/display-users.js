@@ -119,7 +119,13 @@ class DisplayUsers extends Component {
             }
         }
     }
+    componentWillMount() {
+        if (!this.props.user) {
+            return window.location.href = 'http://localhost:3000/#/'
 
+        }
+
+    }
 
     render() {
         let userInfo = this.props.company_users.map((e, i) => {
@@ -171,7 +177,7 @@ class DisplayUsers extends Component {
                         </div> */}
                         <div className="users-right-navbar">
                             <span className="right-navbar-title">Users</span>
-                            <Link to='create-user'><button className="users-create-user-button">Create User</button></Link>
+                            <Link className="create-users-button-right" to='create-user'><button className="users-create-user-button">Create User</button></Link>
                         </div>
                     </div>
 

@@ -11,6 +11,13 @@ class Company extends Component {
 
         }
     }
+    componentWillMount() {
+        if (!this.props.user) {
+            return window.location.href = 'http://localhost:3000/#/'
+
+        }
+
+    }
 
     render() {
         console.log("HERO ITS ME")

@@ -33,7 +33,14 @@ class CreateTeam extends Component {
             })
     }
 
+    componentWillMount() {
+        if (!this.props.user) {
+            return window.location.href = 'http://localhost:3000/#/'
+        } else if(this.props.user.user_role === 0){
+            return window.location.href = 'http://localhost:3000/#/dashboard'
+        }
 
+    }
     render() {
 
         return (
@@ -54,7 +61,7 @@ class CreateTeam extends Component {
                     </div>
                     </div>
                     <div className='button-container-create-team'>
-                    <Link to='/display-teamss'><button className="cancel">Cancel</button></Link>
+                    <Link to='/display-teams'><button className="cancel">Cancel</button></Link>
                     <Link to='/display-teams'><button className="save" onClick={() => this.submitTeam()}>Save Changes</button></Link>
                     </div>
                 </div>

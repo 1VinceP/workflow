@@ -21,6 +21,8 @@ import InitialLoad from './components/initial-load/InitialLoadFunctional';
 import FirstTimeUser from './components/first-time-user/FirstTimeUser';
 import CompanyJoinedAdded from './components/company-joined-added/CompanyJoinedAdded'
 import CompanyInfor from './components/company/Company'
+import Notifications from './components/notifications/Notifications'
+import PageLoading from './components/page-loading/PageLoading'
 
 // import axios from 'axios';
 
@@ -56,6 +58,7 @@ export default (
         <Route path='/create-team'  component={CreateTeam}/>
         <Route path='/create-user' component={AddUser} />
         <Route path='/company-info' component={CompanyInfor} />
+        <Route path='/create-notification' component={Notifications} />
 
         {/* SIGN IN ROUTES */}
         <Route path='/contact' component={ContactUs} />
@@ -64,6 +67,8 @@ export default (
         <Route path='/loading-page' component={InitialLoad} />
         <Route path='/first-time-user' component={FirstTimeUser} />
         <Route path='/company-joined' component={CompanyJoinedAdded} />
+        <Route path='/loading' component={PageLoading} />
+        
         <Route render={() => {
         return(<div>I'm sorry, the page you're looking for cannot be found. A highly trained monkey is working to build the page as you read this.
         </div>)

@@ -143,6 +143,8 @@ app.get('/api/company/get_users_tasks/:id', (req, res, next) => {
 
 app.get('/api/company_code/:id', company_controller.getCompanyCode)
 
+app.get('/api/company_notifications/:id', company_controller.getCompanyNotifications)
+
 
 
 
@@ -175,7 +177,6 @@ app.get('/api/project', project_controller.get_projects)
 app.delete('/api/delete/project/:id', project_controller.delete_project)
 
 app.post('/api/addproject', project_controller.create_project)
-
 app.post('/api/editproject', project_controller.edit_project)
 
 ////////////////////////////        TASK         /////////////////////////////////
@@ -221,9 +222,9 @@ app.get('/api/roles/users', role_controller.get_user_roles)
 app.post('/api/addrole', role_controller.create_role)
 
 
-////////////////////////////            Chat            ////////////////////////////
-
-
+////////////////////////////            Notifications            ////////////////////////////
+app.post('/api/add-notification', company_controller.create_notification)
+app.delete('/api/delete_notification/:id',  company_controller.delete_notification)
 
 
 

@@ -31,6 +31,7 @@ class Create_Project_Class extends Component {
             project_paid: this.props.project_paid,
             project_creator: this.props.project_creator,
             project_unique_key: this.props.project_unique_key,
+            project_last_task: this.props.project_last_task
         }
         axios.post('/api/addproject', data).then(res => {
             this.props.getCompanyInfo(this.props.user.user_company)
@@ -39,7 +40,13 @@ class Create_Project_Class extends Component {
         })        
     }
 
+    componentWillMount() {
+        if (!this.props.user) {
+            return window.location.href = 'http://localhost:3000/#/'
 
+        }
+
+    }
 
 
     displayProject(){
