@@ -491,9 +491,12 @@ margin: 10px;
 .dash-section-2-notification-not1{
     text-align: left;
     margin:10px;
-    font-size: 18px;
+    font-size: 16px;
+
     color: grey;
     font-weight: lighter;
+    width: 370px;
+    padding: 10px;
 }
 
 .dashnoard-second-section-layout{
@@ -538,9 +541,16 @@ margin: 10px;
 }
 .dashboard-tasks-complete-image{
     height: 100px;
-    margin-bottom: 30px
+    margin-bottom: 15px
 }
 .dashboard-tasks-complete-note{
     width: 230px;
     text-align: center;
+}
+.notifications-trash-icon{
+    display: flex;
+    margin:20px;
+}
+.notifications_actual_icon{
+    margin-right: 15px;
 }

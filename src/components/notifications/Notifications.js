@@ -6,24 +6,39 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import SideBarNav from '../dashboard/Sidebar'
+import { Button, Icon } from 'semantic-ui-react'
 
 class Notifications extends Component {
     constructor() {
         super()
         this.state = {
-            notifications1:{},
-            notifications2:{},
+            notification: '',
+            notifications1: {},
+            notifications2: {},
         }
 
     }
 
-    addNotification(message){
+    deleteNotification(note_id) {
+
+        axios.delete(`/api/delete_notification/${note_id}`).then(() => {
+            axios.get(`/api/company_notifications/${this.props.user.user_company}`).then(res => {
+                console.log(res)
+                this.setState({
+                    notifications1: res.data[0],
+                    notifications2: res.data[1]
+                })
+            })
+        })
+    }
+
+    addNotification(message) {
         this.setState({
             notification: message
         })
     }
 
-    cancelNotification(){
+    cancelNotification() {
         return window.location.href = 'http://localhost:3000/#/dashboard'
     }
 
@@ -44,25 +59,25 @@ class Notifications extends Component {
                     })
                 })
             })
-            return window.location.href='http://localhost:3000/#/dashboard'
+        return window.location.href = 'http://localhost:3000/#/dashboard'
     }
 
     componentWillMount() {
         if (!this.props.user) {
             return window.location.href = 'http://localhost:3000/#/'
-        } else if(this.props.user.user_role === 0){
+        } else if (this.props.user.user_role === 0) {
             return window.location.href = 'http://localhost:3000/#/dashboard'
-        } else{
-        axios.get(`/api/company_notifications/${this.props.user.user_company}`).then(res =>{
-            console.log(res)
-            this.setState({
-                notifications1: res.data[0],
-                notifications2: res.data[1]
+        } else {
+            axios.get(`/api/company_notifications/${this.props.user.user_company}`).then(res => {
+                console.log(res)
+                this.setState({
+                    notifications1: res.data[0],
+                    notifications2: res.data[1]
+                })
+            }).then(() => {
+                console.log("STATE", this.state)
             })
-        }).then(()=>{
-            console.log("STATE", this.state)
-        })
-    }
+        }
     }
 
     // }
@@ -70,33 +85,60 @@ class Notifications extends Component {
 
         return (
             <div>
-            <div className="notification-container">
-                <SideBarNav />
-                <div className="notification-modal">
-                    <div className="top">
-                        <div>Create Notification</div>
+                <div className="notification-container">
+                    <SideBarNav />
+                    <div className="notification-modal">
+                        <div className="top">
+                            <div>Create Notification</div>
+                        </div>
+
+                        <div>
+                            <textarea className="nameinputss-not" onChange={(e) => this.addNotification(e.target.value)}
+                                placeholder="Notification" maxLength={100} />
+                            <div className='project-character-count'>{this.state.notification.length}/{100}</div>
+                        </div>
+
+
+                        <div className='button-container-create-notification'>
+                            <button className="cancel-not" onClick={() => { this.cancelNotification() }}>Cancel</button>
+                            <button className="save-not" onClick={() => this.submitNotification()}>Send</button>
+                        </div>
                     </div>
 
-                
-                        <textarea className="nameinputss-not" onChange={(e) => this.addNotification(e.target.value)}
-                            placeholder="Notification" maxLength={300}/>
-              
-
-                    <div className='button-container-create-notification'>
-                    <button className="cancel-not" onClick={()=>{this.cancelNotification()}}>Cancel</button>
-                    <button className="save-not" onClick={() => this.submitNotification()}>Send</button>
-                    </div>
                 </div>
-                
-            </div>
-            <div className="notification-modal-created-container">
+                <div className="notification-modal-created-container">
                     <div className="notifications-created-title-cont">
                         <div className='notifications-created-title'>Current Notifications</div>
                     </div>
-                    <div className='notification-actual-not'>{this.state.notifications1.notification}</div>
-                    <div className='notification-actual-not'>{this.state.notifications2.notification}</div>
+                    <div>
+                        <div>
+
+                        </div>
+                        <div>{this.state.notifications1 === {} || this.state.notifications1 === undefined ?
+                            null :
+                            <div className='notifications-trash-icon' >
+                                <div className='notifications_actual_icon' >
+                                    <Icon name='trash' onClick={() => { this.deleteNotification(this.state.notifications1.id) }} />
+                                </div>
+                                <div>
+                                    {this.state.notifications1.notification}
+                                </div>
+                            </div>}</div>
+
+                        <div>{this.state.notifications2 === {} || this.state.notifications2 === undefined ?
+                            null :
+                            <div className='notifications-trash-icon' >
+                                <div className='notifications_actual_icon' >
+                                    <Icon name='trash' onClick={() => { this.deleteNotification(this.state.notifications2.id) }} />
+                                </div>
+                                <div>
+                                    {this.state.notifications2.notification}
+                                </div>
+                            </div>}</div>
                     </div>
-                
+
+                </div>
+
 
             </div>
 

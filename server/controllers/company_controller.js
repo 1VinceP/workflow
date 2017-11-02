@@ -20,7 +20,9 @@ module.exports = {
         console.log(req.params.id)
         req.app.get('db').company.get_company_notifications(req.params.id).then(response => res.status(200).send(response))
     },
-
+    delete_notification: (req, res, next) => {
+        req.app.get('db').company.delete_notification(req.params.id).then(response => res.status(200).send(response))
+    },
 
 
     getCompany: (req, res, next) => {

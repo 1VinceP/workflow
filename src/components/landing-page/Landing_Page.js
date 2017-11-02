@@ -28,7 +28,7 @@ export default function () {
                     <div className='landing-page-card-container'>
                         <div className='landing-page-card-title employee-success-title'>Employee Success</div>
                         <div className='landing-page-card-description'>
-                        Stoked high on the face paddle battle, heavy blown out, elevator drop stoked blitz blown out, epic.
+                        Employees no longer need to guess what they need to accomplish for the day and what their priorities should be.  WorkFlow gets the employee in the driver seat!
                         </div>
                         <div className='landing-page-see-more employee-success-title'>
                         <a href='#'>
@@ -40,7 +40,7 @@ export default function () {
                     <div  className='landing-page-card-container'>
                         <div className='landing-page-card-title project-performance-title'>Project Performance</div>
                         <div className='landing-page-card-description'>
-                        Stoked high on the face paddle battle, heavy blown out, elevator drop stoked blitz blown out, epic.
+                        WorkFlow will give you an overview of the status of all tasks, projects and teams ensuring that nothing falls through the cracks and projects are completed. 
                         </div>
                         <div className='landing-page-see-more project-performance-title'>
                         <a href='#'>
@@ -52,7 +52,7 @@ export default function () {
                     <div className='landing-page-card-container'>
                         <div className='landing-page-card-title team-tracking-title'>Team Tracking</div>
                         <div className='landing-page-card-description'>
-                        Stoked high on the face paddle battle, heavy blown out, elevator drop stoked blitz blown out, epic.
+                        Managers now have a way to see where projects are at without having to constantly check in.  WorkFlow gives you full access to all your teams needs. 
                         </div>
                         <div className='landing-page-see-more team-tracking-title'>
                         <a href='#'>
@@ -64,7 +64,7 @@ export default function () {
                     <div className='landing-page-card-container'>
                         <div className='landing-page-card-title company-analytics-title'>Company Analytics</div>
                         <div className='landing-page-card-description'>
-                        Stoked high on the face paddle battle, heavy blown out, elevator drop stoked blitz blown out, epic.
+                        WorkFlow analytics gives you an overview of the state of your company at varying levels so that the business knows where to make those important adjustments.
                         </div>
                         
                         <div className='landing-page-see-more company-analytics-title'>

@@ -225,7 +225,7 @@ app.post('/api/addrole', role_controller.create_role)
 
 ////////////////////////////            Notifications            ////////////////////////////
 app.post('/api/add-notification', company_controller.create_notification)
-
+app.delete('/api/delete_notification/:id',  company_controller.delete_notification)
 
 
 

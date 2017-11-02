@@ -20,7 +20,7 @@ import _ from 'underscore-node';
 import SideNavLinks from './Sidebar'
 import linkURL from './images/upload.svg'
 import userLG from './images/usersLG.svg'
-import CAT from './images/cat.svg'
+import NOTIFICATION_IMAGE from './images/dog.svg'
 
 
 let styles = {
@@ -307,8 +307,8 @@ class Dashboard extends Component {
 
                             {needToCompleteCount === 0 ?
                             <div className='dashboard-tasks-complete-message'>
-                                <img src={CAT} alt='' className='dashboard-tasks-complete-image'/>
-                                <div className='dashboard-tasks-complete-note'>No tasks to complete right MEOW!!</div>
+                                <img src={NOTIFICATION_IMAGE} alt='' className='dashboard-tasks-complete-image'/>
+                                <div className='dashboard-tasks-complete-note'>No tasks to complete! That wasn't too RUFF!</div>
                                 
                             </div>
                         :
@@ -333,8 +333,12 @@ class Dashboard extends Component {
                                 <div className='dash-section-2-other-info-container'>
 
                                     <div className='dash-section-2-notifications'>
-                                        <div className='dash-section-2-notification-not1'>{this.state.notifications1.notification}</div>
-                                        <div className='dash-section-2-notification-not1'>{this.state.notifications2.notification}</div>
+                                        <div className='dash-section-2-notification-not1'>{this.state.notifications1=== {} || this.state.notifications1 === undefined? 
+                    null :
+                    this.state.notifications1.notification}</div>
+                                        <div className='dash-section-2-notification-not1'>{this.state.notifications2 === {} || this.state.notifications2 === undefined ? 
+                    null :
+                    this.state.notifications2.notification}</div>
 
                                     </div>
                                 </div>
