@@ -221,8 +221,8 @@ html {
 
 .team-name-header{
     padding-bottom: 5px;
-    font-size: 23px !important;
-    font-weight: 100 !important;
+    font-size: 17px !important;
+    font-weight: 900 !important;
     color: black;
     margin-top: 0;
 }
@@ -259,7 +259,7 @@ html {
 
 .team-description{
     font-weight: 200;
-    font-size: 13px !important;
+    font-size: 12px !important;
     color: gray;
 }
 
