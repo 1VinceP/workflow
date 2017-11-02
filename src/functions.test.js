@@ -64,24 +64,21 @@ describe('Chandler', function(){
     });
 });
 
-
-
 // /////////////Vincent///////////////
 
-// const createProject = require('./components/create-project/create-project-tasks');
 
-// test('description of the test', () => {
-//     expect(functionName(arguments).toBe('expectedanswer'));
-// });
-// test('description of the test', () => {
-//     expect(functionName(arguments).toBe('expectedanswer'));
-// });
-// test('description of the test', () => {
-//     expect(functionName(arguments).toBe('expectedanswer'));
-// });
-// test('description of the test', () => {
-//     expect(functionName(arguments).toBe('expectedanswer'));
-// });
-// test('description of the test', () => {
-//     expect(functionName(arguments).toBe('expectedanswer'));
-// });
+test('Divides things', () => {
+    expect(utils.divideThings( 10, 2 )).toBe( 5 );
+});
+test('Divides things', () => {
+    expect(utils.divideThings( 2, 20 )).toBe( 1 );
+});
+test('Divides things', () => {
+    expect(utils.divideThings( 10, 0 )).toBe( Infinity );
+});
+test('Displays user role', () => {
+    expect(utils.roleThings( 3 )).toBe( 3 );
+});
+test('displays user role', () => {
+    expect(utils.roleThings( 'admin' )).toBe( 'admin' );
+});

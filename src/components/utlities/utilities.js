@@ -80,5 +80,23 @@ module.exports = {
     },
     getFirstUser(array){
         return array[0]
+    },
+
+///////////////////////////////// VINCENT ///////////////////////////////
+
+    divideThings( money, tasktotal ) {
+        let x = Math.ceil(money / tasktotal);
+        console.log("this is", x);
+        // this.setState({
+        //     moneypertask: x
+        // })
+        return x
+    },
+
+    roleThings( e ) {
+        var x = e
+        return x
     }
+
 }
+

@@ -16,7 +16,8 @@ import {
 import { connect } from 'react-redux';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import SideBarNav from '../dashboard/Sidebar'
+import SideBarNav from '../dashboard/Sidebar';
+import utils from '../utlities/utilities';
 
 class AddUser extends Component {
     constructor() {
@@ -54,11 +55,14 @@ class AddUser extends Component {
 
     roleFunction(e) {
         console.log("EEEE", e)
-        var x = e
+        // var x = e
+        // this.setState({
+        //     role: x
+        // })
+        // return console.log("ROLLLLLLLLLE",this.state.role)
         this.setState({
-            role: x
+            user_role: utils.roleThings( e, this.state.user_role )
         })
-        return console.log("ROLLLLLLLLLE",this.state.role)
     }
     render() {
         let teamInfo = this.props.company_team.map((e, i) => {
