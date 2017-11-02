@@ -12,11 +12,7 @@ export default function () {
                     <div className='landing-page-main-titles-container'>
                         <div className='landing-page-main-title'>Project Management Software that lets you actually manage your project</div>
                         <div className='landing-page-divider-line'></div>
-<<<<<<< HEAD
-                        <div className='landing-page-main-sub-title'>Achieve your flow, with WorkFlow.</div>
-=======
                         <div className='landing-page-main-sub-title'>Increase productivity with WorkFlow</div>
->>>>>>> master
                         <a href={process.env.REACT_APP_LOGIN}>
                             <button className='landing-page-bet-started-button'> Get Started </button>
                         </a>
