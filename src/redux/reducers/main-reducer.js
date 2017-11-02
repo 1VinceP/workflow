@@ -37,6 +37,7 @@ const ADD_PROJECT_LAST_TASK = "ADD_PROJECT_LAST_TASK";
 const CURRENT_PROJECT_TASKS = "CURRENT_PROJECT_TASKS";
 const UPDATE_EMPLOYEE_NAME = "UPDATE_EMPLOYEE_NAME";
 const GET_USER_INFO_AFTER = 'GET_USER_INFO_AFTER';
+const RESET_PROJECT_AND_TASKS = "RESET_PROJECT_AND_TASKS";
 
 
 
@@ -151,6 +152,17 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { team_name: action.payload })
         case EDIT_TEAM_DESCRIPTION:
             return Object.assign({}, state, { team_description: action.payload })
+        case RESET_PROJECT_AND_TASKS:
+            return Object.assign( {}, state, {
+                                                project_unique_key: '',
+                                                project_name: '',
+                                                project_start_date: '',
+                                                project_finished_date: '',
+                                                project_description: '',
+                                                project_price: 0.00,
+                                                project_last_task: '',
+                                                current_project_tasks: []
+                                             } )
         default:
             return state;
     }
@@ -469,6 +481,12 @@ export function deleteProjectTask(id, key) {
     return {
         type: CURRENT_PROJECT_TASKS,
         payload: tasks
+    }
+}
+
+export function resetProjectAndTasks() {
+    return {
+        type: RESET_PROJECT_AND_TASKS
     }
 }
 
