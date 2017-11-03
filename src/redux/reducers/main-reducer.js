@@ -474,4 +474,8 @@ export function resetProjectAndTasks() {
     return {
         type: RESET_PROJECT_AND_TASKS
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 50a038448b61de9faadfa6d9e4df49ba846a46ce

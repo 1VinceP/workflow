@@ -13,8 +13,6 @@ import LeftNav from '../dashboard/Sidebar'
 
 
 class DisplayUsers extends Component {
-
-
     deleteUser(id) {
         confirmAlert({
             title: 'Delete User',
