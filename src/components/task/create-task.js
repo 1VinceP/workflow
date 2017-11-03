@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import axios from 'axios'
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-// eslint-disable-next-line
+
 import RaisedButton from 'material-ui/RaisedButton';
 import DatePicker from 'material-ui/DatePicker';
 
