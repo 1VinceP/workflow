@@ -55,4 +55,18 @@ module.exports = {
             req.app.get('db').users.user_by_email(req.params.id).then(response => res.status(200).send(response))
         },
 
+        get_tasks_completed_for_user: (req, res, next) => {
+            let {user_company, user_id} = req.body
+
+            req.app.get('db').analytics.count_users_tasks_completed(user_company, user_id)
+            .then( response => res.status(200).send(response))
+        },
+
+        get_all_tasks_for_user: (req, res, next) => {
+            let {user_company, user_id} = req.body
+            console.log("CONTROLLER", req.body)
+            req.app.get('db').analytics.all_tasks_for_users(user_company, user_id)
+            .then( response => res.status(200).send(response))
+        }
+
     }

@@ -95,6 +95,17 @@ app.get('/auth/authorized', (req, res) => {
 //////
 ////
 //
+////////////////////////////        ANALYTICS         /////////////////////////////////
+
+
+app.get('/api/company/analytics/table/:id', (req, res, next) => {
+    req.app.get('db').analytics.get_task_completed(req.params.id).then(response => res.status(200).send(response))
+})
+
+app.post('/api/company/analytics/tasks/completed', users_controller.get_tasks_completed_for_user)
+
+app.post('/api/company/analytics/tasks/all', users_controller.get_all_tasks_for_user)
+
 
 
 ////////////////////////////        COMPANY         /////////////////////////////////
@@ -219,6 +230,9 @@ app.post('/api/addrole', role_controller.create_role)
 ////////////////////////////            Notifications            ////////////////////////////
 app.post('/api/add-notification', company_controller.create_notification)
 app.delete('/api/delete_notification/:id',  company_controller.delete_notification)
+
+
+
 
 
 

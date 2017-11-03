@@ -56,7 +56,7 @@ class CreateTeam extends Component {
                     </div>
                     <div className="teamdescription">
                         <input className="nameinputss" onChange={(e) => this.props.editTeamDescription(e.target.value)}
-                            placeholder="Team Description" fullWidth='false' />
+                            placeholder="Team Description" fullwidth='false' />
                     </div>
                     </div>
                     <div className='button-container-create-team'>

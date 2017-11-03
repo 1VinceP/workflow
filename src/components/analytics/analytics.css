@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex-flow: wrap;
     align-items: center;
     background: rgba(249,249,250, 1);
     width: 100%;
@@ -24,7 +23,7 @@
 
 .charts-main{
     display: flex;
-    
+    justify-content: center;
 }
 
 
@@ -120,21 +119,23 @@
 
 .table-container{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     background: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
-    width: 770px;
-    height: 420px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.25), 0 0 1px rgba(0,0,0,.28);
+    height: 100%;
     border-radius: 3px;
+    margin: 0 3vw;
+}
+
+.analytics-top-table{
+    border-bottom: 3px solid rgba(0,0,0, .3);
+    height: 33px;
+    background: rgba(105,95,231, 1);
+    border-top-left-radius: 3px;
+    width: 770px;
+    border-top-right-radius: 3px;
+    margin-bottom: 15px;
 }
 
 
-@media(min-width: 400) {
-    .firstchart {
-        padding: 20px;
-    }
-    .firsty {
-        margin-left: 10px;
-    }
-}
+
