@@ -15,27 +15,27 @@ export default function () {
             <div className='dashboard-sidenav-title-divider'></div>
             <div className='dashboard-sidenav-links-all'>
                 <a href='/#/display-users' className='dashboard-side-nav-selections-cont'>
-                    <img src={UserIcon} className='dashboard-icon-sidenav' />
+                    <img src={UserIcon} alt="uicon" className='dashboard-icon-sidenav' />
                     <div className='dashboard-text-sidenav'>Users</div>
                 </a>
 
                 <a href='/#/display-teams' className='dashboard-side-nav-selections-cont'>
-                    <img src={TeamsIcon} className='dashboard-icon-sidenav' />
+                    <img src={TeamsIcon} alt="ticon" className='dashboard-icon-sidenav' />
                     <div className='dashboard-text-sidenav'>Teams</div>
                 </a>
 
                 <a href='/#/company-info' className='dashboard-side-nav-selections-cont'>
-                    <img src={CompanyIcon} className='dashboard-icon-sidenav' />
+                    <img src={CompanyIcon} alt="cicon" className='dashboard-icon-sidenav' />
                     <div className='dashboard-text-sidenav'>Company</div>
                 </a>
 
                 <a href='/#/display-projects' className='dashboard-side-nav-selections-cont'>
-                    <img src={ProjectIcon} className='dashboard-icon-sidenav' />
+                    <img src={ProjectIcon} alt="picon" className='dashboard-icon-sidenav' />
                     <div className='dashboard-text-sidenav'>Projects</div>
                 </a>
 
                 <a href='/#/analytics' className='dashboard-side-nav-selections-cont'>
-                    <img src={AnalyticsIcon} className='dashboard-icon-sidenav' />
+                    <img src={AnalyticsIcon} alt="aicon" className='dashboard-icon-sidenav' />
                     <div className='dashboard-text-sidenav'>Analytics</div>
                 </a>
 

@@ -29,12 +29,10 @@ class Chat extends Component {
     sendMessage() {
         // e.preventDefault();
         if (this.value !== '') {
-            console.log(this.state.value)
             this.state.messages.push(this.state.value)
-            console.log(this.state.messages)
         }
         else {
-            console.log('No message to send')
+            return('No message to send')
         }
         this.setState({
             value: ''

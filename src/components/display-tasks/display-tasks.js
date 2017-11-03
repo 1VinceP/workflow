@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './display-tasks.css';
 import RaisedButton from 'material-ui/RaisedButton';
-// eslint-disable-next-line
+
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 
@@ -30,12 +30,11 @@ export default class DisplayTasks extends Component {
     //         this.setState({
     //             teamdata: res.data
     //         })
-    //         console.log(this.state.teamdata)
     //     })
     // }
 
     render() {
-// eslint-disable-next-line
+
         let teamInfo = this.state.teamdata.map((e, i) => {
             return (
                 <div>

@@ -20,7 +20,6 @@ class Table1 extends Component {
     }
 
     compareTaskDates() {
-        console.log("teamtasks", this.props.project_tasks);
         if(this.props.project_tasks.task_start_date !== this.props.project_tasks.task_finished_date) {
             return ((this.props.project_tasks.task_finished_date - this.props.project_tasks.task_start_date), "days" )
         } else {
@@ -29,7 +28,6 @@ class Table1 extends Component {
     }
 
     compareUserTaskDates() {
-        console.log("teamtasks", this.props.user_tasks);
         if(this.props.user_tasks.task_start_date !== this.props.user_tasks.task_finished_date) {
             return ((this.props.user_tasks.task_finished_date - this.props.user_tasks.task_start_date), "days" )
         } else {
