@@ -26,15 +26,28 @@ class Analytics extends Component {
                         <LeftNav />
 
                         <div className="table-container">
-                        <div className="analytics-top-table">
+                            <div className="analytics-top-table">
+                                Tasks Completed Per Employee
                         </div>
-                        <Table2 />
-                    </div>
+                            <Table2 />
+                        </div>
+                        </div>
+
                         {/* <div className="table-container">
                         <Table2 />
-                        </div> */}
-                    </div>
+                    </div> */}
                 </div>
+                <div className="charts-container">
+                    <div className="charts-main">
+                        <div className='table-spacer-alignment'></div>
+                    <div className="table-container2">
+                        <div className="analytics-top-table2">
+                            Tasks to Complete Per Project
+                    </div>
+                        <Table1 />
+                    </div>
+                    </div>
+                    </div>
             </div>
         )
     }

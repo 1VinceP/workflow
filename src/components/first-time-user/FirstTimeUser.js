@@ -5,6 +5,7 @@ import { getUserInfo, getCompanyInfo, getCompanyUsersInfo, getCompanyTeamInfo } 
 import './firstTimeUser.css'
 import axios from 'axios'
 import {Redirect} from 'react-router';
+import ICON_SMALL from './images/koala.svg'
 
 class FirstTimeUser extends Component {
     constructor(){
@@ -41,6 +42,10 @@ class FirstTimeUser extends Component {
         }
         return(
             <div className='first-time-user-container'>
+                    <div className='first-time-tag-container'>
+                        <img src={ICON_SMALL} alt='' className='small-icon-page'/>
+                        <div className='first-time-tag-line'> What are your KOALA-fications</div>
+                    </div>
                 <div className='first-time-user-options-container'>
                     <div className='first-time-user-create-company-container'>
                         <div className='first-time-user-titles'>Create Company</div>

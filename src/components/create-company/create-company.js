@@ -24,13 +24,7 @@ class CreateCompany extends Component {
     };
   }
 
-  componentWillMount() {
-    if (!this.props.user) {
-        return window.location.href = 'http://localhost:3000/#/'
 
-    }
-
-}
   submitCompany(){
     let rawDate = new Date()
     let formatDate = rawDate.toString().split(' ')

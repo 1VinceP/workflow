@@ -24,6 +24,7 @@
 .charts-main{
     display: flex;
     justify-content: center;
+    margin-bottom: 3vw 3vw 1.5vw 3vw;
 }
 
 
@@ -135,7 +136,44 @@
     width: 770px;
     border-top-right-radius: 3px;
     margin-bottom: 15px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-
+.analytics-top-table2{
+    border-bottom: 3px solid rgba(0,0,0, .3);
+    height: 33px;
+    background: rgba(105,95,231, 1);
+    border-top-left-radius: 3px;
+    width: 770px;
+    border-top-right-radius: 3px;
+    margin-bottom: 15px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.table-container2{
+    display: flex;
+    flex-direction: column;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,.25), 0 0 1px rgba(0,0,0,.28);
+    height: 100%;
+    border-radius: 3px;
+    margin-top: 15px;
+}
+.table-spacer-alignment{
+    width: 10vw;
+}
+#container {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 800px;
+    height: 800px;
+    background-color: #fff;
+  }
 
