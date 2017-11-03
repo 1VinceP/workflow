@@ -20,9 +20,17 @@ class CreateCompany extends Component {
     this.state = {
       finished: false,
       stepIndex: 0,
+      company_id_for_code:'',
     };
   }
 
+  componentWillMount() {
+    if (!this.props.user) {
+        return window.location.href = 'http://localhost:3000/#/'
+
+    }
+
+}
   submitCompany(){
     let rawDate = new Date()
     let formatDate = rawDate.toString().split(' ')
@@ -38,11 +46,24 @@ class CreateCompany extends Component {
       company_code: this.props.company_code,
   }
      axios.post('/api/addcompany', data).then(response =>{
-      console.log('CODE IN PROPS', this.props )
-     })
-    console.log(data)
+     }).then(()=>{axios.get(`/api/company_code/${this.props.company_code}`).then((response)=>{ 
+      this.setState({
+          company_id_for_code: response.data[0].company_id
+       })
+      }).then(()=>{
+          let data = {
+              user_company: this.state.company_id_for_code,
+              user_id: this.props.user.user_id,
+          }
+          axios.put(`/api/company_code`, data)
+      }).then(()=>{
+      return window.location.href =process.env.REACT_APP_LOGOUT_JOINED
+  })
+})
+  
+  }
+  
     
-}
 
   handleNext = () => {
     const { stepIndex } = this.state;
@@ -61,7 +82,6 @@ class CreateCompany extends Component {
 
 
   getStepContent(stepIndex) {
-    console.log('WHERE', this.props)
     switch (stepIndex) {
       case 0:
         return (
@@ -109,13 +129,13 @@ class CreateCompany extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
+    return(this.props)
   }
 
   render() {
     const { finished, stepIndex } = this.state;
     const contentStyle = { margin: '0 16px' };
-    // eslint-disable-next-line
+    
     const {company_name} = this.props
 
     return (
@@ -136,7 +156,6 @@ class CreateCompany extends Component {
           {finished ? (
             <p>
               <a
-                href="/#/dashboard"
                 onClick={(event) => {
                   event.preventDefault();
                   this.setState({ stepIndex: 0, finished: false });
@@ -157,7 +176,7 @@ class CreateCompany extends Component {
                   />
                   {stepIndex === 2
                     ?
-                    <a href='/#/dashboard'>
+                    <a >
                     <RaisedButton
                       label='Finish'
                       primary={true}

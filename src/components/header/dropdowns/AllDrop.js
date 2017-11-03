@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
+// import RaisedButton from 'material-ui/RaisedButton';
+// import FlatButton from 'material-ui/FlatButton';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
@@ -37,7 +37,7 @@ class AllDrop extends Component {
     render() {
         return(
             <div>
-                <FlatButton onClick={this.handleOpen} label='Menu' />
+                <button onClick={this.handleOpen} className='header-link-buttons' >Menu</button>
                 <Popover open={this.state.open}
                          onRequestClose={this.handleClose} 
                          anchorEl={this.state.anchorEl}

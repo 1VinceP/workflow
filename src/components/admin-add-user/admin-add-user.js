@@ -16,30 +16,30 @@ import {
 import { connect } from 'react-redux';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import SideBarNav from '../dashboard/Sidebar';
+import utils from '../utlities/utilities';
 
 class AddUser extends Component {
     constructor() {
         super();
 
         this.state = {
-
+            user_role: ''
         }
         this.submitUser = this.submitUser.bind(this);
     }
 
 
     submitUser() {
-        console.log(this.props)
         let data = {
             user_firstname: this.props.user_firstname,
             user_lastname: this.props.user_lastname,
             user_email: this.props.user_email,
             user_team: this.props.user_team,
-            user_role: this.props.user_role,
+            user_role: this.state.user_role * 1,
             user_company: this.props.user.user_company
             // user_authid: this.props.user_authid
         }
-        console.log("DATA", data)
         axios.post('/api/admin/adduser', data)
             .then(() => {
                 this.props.getUserInfo().then(res => {
@@ -48,36 +48,77 @@ class AddUser extends Component {
                     })
                 })
             })
+            return window.location.href ='http://localhost:3000/#/display-users'
     }
 
+    roleFunction(e) {
+        this.setState({
+            user_role: utils.roleThings( e, this.state.user_role )
+        })
+    }
+    componentWillMount() {
+        if (!this.props.user) {
+            return window.location.href = 'http://localhost:3000/#/'
+
+        }
+
+    }
     render() {
+        let teamInfo = this.props.company_team.map((e, i) => {
+            return (
+                <option key={i} value={e.team_id}>{`${e.team_name}`}</option>
+            )
+        })
 
+  
+        
         return (
-            <div className="profile-modal">
-                <div className="firstname">
-                    <TextField onChange={(e) => this.props.editUserFirstname(e.target.value)}
-                        hintText="First Name" />
+            <div className="user-container">
+                <div className='sidenav-spacing-user'>
+                <SideBarNav />
                 </div>
-                <div className="lastname">
-                    <TextField onChange={(e) => this.props.editUserLastname(e.target.value)}
-                        hintText="Last Name" />
-                </div>
-                <div className="email">
-                    <TextField onChange={(e) => this.props.editUserEmail(e.target.value)}
-                        hintText="Email"
-                    />
-                </div>
+                <div>
+                <div className="profile-modal-add-user">
+                    <div className="heading-add-user">Create User</div>
+                    <div className="infobox">
+                        <div className="field">
+                            <TextField onChange={(e) => this.props.editUserFirstname(e.target.value)}
+                                hintText="First Name" />
+                        </div>
+                        <div className="field">
+                            <TextField onChange={(e) => this.props.editUserLastname(e.target.value)}
+                                hintText="Last Name" />
+                        </div>
+                        <div className="field">
+                            <TextField onChange={(e) => this.props.editUserEmail(e.target.value)}
+                                hintText="Email"
+                            />
+                        </div>
+                           
+                            <div className='dashboard-input-names-cont'>
+                                <select className='dashboard-input-names' onChange={(e) => { this.roleFunction(e.target.value) }} selected='User Role'>
+                                    <option selected='selected' disabled='Disabled'>User Role</option>
+                                    <option value={0}>Employee</option>
+                                    <option value={1}>Manager</option>
+                                </select>
+                            </div>
 
-                <div className="team">
-                    <TextField onChange={(e) => this.props.editUserTeam(e.target.value)}
-                        hintText="Team" />
+
+                        <div>
+                            <select name='taskUser' className='task-create-task-input' onChange={(e) => { this.props.editUserTeam(e.target.value) }}>
+                                <option selected='User' disabled='User'>Teams</option>
+                                {teamInfo}
+                            </select>
+                        </div>
+
+
+                        <div className='button_container-add-user'>
+                        <Link to='/display-users'><button className="cancel1">Cancel</button></Link>
+                        <Link to='/display-users'><button className="save1" onClick={() => this.submitUser()}>Save</button></Link>
+                        </div>
+                    </div>
                 </div>
-                <div className="Role">
-                    <TextField onChange={(e) => this.props.editUserRole(e.target.value)}
-                        hintText="Role" />
                 </div>
-                <Link to='/display-users'><button onClick={() => this.submitUser()}>Save Changes</button></Link>
-                <Link to='/display-users'><button>Cancel</button></Link>
             </div>
         )
     }

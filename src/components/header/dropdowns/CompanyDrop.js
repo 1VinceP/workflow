@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
+// import RaisedButton from 'material-ui/RaisedButton';
+// import FlatButton from 'material-ui/FlatButton';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
@@ -35,9 +38,10 @@ class CompanyDrop extends Component {
     }
 
     render() {
+        // let compName = this.props.company[0].company_name
         return(
             <div>
-                <FlatButton onClick={this.handleOpen} label='Company' style={{marginRight: '5px'}} />
+                <button onClick={this.handleOpen} className='header-link-buttons' page-is-scrolled={this.props.scroll} >Company</button>
                 <Popover open={this.state.open}
                          onRequestClose={this.handleClose} 
                          anchorEl={this.state.anchorEl}
@@ -45,14 +49,17 @@ class CompanyDrop extends Component {
                          targetOrigin={{horizontal: 'middle', vertical: 'top'}}
                 >
                     <Menu>
-                        <Link to='/display-company' className='header-link'><MenuItem primaryText='Company' onClick={this.handleClose} /></Link>
-                        <Link to='/display-projects' className='header-link'><MenuItem primaryText='Projects' onClick={this.handleClose} /></Link>
-                        <Link to='/display-tasks' className='header-link'><MenuItem primaryText='Tasks' onClick={this.handleClose} /></Link>
+                        {/* <div>{compName}</div> */}
+                        
                     </Menu>
                 </Popover>
             </div>
         )
     }
 }
+function mapStateToProps( state ) {  
+    return state
+  }
 
-export default CompanyDrop;
+
+export default connect( mapStateToProps, {} )(CompanyDrop)

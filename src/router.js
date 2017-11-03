@@ -1,8 +1,6 @@
 import React from 'react';
-import { Switch, Route, Redirect, render } from 'react-router-dom';
-import SignInPage from './components/sign-in-page/sign-in-page';
+import { Switch, Route } from 'react-router-dom';
 import Dashboard from './components/dashboard/dashboard';
-// import Analytics from './components/analytics/analytics';
 import EditUser from './components/edit-user/edit-user';
 import AddUser from './components/admin-add-user/admin-add-user';
 import DisplayUsers from './components/display-users/display-users';
@@ -18,17 +16,14 @@ import DisplayProjects from './components/display-projects/display-projects';
 import DisplayCompany from './components/display-company/display-company';
 import CreateTeam from './components/create-team/create-team';
 import Analytics from './components/analytics/analytics';
-// import axios from 'axios';
+import Chat from './components/chat/chat';
+import InitialLoad from './components/initial-load/InitialLoadFunctional';
+import FirstTimeUser from './components/first-time-user/FirstTimeUser';
+import CompanyJoinedAdded from './components/company-joined-added/CompanyJoinedAdded'
+import CompanyInfor from './components/company/Company'
+import Notifications from './components/notifications/Notifications'
+import PageLoading from './components/page-loading/PageLoading'
 
-// function checkForLog() {
-//     axios.get('/auth/authorized').then(user => {
-//         if(!user) {
-//           const check = false;
-//         } else {
-//           const check = true;
-//         }
-//     })
-// }
 
 export default (
     <Switch>
@@ -37,9 +32,9 @@ export default (
         <Route path='/dashboard' component={Dashboard} />
         <Route path='/analytics' component={Analytics} />
         
-        /* CLIENT ROUTES */
+        {/* CLIENT ROUTES */}
         <Route path='/status'  />
-        <Route path='/chat' />
+        <Route path='/chat' component={Chat}/>
         <Route path='/edit-user' component={EditUser} />
         <Route path='/display-users' component={DisplayUsers} />
         <Route path='/display-company' component={DisplayCompany}/>
@@ -48,16 +43,25 @@ export default (
         <Route path='/display-teams' component={DisplayTeams}/>
         <Route path='/create-company' component={CreateCompany} />
         <Route path='/create-project' component={CreateProject} />
-        <Route path='/create-task' 
-        /* component={Create_task} */
-        />
+        <Route path='/create-task' /> 
         <Route path='/create-team'  component={CreateTeam}/>
         <Route path='/create-user' component={AddUser} />
+        <Route path='/company-info' component={CompanyInfor} />
+        <Route path='/create-notification' component={Notifications} />
 
         {/* SIGN IN ROUTES */}
         <Route path='/contact' component={ContactUs} />
         <Route path='/our-company' component={WhatWeDo} />
         <Route path='/our-team' component={MeetTheTeam} />
+        <Route path='/loading-page' component={InitialLoad} />
+        <Route path='/first-time-user' component={FirstTimeUser} />
+        <Route path='/company-joined' component={CompanyJoinedAdded} />
+        <Route path='/loading' component={PageLoading} />
+        
+        <Route render={() => {
+        return(<div>I'm sorry, the page you're looking for cannot be found. A highly trained monkey is working to build the page as you read this.
+        </div>)
+    }} />
         
     </Switch>
 )

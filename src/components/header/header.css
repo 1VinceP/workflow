@@ -6,17 +6,27 @@ html {
 }
 
 .header-header {
-    width: 100vw;
+    width: 100%;
     height: 60px;
-    box-shadow: 0px 5px 9px 3px rgba(232, 232, 232, 0.25);
+    box-shadow: 0px 5px 9px 0px rgba(165, 165, 165, 0.25);
     display: flex;
-    position: sticky;
+    position: fixed;
+    z-index: 100;
+padding: 0 80px 0 80px;
+    transition: background .15s, height .15s, color .15s;
+}
+
+[page-has-scrolled='true'] {
+    background: white;
+    height: 40px;
+    
 }
 
 .header-link {
     text-decoration: none;
     color: white;
-    margin: 5px;
+    display: flex;
+    align-items: center;
 }
 
 .header-left {
@@ -31,10 +41,15 @@ html {
 
 .header-site-name {
     height: 50%;
-    margin-left: 20px;
     display: flex;
     align-items: center;
-    color: grey
+    color: grey;
+}
+.header-site-name-2 {
+    height: 50%;
+    display: flex;
+    align-items: center;
+    color: #4dbf71;
 }
 
 .header-right {
@@ -58,11 +73,25 @@ html {
     width: 200px;
 }
 
+.header-link-buttons {
+    width: 100px;
+    background: transparent;
+    color: #808080;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.header-link-buttons:hover {
+    color: #6859ea;
+}
+
 .header-mid-buttons {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-end;
 }
 .header-signup-button{
     width: 120px;
@@ -73,7 +102,7 @@ html {
     border-radius: 4px;
     height: 35px;
     font-size: 16px;
-
+    cursor: pointer;
     color: white;
 }
 .header-login-button{
@@ -108,4 +137,14 @@ a{
     .header-right {
         width: 40%;
     }
+}
+
+
+
+[page-is-scrolled='true'] {
+    color: grey;
+}
+.header-company-logo-icon{
+    height: 40px;
+    margin-left: 5px;
 }

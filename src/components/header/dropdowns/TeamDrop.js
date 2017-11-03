@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
+// import RaisedButton from 'material-ui/RaisedButton';
+// import FlatButton from 'material-ui/FlatButton';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import {Link} from 'react-router-dom';
-import './dropdown.css'
+import '../header.css';
 
 class TeamDrop extends Component {
     constructor() {
@@ -37,7 +37,7 @@ class TeamDrop extends Component {
     render() {
         return(
             <div>
-                <FlatButton onClick={this.handleOpen} label='Teams' />
+                <button onClick={this.handleOpen} className='header-link-buttons' page-is-scrolled={this.props.scroll} >Users</button>
                 <Popover open={this.state.open}
                          onRequestClose={this.handleClose} 
                          anchorEl={this.state.anchorEl}

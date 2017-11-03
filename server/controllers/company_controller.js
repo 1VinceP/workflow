@@ -11,11 +11,31 @@ module.exports = {
         req.app.get('db').company.company_users().then(response => res.status(200).send(response))
     },
 
+
+    getCompanyCode: (req, res, next) => {
+        
+        req.app.get('db').company.get_company_code(req.params.id).then(response => res.status(200).send(response))
+    },
+    getCompanyNotifications: (req, res, next) => {
+       
+        req.app.get('db').company.get_company_notifications(req.params.id).then(response => res.status(200).send(response))
+    },
+    delete_notification: (req, res, next) => {
+        req.app.get('db').company.delete_notification(req.params.id).then(response => res.status(200).send(response))
+    },
+
+
     getCompany: (req, res, next) => {
         req.app.get('db').company.get_company(req.params.id).then(response => res.status(200).send(response))
     },
 
     getCompanyUsersById: (req, res, next) => {
         req.app.get('db').company.company_users(req.params.id).then(response => res.status(200).send(response))
+    },
+    create_notification: (req,res,next) => {
+        let {notification, notification_company, notification_date, notification_user_name, notification_user} = req.body;
+        
+        req.app.get('db').company.add_notification(notification, notification_company, notification_date, notification_user_name, notification_user)
+        .then( () => res.status(200).send() );
     }
 }

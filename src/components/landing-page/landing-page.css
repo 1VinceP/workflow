@@ -10,9 +10,9 @@
     height: 100%;
 }
 .landing-page-iphone{
-    height: 300px;
-    margin-left: -220px;
-    margin-bottom: -10px;
+    height: 250px;
+    margin-left: -120px;
+    margin-bottom: -2px;
     align-self: flex-end;
 
 
@@ -28,7 +28,7 @@
 .landing-page-hero{
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    justify-content: center;
     margin-top: 100px;
 
 }
@@ -37,6 +37,7 @@
     color: #6859ea;
     font-weight: bold;
     align-self: center;
+    line-height: 1.3;
 
 }
 .landing-page-main-sub-title{
@@ -46,8 +47,8 @@
 .landing-page-main-titles-container{
 
     text-align: right;
-    margin:50px 20px 50px 20px ;
-    width: 465px;
+    margin:50px 0px 50px 20px ;
+    width: 500px;
     display: flex;
     flex-direction: column;
 }
@@ -167,4 +168,7 @@ padding: 10px;
 }
 .company-analytics-title a{
     color: #ff8993;
+}
+.landing-page-spacer{
+    width: 70px;
 }

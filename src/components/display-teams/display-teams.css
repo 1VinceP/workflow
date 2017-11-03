@@ -1,40 +1,433 @@
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+
 .edit-team-popup input{
-    /* width: 50px; */
+    margin-bottom: 15px;
 }
 
 .edit-team-description{
+    padding-top: 5px;
+    padding-left: 10px;
     margin-top: 10px;
     height: auto;
-    width: auto;
-    min-width: 200px;
-    border: none;
-    text-align: center;
+    height: 100px;
+    width: 440px;
+    border: 1px solid rgba(0,0,0, .1);
+    color: rgba(0,0,0,.50);
+    border-radius: 5px;
+    resize: none;
 }
 
 .edit-team-description:focus{
-    border: 1px solid rgba(0,0,0, .3);
-    border-radius: 5px;
+    border: 1px solid rgba(0,0,0, .45);
     outline: none;
     text-align: left;
+    box-shadow: 0px 1px 2px rgba(0,0,0, .14);
+    color: rgba(0,0,0,.88);
 }
 .edit-team-users-section{
+    display: flex;
+    flex-direction: column;
     margin-top: 25px;
 }
 
+.edit-description-span{
+    
+}
+
 .edit-team-users-container {
-    /* margin-top: 15px; */
-    height: 110px;
-    width: 220px;
+    height: 170px;
+    width: 440px;
     overflow: auto;
-    border-top: 1px solid rgba(0,0,0, .3);
-    /* border-radius: 10px; */
+    border-top: 1px solid rgba(0,0,0, .45);
+    
+    
+}
+
+
+
+
+.edit-team-name-input-box{
+    padding-left: 10px !important;
+    border: 1px solid rgba(0,0,0, .1);
+    border-radius: 3px;
+    margin-top: 6px;
+    color: rgba(0,0,0,.50);
+    width: 250px;
+}
+
+.edit-team-name-input-box:focus{
+    border: 1px solid rgba(0,0,0, .45);
+    outline: none;
+    box-shadow: 0px 1px 2px rgba(0,0,0, .14);
+    color: rgba(0,0,0,.88);
+}
+
+.edit-team-name-span, .edit-description-span, .users-header{
+    color: black !important;
+    font-weight: 900;
 }
 
 .edit-team-users-user{
-    margin-top: 10px;
-    margin-left: 13px;
+    margin-bottom: 7px !important;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.edit-user-label{
+    font-weight: 100;
+    color: black;
+    padding-left: 15px;
+    cursor: pointer;
 }
 
 .users-header{
-    margin-left: 80px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5px;
+    font-size: 20px;
+    padding-left: 3px;
 }
+
+.team-charts-container{
+    margin-top: 25px;
+    width: 1210px;
+    height: auto;
+}
+
+
+.team-analytics-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(249,249,250, 1);
+    width: 100%;
+    padding-top: 15px;
+}
+
+.team-charts-main{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+/* .team-charts-main{
+    display: flex;
+    justify-content: center;
+    margin: 0 3vw;
+} */
+
+
+.chart {
+    height: 300;
+    width: 100;
+}
+
+/*          Left nav bar           */
+
+
+.charts-left-navbar{
+    display: flex;
+    flex-direction: column;
+    width: 200px; 
+    height: 350px;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
+    font-weight: 100;
+    border-top: 2px solid rgb(119, 88, 236);
+    border-radius: 3px;
+}
+
+.charts-left-navbar span {
+    padding-top: 20px;
+    font-size: 14px;
+    padding-left: 15px;
+}
+
+
+
+/*          right nav bar           */
+.team-right-navbar-title{
+    border-bottom: 1px solid rgba(0,0,0, .15);
+    padding-bottom: 5px;
+    margin-top: -15px;
+    font-size: 17px !important;
+    font-weight: 500 !important;
+}
+
+.team-right-navbar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px; 
+    height: 125px;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
+    border-top: 2px solid rgba(253, 46, 84, 1);
+    border-radius: 3px;
+}
+
+.team-right-navbar span {
+    display: flex;
+    padding-top: 20px;
+    font-size: 14px;
+    font-weight: 100;
+    width: 100%;
+}
+
+.team-create-user-button{    
+    background-color: rgba(253, 46, 84, 1); 
+    height: 25px;
+    font-size: 15px;
+    border-radius: 3px;
+    width: 100px;
+    color: white;
+    border: none;
+    margin-top: 25px;
+
+    cursor: pointer;
+}
+
+.team-create-user-button:focus{
+    outline: none;
+}
+
+.team-name-description-section{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/*                          table                       */
+
+
+.team-name-description{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding-left: 3px;
+}
+
+.team-name-header{
+    padding-bottom: 5px;
+    font-size: 17px !important;
+    font-weight: 900 !important;
+    color: black;
+    margin-top: 0;
+}
+
+/* .team-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
+    width: 675px;
+    height: 420px;
+    border-top: 2px solid rgb(121, 90, 241);
+    border-radius: 3px;
+} */
+
+.team-container-yo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 770px;
+    min-height: 100px;
+    height: auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
+    background: white;
+    border-bottom: 1px solid rgba(0,0,0, .1);
+}
+
+
+
+.team-section{
+    padding: 15px 0;
+}
+
+.team-description{
+    font-weight: 200;
+    font-size: 12px !important;
+    color: gray;
+}
+
+.description-and-users{
+    padding-bottom: 5px
+}
+
+.team-members-span{
+    display: flex;
+    font-size: 10px !important;
+    font-weight: 100 !important;
+    margin-left: 35px;
+}
+
+.team-description-div{
+    width:300px;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    overflow: visible; 
+    white-space: normal;
+    height:auto;
+    margin-right: 45px;
+}
+
+.users-on-team-div{
+    display: flex;
+    width: 170px;
+    height: auto;
+    /* margin-bottom: 10px; */
+}
+
+
+.team-users-dropdown{
+    display: flex;
+    /* align-items: flex-end; */
+    flex-direction: column;
+    padding-left: 15px;
+}
+
+
+
+.team-settings-button {
+    background: none !important;
+    margin-right: -45px !important;
+  }
+
+.team-delete-button {
+    background: none !important;
+    margin-right: -35px !important;
+  }
+
+.team-buttons-div{
+    margin-right: 10px;
+    margin-top: -25px;
+  }
+
+
+.team-name-users-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.users-header-team-box{
+    border: none;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    margin-right: 145px;
+}
+
+.edit-team-users-span{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.already-on-team-span{
+    position: fixed;
+    font-size: 10px;
+    margin-left: 270px !important;
+    margin-top: 7px !important; 
+    font-weight: 100 !important;
+    
+}
+
+.assigned-star{
+    color: black;
+    font-weight: 100 !important;
+    margin-left: 205px !important;
+    font-size: 18px !important;
+    margin-top: 11px !important; 
+    margin-bottom: -10px;
+}
+
+.display-teams-users-users{
+    margin-bottom: 5px;
+}
+
+.display-team-name-header{
+    padding-right: 350px;
+    padding-left: 30px;
+}
+
+
+
+.no-team-box{
+    width: 770px;
+    height: 200px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.15), 0 0 1px rgba(0,0,0,.18);
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-team-span{
+    font-size: 20px;
+    padding-bottom: 35px;
+    font-weight: 100;
+    color: rgba(65,65,65, .5);
+}
+
+.no-team-button{
+    width: 150px;
+    height: 35px;
+    
+    border-radius: 3px;
+    color: white;
+    background: rgba(253, 46, 84, 1);
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+.team-table-container{
+    display: flex;
+    flex-direction: column;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,.25), 0 0 1px rgba(0,0,0,.28);
+    width: 770px;
+    height: 100%;
+    border-radius: 3px;
+    margin: 0 3vw;
+    
+}
+
+.team-top-table{
+    border-bottom: 3px solid rgba(255,255,255, .5);
+    height: 43px;
+    background: rgba(253, 46, 84, 1);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    
+}
+
+.team-top-table-text{
+    display: flex;
+    font-size: 17px;
+    font-weight: 900;
+    margin-top: 12px;
+    color: white;
+    padding-bottom: 12px; 
+}
+
+
+
+
+
+

@@ -1,57 +1,69 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import './create-team.css';
-import {editTeamName, editTeamDescription, getCompanyInfo, getCompanyTeamInfo} from '../../redux/reducers/main-reducer';
-import {connect} from 'react-redux';
+import { getUserInfo, editTeamName, editTeamDescription, getCompanyInfo, getCompanyTeamInfo } from '../../redux/reducers/main-reducer';
+import { connect } from 'react-redux';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import SideBarNav from '../dashboard/Sidebar'
 
 class CreateTeam extends Component {
-    constructor(){
+    constructor() {
         super()
-        this.state={
+        this.state = {
 
         }
         this.submitTeam = this.submitTeam.bind(this);
     }
 
     submitTeam() {
-        console.log(this.props)
         let data = {
             team_name: this.props.team_name,
-            team_date: this.props.team_date,
             team_description: this.props.team_description,
-            team_projects_completed: this.props.team_projects_completed,
             team_company: this.props.user.user_company
         }
-        console.log("data : ", data)
         axios.post('/api/addteam', data)
-        .then(() => {
-            this.props.getTeamInfo().then(res => {
-                this.props.getCompanyInfo(this.props.user.user_company).then(res => {
-                    this.props.getCompanyTeamsInfo(this.props.user.user_company)
+            .then(() => {
+                this.props.getUserInfo().then(res => {
+                    this.props.getCompanyInfo(this.props.user.user_company).then(res => {
+                        this.props.getCompanyTeamInfo(this.props.user.user_company)
+                    })
                 })
             })
-        })
     }
 
+    componentWillMount() {
+        if (!this.props.user) {
+            return window.location.href = 'http://localhost:3000/#/'
+        } else if(this.props.user.user_role === 0){
+            return window.location.href = 'http://localhost:3000/#/dashboard'
+        }
+
+    }
     render() {
 
         return (
-            <div className="team-modal">
-                <div className="teamname">
-                    <TextField onChange={(e) => this.props.editTeamName(e.target.value)}
-                    hintText="Team Name" />
+            <div className="team-container">
+                <SideBarNav />
+                <div className="team-modal">
+                    <div className="top">
+                        <div>Create Team</div>
+                    </div>
+                    <div className="create-team-name-description">
+                    <div className="dashboard-input-names">
+                        <input className="nameinputss" onChange={(e) => this.props.editTeamName(e.target.value)}
+                            placeholder="Team Name (Required)" />
+                    </div>
+                    <div className="teamdescription">
+                        <input className="nameinputss" onChange={(e) => this.props.editTeamDescription(e.target.value)}
+                            placeholder="Team Description" fullWidth='false' />
+                    </div>
+                    </div>
+                    <div className='button-container-create-team'>
+                    <Link to='/display-teams'><button className="cancel">Cancel</button></Link>
+                    <Link to='/display-teams'><button className="save" onClick={() => this.submitTeam()}>Save Changes</button></Link>
+                    </div>
                 </div>
-                <div className="teamdescription">
-                    <TextField onChange={(e) => this.props.editTeamDescription(e.target.value)}
-                    hintText="Team Description" />
-                </div>
-                <div className="teaminfo">
-                    Details about the team will appear here.
-                </div>
-                <Link to='/display-teams'><button onClick={() => this.submitTeam()}>Save Changes</button></Link>
-                <Link to='/display-teamss'><button>Cancel</button></Link>
             </div>
 
         )
@@ -63,4 +75,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-    editTeamName, editTeamDescription, getCompanyInfo, getCompanyTeamInfo})(CreateTeam)
+    getUserInfo,
+    editTeamName, editTeamDescription, getCompanyInfo, getCompanyTeamInfo
+})(CreateTeam)

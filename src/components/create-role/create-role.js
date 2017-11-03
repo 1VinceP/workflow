@@ -3,16 +3,21 @@ import {connect} from 'react-redux'
 class CreateRole extends Component {
         
     componentWillMount(){
+
+            if (!this.props.user) {
+                return window.location.href = 'http://localhost:3000/#/'
+    
+            }
+    
         if(this.props.company){
-            console.log('truuuuuuu')
+            return "true"
         } else {
-            console.log(this.props.user)
+            return this.props.user
         }
     }
 
     
     render() {
-        console.log("COMPANY LOL", this.props.state.company)
         return (
             <div>
                 <h1>TEST</h1>
@@ -23,7 +28,6 @@ class CreateRole extends Component {
 }
 
 function mapStateToProps( state ) {
-    console.log(state)
     return {
         state
     };

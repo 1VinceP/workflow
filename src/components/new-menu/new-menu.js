@@ -35,7 +35,7 @@ export default class NewMenu extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{width: '100%'}}>
         <RaisedButton
           primary={true}
           onClick={this.handleTouchTap}

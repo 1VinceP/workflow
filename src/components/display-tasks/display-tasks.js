@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './display-tasks.css';
 import RaisedButton from 'material-ui/RaisedButton';
-// eslint-disable-next-line
+
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 
@@ -17,13 +17,19 @@ export default class DisplayTasks extends Component {
             teamdata: []
         }
     }
+    componentWillMount() {
+        if (!this.props.user) {
+            return window.location.href = 'http://localhost:3000/#/'
+
+        }
+
+    }
 
     // componentDidMount() {
     //     axios.get('/api/getusers').then(res => {
     //         this.setState({
     //             teamdata: res.data
     //         })
-    //         console.log(this.state.teamdata)
     //     })
     // }
 
