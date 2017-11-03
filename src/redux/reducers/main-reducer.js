@@ -446,6 +446,8 @@ export function deleteProjectTask(id, key) {
     }
 }
 
-// let count = companyName.split('')
-// let projectKey = companyName.charAt(0) + companyName.charAt(1) + companyName.charAt(2) + count.length + count[count.length - 2];
-// return projectKey.toUpperCase()
+export function resetProjectAndTasks() {
+    return {
+        type: RESET_PROJECT_AND_TASKS
+    }
+}
