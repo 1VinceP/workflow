@@ -457,6 +457,7 @@ export function currentProjectTasks(key, body) {
     }
 }
 
+
 export function deleteProjectTask(id, key) {
 
     const tasks = axios.delete(`/api/deleteTask/${id}/${key}`)
@@ -470,12 +471,9 @@ export function deleteProjectTask(id, key) {
     }
 }
 
+
 export function resetProjectAndTasks() {
     return {
         type: RESET_PROJECT_AND_TASKS
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 50a038448b61de9faadfa6d9e4df49ba846a46ce
