@@ -237,7 +237,7 @@ class DisplayUsers extends Component {
                                 <div className="project-no-team-box">
                                     <span className="project-no-team-span">No projects created yet</span>
                                     <a href='/#/create-project'>
-                                        <button onClick={() => { this.props.addProjectUniqueKey(this.props.company[0].company_name, this.props.user.user_id) }} className="project-no-team-button">Create a Project</button>
+                                        <button onClick={() => { this.props.addProjectUniqueKey(this.props.company.company_name, this.props.user.user_id) }} className="project-no-team-button">Create a Project</button>
                                     </a>
                                 </div>}
                         </div>
@@ -247,7 +247,7 @@ class DisplayUsers extends Component {
                         <div className="projects-charts-right-navbar">
                             <span className="right-navbar-title">Projects</span>
                             <a className="create-users-button-right"  href='/#/create-project'>
-                                <button onClick={() => { this.props.addProjectUniqueKey(this.props.company[0].company_name, this.props.user.user_id) }} className="project-alert-button">Create Project</button>
+                                <button onClick={() => { this.props.addProjectUniqueKey(this.props.company.company_name, this.props.user.user_id) }} className="project-alert-button">Create Project</button>
                             </a>
                         </div>
                     </div>
