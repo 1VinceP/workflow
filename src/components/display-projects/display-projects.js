@@ -57,7 +57,6 @@ class DisplayUsers extends Component {
 
 
     // editProject(name, start, end, description, price, id) {
-    //     console.log("it worked lol", name, start, end, description, price, id)
     // }
 
     editProject(name, start, end, description, price, id) {
@@ -70,7 +69,6 @@ class DisplayUsers extends Component {
             project_id: id
         }
         function nameFunction(e) {
-            console.log(e.target.value)
             data.project_name = e.target.value
         }
 
@@ -79,7 +77,7 @@ class DisplayUsers extends Component {
         }
 
         function descriptionFunction(e) {
-            console.log(e)
+
             data.project_description = e
         }
 
@@ -172,8 +170,6 @@ class DisplayUsers extends Component {
 
 
     // getTeamName(id) {
-    //     // console.log('id', id)
-    //     // console.log("COMPANY PROPS", this.props.company_team[0].team_id)
     //     var teamId = this.props.company_team
     //     for (let i = 0; i < teamId.length; i++) {
     //         if (teamId[i].team_id === id) {
@@ -241,7 +237,7 @@ class DisplayUsers extends Component {
                                 <div className="project-no-team-box">
                                     <span className="project-no-team-span">No projects created yet</span>
                                     <a href='/#/create-project'>
-                                        <button onClick={() => { this.props.addProjectUniqueKey(this.props.company[0].company_name, this.props.user.user_id) }} className="project-no-team-button">Create a Project</button>
+                                        <button onClick={() => { this.props.addProjectUniqueKey(this.props.company.company_name, this.props.user.user_id) }} className="project-no-team-button">Create a Project</button>
                                     </a>
                                 </div>}
                         </div>
@@ -251,7 +247,7 @@ class DisplayUsers extends Component {
                         <div className="projects-charts-right-navbar">
                             <span className="right-navbar-title">Projects</span>
                             <a className="create-users-button-right"  href='/#/create-project'>
-                                <button onClick={() => { this.props.addProjectUniqueKey(this.props.company[0].company_name, this.props.user.user_id) }} className="project-alert-button">Create Project</button>
+                                <button onClick={() => { this.props.addProjectUniqueKey(this.props.company.company_name, this.props.user.user_id) }} className="project-alert-button">Create Project</button>
                             </a>
                         </div>
                     </div>

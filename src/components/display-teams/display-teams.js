@@ -84,8 +84,6 @@ class DisplayTeams extends Component {
             }
             diff = _.difference(arrayCopy, array)
             add = _.difference(array, arrayCopy)
-            console.log('DIFFFF:', diff)
-            console.log('ADDDD: ', add)
             return array
         }
 
@@ -143,7 +141,6 @@ class DisplayTeams extends Component {
                 if (add) {
                     add.map((e, i) => {
                         axios.post(`/api/edituser/team`, { user_team: id, user_id: e }).then(res => {
-                            console.log("RESSSS", res)
                         })
                     })
                 }

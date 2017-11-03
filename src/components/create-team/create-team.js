@@ -22,7 +22,6 @@ class CreateTeam extends Component {
             team_description: this.props.team_description,
             team_company: this.props.user.user_company
         }
-        console.log("data : ", data)
         axios.post('/api/addteam', data)
             .then(() => {
                 this.props.getUserInfo().then(res => {

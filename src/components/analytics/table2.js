@@ -110,10 +110,7 @@ class Table2 extends Component {
     
 
     render() {
-
-        console.log("Object", this.props.company_users)
-        console.log("GET COMPANY ID IN TABLE 2", this.props.user.user_company)
-        return (
+            return (
             < div >
                 {this.getChartData}
                 <LineChart width={770} height={375} data={this.getChartData()} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>

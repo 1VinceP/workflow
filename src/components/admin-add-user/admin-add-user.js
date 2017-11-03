@@ -31,7 +31,6 @@ class AddUser extends Component {
 
 
     submitUser() {
-        console.log(this.props)
         let data = {
             user_firstname: this.props.user_firstname,
             user_lastname: this.props.user_lastname,
@@ -41,7 +40,6 @@ class AddUser extends Component {
             user_company: this.props.user.user_company
             // user_authid: this.props.user_authid
         }
-        console.log("DATA", data)
         axios.post('/api/admin/adduser', data)
             .then(() => {
                 this.props.getUserInfo().then(res => {
@@ -54,12 +52,6 @@ class AddUser extends Component {
     }
 
     roleFunction(e) {
-        console.log("EEEE", e)
-        // var x = e
-        // this.setState({
-        //     role: x
-        // })
-        // return console.log("ROLLLLLLLLLE",this.state.role)
         this.setState({
             user_role: utils.roleThings( e, this.state.user_role )
         })

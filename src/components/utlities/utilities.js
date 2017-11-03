@@ -86,10 +86,6 @@ module.exports = {
 
     divideThings( money, tasktotal ) {
         let x = Math.ceil(money / tasktotal);
-        console.log("this is", x);
-        // this.setState({
-        //     moneypertask: x
-        // })
         return x
     },
 

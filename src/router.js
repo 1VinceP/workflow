@@ -24,17 +24,6 @@ import CompanyInfor from './components/company/Company'
 import Notifications from './components/notifications/Notifications'
 import PageLoading from './components/page-loading/PageLoading'
 
-// import axios from 'axios';
-
-// function checkForLog() {
-//     axios.get('/auth/authorized').then(user => {
-//         if(!user) {
-//           const check = false;
-//         } else {
-//           const check = true;
-//         }
-//     })
-// }
 
 export default (
     <Switch>

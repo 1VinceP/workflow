@@ -38,7 +38,7 @@ class CompanyDrop extends Component {
     }
 
     render() {
-        // let compName = this.props.company[0].company_name
+        // let compName = this.props.company.company_name
         return(
             <div>
                 <button onClick={this.handleOpen} className='header-link-buttons' page-is-scrolled={this.props.scroll} >Company</button>

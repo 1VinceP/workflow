@@ -10,26 +10,24 @@ class CreateRole extends Component {
             }
     
         if(this.props.company){
-            console.log('truuuuuuu')
+            return "true"
         } else {
-            console.log(this.props.user)
+            return this.props.user
         }
     }
 
     
     render() {
-        console.log("COMPANY LOL", this.props.state.company)
         return (
             <div>
                 <h1>TEST</h1>
-                <h2>{this.props.state.company? this.props.state.company[0].company_name : 'Null'}</h2>
+                <h2>{this.props.state.company? this.props.state.company.company_name : 'Null'}</h2>
             </div>
         )
     }
 }
 
 function mapStateToProps( state ) {
-    console.log(state)
     return {
         state
     };

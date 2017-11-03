@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './dashboard.css';
+import './dashboard.css'
 import NewMenu from '../new-menu/new-menu';
 import axios from 'axios';
-import Table2 from '../analytics/table2';
+// import Table2 from '../analytics/table2';
 import FirstTimeUser from '../first-time-user/FirstTimeUser'
 import { addProjectUniqueKey, editUserFirstname, editUserLastname, getUserInfo, getCompanyInfo, getCompanyTeamInfo, getCompanyUsersInfo, getUserInfoAfter, getUserTasks } from '../../redux/reducers/main-reducer'
+
 import { Link } from 'react-router-dom'
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
@@ -58,7 +59,6 @@ class Dashboard extends Component {
             if (team.team_id === this.props.user.user_team) {
                 selectedTeam = team.team_name
             }
-            console.log('USER TEAM', selectedTeam)
             return selectedTeam
         })
         this.setState({
@@ -90,7 +90,6 @@ class Dashboard extends Component {
                     // this.setState({
                     //     missingEmployeeInfo: true
                     // })
-                    // console.log('BOOM')
                 }
     
             }).then(() => {
@@ -98,11 +97,9 @@ class Dashboard extends Component {
     
             }).then(() => {
                 this.user_team()
-                console.log(this.state)
             }).then(()=>{
         
             axios.get(`/api/company_notifications/${this.props.user.user_company}`).then(res =>{
-                console.log(res)
                 this.setState({
                     notifications1: res.data[0],
                     notifications2: res.data[1]
@@ -127,7 +124,6 @@ class Dashboard extends Component {
             this.setState({
                 money: x
             })
-            console.log('MOneys', this.state.money);
         })
     }
     getTaskTotal() {
@@ -135,7 +131,6 @@ class Dashboard extends Component {
             this.setState({
                 tasktotal: res.data[0].count
             })
-            console.log('tasks', this.state.tasktotal)
         })
     }
     divide() {
@@ -156,7 +151,6 @@ class Dashboard extends Component {
         axios.post('/api/edituser', data)
             .then(() => {
                 this.props.getUserInfo().then(res => {
-                    console.log(res)
                     this.props.getCompanyInfo(this.props.user.user_company).then(res => {
                         this.props.getCompanyUsersInfo(this.props.user.user_company)
                     }).then(() => {
@@ -195,7 +189,6 @@ class Dashboard extends Component {
                 axios.post('/api/edituser', data)
                     .then(() => {
                         this.props.getUserInfo().then(res => {
-                            console.log(res)
                             this.props.getCompanyInfo(this.props.user.user_company).then(res => {
                                 this.props.getCompanyUsersInfo(this.props.user.user_company)
                             }).then(() => {
@@ -213,7 +206,6 @@ class Dashboard extends Component {
 
 
     markTaskAsCompleted(taskId, taskNumber, taskKey) {
-        console.log('button hit')
 
         taskNumber++
 
@@ -225,21 +217,16 @@ class Dashboard extends Component {
 
 
     render() {
-        console.log(this.state)
 
 
 
         var needToCompleteCount = 0
         let needToComplete = this.props.user_tasks.map((task, i) => {
 
-            console.log(task.task_show)
             if (task.task_completed !== true && task.task_show === true ) {
                 1 * needToCompleteCount++
             }
         })
-
-
-        console.log(this.props)
         let sorted = this.props.user_tasks
         let sortedTasks = _.sortBy(sorted, key => {
             return (new Date(key.task_finished_date).getTime())
@@ -291,7 +278,7 @@ class Dashboard extends Component {
                         {this.state.newMenu === true ?
                             <div className='dashboard_new_menu_container'>
                                 <a href='/#/create-project'>
-                                    <div className='dashboard_menu_item_selection' onClick={() => { this.props.addProjectUniqueKey(this.props.company[0].company_name, this.props.user.user_id) }}>Project</div></a>
+                                    <div className='dashboard_menu_item_selection' onClick={() => { this.props.addProjectUniqueKey(this.props.company.company_name, this.props.user.user_id) }}>Project</div></a>
 
                                 <a href='/#/create-team'>
                                     <div className='dashboard_menu_item_selection'>Team</div>
