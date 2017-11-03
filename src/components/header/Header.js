@@ -11,7 +11,7 @@ import AllDrop from './dropdowns/AllDrop';
 import './header.css';
 import CompLogo from './images/comp_logo.svg'
 
-// eslint-disable-next-line
+
 let buttonStyle = {
     headerButton: {
         paddingLeft:'5px',
