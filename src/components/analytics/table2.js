@@ -12,8 +12,18 @@ class Table2 extends Component {
             data: []
         }
     }
+    componentWillMount() {
+        if (!this.props.user) {
+            return window.location.href = 'http://localhost:3000/#/'
 
+        }
+
+    }
     componentDidMount() {
+        if (!this.props.user) {
+            return window.location.href = 'http://localhost:3000/#/'
+
+        } else {
         axios.get(`api/company/analytics/table/${this.props.user.user_company}`).then(res => {
             console.log("DATAAAA:", res.data)
             this.setState({
@@ -21,6 +31,7 @@ class Table2 extends Component {
             })
         })
     }
+}
 
     getCompletedTasks(user) {
         console.log("USER", user)
