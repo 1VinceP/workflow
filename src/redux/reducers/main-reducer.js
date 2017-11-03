@@ -43,7 +43,7 @@ const GET_USER_INFO_AFTER = 'GET_USER_INFO_AFTER';
 var initialState = {
     user: null,
     team: null,
-    company: [],
+    company: {},
     company_users: [],
     company_team: [],
     company_project: [],
@@ -332,7 +332,7 @@ export function getUserInfoAfter(id) {
 
 export function getCompanyInfo(id) {
     const companyInfo = axios.get(`/api/company/${id}`).then(res => {
-        return res.data
+        return res.data[0]
     })
     return {
         type: GET_COMPANY_INFO,
