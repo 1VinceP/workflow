@@ -23,7 +23,6 @@ class Notifications extends Component {
 
         axios.delete(`/api/delete_notification/${note_id}`).then(() => {
             axios.get(`/api/company_notifications/${this.props.user.user_company}`).then(res => {
-                console.log(res)
                 this.setState({
                     notifications1: res.data[0],
                     notifications2: res.data[1]
@@ -50,7 +49,6 @@ class Notifications extends Component {
             notification_user_name: `${this.props.user.user_firstname} ${this.props.user.user_lastname}`,
             notification_user: this.props.user.user_id * 1,
         }
-        console.log("data : ", data)
         axios.post('/api/add-notification', data)
             .then(() => {
                 this.props.getUserInfo().then(res => {
@@ -69,13 +67,12 @@ class Notifications extends Component {
             return window.location.href = 'http://localhost:3000/#/dashboard'
         } else {
             axios.get(`/api/company_notifications/${this.props.user.user_company}`).then(res => {
-                console.log(res)
                 this.setState({
                     notifications1: res.data[0],
                     notifications2: res.data[1]
                 })
             }).then(() => {
-                console.log("STATE", this.state)
+                return("STATE", this.state)
             })
         }
     }

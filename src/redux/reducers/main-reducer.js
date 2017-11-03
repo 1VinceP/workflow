@@ -1,7 +1,5 @@
 import axios from 'axios';
-// const company_controller = require('./controllers/company_controller')
 const GET_USER_INFO = "GET_USER_INFO";
-// eslint-disable-next-line
 const GET_TEAM_INFO = "GET_TEAM_INFO";
 const GET_COMPANY_INFO = "GET_COMPANY_INFO";
 const GET_COMPANY_USERS_INFO = "GET_COMPANY_USERS_INFO";
@@ -84,9 +82,6 @@ var initialState = {
 }
 
 export default function reducer(state = initialState, action) {
-    // console.log('action',action.type)
-    // console.log('payload',action.payload)
-    // console.log('action',action)
     switch (action.type) {
         case GET_USER_INFO + '_FULFILLED':
             return Object.assign({}, state, { user: action.payload })
@@ -363,7 +358,6 @@ export function addCompany(data) {
 }
 
 export function editTeamName(teamname) {
-    // console.log('teamname is ', teamname)
     return {
         type: EDIT_TEAM_NAME,
         payload: teamname
@@ -371,7 +365,6 @@ export function editTeamName(teamname) {
 }
 
 export function editTeamDescription(description) {
-    // console.log('Description is ', description)
     return {
         type: EDIT_TEAM_DESCRIPTION,
         payload: description
@@ -379,7 +372,6 @@ export function editTeamDescription(description) {
 }
 
 export function editUserFirstname(firstname) {
-    // console.log('firstname is ', firstname)
     return {
         type: EDIT_USER_FIRST_NAME,
         payload: firstname
@@ -387,7 +379,6 @@ export function editUserFirstname(firstname) {
 }
 
 export function editUserLastname(lastname) {
-    // console.log('lastname is ', lastname)
     return {
 
         type: EDIT_USER_LAST_NAME,
@@ -396,7 +387,6 @@ export function editUserLastname(lastname) {
 }
 
 export function editUserEmail(email) {
-    // console.log('email is ', email)
     return {
 
         type: EDIT_USER_EMAIL,
@@ -405,7 +395,6 @@ export function editUserEmail(email) {
 }
 
 export function editUserPictureUrl(url) {
-    // console.log('url is ', url)
     return {
 
         type: EDIT_USER_PICTURE_URL,
@@ -414,7 +403,6 @@ export function editUserPictureUrl(url) {
 }
 
 export function editUserDisplayName(display) {
-    // console.log('display is ', display)
     return {
 
         type: EDIT_USER_DISPLAY_NAME,
@@ -423,7 +411,6 @@ export function editUserDisplayName(display) {
 }
 
 export function editUserTeam(team) {
-    // console.log('team is ', team)
     return {
 
         type: EDIT_USER_TEAM,
@@ -432,7 +419,6 @@ export function editUserTeam(team) {
 }
 
 export function editUserRole(role) {
-    // console.log('role is ', role)
     return {
 
         type: EDIT_USER_ROLE,
@@ -489,7 +475,3 @@ export function resetProjectAndTasks() {
         type: RESET_PROJECT_AND_TASKS
     }
 }
-
-// let count = companyName.split('')
-// let projectKey = companyName.charAt(0) + companyName.charAt(1) + companyName.charAt(2) + count.length + count[count.length - 2];
-// return projectKey.toUpperCase()

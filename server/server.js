@@ -44,13 +44,10 @@ passport.use(new Auth0Strategy({
     clientSecret: process.env.AUTH_CLIENT_SECRET,
     callbackURL: process.env.AUTH_CALLBACK
 }, function (accessToken, refreshToken, extraParams, profile, done) {
-    // console.log(profile)
     const db = app.get('db');
-    console.log(chalk.greenBright('profile: ', profile.id))
     db.users.find_user(profile.id).then(user => {
         if (user[0]) {
             userStuff = true
-            console.log(chalk.greenBright('strategy:'), user)
             return done(null, user);
         } else {
             userStuff =  false
@@ -63,12 +60,9 @@ passport.use(new Auth0Strategy({
 }))
 
 passport.serializeUser((user, done) => {
-    console.log('USER SAY WHAT', user[0].user_company)
     if(user[0].user_company === null){
         userStuff = false
     } else {userStuff =  true}
-    console.log(chalk.greenBright('serial: '), user);
-    console.log('USER STUFF YO',userStuff)
     done(null, user);
 })
 

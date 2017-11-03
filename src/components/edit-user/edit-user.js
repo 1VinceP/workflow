@@ -36,9 +36,7 @@ class EditUser extends Component {
         axios.post('/api/edituser', data)
         .then(axios.get(`http://localhost:3005/api/users/user/${data.user_id}`).then(res => {
              x = res.data[0].user_firstname
-            console.log("DOT THEN RES", x)
         })) 
-        console.log("FINAL X", x)
     }
 
     getFirstName(){
@@ -81,8 +79,6 @@ class EditUser extends Component {
     }
 
     render() {
-
-        console.log( 'User Props!!', this.props.location.query.fName, this.props.location.query.lName, this.props.location.query.email )
        
         return (
             <div className="profile-modal">

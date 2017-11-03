@@ -13,8 +13,6 @@ import LeftNav from '../dashboard/Sidebar'
 
 
 class DisplayUsers extends Component {
-
-
     deleteUser(id) {
         confirmAlert({
             title: 'Delete User',
@@ -46,19 +44,15 @@ class DisplayUsers extends Component {
             user_role: role,
         }
         function firstNameFunction(e) {
-            console.log(e.target.value)
             data.user_firstname = e.target.value
         }
         function lastNameFunction(e) {
-            console.log(e.target.value)
             data.user_lastname = e.target.value
         }
         function emailFunction(e) {
-            console.log(e.target.value)
             data.user_email = e.target.value
         }
         function roleFunction(e) {
-            console.log(e.target.value)
             data.user_role = e.target.value
         }
         confirmAlert({
@@ -114,8 +108,6 @@ class DisplayUsers extends Component {
 
 
     getTeamName(id) {
-        // console.log('id', id)
-        // console.log("COMPANY PROPS", this.props.company_team[0].team_id)
         var teamId = this.props.company_team
         for (let i = 0; i < teamId.length; i++) {
             if (teamId[i].team_id === id) {
