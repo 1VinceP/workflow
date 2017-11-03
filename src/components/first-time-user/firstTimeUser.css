@@ -1,6 +1,9 @@
 .first-time-user-container{
     width: 60%;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
 }
 .first-time-user-options-container{
@@ -79,4 +82,18 @@ cursor: pointer;
         font-family: helvetica;
         font-size: 16px;
         color: rgb(217, 217, 217);
+    }
+    .small-icon-page{
+        height: 120px;
+    }
+    .first-time-tag-line{
+        font-size: 24px;
+    }
+    .first-time-tag-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 50px;
+
     }

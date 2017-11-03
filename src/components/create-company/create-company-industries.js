@@ -4,65 +4,93 @@ import { connect } from 'react-redux'
 import { addCompanyIndustry } from '../../redux/reducers/main-reducer'
 
 class CreateCompanyIndustry extends Component {
+    constructor(){
+        super();
+        this.state={
+            option1: false,
+            option2: false,
+            option3: false,
+            option4: false,
+            option5: false,
+            option6: false,
+            option7: false,
+            option8: false,
+            option9: false,
+            option10: false,
+            option11: false,
+            option12: false,
+            option13: false,
+            option14: false,
+            option15: false,
+            option16: false,
+            option17: false,
+        }
+    }
+
+    changeClass(option){
+        this.setState({
+            [option]: !this.state[option]
+        })
+    }
 
     render() {
         return (
             <div className='create-company-industry-boxsizing'>
                 <dl>
                     <dt>B</dt>
-                    <dd onClick={() => this.props.addCompanyIndustry('Business Services')} className='create-company-industry-option'>Business Services</dd>
+                    <dd onClick={() => {this.props.addCompanyIndustry('Business Services') ; this.changeClass('option1')}} className={this.state.option1 === false ?'create-company-industry-option' : 'create-company-industry-option1'}>Business Services</dd>
                 </dl>
                 <dl>
                     <dt>C</dt>
-                    <dd onClick={() => this.props.addCompanyIndustry('Consumer Services')} className='create-company-industry-option'>Consumer Services</dd>
+                    <dd onClick={() =>{ this.props.addCompanyIndustry('Consumer Services'); this.changeClass('option2')}} className={this.state.option2 === false ?'create-company-industry-option' : 'create-company-industry-option1'}>Consumer Services</dd>
                 </dl>
                 <dl>
                     <dt>E</dt>
-                    <dd onClick={() => this.props.addCompanyIndustry('Education')} className='create-company-industry-option'>Education</dd>
+                    <dd onClick={() => {this.props.addCompanyIndustry('Education') ; this.changeClass('option3')}} className={this.state.option3 === false ?'create-company-industry-option' : 'create-company-industry-option1'}>Education</dd>
 
-                    <dd onClick={() => this.props.addCompanyIndustry('Energy and Utilities')} className='create-company-industry-option'>Energy and Utilities</dd>
+                    <dd onClick={() => {this.props.addCompanyIndustry('Energy and Utilities') ; this.changeClass('option4')}} className={this.state.option4 === false ?'create-company-industry-option' : 'create-company-industry-option1'}>Energy and Utilities</dd>
                 </dl>
                 <dl>
                     <dt>F</dt>
-                    <dd onClick={() => this.props.addCompanyIndustry('Financial Services')} className='create-company-industry-option'>Financial Services</dd>
+                    <dd onClick={() => {this.props.addCompanyIndustry('Financial Services') ; this.changeClass('option5')}} className={this.state.option5 === false ?'create-company-industry-option' : 'create-company-industry-option1'}>Financial Services</dd>
                 </dl>
                 <dl>
                     <dt>G</dt>
-                    <dd onClick={() => this.props.addCompanyIndustry('Government')} className='create-company-industry-option'>Government</dd>
+                    <dd onClick={() => {this.props.addCompanyIndustry('Government') ; this.changeClass('option6')}} className={this.state.option6 === false ?'create-company-industry-option' : 'create-company-industry-option1'}>Government</dd>
                 </dl>
                 <dl>
                     <dt>H</dt>
-                    <dd onClick={() => this.props.addCompanyIndustry('Health, Pharmaceuticals, and Biotech')} className='create-company-industry-option'>Health, Pharmaceuticals, and Biotech</dd>
+                    <dd onClick={() => {this.props.addCompanyIndustry('Health, Pharmaceuticals, and Biotech') ; this.changeClass('option7')}} className={this.state.option7 === false ?'create-company-industry-option' : 'create-company-industry-option1'}>Health, Pharmaceuticals, and Biotech</dd>
                 </dl>
                 <dl>
                     <dt>M</dt>
-                    <dd onClick={() => this.props.addCompanyIndustry('Manufacturing')} className='create-company-industry-option'>Manufacturing</dd>
-                    <dd onClick={() => this.props.addCompanyIndustry('Media and Entertainment')} className='create-company-industry-option'>Media and Entertainment</dd>
+                    <dd onClick={() => {this.props.addCompanyIndustry('Manufacturing') ; this.changeClass('option8')}} className={this.state.option8 === false ?'create-company-industry-option' : 'create-company-industry-option1'}>Manufacturing</dd>
+                    <dd onClick={() => {this.props.addCompanyIndustry('Media and Entertainment') ; this.changeClass('option10')}} className={this.state.option10 === false ?'create-company-industry-option' : 'create-company-industry-option1'}>Media and Entertainment</dd>
                 </dl>
                 <dl>
                     <dt>N</dt>
-                    <dd onClick={() => this.props.addCompanyIndustry('Non Profit')} className='create-company-industry-option'>Non Profit</dd>
+                    <dd onClick={() => {this.props.addCompanyIndustry('Non Profit') ; this.changeClass('option11')}} className={this.state.option11 === false ?'create-company-industry-option' : 'create-company-industry-option1'}>Non Profit</dd>
                 </dl>
                 <dl>
                     <dt>O</dt>
-                    <dd onClick={() => this.props.addCompanyIndustry('Other')} className='create-company-industry-option'>Other</dd>
+                    <dd onClick={() => {this.props.addCompanyIndustry('Other') ; this.changeClass('option12')}} className={this.state.option12 === false ?'create-company-industry-option' : 'create-company-industry-option1'}>Other</dd>
                 </dl>
                 <dl>
                     <dt>R</dt>
-                    <dd onClick={() => this.props.addCompanyIndustry('Real Estate and Construction')} className='create-company-industry-option'>Real Estate and Construction</dd>
-                    <dd onClick={() => this.props.addCompanyIndustry('Retail')} className='create-company-industry-option'>Retail</dd>
+                    <dd onClick={() => {this.props.addCompanyIndustry('Real Estate and Construction') ; this.changeClass('option13')}} className={this.state.option13 === false ?'create-company-industry-option' : 'create-company-industry-option1'}>Real Estate and Construction</dd>
+                    <dd onClick={() => {this.props.addCompanyIndustry('Retail') ; this.changeClass('option14')}} className={this.state.option14 === false ?'create-company-industry-option' : 'create-company-industry-option1'}>Retail</dd>
                 </dl>
                 <dl>
                     <dt>S</dt>
-                    <dd onClick={() => this.props.addCompanyIndustry('Software and Internet')} className='create-company-industry-option'>Software and Internet</dd>
+                    <dd onClick={() => {this.props.addCompanyIndustry('Software and Internet') ; this.changeClass('option15')}} className={this.state.option15 === false ?'create-company-industry-option' : 'create-company-industry-option1'}>Software and Internet</dd>
                 </dl>
                 <dl>
                     <dt>T</dt>
-                    <dd onClick={() => this.props.addCompanyIndustry('Travel Recreation and Leisure')} className='create-company-industry-option'>Travel Recreation and Leisure</dd>
+                    <dd onClick={() => {this.props.addCompanyIndustry('Travel Recreation and Leisure') ; this.changeClass('option16')}} className={this.state.option16 === false ?'create-company-industry-option' : 'create-company-industry-option1'}>Travel Recreation and Leisure</dd>
                 </dl>
                 <dl>
                     <dt>W</dt>
-                    <dd onClick={() => this.props.addCompanyIndustry('Wholesale and Distribution')} className='create-company-industry-option'>Wholesale and Distribution</dd>
+                    <dd onClick={() => {this.props.addCompanyIndustry('Wholesale and Distribution') ; this.changeClass('option17')}} className={this.state.option17 === false ?'create-company-industry-option' : 'create-company-industry-option1'}>Wholesale and Distribution</dd>
                 </dl>
 {/* 
                 

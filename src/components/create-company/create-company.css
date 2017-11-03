@@ -100,6 +100,7 @@ dd {
     font-size: 16px;
 }
 
+
 dd + dd {
     border-top: 1px solid #CCC;
     font-family: helvetica;
@@ -132,6 +133,11 @@ dd + dd {
 
 .create-company-industry-option{
     cursor: pointer;
+}
+.create-company-industry-option1{
+    cursor: pointer;
+    background: rgb(195, 146, 255);
+    color: white;
 }
 
 .create-company-badge{
