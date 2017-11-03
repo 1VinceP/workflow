@@ -214,9 +214,6 @@ class DisplayTeams extends Component {
 
         return (
             <div className="team-analytics-container">
-                <button>lol</button>
-                <p>This is just so that I can merge</p>
-                <div>Annother Pointless Line</div>
                 <div className="team-charts-container">
                     <div className="team-charts-main">
                         <LeftNav />

@@ -4,7 +4,7 @@ import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts'
 import { connect } from 'react-redux';
 import Table1 from './table1';
 import Table2 from './table2';
-
+import LeftNav from '../dashboard/Sidebar'
 
 
 class Analytics extends Component {
@@ -21,34 +21,18 @@ class Analytics extends Component {
 
         return (
             <div className="analytics-container">
-
                 <div className="charts-container">
                     <div className="charts-main">
-                        <div className="charts-left-navbar">
-                            <span className="analytics-navbar-title">Analytics</span>
-                            <span>Projects</span>
-                            <span>Tasks</span>
-                            <span>Productivity</span>
-                        </div>
+                        <LeftNav />
 
                         <div className="table-container">
-                            <Table2 />
+                        <div className="analytics-top-table">
                         </div>
+                        <Table2 />
+                    </div>
                         {/* <div className="table-container">
                         <Table2 />
                         </div> */}
-                        <div className="charts-right-navbar">
-                        <span className="right-navbar-title">Stay Updated</span>
-                        <span>Setup Alerts to stay up to date.</span>
-                        <button className="alert-button">Get Alerts</button>
-                        </div>
-                    </div>
-
-                    <div className="charts-left-navbar under-nav">
-                        <span className="analytics-navbar-title">By Date</span>
-                        <span>Today</span>
-                        <span>This week</span>
-                        <span>Month-to-date</span>
                     </div>
                 </div>
             </div>
