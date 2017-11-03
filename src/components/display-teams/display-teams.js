@@ -84,8 +84,6 @@ class DisplayTeams extends Component {
             }
             diff = _.difference(arrayCopy, array)
             add = _.difference(array, arrayCopy)
-            console.log('DIFFFF:', diff)
-            console.log('ADDDD: ', add)
             return array
         }
 
@@ -143,7 +141,6 @@ class DisplayTeams extends Component {
                 if (add) {
                     add.map((e, i) => {
                         axios.post(`/api/edituser/team`, { user_team: id, user_id: e }).then(res => {
-                            console.log("RESSSS", res)
                         })
                     })
                 }
@@ -214,9 +211,6 @@ class DisplayTeams extends Component {
 
         return (
             <div className="team-analytics-container">
-                <button>lol</button>
-                <p>This is just so that I can merge</p>
-                <div>Annother Pointless Line</div>
                 <div className="team-charts-container">
                     <div className="team-charts-main">
                         <LeftNav />

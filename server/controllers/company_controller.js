@@ -13,11 +13,11 @@ module.exports = {
 
 
     getCompanyCode: (req, res, next) => {
-        console.log(req.params.id)
+        
         req.app.get('db').company.get_company_code(req.params.id).then(response => res.status(200).send(response))
     },
     getCompanyNotifications: (req, res, next) => {
-        console.log(req.params.id)
+       
         req.app.get('db').company.get_company_notifications(req.params.id).then(response => res.status(200).send(response))
     },
     delete_notification: (req, res, next) => {

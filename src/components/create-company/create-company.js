@@ -46,7 +46,6 @@ class CreateCompany extends Component {
       company_code: this.props.company_code,
   }
      axios.post('/api/addcompany', data).then(response =>{
-      console.log('CODE IN PROPS', response )
      }).then(()=>{axios.get(`/api/company_code/${this.props.company_code}`).then((response)=>{ 
       this.setState({
           company_id_for_code: response.data[0].company_id
@@ -83,7 +82,6 @@ class CreateCompany extends Component {
 
 
   getStepContent(stepIndex) {
-    console.log('WHERE', this.props)
     switch (stepIndex) {
       case 0:
         return (
@@ -131,7 +129,7 @@ class CreateCompany extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
+    return(this.props)
   }
 
   render() {

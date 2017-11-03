@@ -22,7 +22,7 @@ html {
     width: 200px;
     margin: 10px;
     height: 20px;
-    color: #f42e78;
+    color: rgb(70, 70, 70);
     font-size: 16px;
     
 }
@@ -31,14 +31,15 @@ html {
     font-family: helvetica;
     border-bottom: 1px solid rgb(178, 178, 178);
     font-size: 16px;
-
-
 }
 
 .create-company-company-name-input::placeholder{
     font-family: helvetica;
     color: rgb(178, 178, 178);
     font-size: 16px;
+}
+.create-company-company-name-input{
+    background: transparent;
 }
 
 .create-company-next-finish-button{
@@ -77,7 +78,7 @@ dl {
 }
 
 dt {
-    background: #f42e78;
+    background: #7953F5;
     font-family: helvetica;
     font-size: 16px;
 

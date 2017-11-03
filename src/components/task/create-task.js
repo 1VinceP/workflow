@@ -104,7 +104,6 @@ class Create_task extends Component {
     }
     
       render() {
-        // console.log('PROPS YO',this.props)
         const actions = [
           <FlatButton
             label="Cancel"

@@ -30,7 +30,6 @@ export default class DisplayTasks extends Component {
     //         this.setState({
     //             teamdata: res.data
     //         })
-    //         console.log(this.state.teamdata)
     //     })
     // }
 
