@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
 import {Redirect} from 'react-router';
 import './initialLoad.css'
 
@@ -22,10 +22,10 @@ class InitialLoad extends Component {
 componentWillMount(){
     setTimeout(()=>{
         if(this.props.user.user_company === null){
-        console.log('SET PROPS', this.props.user.user_company)
         return window.location.href ='http://localhost:3000/#/first-time-user'
         } else {
-            console.log("NOPE")}
+        console.log("User Logged In Securely")
+        }
             return window.location.href ='http://localhost:3000/#/dashboard'
     }, 3000)
 }

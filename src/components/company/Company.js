@@ -29,8 +29,6 @@ class Company extends Component {
     }
 
     render() {
-        console.log("HERO ITS ME")
-        console.log(this.state)
         return(
             <div className='company-info-body'>
                 

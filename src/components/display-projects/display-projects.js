@@ -57,7 +57,6 @@ class DisplayUsers extends Component {
 
 
     // editProject(name, start, end, description, price, id) {
-    //     console.log("it worked lol", name, start, end, description, price, id)
     // }
 
     editProject(name, start, end, description, price, id) {
@@ -70,7 +69,6 @@ class DisplayUsers extends Component {
             project_id: id
         }
         function nameFunction(e) {
-            console.log(e.target.value)
             data.project_name = e.target.value
         }
 
@@ -79,7 +77,7 @@ class DisplayUsers extends Component {
         }
 
         function descriptionFunction(e) {
-            console.log(e)
+
             data.project_description = e
         }
 
@@ -172,8 +170,6 @@ class DisplayUsers extends Component {
 
 
     // getTeamName(id) {
-    //     // console.log('id', id)
-    //     // console.log("COMPANY PROPS", this.props.company_team[0].team_id)
     //     var teamId = this.props.company_team
     //     for (let i = 0; i < teamId.length; i++) {
     //         if (teamId[i].team_id === id) {

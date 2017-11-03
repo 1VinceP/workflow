@@ -13,8 +13,6 @@ class Table2 extends Component {
     }
 
     render() {
-
-        (console.log("Object", this.props.company_team))
             return (
             < div >
                 <LineChart width={650} height={375} data={this.props.company_team} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
