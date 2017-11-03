@@ -18,7 +18,7 @@ class DisplayUsers extends Component {
     deleteUser(id) {
         confirmAlert({
             title: 'Delete User',
-            message: 'Are you sure you want to do this.',
+            message: 'Are you sure you want to do this?',
             confirmLabel: 'Confirm',
             cancelLabel: 'Cancel',
             onConfirm: () => {
@@ -36,6 +36,7 @@ class DisplayUsers extends Component {
     }
 
     editUser(first, last, email, id, role) {
+        console.log( 'role:', role )
 
         let data = {
             user_firstname: first,
@@ -71,10 +72,13 @@ class DisplayUsers extends Component {
                             <input className='dashboard-input-names' defaultValue={email} onChange={(e) => { emailFunction(e) }} required />
                         </div>
                         <div className='dashboard-input-names-cont'>
-                            <select className='dashboard-input-names' onChange={(e) => { roleFunction(e) }} selected='User Role'>
-                            <option selected='selected' disabled='Disabled'>User Role</option>
-                            <option value={0}>Employee</option>
-                            <option value={1}>Manager</option>
+                            <select className='dashboard-input-names' onChange={(e) => { roleFunction(e) }}>
+                                { role === 1
+                                    ? <option selected='selected' disabled='Disabled'>Manager</option>
+                                    : <option selected='selected' disabled='Disabled'>Employee</option>
+                                }
+                                <option value={0}>Employee</option>
+                                <option value={1}>Manager</option>
                             </select>
                         </div>
                     </div>
@@ -123,6 +127,7 @@ class DisplayUsers extends Component {
 
     render() {
         let userInfo = this.props.company_users.map((e, i) => {
+            console.log( 'e.user_role:', e.user_role )
             return (
                 <div key={i} className="display-users-user-container">
                     <div className="display-users-name-email" >
@@ -137,7 +142,7 @@ class DisplayUsers extends Component {
                         {this.getTeamName(e.user_team)}
                     </div>
                     <div className="users-buttons-div">
-                        <Button onClick={() => this.editUser(e.user_firstname, e.user_lastname, e.user_email, e.user_id)} size="big" className="team-settings-button">
+                        <Button onClick={() => this.editUser(e.user_firstname, e.user_lastname, e.user_email, e.user_id, e.user_role)} size="big" className="team-settings-button">
                             <Icon name='setting' />
                         </Button>
                         <Button onClick={() => this.deleteUser(e.user_id)} size="big" className="team-delete-button">
