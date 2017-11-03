@@ -21,7 +21,7 @@ class DisplayCompany extends Component {
         return (
             <div className="display-company-container">
                 <div>
-                    <div>{this.props.company[0].company_name}</div>
+                    <div>{this.props.company.company_name}</div>
                     <div>
 
                     </div>

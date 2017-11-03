@@ -26,7 +26,7 @@ class Create_Project_Class extends Component {
             project_start_date: this.props.project_start_date + '',
             project_finished_date: this.props.project_finish_date + '',
             project_description:this.props.project_description,
-            project_company:this.props.company[0].company_id,
+            project_company:this.props.company.company_id,
             project_price:this.props.project_price,
             project_paid: this.props.project_paid,
             project_creator: this.props.project_creator,
@@ -37,8 +37,8 @@ class Create_Project_Class extends Component {
             this.props.getCompanyInfo(this.props.user.user_company)
             this.props.getCompanyProjectInfo(this.props.user.user_company)
             this.props.resetProjectAndTasks()
-            return window.location.href ='http://localhost:3000/#/dashboard'
-        })
+            return window.location.href ='http://localhost:3000/#/display-projects'
+        })        
     }
 
     componentWillMount() {

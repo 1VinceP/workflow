@@ -278,7 +278,7 @@ class Dashboard extends Component {
                         {this.state.newMenu === true ?
                             <div className='dashboard_new_menu_container'>
                                 <a href='/#/create-project'>
-                                    <div className='dashboard_menu_item_selection' onClick={() => { this.props.addProjectUniqueKey(this.props.company[0].company_name, this.props.user.user_id) }}>Project</div></a>
+                                    <div className='dashboard_menu_item_selection' onClick={() => { this.props.addProjectUniqueKey(this.props.company.company_name, this.props.user.user_id) }}>Project</div></a>
 
                                 <a href='/#/create-team'>
                                     <div className='dashboard_menu_item_selection'>Team</div>

@@ -42,7 +42,7 @@ const RESET_PROJECT_AND_TASKS = "RESET_PROJECT_AND_TASKS";
 var initialState = {
     user: null,
     team: null,
-    company: [],
+    company: {},
     company_users: [],
     company_team: [],
     company_project: [],
@@ -339,7 +339,7 @@ export function getUserInfoAfter(id) {
 
 export function getCompanyInfo(id) {
     const companyInfo = axios.get(`/api/company/${id}`).then(res => {
-        return res.data
+        return res.data[0]
     })
     return {
         type: GET_COMPANY_INFO,
@@ -457,6 +457,7 @@ export function currentProjectTasks(key, body) {
     }
 }
 
+
 export function deleteProjectTask(id, key) {
 
     const tasks = axios.delete(`/api/deleteTask/${id}/${key}`)
@@ -469,6 +470,7 @@ export function deleteProjectTask(id, key) {
         payload: tasks
     }
 }
+
 
 export function resetProjectAndTasks() {
     return {
