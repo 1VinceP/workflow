@@ -41,7 +41,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "now-start": "node server/index.js",
+    "deploy": "now --public --dotenv=.env.prod -d"
+  },
+  "now":{
+    "alias":"WorkFlow"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": "server/server.js",
@@ -49,13 +54,13 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/choelle05/project-management.git"
+    "url": "git+https://github.com/chanstolworthy/project-management.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/choelle05/project-management/issues"
+    "url": "https://github.com/chanstolworthy/project-management/issues"
   },
-  "homepage": "https://github.com/choelle05/project-management#readme"
+  "homepage": "https://github.com/chanstolworthy/project-management#readme"
 }

@@ -19,6 +19,9 @@ const users_controller = require('./controllers/users_controller')
 
 
 const app = express();
+
+app.use( express.static( `${__dirname}/../build` ) );
+
 app.use(bodyParser.json());
 app.use(cors());
 
