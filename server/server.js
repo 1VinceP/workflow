@@ -73,9 +73,10 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((obj, done) => {
     return done(null, obj[0]);
 })
-app.get('/login', passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000/#/loading-page',
-    failureRedirect: 'http://localhost:3000/#/'
+app.get('/login', (req, res, next) => {console.log(req.url); next()}, passport.authenticate('auth0', {
+    successRedirect: process.env.SUCCESS,
+    failureRedirect: process.env.FAILURE,
+    failureFlash: true
 }));
 
 app.get('/login/user', auth_controller.login);
