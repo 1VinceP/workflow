@@ -5,7 +5,7 @@ class CreateRole extends Component {
     componentWillMount(){
 
             if (!this.props.user) {
-                return window.location.href = 'http://localhost:3000/#/'
+                return window.location.href = 'http://104.131.104.218:3005/#/'
     
             }
     

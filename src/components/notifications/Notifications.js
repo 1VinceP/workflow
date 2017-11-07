@@ -38,7 +38,7 @@ class Notifications extends Component {
     }
 
     cancelNotification() {
-        return window.location.href = 'http://localhost:3000/#/dashboard'
+        return window.location.href = 'http://104.131.104.218:3005/#/dashboard'
     }
 
     submitNotification() {
@@ -57,14 +57,14 @@ class Notifications extends Component {
                     })
                 })
             })
-        return window.location.href = 'http://localhost:3000/#/dashboard'
+        return window.location.href = 'http://104.131.104.218:3005/#/dashboard'
     }
 
     componentWillMount() {
         if (!this.props.user) {
-            return window.location.href = 'http://localhost:3000/#/'
+            return window.location.href = 'http://104.131.104.218:3005/#/'
         } else if (this.props.user.user_role === 0) {
-            return window.location.href = 'http://localhost:3000/#/dashboard'
+            return window.location.href = 'http://104.131.104.218:3005/#/dashboard'
         } else {
             axios.get(`/api/company_notifications/${this.props.user.user_company}`).then(res => {
                 this.setState({

@@ -14,14 +14,14 @@ class Table2 extends Component {
     }
     componentWillMount() {
         if (!this.props.user) {
-            return window.location.href = 'http://localhost:3000/#/'
+            return window.location.href = 'http://104.131.104.218:3005/#/'
 
         }
 
     }
     componentDidMount() {
         if (!this.props.user) {
-            return window.location.href = 'http://localhost:3000/#/'
+            return window.location.href = 'http://104.131.104.218:3005/#/'
 
         } else {
         axios.get(`api/company/analytics/table/${this.props.user.user_company}`).then(res => {
