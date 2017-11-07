@@ -22,11 +22,11 @@ class InitialLoad extends Component {
 componentWillMount(){
     setTimeout(()=>{
         if(this.props.user.user_company === null){
-        return window.location.href ='http://localhost:3000/#/first-time-user'
+        return window.location.href ='http://104.131.104.218:3005/#/first-time-user'
         } else {
         console.log("User Logged In Securely")
         }
-            return window.location.href ='http://localhost:3000/#/dashboard'
+            return window.location.href ='http://104.131.104.218:3005/#/dashboard'
     }, 3000)
 }
 
