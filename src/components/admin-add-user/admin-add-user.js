@@ -48,7 +48,7 @@ class AddUser extends Component {
                     })
                 })
             })
-            return window.location.href ='http://localhost:3000/#/display-users'
+            return window.location.href ='http://104.131.104.218:3005/#/display-users'
     }
 
     roleFunction(e) {

@@ -17,7 +17,7 @@ class PageLoading extends Component {
             return  window.history.back();
             } else {
                 console.log("NOPE")}
-                return window.location.href ='http://localhost:3000/#/'
+                return window.location.href ='http://104.131.104.218:3005/#/'
         }, 3000)
     }
   

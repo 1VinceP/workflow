@@ -37,7 +37,7 @@ class Create_Project_Class extends Component {
             this.props.getCompanyInfo(this.props.user.user_company)
             this.props.getCompanyProjectInfo(this.props.user.user_company)
             this.props.resetProjectAndTasks()
-            return window.location.href ='http://localhost:3000/#/display-projects'
+            return window.location.href ='http://104.131.104.218:3005/#/display-projects'
         })        
     }
 
