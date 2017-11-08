@@ -48,7 +48,7 @@ class AddUser extends Component {
                     })
                 })
             })
-            return window.location.href ='http://104.131.104.218:3005/#/display-users'
+            return window.location.href ='http://27projectmanagement.com/#/display-users'
     }
 
     roleFunction(e) {
@@ -58,7 +58,7 @@ class AddUser extends Component {
     }
     componentWillMount() {
         if (!this.props.user) {
-            return window.location.href = 'http://104.131.104.218:3005/#/'
+            return window.location.href = 'http://27projectmanagement.com/#/'
 
         }
 

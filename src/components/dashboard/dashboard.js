@@ -79,7 +79,7 @@ class Dashboard extends Component {
     componentWillMount() {
 
         if (!this.props.user) {
-            return window.location.href = 'http://104.131.104.218:3005/#/'
+            return window.location.href = 'http://27projectmanagement.com/#/'
 
         } else {
             this.props.getUserInfo().then(res => {
